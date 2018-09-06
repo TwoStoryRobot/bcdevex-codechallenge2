@@ -34,9 +34,8 @@ terms and conditions set forth elsewhere in the RFP.
 
 ## Description
 
-Included are scripts for building and running two Docker containers: 
-* A MongoDB database loaded with the sample Northwind data
-* A Postgres database loaded with the sample Northwind data
+Included are scripts for building and running one Docker container: 
+* A Postgres database loaded with the sample schema and data
 
 The scripts handle retrieval of the appropriate images, loading of the sample data, and setting of default user credentials.
 
@@ -47,145 +46,10 @@ The scripts handle retrieval of the appropriate images, loading of the sample da
 ## Getting Started
 
 * Run the included ```start.sh``` script to launch the containers.
-* The MongoDB container exposes port 27017 and can be connected to with either the admin account (mongoadmin/1234) or the read-only user account (mongouser/mongouser)
 * The Postgres container exposes port 5432 and can be connected to with either the admin account (postgres/postgresadmin) or the read-only user account (pguser/pguser)
-* Feel free to change the default admin and user account credentials, but changes will not persist between starting/stopping each container
-* You can verify the containers are running using the command ```docker container ls | grep code-challenge``` or by connecting to each one using your favourite client tool (e.g. MongoDB Compass or Postico)
+* Feel free to change the default admin and user account credentials
+* You can verify the containers are running using the command ```docker container ls | grep code-challenge``` or by connecting to each one using your favourite client tool (e.g. Postico)
 
 ## Code Challenge Instructions
 
-### Introduction
-
-This code challenge asks you to build an application that can query a given database.  The application must be able to query both SQL and non-SQL databases.
-
-The application must allow a user to create and execute a query.  The user must be able to create a query using either the AND (∧) or OR (∨) logical operator to link a series of operands.  Once a user has created a query, the user must be able to execute the query to return a list of items from the database.  The list may be empty. 
-
-Each operand will consist of an attribute, operator and value.  For instance, the expression “Height >= 5” would form a valid operand.  In these instructions, the term “operand” will also be referred to as “query condition”.
-
-The typical user will be someone who is not familiar with Boolean logic.  That is, assume the user does not know the formal meaning of the AND and OR logical operators.
-
-### Query Builder UI Requirements
-
-The application must allow the user to perform the following operations:
-
-1.	Select a logical operator (either AND or OR)
-2.	Conjoin any number of operands using the AND operator
-3.	Disjoin any number of operands using the OR operator
-4.	Perform query on chosen query terms
-5.	Return a list of selected items
-6.	Clicking on a selected item presents additional detailed item information
-7.	Clear the query builder
-
-The application must allow administrators to perform the following operations:
-
-1.	Select a database (either SQL or non-SQL)
-
-### Technical Requirements
-
-Participating teams are not limited to a certain stack or any specific technologies.  We do encourage everyone to use a stack that is commonly used in developing modern web applications.  For instance, a good choice of framework would be Angular or React. 
-
-### User Stories
-
-All of the following user stories must be completed.  They may be completed in any order.
-
-#### User Story #1 – Select a Logical Operator
-
-As a user, I want to be able to create an extended query (that is, connect any number of operands together) by using either the AND or the OR logical operator.
-
-Given that I am viewing the user interface
-When I activated the logical operator control
-Then the control is set to either “AND” or “OR”
-
-#### User Story #2 – Complete a Query Condition
-
-As a user, I want to be to complete a query condition using any database attribute.  I want the condition’s operators and values to be based on my chosen database attribute’s type.
-
-Given that I have selected a database attribute
-When I select an operator 
-Then I am present with a list of operators based on the type of the chosen attribute
-And When I select a value
-Then I am present with a list of values based on the type of the chosen attribute
-
-#### User Story #3 – Add a New Query Condition
-
-As a user, I want to be able to join multiple operands together to form a query.
-
-Given that I have entered one or more query conditions
-When I activated the UI control that allows me to add a new query condition
-Then I am presented with a UI control that allows me to compose a new query condition by selecting the attribute, operator and value
-
-#### User Story #4 – Delete a Query Condition
-
-As a user, I want to be able to delete a query condition.
-
-Given that I have entered one or more query conditions
-When I activated the UI control that allows me to delete a new query condition
-Then that query condition is removed from the UI
- 
-#### User Story #5 – Execute a Query
-
-As a user who has composed my query conditions, I want to be able to execute the query operation on the database.
-
-Given that I have composed a query consisting of one or more query conditions
-When I activated the UI control that allows me to execute a query against the database
-Then the query is executed
-
-#### User Story #6 – Return a List of Query Results
-
-As a user who has executed a query, I want to be able to view the results returned by the query.
-
-Given that I have executed a query
-When the query generates results
-Then the list of results is made visible in the UI
-And When the query generates no results
-Then the UI notifies me that the query did not return any results
-
-#### User Story #7 – Display an Individual Query Result
-
-As a user who has executed a query, I want to be able to view an individual result returned by the query.
-
-Given that I have generated a list of query results
-When I select one of the query results
-Then I am presented with a view listing the result’s attribute/value pairs
-
-#### User Story #8 – Close Individual Query Result View
-
-As a user, I want to be able to close an individual query results view.
-
-Given that I have opened an individual query results view
-When I activate the button that closes the view
-Then the view closes
- 
-#### User Story #9 – Reset Query Builder
-
-As a user, I want to be reset the query builder to start a new query.
-
-Given that I am using the query builder
-When I activate the button that resets the query
-Then the query builder is reset to its initial condition
-
-#### User Story #10 – Support for Both  SQL and non-SQL Databases
-
-As an administrator, I want to configure the query application to support either a SQL or non-SQL database 
-
-Case #1:
-Given that I have selected a SQL database
-When the user creates a valid query
-Then the application returns a valid result
-
-Case #2:
-Given that I have selected a non-SQL database
-When the user creates a valid query
-Then the application returns a valid result
-
-### REST API Requirements
-
-The query operation must be implemented by making a server-side REST API call to an endpoint with the signature “/query”.
-
-The operation to select an individual item from the query results list must be implemented by making a server-side REST API call to an endpoint with the signature “/fetchItemDetails”.
-
-### Submission Requirements
-
-1.	  Please refer to item #9 in the "Rules and Instructions" section above.
-2.	  In addition, you must update the repository’s README file to include any instructions required for the code challenge evaluators to build and run your team’s application.
-
+TBD
