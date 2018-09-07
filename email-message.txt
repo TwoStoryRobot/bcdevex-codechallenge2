@@ -1,0 +1,4 @@
+Hello!
+
+This is a test email message from the Administrator.  Thank you for using our application!
+
