@@ -184,8 +184,9 @@ As an administrator, I want to able to send a boilerplate email to a user.
 **When** I active the “Mail” UI control related to an individual user<br/>
 **Then** a boilerplate email is sent to the email address associated with that user<br/>
 
-Implementation Notes:
-The boilerplate email template will be provided in a separate file called “email-message.txt”.  A successful implementation merely needs to email the provide template to a given user.
+**Implementation Notes:**<br/>
+The boilerplate email template will be provided in a separate file called “email-message.txt”.<br/>
+A successful implementation merely needs to email the provide template to a given user.
 
 #### User Story #9 – Simple Filter
 
@@ -197,9 +198,9 @@ As a user, I want to be able to filter columns with text content using a “star
 **Then** all database entries that satisfy the filter term for the selected field are displayed<br/>
 **And** no other database entries are displayed<br/>
 
-Implementation Notes:
-The filter shall be a “startsWith” filter only.
-The filter shall apply only to fields with text content.
+**Implementation Notes:**<br/>
+The filter shall be a “startsWith” filter only.<br/>
+The filter shall apply only to fields with text content.<br/>
 The filter shall not apply hierarchically.  That is, the filter shall filter the database for a single column only.  For instance, an operation that first filters Column A for term B and then filters Column C for term D does not need to be supported (and no additional points will be given for such an implementation).
  
 #### User Story #10 – Simple Sort
@@ -221,19 +222,19 @@ Use Case #2 (Descending Order)
 **When** I click on the “Sort” UI control<br/> 
 **Then** the users in the list are displayed in descending order<br/>
 
-Implementation Notes:
-The sort operation shall apply only to fields with text content.
+**Implementation Notes:**<br/>
+The sort operation shall apply only to fields with text content.<br/>
 The sort operation shall not apply hierarchically.  That is, the sort operation shall sort the database for a single column only.  For instance, a sort operation that first sorts Column A in ascending order and then sorts Column C in ascending order does not need to be supported (and no additional points will be given for such an implementation).
 
 ### REST API Requirements
 
-The update operations must be implemented by making a server-side REST API call to an endpoint with the signature “/update”.
+The update operations must be implemented by making a server-side REST API call to an endpoint with the signature “**/update**”.
 
-The delete operations must be implemented by making a server-side REST API call to an endpoint with the signature “/delete”.
+The delete operations must be implemented by making a server-side REST API call to an endpoint with the signature “**/delete**”.
 
-The authenticate/create operation must be implemented by making a server-side REST API call to an endpoint with the signature “/authenticate”.
+The authenticate/create operation must be implemented by making a server-side REST API call to an endpoint with the signature “**/authenticate**”.
 
-The sendEmail operation must be implemented by making a server-side REST API call to an endpoint with the signature “/sendEmail”.
+The sendEmail operation must be implemented by making a server-side REST API call to an endpoint with the signature “**/sendEmail**”.
  
 ### Submission Requirements
 
