@@ -110,7 +110,7 @@ Participating teams are not limited to a certain stack or any specific technolog
 
 All of the following user stories must be completed.  They may be completed in any order.
 
-### User Story #1 – Register with the application
+#### User Story #1 – Register with the application
 
 As a user, I want to be able to register with the application.
 
@@ -119,7 +119,7 @@ And that I have not already registered
 When I properly authenticate using the appropriate credentials
 Then my profile is created and visible in the Registered Users List
 
-### User Story #2 – Delete my own profile
+#### User Story #2 – Delete my own profile
 
 As a user, I want to be able to delete my profile from the application.
 
@@ -128,7 +128,7 @@ And that I have signed in to the application
 When I activate the “Delete” UI control related to my user profile
 Then my profile is deleted from the Registered Users List
 
-### User Story #3 – Delete a user profile (Admin)
+#### User Story #3 – Delete a user profile (Admin)
 
 As an administrator, I want to be able to delete any given user profile from the application.
 
@@ -137,7 +137,7 @@ And that I have signed in to the application as an Administrator
 When I activate the “Delete” UI control related to a user profile
 Then that user profile is deleted from the Registered Users List
 
-### User Story #4 – Edit my own user profile 
+#### User Story #4 – Edit my own user profile 
 
 As a user, I want to be able to edit my own user profile.
 
@@ -147,8 +147,7 @@ When I activate the “Edit” UI control related to my profile
 Then I am shown a modal interface that allows me to edit my info
 And I am allowed to save my modified profile
  
-
-### User Story #5 – Edit a user profile (Admin)
+#### User Story #5 – Edit a user profile (Admin)
 
 As an administrator, I want to be able to edit any user profile.
 
@@ -158,7 +157,7 @@ When I activate the “Edit” UI control related to an arbitrary user profile
 Then I am shown a modal interface that allows me to edit the select user info
 And I am allowed to save the modified profile
 
-### User Story #6 – Sign-in
+#### User Story #6 – Sign-in
 
 As a user I want to sign in to the application using my username and password AND As an application manager, I want all users to be authenticated before they access the application.  
 
@@ -166,7 +165,7 @@ Given that a User is attempting to access the application
 When the User properly authenticates using the appropriate credentials
 Then the User is granted user-level access to the application.
 
-### User Story #7 – Sign-out
+#### User Story #7 – Sign-out
 
 As a user or as an administrator, I want to be able to sign out of the application.
 
@@ -176,7 +175,7 @@ When I active the Sign-out or Logout UI element
 Then I am logged out of the application 
 And I cannot access associated UI elements until I sign back in
 
-### User Story #8 – Send Email to User (Admin)
+#### User Story #8 – Send Email to User (Admin)
 
 As an administrator, I want to able to send a boilerplate email to a user.
 
@@ -188,7 +187,7 @@ Then a boilerplate email is sent to the email address associated with that user
 Implementation Notes:
 The boilerplate email template will be provided in a separate file called “email-message.txt”.  A successful implementation merely needs to email the provide template to a given user.
 
-### User Story #9 – Simple Filter
+#### User Story #9 – Simple Filter
 
 As a user, I want to be able to filter columns with text content using a “startsWith” filter.
 
@@ -203,7 +202,7 @@ The filter shall be a “startsWith” filter only.
 The filter shall apply only to fields with text content.
 The filter shall not apply hierarchically.  That is, the filter shall filter the database for a single column only.  For instance, an operation that first filters Column A for term B and then filters Column C for term D does not need to be supported (and no additional points will be given for such an implementation).
  
-### User Story #10 – Simple Sort
+#### User Story #10 – Simple Sort
 
 As a user, I want to be able to sort columns of type “String” in ascending and descending order.
 
