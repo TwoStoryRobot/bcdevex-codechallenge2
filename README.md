@@ -100,7 +100,7 @@ The application must allow users and administrators to perform the User Operatio
 
  We recommend that you design a UI that resembles the following drawing:
 
- 
+ ![alt text](/SuggestedUI.png)
 
 ### Technical Requirements
 
@@ -114,75 +114,75 @@ All of the following user stories must be completed.  They may be completed in a
 
 As a user, I want to be able to register with the application.
 
-Given that I am a User
-And that I have not already registered
-When I properly authenticate using the appropriate credentials
-Then my profile is created and visible in the Registered Users List
+Given that I am a User<br/>
+And that I have not already registered<br/>
+When I properly authenticate using the appropriate credentials<br/>
+Then my profile is created and visible in the Registered Users List<br/>
 
 #### User Story #2 – Delete my own profile
 
 As a user, I want to be able to delete my profile from the application.
 
-Given that I am a User
-And that I have signed in to the application
-When I activate the “Delete” UI control related to my user profile
-Then my profile is deleted from the Registered Users List
+Given that I am a User<br/>
+And that I have signed in to the application<br/>
+When I activate the “Delete” UI control related to my user profile<br/>
+Then my profile is deleted from the Registered Users List<br/>
 
 #### User Story #3 – Delete a user profile (Admin)
 
 As an administrator, I want to be able to delete any given user profile from the application.
 
-Given that I am an Administrator
-And that I have signed in to the application as an Administrator
-When I activate the “Delete” UI control related to a user profile
-Then that user profile is deleted from the Registered Users List
+Given that I am an Administrator<br/>
+And that I have signed in to the application as an Administrator<br/>
+When I activate the “Delete” UI control related to a user profile<br/>
+Then that user profile is deleted from the Registered Users List<br/>
 
 #### User Story #4 – Edit my own user profile 
 
 As a user, I want to be able to edit my own user profile.
 
-Given that I am a User
-And that I have signed in to the application
-When I activate the “Edit” UI control related to my profile
-Then I am shown a modal interface that allows me to edit my info
-And I am allowed to save my modified profile
+Given that I am a User<br/>
+And that I have signed in to the application<br/>
+When I activate the “Edit” UI control related to my profile<br/>
+Then I am shown a modal interface that allows me to edit my info<br/>
+And I am allowed to save my modified profile<br/>
  
 #### User Story #5 – Edit a user profile (Admin)
 
 As an administrator, I want to be able to edit any user profile.
 
-Given that I am an Administrator
-And that I have signed in to the application as an Administrator
-When I activate the “Edit” UI control related to an arbitrary user profile
-Then I am shown a modal interface that allows me to edit the select user info
-And I am allowed to save the modified profile
+Given that I am an Administrator<br/>
+And that I have signed in to the application as an Administrator<br/>
+When I activate the “Edit” UI control related to an arbitrary user profile<br/>
+Then I am shown a modal interface that allows me to edit the select user info<br/>
+And I am allowed to save the modified profile<br/>
 
 #### User Story #6 – Sign-in
 
 As a user I want to sign in to the application using my username and password AND As an application manager, I want all users to be authenticated before they access the application.  
 
-Given that a User is attempting to access the application
-When the User properly authenticates using the appropriate credentials
-Then the User is granted user-level access to the application.
+Given that a User is attempting to access the application<br/>
+When the User properly authenticates using the appropriate credentials<br/>
+Then the User is granted user-level access to the application.<br/>
 
 #### User Story #7 – Sign-out
 
 As a user or as an administrator, I want to be able to sign out of the application.
 
-Given that I am signed in as a user or as an administrator
-And I want to sign out of the application
-When I active the Sign-out or Logout UI element
-Then I am logged out of the application 
-And I cannot access associated UI elements until I sign back in
+Given that I am signed in as a user or as an administrator<br/>
+And I want to sign out of the application<br/>
+When I active the Sign-out or Logout UI element<br/>
+Then I am logged out of the application<br/> 
+And I cannot access associated UI elements until I sign back in<br/>
 
 #### User Story #8 – Send Email to User (Admin)
 
 As an administrator, I want to able to send a boilerplate email to a user.
 
-Given that I am signed in as an administrator
-And I want to send a boilerplate email to an individual user
-When I active the “Mail” UI control related to an individual user
-Then a boilerplate email is sent to the email address associated with that user
+Given that I am signed in as an administrator<br/>
+And I want to send a boilerplate email to an individual user<br/>
+When I active the “Mail” UI control related to an individual user<br/>
+Then a boilerplate email is sent to the email address associated with that user<br/>
 
 Implementation Notes:
 The boilerplate email template will be provided in a separate file called “email-message.txt”.  A successful implementation merely needs to email the provide template to a given user.
@@ -191,11 +191,11 @@ The boilerplate email template will be provided in a separate file called “ema
 
 As a user, I want to be able to filter columns with text content using a “startsWith” filter.
 
-Given that I am signed in to the application as a user or an administrator
-And I have selected a field in the Registered Users List
-When I enter a filter term
-Then all database entries that satisfy the filter term for the selected field are displayed
-And no other database entries are displayed
+Given that I am signed in to the application as a user or an administrator<br/>
+And I have selected a field in the Registered Users List<br/>
+When I enter a filter term<br/>
+Then all database entries that satisfy the filter term for the selected field are displayed<br/>
+And no other database entries are displayed<br/>
 
 Implementation Notes:
 The filter shall be a “startsWith” filter only.
@@ -208,18 +208,18 @@ As a user, I want to be able to sort columns of type “String” in ascending a
 
 Use Case #1 (Ascending Order)
 
-Given that I am signed-in to the application as a user or as an administrator
-And I have selected a field in the Registered Users List
-When I click on the UI control that allows the field to be sorted in ascending order
-Then the users in the list are displayed in ascending order
+Given that I am signed-in to the application as a user or as an administrator<br/>
+And I have selected a field in the Registered Users List<br/>
+When I click on the UI control that allows the field to be sorted in ascending order<br/>
+Then the users in the list are displayed in ascending order<br/>
 
 Use Case #2 (Descending Order)
 
-Given that I am signed-in to the application as a user or as an administrator
-And I have selected a field in the Registered Users List
-And I have previously sorted that field in ascending order
-When I click on the “Sort” UI control 
-Then the users in the list are displayed in descending order
+Given that I am signed-in to the application as a user or as an administrator<br/>
+And I have selected a field in the Registered Users List<br/>
+And I have previously sorted that field in ascending order<br/>
+When I click on the “Sort” UI control<br/> 
+Then the users in the list are displayed in descending order<br/>
 
 Implementation Notes:
 The sort operation shall apply only to fields with text content.
