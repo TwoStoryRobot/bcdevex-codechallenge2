@@ -1,0 +1,15 @@
+{
+  "name": "codechallenge-backend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BCDevExchange-CodeChallenge/CodeChallenge2-repo3.git"
+  },
+  "dependencies": {
+    "koa": "^2.5.2"
+  }
+}
