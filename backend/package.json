@@ -1,0 +1,24 @@
+{
+  "name": "codechallenge-backend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node build/index",
+    "build": "babel src -d build",
+    "watch": "babel -w src -d build",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BCDevExchange-CodeChallenge/CodeChallenge2-repo3.git"
+  },
+  "dependencies": {
+    "koa": "^2.5.2",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^23.6.0"
+  }
+}
