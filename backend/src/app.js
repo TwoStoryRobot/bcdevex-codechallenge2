@@ -3,7 +3,7 @@
  * Main API Koa Router
  */
 
-const Koa = require('koa')
+import Koa from 'koa'
 
 const app = new Koa()
 
