@@ -11,8 +11,6 @@ import Button from '@material-ui/core/Button'
  * A reusable AlertDialog wrapping Dialog
  *
  * Open it by setting `open={true}`.
- *
- * onClose will fire the supplied onCancel callback
  */
 function AlertDialog({
   children,
