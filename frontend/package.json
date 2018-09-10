@@ -1,0 +1,32 @@
+{
+  "name": "codechallenge",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "react-scripts": "1.1.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "eslint": "eslint '**/*.js'",
+    "prettier": "prettier --write '**/*.js'"
+  },
+  "devDependencies": {
+    "@storybook/react": "^3.4.10",
+    "@twostoryrobot/eslint-config": "^2.2.0",
+    "@twostoryrobot/prettier-config": "^2.0.1",
+    "@twostoryrobot/storybook-addon-docgen": "^1.0.5",
+    "babel-core": "^6.26.3",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.10.0",
+    "eslint-plugin-jest": "^21.22.0",
+    "eslint-plugin-react": "^7.11.1",
+    "prettier": "^1.14.2",
+    "storybook-host": "^5.0.0"
+  }
+}
