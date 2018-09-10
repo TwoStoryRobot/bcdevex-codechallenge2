@@ -25,14 +25,21 @@ storiesOf('AlertDialog', module)
     const { get, set } = create({ open: false })
 
     const message = text('Alert message', 'Are you sure you want to do this?')
-    const onOk = () => set({ open: false })
+    const cancelLabel = text('Cancel Label', 'No')
+    const confirmLabel = text('Confirm Label', 'Yes')
+    const onConfirm = () => set({ open: false })
     const onCancel = () => set({ open: false })
     return (
       <div>
         {get(s => (
           <div>
             <Button onClick={() => set({ open: !s.open })}>Toggle Alert</Button>
-            <AlertDialog open={s.open} onOk={onOk} onCancel={onCancel}>
+            <AlertDialog
+              open={s.open}
+              onConfirm={onConfirm}
+              onCancel={onCancel}
+              cancelLabel={cancelLabel}
+              confirmLabel={confirmLabel}>
               {message}
             </AlertDialog>
           </div>
