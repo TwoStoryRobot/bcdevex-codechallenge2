@@ -33,10 +33,15 @@ function AlertDialog({
 }
 
 AlertDialog.propTypes = {
+  /** the confirmation message to display */
   children: PropTypes.text,
+  /** label for the cancel button */
   cancelLabel: PropTypes.text,
+  /** label for the confirm button */
   confirmLabel: PropTypes.text,
+  /** callback for cancel button */
   onCancel: PropTypes.func.isRequired,
+  /** callback for the confirm button */
   onConfirm: PropTypes.func.isRequired
 }
 

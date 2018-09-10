@@ -21,7 +21,7 @@ storiesOf('AlertDialog', module)
     return <AlertDialog open={true} onOk={onOk} onCancel={onCancel} />
   })
   .add('with knobs', () => {
-    // initial button state
+    // simple story state with reworm
     const { get, set } = create({ open: false })
 
     const message = text('Alert message', 'Are you sure you want to do this?')
@@ -29,6 +29,7 @@ storiesOf('AlertDialog', module)
     const confirmLabel = text('Confirm Label', 'Yes')
     const onConfirm = () => set({ open: false })
     const onCancel = () => set({ open: false })
+
     return (
       <div>
         {get(s => (
