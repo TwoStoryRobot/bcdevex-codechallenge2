@@ -30,6 +30,30 @@ Deadline:
 10. The rules and instructions set forth in this notice are in addition to any rules,
 terms and conditions set forth elsewhere in the RFP.
 
+# Architecture
+
+This is a single repo containing two node packages for both frontend and 
+backend. Each directory will maintain it's own `package.json` and scripts for 
+better isolation. You will need to change into each directory to run the 
+appropriate npm scripts.
+
+## Frontend
+
+The frontend of the application is a react app in [`/frontend`](./frontend).  
+
+### Scripts
+
+    npm start
+
+Start the react dev server. For development purposes.
+
+    npm run storybook
+
+Builds and runs storybook explorer for component driven development. All 
+components will be viewable and interactable within storybook.
+
+#### 
+
 # Code Challenge (Mines)
 
 ## Description
