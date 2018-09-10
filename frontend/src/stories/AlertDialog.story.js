@@ -1,8 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { storiesOf } from '@storybook/react'
 import { host } from 'storybook-host'
-import { withKnobs, number, text } from '@storybook/addon-knobs/react'
+import { withKnobs, text } from '@storybook/addon-knobs/react'
 import { action } from '@storybook/addon-actions'
 import docgen from '@twostoryrobot/storybook-addon-docgen'
 
