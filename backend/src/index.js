@@ -5,4 +5,7 @@
 
 import app from './app'
 
-app.listen(3000)
+const port = process.env.PORT || 3500
+console.log('Application starting on port', port)
+
+app.listen(port)
