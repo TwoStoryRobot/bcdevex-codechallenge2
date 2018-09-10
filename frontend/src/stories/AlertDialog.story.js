@@ -10,14 +10,43 @@ import Button from '@material-ui/core/Button'
 
 import AlertDialog from '../AlertDialog'
 
+const actionConfirm = action('Ok Clicked')
+const actionCancel = action('Cancel Clicked')
+
 storiesOf('AlertDialog', module)
   .addDecorator(host())
   .addDecorator(withKnobs)
   .addDecorator(docgen(AlertDialog))
   .add('default - open', () => {
-    const onOk = action('Ok clicked')
-    const onCancel = action('Cancel clicked')
-    return <AlertDialog open={true} onOk={onOk} onCancel={onCancel} />
+    return (
+      <AlertDialog
+        open={true}
+        onConfirm={actionConfirm}
+        onCancel={actionCancel}
+      />
+    )
+  })
+  .add('send email example', () => {
+    return (
+      <AlertDialog
+        open={true}
+        onConfirm={actionConfirm}
+        onCancel={actionCancel}
+        confirmLabel="Send">
+        Email Jane Doe (jane@doe.com)?
+      </AlertDialog>
+    )
+  })
+  .add('confirm delete example', () => {
+    return (
+      <AlertDialog
+        open={true}
+        onConfirm={actionConfirm}
+        onCancel={actionCancel}
+        confirmLabel="Delete">
+        Are you sure you want to delete Jane Doe?
+      </AlertDialog>
+    )
   })
   .add('with knobs', () => {
     // simple story state with reworm
