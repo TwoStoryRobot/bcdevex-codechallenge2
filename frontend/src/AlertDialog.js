@@ -21,4 +21,12 @@ function AlertDialog({ children, onCancel, onOk, ...props }) {
   )
 }
 
+AlertDialog.propTypes = {
+  children: PropTypes.text
+}
+
+AlertDialog.defaultProps = {
+  children: 'Are you sure you want to do this?'
+}
+
 export default AlertDialog

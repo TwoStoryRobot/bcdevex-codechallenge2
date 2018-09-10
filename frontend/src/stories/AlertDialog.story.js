@@ -15,6 +15,11 @@ storiesOf('AlertDialog', module)
   .addDecorator(host())
   .addDecorator(withKnobs)
   .addDecorator(docgen(AlertDialog))
+  .add('default - open', () => {
+    const onOk = action('Ok clicked')
+    const onCancel = action('Cancel clicked')
+    return <AlertDialog open={true} onOk={onOk} onCancel={onCancel} />
+  })
   .add('with knobs', () => {
     // initial button state
     const { get, set } = create({ open: false })
