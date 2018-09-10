@@ -31,10 +31,11 @@ export default class EditUserDialog extends Component {
   constructor(props) {
     super(props)
 
-    const { firstName, lastName, avatarUrl, isAdmin } = props
+    const { firstName, lastName, avatarUrl, email, isAdmin } = props
     this.state = {
       firstName,
       lastName,
+      email,
       avatarUrl,
       isAdmin
     }
@@ -53,9 +54,9 @@ export default class EditUserDialog extends Component {
   }
 
   handleSave = () => {
-    const { firstName, lastName, avatarUrl, isAdmin } = this.state
+    const { firstName, lastName, email, avatarUrl, isAdmin } = this.state
 
-    this.props.onSave({ firstName, lastName, avatarUrl, isAdmin })
+    this.props.onSave({ firstName, lastName, email, avatarUrl, isAdmin })
   }
   
   handleKeyDown = event => {
@@ -66,7 +67,7 @@ export default class EditUserDialog extends Component {
 
   render() {
     const { open, onClose } = this.props
-    const { firstName, lastName, avatarUrl, isAdmin } = this.state
+    const { firstName, lastName, avatarUrl, email, isAdmin } = this.state
   
     return (
       <Dialog open={open} onClose={onClose}>
@@ -95,6 +96,15 @@ export default class EditUserDialog extends Component {
               value={lastName}
               onChange={this.handleTextFieldChange('lastName')}
               onKeyDown={this.handleKeyDown}
+              fullWidth
+              margin="dense"
+            />
+            <TextField
+              label="Email"
+              value={email}
+              onChange={this.handleTextFieldChange('email')}
+              onKeyDown={this.handleKeyDown}
+              type="email"
               fullWidth
               margin="dense"
             />
@@ -133,6 +143,7 @@ EditUserDialog.propTypes = {
   open: PropTypes.bool,
   firstName: PropTypes.string,
   lastName: PropTypes.string,
+  email: PropTypes.string,
   avatarUrl: PropTypes.string,
   isAdmin: PropTypes.bool,
 }
@@ -140,6 +151,7 @@ EditUserDialog.propTypes = {
 EditUserDialog.defaultProps = {
   firstName: '',
   lastName: '',
+  email: '',
   avatarUrl: '',
   isAdmin: false,
   open: false,

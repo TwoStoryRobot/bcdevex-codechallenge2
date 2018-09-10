@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import EditUserDialog from '../components/EditUserDialog'
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs'
+import { withKnobs, boolean } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
 storiesOf('Edit User Dialog', module)
@@ -18,6 +18,7 @@ storiesOf('Edit User Dialog', module)
     <EditUserDialog
       firstName="Caleb"
       lastName="Sharp"
+      email="caleb.sharp@twostoryrobot.com"
       isAdmin={false}
       avatarUrl="https://api.adorable.io/avatars/285/abott@adorable.png"
       open={true}
