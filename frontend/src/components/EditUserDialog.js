@@ -57,6 +57,12 @@ export default class EditUserDialog extends Component {
 
     this.props.onSave({ firstName, lastName, avatarUrl, isAdmin })
   }
+  
+  handleKeyDown = event => {
+    if (event.keyCode === 13) {
+      this.handleSave()
+    }
+  }
 
   render() {
     const { open, onClose } = this.props
@@ -79,6 +85,7 @@ export default class EditUserDialog extends Component {
               label="First"
               value={firstName}
               onChange={this.handleTextFieldChange('firstName')}
+              onKeyDown={this.handleKeyDown}
               fullWidth
               margin="dense"
               autoFocus
@@ -87,6 +94,7 @@ export default class EditUserDialog extends Component {
               label="Last"
               value={lastName}
               onChange={this.handleTextFieldChange('lastName')}
+              onKeyDown={this.handleKeyDown}
               fullWidth
               margin="dense"
             />
@@ -94,6 +102,7 @@ export default class EditUserDialog extends Component {
               label="Avatar URL"
               value={avatarUrl}
               onChange={this.handleTextFieldChange('avatarUrl')}
+              onKeyDown={this.handleKeyDown}
               fullWidth
               margin="dense"
             />
