@@ -7,6 +7,13 @@ import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogActions from '@material-ui/core/DialogActions'
 import Button from '@material-ui/core/Button'
 
+/**
+ * A reusable AlertDialog wrapping Dialog
+ *
+ * Open it by setting `open={true}`.
+ *
+ * onClose will fire the supplied onCancel callback
+ */
 function AlertDialog({
   children,
   onCancel,
@@ -16,7 +23,7 @@ function AlertDialog({
   ...props
 }) {
   return (
-    <Dialog {...props}>
+    <Dialog {...props} onClose={onCancel}>
       <DialogContent>
         <DialogContentText>{children}</DialogContentText>
       </DialogContent>
