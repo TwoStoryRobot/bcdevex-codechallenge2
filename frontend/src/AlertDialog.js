@@ -19,7 +19,7 @@ function AlertDialog({
   ...props
 }) {
   return (
-    <Dialog {...props} onClose={onCancel}>
+    <Dialog {...props} onClose={onCancel} data-testid="alert-dialog">
       <DialogContent>
         <DialogContentText>{children}</DialogContentText>
       </DialogContent>
@@ -37,11 +37,11 @@ function AlertDialog({
 
 AlertDialog.propTypes = {
   /** the confirmation message to display */
-  children: PropTypes.text,
+  children: PropTypes.string,
   /** label for the cancel button */
-  cancelLabel: PropTypes.text,
+  cancelLabel: PropTypes.string,
   /** label for the confirm button */
-  confirmLabel: PropTypes.text,
+  confirmLabel: PropTypes.string,
   /** callback for cancel button or when dialog close is fired */
   onCancel: PropTypes.func.isRequired,
   /** callback for the confirm button */
