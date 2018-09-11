@@ -9,7 +9,7 @@ const update = Router()
 
 function updateUser(ctx, next) {
   ctx.status = 501
-  throw new Error('Not implemented')
+  ctx.throw(501, 'Not implemented')
 }
 
 update.all('/', updateUser)
