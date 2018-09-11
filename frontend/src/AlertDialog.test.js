@@ -1,5 +1,6 @@
 import React from 'react'
 import { render, cleanup, fireEvent } from 'react-testing-library'
+import 'jest-dom/extend-expect'
 
 import AlertDialog from './AlertDialog'
 
@@ -7,11 +8,13 @@ afterEach(cleanup)
 
 describe('AlertDialog', () => {
   it('should render with required props', async () => {
-    const { getByTestId } = render(
+    const { getByText, getByTestId } = render(
       <AlertDialog open={true} onCancel={jest.fn()} onConfirm={jest.fn()}>
         Are you TESTING?
       </AlertDialog>
     )
+
+    expect(getByText('Are you TESTING?')).toBeInTheDocument()
 
     // AlertDialog wraps Dialog which is a modal and renders using a portal
     // must get by testid to find the element in the document
