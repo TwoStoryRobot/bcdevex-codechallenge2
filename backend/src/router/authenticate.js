@@ -8,8 +8,9 @@ import Router from 'koa-router'
 const authenticate = Router()
 
 function authenticateUser(ctx, next) {
-  ctx.status = 501
-  throw new Error('Not implemented')
+  console.log(ctx.request)
+  console.log(ctx.request.body)
+  ctx.body = 'Got it'
 }
 
 authenticate.all('/', authenticateUser)

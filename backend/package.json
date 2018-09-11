@@ -13,7 +13,9 @@
     "url": "git+https://github.com/BCDevExchange-CodeChallenge/CodeChallenge2-repo3.git"
   },
   "dependencies": {
+    "@koa/cors": "^2.2.2",
     "koa": "^2.5.2",
+    "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0"
   },
   "devDependencies": {
