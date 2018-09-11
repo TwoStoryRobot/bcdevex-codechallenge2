@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Avatar from 'react-avatar'
 import { withStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
@@ -37,40 +38,42 @@ const styles = theme => ({
 })
 
 const UserTable = ({ users, classes }) => (
-  <Table>
-    <TableHead>
-      <TableRow>
-        <StyledTableCell />
-        <StyledTableCell>First</StyledTableCell>
-        <StyledTableCell>Last</StyledTableCell>
-        <StyledTableCell>Email</StyledTableCell>
-        <StyledTableCell>Registration</StyledTableCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      {users.map(user => (
-        <TableRow key={user.userId} className={classes.row}>
-          <StyledTableCell component="th" scope="row">
-            <Avatar
-              key={user.userId}
-              src={user.imageUrl}
-              name={`${user.firstName} ${user.lastName}`}
-              size={34}
-              round={true}
-            />
-          </StyledTableCell>
-          <StyledTableCell>{user.firstName}</StyledTableCell>
-          <StyledTableCell>{user.lastName}</StyledTableCell>
-          <StyledTableCell>{user.emailAddress}</StyledTableCell>
-          {/* TODO This needs to come from the user prop */}
-          {/* Note: We are manually overriding this individual column font size */}
-          <StyledTableCell style={{ fontSize: '0.875rem' }}>
-            2018 Sept 04
-          </StyledTableCell>
+  <Paper>
+    <Table>
+      <TableHead>
+        <TableRow>
+          <StyledTableCell />
+          <StyledTableCell>First</StyledTableCell>
+          <StyledTableCell>Last</StyledTableCell>
+          <StyledTableCell>Email</StyledTableCell>
+          <StyledTableCell>Registration</StyledTableCell>
         </TableRow>
-      ))}
-    </TableBody>
-  </Table>
+      </TableHead>
+      <TableBody>
+        {users.map(user => (
+          <TableRow key={user.userId} className={classes.row}>
+            <StyledTableCell component="th" scope="row">
+              <Avatar
+                key={user.userId}
+                src={user.imageUrl}
+                name={`${user.firstName} ${user.lastName}`}
+                size={34}
+                round={true}
+              />
+            </StyledTableCell>
+            <StyledTableCell>{user.firstName}</StyledTableCell>
+            <StyledTableCell>{user.lastName}</StyledTableCell>
+            <StyledTableCell>{user.emailAddress}</StyledTableCell>
+            {/* TODO This needs to come from the user prop */}
+            {/* Note: We are manually overriding this individual column font size */}
+            <StyledTableCell style={{ fontSize: '0.875rem' }}>
+              2018 Sept 04
+            </StyledTableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  </Paper>
 )
 
 UserTable.propTypes = {

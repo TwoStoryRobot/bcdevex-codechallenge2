@@ -1,177 +1,181 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UserTable should render with required props 1`] = `
-<table
-  class="MuiTable-root-04"
+<div
+  class="MuiPaper-root-04 MuiPaper-elevation2-08 MuiPaper-rounded-05"
 >
-  <thead
-    class="MuiTableHead-root-05"
+  <table
+    class="MuiTable-root-031"
   >
-    <tr
-      class="MuiTableRow-root-06 MuiTableRow-head-09"
+    <thead
+      class="MuiTableHead-root-032"
     >
-      <th
-        class="MuiTableCell-root-013 MuiTableCell-head-014 WithStyles-TableCell--head-011"
-        scope="col"
-      />
-      <th
-        class="MuiTableCell-root-013 MuiTableCell-head-014 WithStyles-TableCell--head-011"
-        scope="col"
+      <tr
+        class="MuiTableRow-root-033 MuiTableRow-head-036"
       >
-        First
-      </th>
-      <th
-        class="MuiTableCell-root-013 MuiTableCell-head-014 WithStyles-TableCell--head-011"
-        scope="col"
-      >
-        Last
-      </th>
-      <th
-        class="MuiTableCell-root-013 MuiTableCell-head-014 WithStyles-TableCell--head-011"
-        scope="col"
-      >
-        Email
-      </th>
-      <th
-        class="MuiTableCell-root-013 MuiTableCell-head-014 WithStyles-TableCell--head-011"
-        scope="col"
-      >
-        Registration
-      </th>
-    </tr>
-  </thead>
-  <tbody
-    class="MuiTableBody-root-021"
-  >
-    <tr
-      class="MuiTableRow-root-06 UserTable-row-03"
-    >
-      <th
-        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
-        scope="row"
-      >
-        <div
-          class=" sb-avatar"
-          style="display: inline-block; vertical-align: middle; width: 34px; height: 34px; border-radius: 100%; font-family: Helvetica, Arial, sans-serif;"
+        <th
+          class="MuiTableCell-root-040 MuiTableCell-head-041 WithStyles-TableCell--head-038"
+          scope="col"
+        />
+        <th
+          class="MuiTableCell-root-040 MuiTableCell-head-041 WithStyles-TableCell--head-038"
+          scope="col"
         >
-          <img
-            class=" sb-avatar__image"
-            width="34px"
-            height="34px"
-            style="max-width: 100%; width: 34px; height: 34px; border-radius: 100%;"
-            src="https://d3iw72m71ie81c.cloudfront.net/male-52.jpg"
-            alt="Bob Smith"
-          />
-        </div>
-      </th>
-      <td
-        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
-      >
-        Bob
-      </td>
-      <td
-        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
-      >
-        Smith
-      </td>
-      <td
-        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
-      >
-        bob.smith@gmail.com
-      </td>
-      <td
-        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
-        style="font-size: 0.875rem;"
-      >
-        2018 Sept 04
-      </td>
-    </tr>
-    <tr
-      class="MuiTableRow-root-06 UserTable-row-03"
-    >
-      <th
-        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
-        scope="row"
-      >
-        <div
-          class=" sb-avatar"
-          style="display: inline-block; vertical-align: middle; width: 34px; height: 34px; border-radius: 100%; font-family: Helvetica, Arial, sans-serif;"
+          First
+        </th>
+        <th
+          class="MuiTableCell-root-040 MuiTableCell-head-041 WithStyles-TableCell--head-038"
+          scope="col"
         >
-          <img
-            class=" sb-avatar__image"
-            width="34px"
-            height="34px"
-            style="max-width: 100%; width: 34px; height: 34px; border-radius: 100%;"
-            src="https://randomuser.me/api/portraits/women/21.jpg"
-            alt="Jane Doe"
-          />
-        </div>
-      </th>
-      <td
-        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
-      >
-        Jane
-      </td>
-      <td
-        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
-      >
-        Doe
-      </td>
-      <td
-        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
-      >
-        jane.doe@gmail.com
-      </td>
-      <td
-        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
-        style="font-size: 0.875rem;"
-      >
-        2018 Sept 04
-      </td>
-    </tr>
-    <tr
-      class="MuiTableRow-root-06 UserTable-row-03"
-    >
-      <th
-        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
-        scope="row"
-      >
-        <div
-          class=" sb-avatar"
-          style="display: inline-block; vertical-align: middle; width: 34px; height: 34px; border-radius: 100%; font-family: Helvetica, Arial, sans-serif;"
+          Last
+        </th>
+        <th
+          class="MuiTableCell-root-040 MuiTableCell-head-041 WithStyles-TableCell--head-038"
+          scope="col"
         >
-          <img
-            class=" sb-avatar__image"
-            width="34px"
-            height="34px"
-            style="max-width: 100%; width: 34px; height: 34px; border-radius: 100%;"
-            src="https://twostoryrobot.com/not-a-valid-url"
-            alt="James Bond"
-          />
-        </div>
-      </th>
-      <td
-        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
+          Email
+        </th>
+        <th
+          class="MuiTableCell-root-040 MuiTableCell-head-041 WithStyles-TableCell--head-038"
+          scope="col"
+        >
+          Registration
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="MuiTableBody-root-048"
+    >
+      <tr
+        class="MuiTableRow-root-033 UserTable-row-03"
       >
-        James
-      </td>
-      <td
-        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
+        <th
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+          scope="row"
+        >
+          <div
+            class=" sb-avatar"
+            style="display: inline-block; vertical-align: middle; width: 34px; height: 34px; border-radius: 100%; font-family: Helvetica, Arial, sans-serif;"
+          >
+            <img
+              class=" sb-avatar__image"
+              width="34px"
+              height="34px"
+              style="max-width: 100%; width: 34px; height: 34px; border-radius: 100%;"
+              src="https://d3iw72m71ie81c.cloudfront.net/male-52.jpg"
+              alt="Bob Smith"
+            />
+          </div>
+        </th>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          Bob
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          Smith
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          bob.smith@gmail.com
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+          style="font-size: 0.875rem;"
+        >
+          2018 Sept 04
+        </td>
+      </tr>
+      <tr
+        class="MuiTableRow-root-033 UserTable-row-03"
       >
-        Bond
-      </td>
-      <td
-        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
+        <th
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+          scope="row"
+        >
+          <div
+            class=" sb-avatar"
+            style="display: inline-block; vertical-align: middle; width: 34px; height: 34px; border-radius: 100%; font-family: Helvetica, Arial, sans-serif;"
+          >
+            <img
+              class=" sb-avatar__image"
+              width="34px"
+              height="34px"
+              style="max-width: 100%; width: 34px; height: 34px; border-radius: 100%;"
+              src="https://randomuser.me/api/portraits/women/21.jpg"
+              alt="Jane Doe"
+            />
+          </div>
+        </th>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          Jane
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          Doe
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          jane.doe@gmail.com
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+          style="font-size: 0.875rem;"
+        >
+          2018 Sept 04
+        </td>
+      </tr>
+      <tr
+        class="MuiTableRow-root-033 UserTable-row-03"
       >
-        james.bond@gmail.com
-      </td>
-      <td
-        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
-        style="font-size: 0.875rem;"
-      >
-        2018 Sept 04
-      </td>
-    </tr>
-  </tbody>
-</table>
+        <th
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+          scope="row"
+        >
+          <div
+            class=" sb-avatar"
+            style="display: inline-block; vertical-align: middle; width: 34px; height: 34px; border-radius: 100%; font-family: Helvetica, Arial, sans-serif;"
+          >
+            <img
+              class=" sb-avatar__image"
+              width="34px"
+              height="34px"
+              style="max-width: 100%; width: 34px; height: 34px; border-radius: 100%;"
+              src="https://twostoryrobot.com/not-a-valid-url"
+              alt="James Bond"
+            />
+          </div>
+        </th>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          James
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          Bond
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          james.bond@gmail.com
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+          style="font-size: 0.875rem;"
+        >
+          2018 Sept 04
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 `;
