@@ -28,8 +28,8 @@ class LoginButton extends Component {
   }
 
   handleLogin(addLoginToContext, googleUser) {
-    addLoginToContext(googleUser)
     const profile = this.mapProfile(googleUser)
+    addLoginToContext(googleUser)
     this.props.onLogin(profile)
   }
 
