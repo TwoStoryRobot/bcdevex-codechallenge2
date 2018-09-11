@@ -6,11 +6,15 @@ import AlertDialog from './AlertDialog'
 afterEach(cleanup)
 
 test('should render with required props', async () => {
-  const { container } = render(
-    <AlertDialog open={true} onCancel={jest.fn()} onConfirm={jest.fn()} />
+  const { getByTestId } = render(
+    <AlertDialog open={true} onCancel={jest.fn()} onConfirm={jest.fn()}>
+      Are you TESTING?
+    </AlertDialog>
   )
 
-  expect(container.firstChild).toMatchSnapshot()
+  // AlertDialog wraps Dialog which is a modal and renders using a portal
+  // must get by testid to find the element in the document
+  expect(getByTestId('alert-dialog')).toMatchSnapshot()
 })
 
 test('should call onCancel when labeled cancel clicked', async () => {

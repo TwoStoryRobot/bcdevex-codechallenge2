@@ -19,7 +19,7 @@ function AlertDialog({
   ...props
 }) {
   return (
-    <Dialog {...props} onClose={onCancel}>
+    <Dialog {...props} onClose={onCancel} data-testid="alert-dialog">
       <DialogContent>
         <DialogContentText>{children}</DialogContentText>
       </DialogContent>
