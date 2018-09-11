@@ -24,7 +24,7 @@ const StyledTableCell = withStyles(() => ({
 const styles = theme => ({
   root: {
     width: '100%',
-    margintTop: theme.spacing.unit * 3,
+    marginTop: theme.spacing.unit * 3,
     overflowX: 'auto'
   },
   table: {
@@ -41,8 +41,8 @@ const styles = theme => ({
  *  A table to list all registered users
  */
 const UserTable = ({ users, classes }) => (
-  <Paper>
-    <Table>
+  <Paper className={classes.root}>
+    <Table className={classes.table}>
       <TableHead>
         <TableRow>
           <StyledTableCell />

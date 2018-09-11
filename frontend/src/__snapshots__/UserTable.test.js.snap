@@ -2,10 +2,10 @@
 
 exports[`UserTable should render with required props 1`] = `
 <div
-  class="MuiPaper-root-04 MuiPaper-elevation2-08 MuiPaper-rounded-05"
+  class="MuiPaper-root-04 MuiPaper-elevation2-08 MuiPaper-rounded-05 UserTable-root-01"
 >
   <table
-    class="MuiTable-root-031"
+    class="MuiTable-root-031 UserTable-table-02"
   >
     <thead
       class="MuiTableHead-root-032"
