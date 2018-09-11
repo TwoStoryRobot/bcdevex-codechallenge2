@@ -3,11 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.0.3",
+    "prop-types": "^15.6.2",
     "react": "^16.5.0",
+    "react-avatar": "^3.2.0",
     "react-dom": "^16.5.0",
+<<<<<<< HEAD
     "react-google-login": "^3.2.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5"
+=======
+    "react-scripts": "1.1.5",
+    "styled-components": "^3.4.6"
+>>>>>>> cd753a0993f6fd1e987368e0b158dccee01a587c
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,7 +36,10 @@
     "eslint-config-prettier": "^2.10.0",
     "eslint-plugin-jest": "^21.22.0",
     "eslint-plugin-react": "^7.11.1",
+    "jest-dom": "^1.12.0",
     "prettier": "^1.14.2",
+    "react-testing-library": "^5.0.1",
+    "reworm": "^1.0.4",
     "storybook-host": "^5.0.0"
   }
 }
