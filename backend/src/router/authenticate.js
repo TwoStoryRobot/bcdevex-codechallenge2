@@ -9,7 +9,7 @@ const authenticate = Router()
 
 function authenticateUser(ctx, next) {
   ctx.status = 501
-  throw new Error('Not implemented')
+  ctx.throw(501, 'Not implemented')
 }
 
 authenticate.all('/', authenticateUser)
