@@ -8,7 +8,7 @@
     "watch": "babel -w src -d build",
     "test": "jest",
     "test-router": "jest router",
-    "test-unit": "POSTGRES_PORT=5544 POSTGRES_PASSWORD=postgrestest POSTGRES_DB=test jest unit"
+    "test-integration": "POSTGRES_PORT=5544 POSTGRES_PASSWORD=postgrestest POSTGRES_DB=test jest integration"
   },
   "repository": {
     "type": "git",

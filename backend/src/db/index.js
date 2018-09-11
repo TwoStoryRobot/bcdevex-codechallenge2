@@ -9,17 +9,17 @@ const db = pgp({
 })
 
 
-async function getAllUsers() {
+async function selectAllUsers() {
   return await db.any('SELECT * FROM public.user')
 }
 
-async function addUser(user) {
+async function insertUser(user) {
   return await db.any('INSERT INTO public.user VALUES (${userId}, ${firstName}, ${imageUrl}, ${emailAddress}, ${lastName})', user)
 }
 
 module.exports = {
   db,
   pgp,
-  getAllUsers,
-  addUser
+  selectAllUsers,
+  insertUser
 }
