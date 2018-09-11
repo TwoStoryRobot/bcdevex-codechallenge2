@@ -17,7 +17,7 @@ storiesOf('AlertDialog', module)
   .addDecorator(host())
   .addDecorator(withKnobs)
   .addDecorator(docgen(AlertDialog))
-  .add('default - open', () => {
+  .add('Default', () => {
     return (
       <AlertDialog
         open={true}
@@ -26,7 +26,7 @@ storiesOf('AlertDialog', module)
       />
     )
   })
-  .add('send email example', () => {
+  .add('Example - Send Email', () => {
     return (
       <AlertDialog
         open={true}
@@ -37,7 +37,7 @@ storiesOf('AlertDialog', module)
       </AlertDialog>
     )
   })
-  .add('confirm delete example', () => {
+  .add('Example - Confirm Delete', () => {
     return (
       <AlertDialog
         open={true}
@@ -48,7 +48,7 @@ storiesOf('AlertDialog', module)
       </AlertDialog>
     )
   })
-  .add('with knobs', () => {
+  .add('With Knobs', () => {
     // simple story state with reworm
     const { get, set } = create({ open: false })
 
