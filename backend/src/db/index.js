@@ -14,11 +14,37 @@ async function selectAllUsers() {
   return await db.any('SELECT * FROM public.user')
 }
 
+async function selectUserById(id) {
+  return await db.one('SELECT * FROM public.user WHERE "userId" = $/id/', { id })
+}
+
 async function insertUser(user) {
-  return await db.any('INSERT INTO public.user VALUES (${userId}, ${firstName}, ${imageUrl}, ${emailAddress}, ${lastName})', user)
+  await db.any(
+    `INSERT INTO public.user
+     VALUES ($/userId/, $/firstName/, $/imageURL/, $/emailAddress/, $/lastName/)`,
+    user
+  )
+}
+
+async function updateUser(user) {
+  await db.any(
+    `UPDATE public.user
+     SET
+       ("userId", "firstName", "imageURL", "emailAddress", "lastName") =
+       ($/userId/, $/firstName/, $/imageURL/, $/emailAddress/, $/lastName/)
+     WHERE "userId" = $/userId/`,
+    user
+  )
+}
+
+async function deleteUser(id) {
+  await db.any('DELETE FROM public.user WHERE "userId" = $/id/', { id })
 }
 
 export const queries = {
   selectAllUsers,
-  insertUser
+  selectUserById,
+  insertUser,
+  updateUser,
+  deleteUser
 }
