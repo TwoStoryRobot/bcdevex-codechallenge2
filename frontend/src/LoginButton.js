@@ -14,9 +14,20 @@ class LoginButton extends Component {
     this.handleLogin = this.handleLogin.bind(this)
   }
 
+  mapProfile(p) {
+    const profile = p.getBasicProfile()
+    return {
+      userId : profile.getId(),
+      firstName : profile.getGivenName(),
+      imageUrl : profile.getImageUrl(),
+      emailAddress : profile.getEmail(),
+      lastName : profile.getFamilyName()
+    }
+  }
+
   handleLogin(loginFunction, profile) {
     loginFunction(profile)
-    this.props.onLogin(profile)
+    this.props.onLogin(this.mapProfile(profile))
   }
 
   render() {

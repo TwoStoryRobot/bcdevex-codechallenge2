@@ -18,14 +18,14 @@ class Home extends Component {
     const url ='http://localhost:3500/authenticate'
     const authorization = 'Bearer ' + localStorage.getItem('token')
     const headers = { authorization, 'Content-Type' : "application/json; charset=utf-8" }
-    const body = JSON.stringify({ test : 'test' })
+    const body = JSON.stringify(profile)
     fetch(url, { method, body, headers })
     .then(() => this.props.history.push('/private'))
   }
 
   render() {
     return (
-      <LoginButton onLogin={() => this.handleLogin()} />
+      <LoginButton onLogin={profile => this.handleLogin(profile)} />
     )
   }
 
