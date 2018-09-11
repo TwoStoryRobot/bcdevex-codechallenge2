@@ -10,15 +10,33 @@ export const db = pgp({
   password: process.env.POSTGRES_PASSWORD || 'postgresadmin'
 })
 
+const columnNames = '("userId", "firstName", "imageURL", "emailAddress", "lastName")'
+const columnInserts = '(${userId}, ${firstName}, ${imageURL}, ${emailAddress}, ${lastName})'
+
 async function selectAllUsers() {
   return await db.any('SELECT * FROM public.user')
 }
 
+async function selectUserById(id) {
+  return await db.one(`SELECT * FROM public.user WHERE "userId" = '${id}'`)
+}
+
 async function insertUser(user) {
-  return await db.any('INSERT INTO public.user VALUES (${userId}, ${firstName}, ${imageUrl}, ${emailAddress}, ${lastName})', user)
+  await db.any(`INSERT INTO public.user VALUES ${columnInserts}`, user)
+}
+
+async function updateUser(user) {
+  await db.any(`UPDATE public.user SET ${columnNames} = ${columnInserts} WHERE "userId" = '${user.userId}'`, user)
+}
+
+async function deleteUser(id) {
+  await db.any(`DELETE FROM public.user WHERE "userId" = '${id}'`)
 }
 
 export const queries = {
   selectAllUsers,
-  insertUser
+  selectUserById,
+  insertUser,
+  updateUser,
+  deleteUser
 }
