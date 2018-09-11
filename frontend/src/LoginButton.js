@@ -9,6 +9,16 @@ import GoogleLogin from 'react-google-login'
 
 class LoginButton extends Component {
 
+  constructor() {
+    super()
+    this.handleLogin = this.handleLogin.bind(this)
+  }
+
+  handleLogin(login, e) {
+    login(e)
+    this.props.history.push('/private')
+  }
+
   render() {
     return (
       <UserConsumer>
@@ -16,7 +26,7 @@ class LoginButton extends Component {
           <GoogleLogin
             clientId="656587629888-4rvd0pv398dgderln9s6kuvr7kdn99k5.apps.googleusercontent.com"
             buttonText="Login"
-            onSuccess={login}
+            onSuccess={e => this.handleLogin(login, e)}
             onFailure={logout}
           />
         )}
