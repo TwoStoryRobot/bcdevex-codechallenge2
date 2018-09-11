@@ -8,11 +8,12 @@ import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
+import UserSearchIcon from 'mdi-react/UserSearchIcon'
 
-const StyledTableCell = withStyles(() => ({
+const StyledTableCell = withStyles(theme => ({
   head: {
     fontSize: '1.25rem',
-    color: '#9A9898',
+    color: theme.palette.text.hint,
     fontWeight: 400
   },
   body: {
@@ -20,6 +21,18 @@ const StyledTableCell = withStyles(() => ({
     fontWeight: 300
   }
 }))(TableCell)
+
+const Message = withStyles(theme => ({
+  root: {
+    textAlign: 'center',
+    margin: theme.spacing.unit * 3,
+    color: theme.palette.text.secondary
+  }
+}))(({ classes, children, ...rest }) => (
+  <div {...rest} className={classes.root}>
+    {children}
+  </div>
+))
 
 const styles = theme => ({
   root: {
@@ -76,6 +89,12 @@ const UserTable = ({ users, classes }) => (
         ))}
       </TableBody>
     </Table>
+    {users.length === 0 && (
+      <Message>
+        <UserSearchIcon size={64} />
+        <p>There are currently no registered users.</p>
+      </Message>
+    )}
   </Paper>
 )
 
@@ -97,18 +116,6 @@ UserTable.propTypes = {
       imageUrl: PropTypes.string
     })
   ).isRequired
-}
-
-UserTable.defaultProps = {
-  users: [
-    {
-      userId: 'testUser123',
-      firstName: 'Bob',
-      lastName: 'Smith',
-      emailAddress: 'bob.smith@gmail.com',
-      imageUrl: 'https://d3iw72m71ie81c.cloudfront.net/male-52.jpg'
-    }
-  ]
 }
 
 export default withStyles(styles)(UserTable)

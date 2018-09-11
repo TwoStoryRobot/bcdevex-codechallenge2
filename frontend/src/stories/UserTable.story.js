@@ -38,3 +38,6 @@ storiesOf('UserTable', module)
   .add('default', () => {
     return <UserTable users={defaultUsers} />
   })
+  .add('empty users array', () => {
+    return <UserTable users={[]} />
+  })

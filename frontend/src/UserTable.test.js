@@ -37,4 +37,10 @@ describe('UserTable', () => {
 
     expect(container.firstChild).toMatchSnapshot()
   })
+
+  it('should display message when there are no registered users', async () => {
+    const { container } = render(<UserTable users={[]} />)
+
+    expect(container.firstChild).toMatchSnapshot()
+  })
 })
