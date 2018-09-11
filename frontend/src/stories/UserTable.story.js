@@ -5,7 +5,7 @@ import { withKnobs } from '@storybook/addon-knobs/react'
 import { action } from '@storybook/addon-actions'
 import docgen from '@twostoryrobot/storybook-addon-docgen'
 
-import UserTable from '../UserTable'
+import UserTable from '../components/UserTable'
 
 const defaultUsers = [
   {

@@ -5,7 +5,7 @@ import { withKnobs, number, select } from '@storybook/addon-knobs/react'
 import docgen from '@twostoryrobot/storybook-addon-docgen'
 import LoadingIcon from 'mdi-react/LoadingIcon'
 
-import Spinner from '../Spinner'
+import Spinner from '../components/Spinner'
 
 storiesOf('Spinner', module)
   .addDecorator(host())
