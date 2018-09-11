@@ -12,8 +12,7 @@ function generateUser(obj = {}) {
 }
 
 beforeEach(async () => {
-  /* Start test with a clean db state
-   */
+  // Start test with a clean db state
   await db.none('TRUNCATE public.user')
 
   const testUser1 = generateUser({ userId: '1' })
@@ -24,12 +23,10 @@ beforeEach(async () => {
 })
 
 afterAll(async () => {
-  /* Return db to clean state
-   */
+  // Return db to clean state
   await db.none('TRUNCATE public.user')
 
-  /* Close the pgp connection
-   */
+  // Close the pgp connection
   await pgp.end()
 })
 
