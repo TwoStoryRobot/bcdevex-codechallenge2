@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditUserDialog should match the snapshot 1`] = `
+<body
+  style="padding-right: 0px; overflow: hidden;"
+>
+  <div
+    aria-hidden="true"
+  />
+  <div
+    class="MuiModal-root-0561 MuiDialog-root-0549 MuiDialog-scrollPaper-0550"
+    role="dialog"
+    data-testid="edit-user-dialog"
+  >
+    <div
+      class="MuiBackdrop-root-0563"
+      aria-hidden="true"
+      style="opacity: 1; -webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+    />
+    <div
+      class="MuiPaper-root-0565 MuiPaper-elevation24-0591 MuiPaper-rounded-0566 MuiDialog-paper-0552 MuiDialog-paperScrollPaper-0553 MuiDialog-paperWidthSm-0556"
+      style="opacity: 1; -webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+      role="document"
+      tabindex="-1"
+    >
+      <div
+        class="MuiDialogTitle-root-0592"
+      >
+        <h2
+          class="MuiTypography-root-0593 MuiTypography-title-0599"
+        >
+          Edit User
+        </h2>
+      </div>
+      <div
+        class="MuiDialogContent-root-0618 sc-bdVaJa dhQzIv"
+      >
+        <div
+          class="sc-bwzfXH jDNgdt"
+        >
+          <div
+            class=" sb-avatar"
+            style="display: inline-block; vertical-align: middle; width: 40px; height: 40px; border-radius: 100%; font-family: Helvetica, Arial, sans-serif;"
+          >
+            <div
+              class=" sb-avatar__text"
+              style="width: 40px; height: 40px; font-size: 13.3333px; line-height: 40px; text-align: center; text-transform: uppercase; color: rgb(255, 255, 255); border-radius: 100%;"
+            />
+          </div>
+        </div>
+        <form
+          class="sc-htpNat ibEjym"
+        >
+          <div
+            class="MuiFormControl-root-0619 MuiFormControl-marginDense-0621 MuiFormControl-fullWidth-0622"
+          >
+            <label
+              class="MuiFormLabel-root-0628 MuiFormLabel-focused-0629 MuiInputLabel-root-0623 MuiInputLabel-formControl-0624 MuiInputLabel-animated-0627 MuiInputLabel-shrink-0626 MuiInputLabel-marginDense-0625"
+              data-shrink="true"
+              for="first"
+            >
+              First
+            </label>
+            <div
+              class="MuiInput-root-0635 MuiInput-fullWidth-0642 MuiInput-focused-0637 MuiInput-formControl-0636 MuiInput-underline-0639"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInput-input-0643 MuiInput-inputMarginDense-0644"
+                id="first"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="MuiFormControl-root-0619 MuiFormControl-marginDense-0621 MuiFormControl-fullWidth-0622"
+          >
+            <label
+              class="MuiFormLabel-root-0628 MuiInputLabel-root-0623 MuiInputLabel-formControl-0624 MuiInputLabel-animated-0627 MuiInputLabel-marginDense-0625"
+              data-shrink="false"
+              for="last"
+            >
+              Last
+            </label>
+            <div
+              class="MuiInput-root-0635 MuiInput-fullWidth-0642 MuiInput-formControl-0636 MuiInput-underline-0639"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInput-input-0643 MuiInput-inputMarginDense-0644"
+                id="last"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="MuiFormControl-root-0619 MuiFormControl-marginDense-0621 MuiFormControl-fullWidth-0622"
+          >
+            <label
+              class="MuiFormLabel-root-0628 MuiInputLabel-root-0623 MuiInputLabel-formControl-0624 MuiInputLabel-animated-0627 MuiInputLabel-marginDense-0625"
+              data-shrink="false"
+              for="email"
+            >
+              Email
+            </label>
+            <div
+              class="MuiInput-root-0635 MuiInput-fullWidth-0642 MuiInput-formControl-0636 MuiInput-underline-0639"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInput-input-0643 MuiInput-inputType-0646 MuiInput-inputMarginDense-0644"
+                id="email"
+                type="email"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="MuiFormControl-root-0619 MuiFormControl-marginDense-0621 MuiFormControl-fullWidth-0622"
+          >
+            <label
+              class="MuiFormLabel-root-0628 MuiInputLabel-root-0623 MuiInputLabel-formControl-0624 MuiInputLabel-animated-0627 MuiInputLabel-marginDense-0625"
+              data-shrink="false"
+              for="avatar"
+            >
+              Avatar URL
+            </label>
+            <div
+              class="MuiInput-root-0635 MuiInput-fullWidth-0642 MuiInput-formControl-0636 MuiInput-underline-0639"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInput-input-0643 MuiInput-inputMarginDense-0644"
+                id="avatar"
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class="MuiDialogActions-root-0648"
+      >
+        <button
+          tabindex="0"
+          class="MuiButtonBase-root-0676 MuiButton-root-0650 MuiButton-text-0652 MuiButton-flat-0655 MuiDialogActions-action-0649"
+          type="button"
+          data-testid="close"
+        >
+          <span
+            class="MuiButton-label-0651"
+          >
+            Cancel
+          </span>
+          <span
+            class="MuiTouchRipple-root-0679"
+          />
+        </button>
+        <button
+          tabindex="0"
+          class="MuiButtonBase-root-0676 MuiButton-root-0650 MuiButton-text-0652 MuiButton-textPrimary-0653 MuiButton-flat-0655 MuiButton-flatPrimary-0656 MuiDialogActions-action-0649"
+          type="button"
+          data-testid="save"
+        >
+          <span
+            class="MuiButton-label-0651"
+          >
+            Save
+          </span>
+          <span
+            class="MuiTouchRipple-root-0679"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+`;
