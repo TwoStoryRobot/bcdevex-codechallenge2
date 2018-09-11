@@ -8,7 +8,7 @@ import docgen from '@twostoryrobot/storybook-addon-docgen'
 import { create } from 'reworm'
 import Button from '@material-ui/core/Button'
 
-import AlertDialog from '../AlertDialog'
+import AlertDialog from '../components/AlertDialog'
 
 const actionConfirm = action('Ok Clicked')
 const actionCancel = action('Cancel Clicked')
