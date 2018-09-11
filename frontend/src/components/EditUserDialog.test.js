@@ -78,4 +78,9 @@ describe('EditUserDialog', () => {
     expect(avatarInput.value).toEqual(avatarUrl)
     expect(emailInput.value).toEqual(email)
   })
+
+  it('should match the snapshot', () => {
+    const { baseElement } = render(<EditUserDialog open={true} />)
+    expect(baseElement).toMatchSnapshot()
+  })
 })
