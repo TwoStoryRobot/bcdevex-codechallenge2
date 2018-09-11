@@ -2,38 +2,38 @@
 
 exports[`UserTable should render with required props 1`] = `
 <table
-  class="MuiTable-root-03"
+  class="MuiTable-root-04"
 >
   <thead
-    class="MuiTableHead-root-04"
+    class="MuiTableHead-root-05"
   >
     <tr
-      class="MuiTableRow-root-05 MuiTableRow-head-08"
+      class="MuiTableRow-root-06 MuiTableRow-head-09"
     >
       <th
-        class="MuiTableCell-root-012 MuiTableCell-head-013 WithStyles-TableCell--head-010"
+        class="MuiTableCell-root-013 MuiTableCell-head-014 WithStyles-TableCell--head-011"
         scope="col"
       />
       <th
-        class="MuiTableCell-root-012 MuiTableCell-head-013 WithStyles-TableCell--head-010"
+        class="MuiTableCell-root-013 MuiTableCell-head-014 WithStyles-TableCell--head-011"
         scope="col"
       >
         First
       </th>
       <th
-        class="MuiTableCell-root-012 MuiTableCell-head-013 WithStyles-TableCell--head-010"
+        class="MuiTableCell-root-013 MuiTableCell-head-014 WithStyles-TableCell--head-011"
         scope="col"
       >
         Last
       </th>
       <th
-        class="MuiTableCell-root-012 MuiTableCell-head-013 WithStyles-TableCell--head-010"
+        class="MuiTableCell-root-013 MuiTableCell-head-014 WithStyles-TableCell--head-011"
         scope="col"
       >
         Email
       </th>
       <th
-        class="MuiTableCell-root-012 MuiTableCell-head-013 WithStyles-TableCell--head-010"
+        class="MuiTableCell-root-013 MuiTableCell-head-014 WithStyles-TableCell--head-011"
         scope="col"
       >
         Registration
@@ -41,13 +41,13 @@ exports[`UserTable should render with required props 1`] = `
     </tr>
   </thead>
   <tbody
-    class="MuiTableBody-root-020"
+    class="MuiTableBody-root-021"
   >
     <tr
-      class="MuiTableRow-root-05"
+      class="MuiTableRow-root-06 UserTable-row-03"
     >
       <th
-        class="MuiTableCell-root-012 MuiTableCell-body-014 WithStyles-TableCell--body-011"
+        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
         scope="row"
       >
         <div
@@ -65,32 +65,32 @@ exports[`UserTable should render with required props 1`] = `
         </div>
       </th>
       <td
-        class="MuiTableCell-root-012 MuiTableCell-body-014 WithStyles-TableCell--body-011"
+        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
       >
         Bob
       </td>
       <td
-        class="MuiTableCell-root-012 MuiTableCell-body-014 WithStyles-TableCell--body-011"
+        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
       >
         Smith
       </td>
       <td
-        class="MuiTableCell-root-012 MuiTableCell-body-014 WithStyles-TableCell--body-011"
+        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
       >
         bob.smith@gmail.com
       </td>
       <td
-        class="MuiTableCell-root-012 MuiTableCell-body-014 WithStyles-TableCell--body-011"
+        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
         style="font-size: 0.875rem;"
       >
         2018 Sept 04
       </td>
     </tr>
     <tr
-      class="MuiTableRow-root-05"
+      class="MuiTableRow-root-06 UserTable-row-03"
     >
       <th
-        class="MuiTableCell-root-012 MuiTableCell-body-014 WithStyles-TableCell--body-011"
+        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
         scope="row"
       >
         <div
@@ -108,32 +108,32 @@ exports[`UserTable should render with required props 1`] = `
         </div>
       </th>
       <td
-        class="MuiTableCell-root-012 MuiTableCell-body-014 WithStyles-TableCell--body-011"
+        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
       >
         Jane
       </td>
       <td
-        class="MuiTableCell-root-012 MuiTableCell-body-014 WithStyles-TableCell--body-011"
+        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
       >
         Doe
       </td>
       <td
-        class="MuiTableCell-root-012 MuiTableCell-body-014 WithStyles-TableCell--body-011"
+        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
       >
         jane.doe@gmail.com
       </td>
       <td
-        class="MuiTableCell-root-012 MuiTableCell-body-014 WithStyles-TableCell--body-011"
+        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
         style="font-size: 0.875rem;"
       >
         2018 Sept 04
       </td>
     </tr>
     <tr
-      class="MuiTableRow-root-05"
+      class="MuiTableRow-root-06 UserTable-row-03"
     >
       <th
-        class="MuiTableCell-root-012 MuiTableCell-body-014 WithStyles-TableCell--body-011"
+        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
         scope="row"
       >
         <div
@@ -151,22 +151,22 @@ exports[`UserTable should render with required props 1`] = `
         </div>
       </th>
       <td
-        class="MuiTableCell-root-012 MuiTableCell-body-014 WithStyles-TableCell--body-011"
+        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
       >
         James
       </td>
       <td
-        class="MuiTableCell-root-012 MuiTableCell-body-014 WithStyles-TableCell--body-011"
+        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
       >
         Bond
       </td>
       <td
-        class="MuiTableCell-root-012 MuiTableCell-body-014 WithStyles-TableCell--body-011"
+        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
       >
         james.bond@gmail.com
       </td>
       <td
-        class="MuiTableCell-root-012 MuiTableCell-body-014 WithStyles-TableCell--body-011"
+        class="MuiTableCell-root-013 MuiTableCell-body-015 WithStyles-TableCell--body-012"
         style="font-size: 0.875rem;"
       >
         2018 Sept 04

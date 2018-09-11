@@ -28,10 +28,15 @@ const styles = theme => ({
   },
   table: {
     minWidth: 700
+  },
+  row: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.background.default
+    }
   }
 })
 
-const UserTable = ({ users }) => (
+const UserTable = ({ users, classes }) => (
   <Table>
     <TableHead>
       <TableRow>
@@ -44,7 +49,7 @@ const UserTable = ({ users }) => (
     </TableHead>
     <TableBody>
       {users.map(user => (
-        <TableRow key={user.userId}>
+        <TableRow key={user.userId} className={classes.row}>
           <StyledTableCell component="th" scope="row">
             <Avatar
               key={user.userId}
