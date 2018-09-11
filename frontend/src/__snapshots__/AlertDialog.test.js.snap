@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render with required props 1`] = `
+exports[`AlertDialog should render with required props 1`] = `
 <div
   class="MuiModal-root-013 MuiDialog-root-01 MuiDialog-scrollPaper-02"
   role="dialog"
