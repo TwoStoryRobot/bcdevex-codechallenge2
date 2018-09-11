@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppBar should match the snapshot 1`] = `
+<header
+  class="MuiPaper-root-010 MuiPaper-elevation4-016 MuiAppBar-root-01 MuiAppBar-positionFixed-02 MuiAppBar-colorPrimary-08 mui-fixed"
+>
+  <div
+    class="MuiToolbar-root-037 MuiToolbar-regular-039 MuiToolbar-gutters-038"
+  >
+    <h2
+      class="MuiTypography-root-041 MuiTypography-title-047 MuiTypography-colorInherit-060 MuiTypography-noWrap-057"
+    />
+    <div
+      class="sc-bdVaJa kUhAfA"
+    />
+    <div>
+      <button
+        tabindex="0"
+        class="MuiButtonBase-root-072 MuiIconButton-root-066"
+        type="button"
+        data-testid="avatar-button"
+      >
+        <span
+          class="MuiIconButton-label-071"
+        >
+          <div
+            class="MuiAvatar-root-075"
+          />
+        </span>
+        <span
+          class="MuiTouchRipple-root-078"
+        />
+      </button>
+    </div>
+  </div>
+</header>
+`;
