@@ -30,6 +30,7 @@
     "eslint-config-prettier": "^2.10.0",
     "eslint-plugin-jest": "^21.22.0",
     "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.6.0",
     "prettier": "^1.14.2",
     "storybook-host": "^5.0.0"
   }
