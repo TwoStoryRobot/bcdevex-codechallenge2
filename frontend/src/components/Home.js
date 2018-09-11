@@ -5,6 +5,7 @@
 
 import React, { Component } from 'react'
 import LoginButton from './LoginButton'
+import { authenticate } from '../requests'
 
 class Home extends Component {
 
@@ -14,12 +15,7 @@ class Home extends Component {
   }
 
   handleLogin(profile) {
-    const method = 'POST'
-    const url ='http://localhost:3500/authenticate'
-    const authorization = 'Bearer ' + localStorage.getItem('token')
-    const headers = { authorization, 'Content-Type' : "application/json; charset=utf-8" }
-    const body = JSON.stringify(profile)
-    fetch(url, { method, body, headers })
+    authenticate(profile)
     .then(() => this.props.history.push('/private'))
   }
 
