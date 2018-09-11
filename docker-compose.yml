@@ -12,6 +12,20 @@ postgres-seed:
   environment:
     - PGPASSWORD=postgresadmin
 
+postgrestest:
+  image: postgres
+  ports:
+    - "5544:5432"
+  environment:
+    - POSTGRES_PASSWORD=postgrestest
+
+postgres-test:
+  build: ./postgres-test
+  links:
+    - postgrestest
+  environment:
+    - PGPASSWORD=postgrestest
+
 mailhog:
   image: mailhog/mailhog
   ports:
