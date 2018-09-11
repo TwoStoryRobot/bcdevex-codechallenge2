@@ -13,8 +13,13 @@ async function getAllUsers() {
   return await db.any('SELECT * FROM public.user')
 }
 
+async function addUser(user) {
+  return await db.any('INSERT INTO public.user VALUES (${userId}, ${firstName}, ${imageUrl}, ${emailAddress}, ${lastName})', user)
+}
+
 module.exports = {
   db,
   pgp,
-  getAllUsers
+  getAllUsers,
+  addUser
 }
