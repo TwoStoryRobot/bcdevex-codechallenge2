@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import {
-  Dialog,
-  DialogTitle,
-  TextField,
-  DialogContent,
-  DialogActions, 
-  Button
-} from '@material-ui/core'
-import Avatar from 'react-avatar'
+import Dialog from '@material-ui/core/Dialog'
+import DialogTitle from '@material-ui/core/DialogTitle'
+import TextField from '@material-ui/core/TextField'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogActions, from '@material-ui/core/DialogActions'
+import Button from '@material-ui/core/Button'
 import styled from 'styled-components'
 
 const StyledDialogContent = styled(DialogContent)`
