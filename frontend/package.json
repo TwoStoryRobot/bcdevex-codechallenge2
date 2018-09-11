@@ -33,6 +33,7 @@
     "jest": "^23.6.0",
     "prettier": "^1.14.2",
     "reworm": "^1.0.4",
+    "react-testing-library": "^5.0.1",
     "storybook-host": "^5.0.0"
   }
 }
