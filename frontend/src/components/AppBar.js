@@ -55,6 +55,7 @@ export default class AppBar extends Component {
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMenuOpen}
         onClose={this.handleMenuClose}
+        data-testid="profile-menu"
       >
         <MenuHeader divider>
           <ListItemAvatar>
@@ -62,13 +63,13 @@ export default class AppBar extends Component {
           </ListItemAvatar>
           <ListItemText primary={name} />
         </MenuHeader>
-        <ListItem button onClick={this.handleMenuItemClick(onEdit)}>
+        <ListItem button onClick={this.handleMenuItemClick(onEdit)} data-testid="edit">
           <ListItemIcon>
             <EditIcon />
           </ListItemIcon>
           <ListItemText inset primary="Edit profile" />
         </ListItem>
-        <ListItem button onClick={this.handleMenuItemClick(onSignOut)}>
+        <ListItem button onClick={this.handleMenuItemClick(onSignOut)} data-testid="signout">
           <ListItemIcon>
             <ExitToApp />
           </ListItemIcon>
@@ -86,7 +87,7 @@ export default class AppBar extends Component {
             </Typography>
             <Grow />
             <div>
-              <IconButton onClick={this.handleMenuOpen}>
+              <IconButton onClick={this.handleMenuOpen} data-testid="avatar-button">
                 <Avatar src={avatar} />
               </IconButton>
             </div>
