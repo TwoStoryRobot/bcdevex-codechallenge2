@@ -1,5 +1,4 @@
-const queries = require('./index')
-const { db, pgp } = queries
+import { queries, db, pgp } from './index'
 
 function generateUser(obj = {}) {
   const defaultUser = {

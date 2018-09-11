@@ -1,6 +1,8 @@
-const app = require('../app')
+import app from '../app'
+import supertest from 'supertest'
+
 const server = app.listen()
-const request = require('supertest').agent(server)
+const request = supertest.agent(server)
 
 afterAll(async () => {
   server.close()
