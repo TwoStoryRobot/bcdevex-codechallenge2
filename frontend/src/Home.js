@@ -23,9 +23,16 @@ class Home extends Component {
     .then(() => this.props.history.push('/private'))
   }
 
+  handleError(err) {
+    console.error(err.message)
+  }
+
   render() {
     return (
-      <LoginButton onLogin={profile => this.handleLogin(profile)} />
+      <LoginButton 
+        onLogin={profile => this.handleLogin(profile)} 
+        onFailure={err => this.handleError(err)} 
+      />
     )
   }
 

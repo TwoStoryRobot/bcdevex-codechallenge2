@@ -3,31 +3,39 @@
  * Button to trigger Google Login flow
  */
 
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { UserConsumer } from './UserContext'
 import GoogleLogin from 'react-google-login'
+import { UserConsumer } from './UserContext'
 
 class LoginButton extends Component {
 
   constructor() {
     super()
     this.handleLogin = this.handleLogin.bind(this)
+    this.handleFailure = this.handleFailure.bind(this)
   }
 
-  mapProfile(p) {
-    const profile = p.getBasicProfile()
+  mapProfile(googleUser) {
+    const profile = googleUser.getBasicProfile()
     return {
       userId : profile.getId(),
       firstName : profile.getGivenName(),
-      imageUrl : profile.getImageUrl(),
+      lastName : profile.getFamilyName(),
       emailAddress : profile.getEmail(),
-      lastName : profile.getFamilyName()
+      imageUrl : profile.getImageUrl()
     }
   }
 
-  handleLogin(loginFunction, profile) {
-    loginFunction(profile)
-    this.props.onLogin(this.mapProfile(profile))
+  handleLogin(addLoginToContext, googleUser) {
+    addLoginToContext(googleUser)
+    const profile = this.mapProfile(googleUser)
+    this.props.onLogin(profile)
+  }
+
+  handleFailure(err) {
+    const error = new Error(err.error)
+    this.props.onFailure(error)
   }
 
   render() {
@@ -36,15 +44,20 @@ class LoginButton extends Component {
         {({ login, logout }) => (
           <GoogleLogin
             buttonText="Login"
-            clientId="656587629888-4rvd0pv398dgderln9s6kuvr7kdn99k5.apps.googleusercontent.com"
-            onSuccess={profile => this.handleLogin(login, profile)}
-            onFailure={logout}
+            clientId={process.env.REACT_APP_CLIENT_ID}
+            onSuccess={googleUser => this.handleLogin(login, googleUser)}
+            onFailure={err => this.handleFailure(err)}
           />
         )}
       </UserConsumer>
     )
   }
 
+}
+
+LoginButton.propTypes = {
+  onLogin: PropTypes.func,
+  onFailure: PropTypes.func
 }
 
 export default LoginButton
