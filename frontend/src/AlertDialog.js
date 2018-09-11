@@ -9,8 +9,6 @@ import Button from '@material-ui/core/Button'
 
 /**
  * A reusable AlertDialog wrapping Dialog
- *
- * Open it by setting `open={true}`.
  */
 function AlertDialog({
   children,
