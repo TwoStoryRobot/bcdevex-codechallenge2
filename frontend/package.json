@@ -2,6 +2,7 @@
   "name": "codechallenge",
   "version": "0.1.0",
   "private": true,
+  "license": "Apache-2.0",
   "dependencies": {
     "@material-ui/core": "^3.0.3",
     "prop-types": "^15.6.2",

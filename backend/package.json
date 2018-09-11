@@ -2,17 +2,20 @@
   "name": "codechallenge-backend",
   "version": "0.1.0",
   "private": true,
+  "license": "Apache-2.0",
   "scripts": {
     "start": "node build/index",
     "build": "babel src -d build",
     "watch": "babel -w src -d build",
     "test": "jest",
     "test-router": "jest router",
-    "test-integration": "POSTGRES_PORT=5544 POSTGRES_PASSWORD=postgrestest POSTGRES_DB=test jest integration"
+    "test-integration":
+      "POSTGRES_PORT=5544 POSTGRES_PASSWORD=postgrestest POSTGRES_DB=test jest integration"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BCDevExchange-CodeChallenge/CodeChallenge2-repo3.git"
+    "url":
+      "git+https://github.com/BCDevExchange-CodeChallenge/CodeChallenge2-repo3.git"
   },
   "dependencies": {
     "koa": "^2.5.2",
