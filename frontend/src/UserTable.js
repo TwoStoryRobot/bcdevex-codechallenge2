@@ -37,6 +37,9 @@ const styles = theme => ({
   }
 })
 
+/**
+ *  A table to list all registered users
+ */
 const UserTable = ({ users, classes }) => (
   <Paper>
     <Table>
@@ -77,13 +80,20 @@ const UserTable = ({ users, classes }) => (
 )
 
 UserTable.propTypes = {
+  /** classes provided by the withStyles HOC */
   classes: PropTypes.object.isRequired,
+  /** user object */
   users: PropTypes.arrayOf(
     PropTypes.shape({
+      /** id of user */
       userId: PropTypes.string.isRequired,
+      /** first name of user */
       firstName: PropTypes.string.isRequired,
+      /** last name of user */
       lastName: PropTypes.string,
+      /** email address of user (used to send email) */
       emailAddress: PropTypes.emailAddress,
+      /** url of user's Avatar */
       imageUrl: PropTypes.string
     })
   ).isRequired
