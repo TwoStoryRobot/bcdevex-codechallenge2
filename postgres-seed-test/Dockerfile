@@ -8,6 +8,6 @@ COPY ./wait-for-it.sh /
 COPY ./cc.dump /
 RUN chmod +x /wait-for-it.sh
 
-ENTRYPOINT ["/wait-for-it.sh", "postgrestest:5544", "--"]
+ENTRYPOINT ["/wait-for-it.sh", "postgresdb-test:5544", "--"]
 
 CMD bash create.postgres_test.sh

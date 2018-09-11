@@ -12,17 +12,17 @@ postgres-seed:
   environment:
     - PGPASSWORD=postgresadmin
 
-postgrestest:
+postgresdb-test:
   image: postgres
   ports:
     - "5544:5432"
   environment:
     - POSTGRES_PASSWORD=postgrestest
 
-postgres-test:
-  build: ./postgres-test
+postgres-seed-test:
+  build: ./postgres-seed-test
   links:
-    - postgrestest
+    - postgresdb-test
   environment:
     - PGPASSWORD=postgrestest
 

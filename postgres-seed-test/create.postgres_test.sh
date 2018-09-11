@@ -5,7 +5,7 @@ DATABASE_NAME="test"
 
 echo "*** CREATING DATABASE ***"
 
-psql -h postgrestest -U postgres -q <<EOSQL
+psql -h postgresdb-test -U postgres -q <<EOSQL
     CREATE DATABASE "$DATABASE_NAME";
     GRANT ALL PRIVILEGES ON DATABASE "$DATABASE_NAME" TO postgres;
     CREATE ROLE pguser WITH LOGIN PASSWORD 'pguser';
@@ -16,7 +16,7 @@ echo "*** DATABASE CREATED ***"
 
 echo "*** POPULATING DATABASE"
 
-psql -h postgrestest -U postgres "$DATABASE_NAME" < cc.dump
+psql -h postgresdb-test -U postgres "$DATABASE_NAME" < cc.dump
 
 echo "**** DATABASE POPULATED"
 
