@@ -12,10 +12,10 @@ class UserProvider extends Component {
 
   constructor() {
     super()
-    const isLoggedIn = false
-    this.state = { isLoggedIn }
+    const isLoggedIn = localStorage.getItem('token')
     this.login = this.login.bind(this)
     this.logout = this.logout.bind(this)
+    this.state = { isLoggedIn }
   }
 
   login(auth) {
