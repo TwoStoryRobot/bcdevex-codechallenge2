@@ -26,7 +26,7 @@ storiesOf('AlertDialog', module)
       />
     )
   })
-  .add('Example - Send Email', () => {
+  .add('Example - Send email', () => {
     return (
       <AlertDialog
         open={true}
@@ -37,7 +37,7 @@ storiesOf('AlertDialog', module)
       </AlertDialog>
     )
   })
-  .add('Example - Confirm Delete', () => {
+  .add('Example - Confirm delete', () => {
     return (
       <AlertDialog
         open={true}
@@ -48,7 +48,7 @@ storiesOf('AlertDialog', module)
       </AlertDialog>
     )
   })
-  .add('With Knobs', () => {
+  .add('With knobs', () => {
     // simple story state with reworm
     const { get, set } = create({ open: false })
 
