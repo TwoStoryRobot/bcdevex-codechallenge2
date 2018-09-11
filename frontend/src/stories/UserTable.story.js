@@ -41,3 +41,6 @@ storiesOf('UserTable', module)
   .add('empty users array', () => {
     return <UserTable users={[]} />
   })
+  .add('loading state', () => {
+    return <UserTable users={[]} isLoading={true} />
+  })

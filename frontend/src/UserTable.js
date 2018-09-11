@@ -9,6 +9,8 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import UserSearchIcon from 'mdi-react/UserSearchIcon'
+import LoadingIcon from 'mdi-react/LoadingIcon'
+import Spinner from './Spinner'
 
 const StyledTableCell = withStyles(theme => ({
   head: {
@@ -53,7 +55,7 @@ const styles = theme => ({
 /**
  *  A table to list all registered users
  */
-const UserTable = ({ users, classes }) => (
+const UserTable = ({ users, classes, isLoading }) => (
   <Paper className={classes.root}>
     <Table className={classes.table}>
       <TableHead>
@@ -89,10 +91,19 @@ const UserTable = ({ users, classes }) => (
         ))}
       </TableBody>
     </Table>
-    {users.length === 0 && (
+    {users.length === 0 &&
+      !isLoading && (
+        <Message>
+          <UserSearchIcon size={64} />
+          <p>There are currently no registered users.</p>
+        </Message>
+      )}
+    {isLoading && (
       <Message>
-        <UserSearchIcon size={64} />
-        <p>There are currently no registered users.</p>
+        <Spinner>
+          <LoadingIcon size={64} />
+        </Spinner>
+        <p>Loading...</p>
       </Message>
     )}
   </Paper>
@@ -115,7 +126,12 @@ UserTable.propTypes = {
       /** url of user's Avatar */
       imageUrl: PropTypes.string
     })
-  ).isRequired
+  ).isRequired,
+  isLoading: PropTypes.bool
+}
+
+UserTable.defaultProps = {
+  isLoading: false
 }
 
 export default withStyles(styles)(UserTable)
