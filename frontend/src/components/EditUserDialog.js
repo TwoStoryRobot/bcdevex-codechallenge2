@@ -67,7 +67,7 @@ export default class EditUserDialog extends Component {
     const { firstName, lastName, avatarUrl, email } = this.state
   
     return (
-      <Dialog open={open} onClose={onClose}>
+      <Dialog open={open} onClose={onClose} data-testid="edit-user-dialog">
         <DialogTitle>Edit User</DialogTitle>
         <StyledDialogContent>
           <AvatarWrapper>
@@ -80,6 +80,7 @@ export default class EditUserDialog extends Component {
           </AvatarWrapper>
           <StyledForm onSubmit={this.handleSave}>
             <TextField
+              id="first"
               label="First"
               value={firstName}
               onChange={this.handleTextFieldChange('firstName')}
@@ -89,6 +90,7 @@ export default class EditUserDialog extends Component {
               autoFocus
             />
             <TextField
+              id="last"
               label="Last"
               value={lastName}
               onChange={this.handleTextFieldChange('lastName')}
@@ -97,6 +99,7 @@ export default class EditUserDialog extends Component {
               margin="dense"
             />
             <TextField
+              id="email"
               label="Email"
               value={email}
               onChange={this.handleTextFieldChange('email')}
@@ -106,6 +109,7 @@ export default class EditUserDialog extends Component {
               margin="dense"
             />
             <TextField
+              id="avatar"
               label="Avatar URL"
               value={avatarUrl}
               onChange={this.handleTextFieldChange('avatarUrl')}
@@ -116,8 +120,8 @@ export default class EditUserDialog extends Component {
           </StyledForm>
         </StyledDialogContent>
         <DialogActions>
-          <Button onClick={onClose}>Cancel</Button>
-          <Button onClick={this.handleSave} color="primary">Save</Button>
+          <Button onClick={onClose} data-testid="close">Cancel</Button>
+          <Button onClick={this.handleSave} color="primary" data-testid="save">Save</Button>
         </DialogActions>
       </Dialog>
     )
