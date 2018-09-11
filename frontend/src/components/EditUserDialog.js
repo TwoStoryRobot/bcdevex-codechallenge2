@@ -23,6 +23,11 @@ const StyledForm = styled.form`
   grid-column: 2;
 `
 
+/**
+ * EditUserDialog
+ *
+ * For editing a user. Wraps Dialog
+ */
 export default class EditUserDialog extends Component {
   constructor(props) {
     super(props)
@@ -38,7 +43,7 @@ export default class EditUserDialog extends Component {
 
   handleTextFieldChange = name => event => {
     this.setState({
-      [name]: event.target.value,
+      [name]: event.target.value
     })
   }
 
@@ -53,7 +58,7 @@ export default class EditUserDialog extends Component {
 
     this.props.onSave({ firstName, lastName, email, avatarUrl })
   }
-  
+
   handleKeyDown = event => {
     if (event.keyCode === 13) {
       this.handleSave()
@@ -63,7 +68,7 @@ export default class EditUserDialog extends Component {
   render() {
     const { open, onClose } = this.props
     const { firstName, lastName, avatarUrl, email } = this.state
-  
+
     return (
       <Dialog open={open} onClose={onClose} data-testid="edit-user-dialog">
         <DialogTitle>Edit User</DialogTitle>
@@ -118,8 +123,12 @@ export default class EditUserDialog extends Component {
           </StyledForm>
         </StyledDialogContent>
         <DialogActions>
-          <Button onClick={onClose} data-testid="close">Cancel</Button>
-          <Button onClick={this.handleSave} color="primary" data-testid="save">Save</Button>
+          <Button onClick={onClose} data-testid="close">
+            Cancel
+          </Button>
+          <Button onClick={this.handleSave} color="primary" data-testid="save">
+            Save
+          </Button>
         </DialogActions>
       </Dialog>
     )
@@ -127,13 +136,20 @@ export default class EditUserDialog extends Component {
 }
 
 EditUserDialog.propTypes = {
+  /** called when user closes out the model, does not call onSave */
   onClose: PropTypes.func,
+  /** called with internal user state when user saves form */
   onSave: PropTypes.func,
+  /** controll the dialog open or close */
   open: PropTypes.bool,
+  /** initial state first name of the user */
   firstName: PropTypes.string,
+  /** initial state last name of the user */
   lastName: PropTypes.string,
+  /** initial state email of the user */
   email: PropTypes.string,
-  avatarUrl: PropTypes.string,
+  /** initial state avatar of the user */
+  avatarUrl: PropTypes.string
 }
 
 EditUserDialog.defaultProps = {
@@ -143,5 +159,5 @@ EditUserDialog.defaultProps = {
   avatarUrl: '',
   open: false,
   onClose: () => {},
-  onSave: () => {},
+  onSave: () => {}
 }
