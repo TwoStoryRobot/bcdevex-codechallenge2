@@ -4,13 +4,13 @@
  */
 
 import Router from 'koa-router'
+import { queries } from '../db'
 
 const authenticate = Router()
 
-function authenticateUser(ctx, next) {
-  console.log(ctx.request)
-  console.log(ctx.request.body)
-  ctx.body = 'Got it'
+async function authenticateUser(ctx) {
+  await queries.insertUser(ctx.request.body)
+  ctx.body = ctx.request.body
 }
 
 authenticate.all('/', authenticateUser)
