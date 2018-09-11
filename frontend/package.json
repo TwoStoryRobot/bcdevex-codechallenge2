@@ -28,7 +28,9 @@
     "eslint-config-prettier": "^2.10.0",
     "eslint-plugin-jest": "^21.22.0",
     "eslint-plugin-react": "^7.11.1",
+    "jest-dom": "^1.12.0",
     "prettier": "^1.14.2",
+    "react-testing-library": "^5.0.1",
     "reworm": "^1.0.4",
     "storybook-host": "^5.0.0"
   }
