@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogActions from '@material-ui/core/DialogActions'
 import Button from '@material-ui/core/Button'
+import Avatar from 'react-avatar'
 import styled from 'styled-components'
 
 const StyledDialogContent = styled(DialogContent)`
