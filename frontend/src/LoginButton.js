@@ -14,9 +14,9 @@ class LoginButton extends Component {
     this.handleLogin = this.handleLogin.bind(this)
   }
 
-  handleLogin(login, e) {
-    login(e)
-    this.props.history.push('/private')
+  handleLogin(loginFunction, profile) {
+    loginFunction(profile)
+    this.props.onLogin(profile)
   }
 
   render() {
@@ -24,9 +24,9 @@ class LoginButton extends Component {
       <UserConsumer>
         {({ login, logout }) => (
           <GoogleLogin
-            clientId="656587629888-4rvd0pv398dgderln9s6kuvr7kdn99k5.apps.googleusercontent.com"
             buttonText="Login"
-            onSuccess={e => this.handleLogin(login, e)}
+            clientId="656587629888-4rvd0pv398dgderln9s6kuvr7kdn99k5.apps.googleusercontent.com"
+            onSuccess={profile => this.handleLogin(login, profile)}
             onFailure={logout}
           />
         )}

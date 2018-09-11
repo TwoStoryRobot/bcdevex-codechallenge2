@@ -3,11 +3,32 @@
  * Login and welcome display
  */
 
-import React from 'react'
+import React, { Component } from 'react'
 import LoginButton from './LoginButton'
 
-const Home = ({ history }) => (
-  <LoginButton history={history} />
-)
+class Home extends Component {
+
+  constructor() {
+    super()
+    this.handleLogin = this.handleLogin.bind(this)
+  }
+
+  handleLogin(profile) {
+    const method = 'POST'
+    const url ='http://localhost:3500/authenticate'
+    const authorization = 'Bearer ' + localStorage.getItem('token')
+    const headers = { authorization, 'Content-Type' : "application/json; charset=utf-8" }
+    const body = JSON.stringify({ test : 'test' })
+    fetch(url, { method, body, headers })
+    .then(() => this.props.history.push('/private'))
+  }
+
+  render() {
+    return (
+      <LoginButton onLogin={() => this.handleLogin()} />
+    )
+  }
+
+}
 
 export default Home
