@@ -4,8 +4,6 @@ import {
   Dialog,
   DialogTitle,
   TextField,
-  Checkbox,
-  FormControlLabel,
   DialogContent,
   DialogActions, 
   Button
@@ -31,13 +29,12 @@ export default class EditUserDialog extends Component {
   constructor(props) {
     super(props)
 
-    const { firstName, lastName, avatarUrl, email, isAdmin } = props
+    const { firstName, lastName, avatarUrl, email } = props
     this.state = {
       firstName,
       lastName,
       email,
-      avatarUrl,
-      isAdmin
+      avatarUrl
     }
   }
 
@@ -54,9 +51,9 @@ export default class EditUserDialog extends Component {
   }
 
   handleSave = () => {
-    const { firstName, lastName, email, avatarUrl, isAdmin } = this.state
+    const { firstName, lastName, email, avatarUrl } = this.state
 
-    this.props.onSave({ firstName, lastName, email, avatarUrl, isAdmin })
+    this.props.onSave({ firstName, lastName, email, avatarUrl })
   }
   
   handleKeyDown = event => {
@@ -67,7 +64,7 @@ export default class EditUserDialog extends Component {
 
   render() {
     const { open, onClose } = this.props
-    const { firstName, lastName, avatarUrl, email, isAdmin } = this.state
+    const { firstName, lastName, avatarUrl, email } = this.state
   
     return (
       <Dialog open={open} onClose={onClose}>
@@ -116,16 +113,6 @@ export default class EditUserDialog extends Component {
               fullWidth
               margin="dense"
             />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={isAdmin}
-                  onChange={this.handleCheckboxChange('isAdmin')}
-                  value="isAdmin"
-                />
-              }
-              label="Admin"
-            />
           </StyledForm>
         </StyledDialogContent>
         <DialogActions>
@@ -145,7 +132,6 @@ EditUserDialog.propTypes = {
   lastName: PropTypes.string,
   email: PropTypes.string,
   avatarUrl: PropTypes.string,
-  isAdmin: PropTypes.bool,
 }
 
 EditUserDialog.defaultProps = {
@@ -153,7 +139,6 @@ EditUserDialog.defaultProps = {
   lastName: '',
   email: '',
   avatarUrl: '',
-  isAdmin: false,
   open: false,
   onClose: () => {},
   onSave: () => {},

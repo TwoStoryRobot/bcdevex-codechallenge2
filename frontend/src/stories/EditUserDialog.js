@@ -19,7 +19,6 @@ storiesOf('Edit User Dialog', module)
       firstName="Caleb"
       lastName="Sharp"
       email="caleb.sharp@twostoryrobot.com"
-      isAdmin={false}
       avatarUrl="https://api.adorable.io/avatars/285/abott@adorable.png"
       open={true}
     />
