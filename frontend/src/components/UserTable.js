@@ -75,6 +75,8 @@ const UserTable = ({
   users,
   classes,
   isLoading,
+  isAdmin,
+  userId,
   handleEditClick,
   handleDeleteClick,
   handleSendEmail
@@ -113,24 +115,30 @@ const UserTable = ({
             </StyledTableCell>
             <StyledTableCell>
               <StyledButtonsCell>
-                <IconButton
-                  color="primary"
-                  onClick={handleEditClick}
-                  data-testid="edit">
-                  <PencilIcon />
-                </IconButton>
-                <IconButton
-                  color="primary"
-                  onClick={handleDeleteClick}
-                  data-testid="delete">
-                  <DeleteIcon />
-                </IconButton>
-                <IconButton
-                  color="primary"
-                  onClick={handleSendEmail}
-                  data-testid="email">
-                  <EnvelopeIcon />
-                </IconButton>
+                {(isAdmin || user.userId === userId) && (
+                  <IconButton
+                    color="primary"
+                    onClick={handleEditClick}
+                    data-testid="edit">
+                    <PencilIcon />
+                  </IconButton>
+                )}
+                {isAdmin && (
+                  <React.Fragment>
+                    <IconButton
+                      color="primary"
+                      onClick={handleDeleteClick}
+                      data-testid="delete">
+                      <DeleteIcon />
+                    </IconButton>
+                    <IconButton
+                      color="primary"
+                      onClick={handleSendEmail}
+                      data-testid="email">
+                      <EnvelopeIcon />
+                    </IconButton>
+                  </React.Fragment>
+                )}
               </StyledButtonsCell>
             </StyledTableCell>
           </TableRow>
@@ -174,6 +182,8 @@ UserTable.propTypes = {
     })
   ).isRequired,
   isLoading: PropTypes.bool,
+  isAdmin: PropTypes.bool.isRequired,
+  userId: PropTypes.string.isRequired,
   handleEditClick: PropTypes.func.isRequired,
   handleDeleteClick: PropTypes.func.isRequired,
   handleSendEmail: PropTypes.func.isRequired

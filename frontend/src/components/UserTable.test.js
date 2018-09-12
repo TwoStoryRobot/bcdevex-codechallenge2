@@ -39,6 +39,8 @@ describe('UserTable', () => {
     const { container } = render(
       <UserTable
         users={defaultUsers}
+        isAdmin={true}
+        userId={defaultUsers[0].userId}
         handleEditClick={() => {}}
         handleDeleteClick={() => {}}
         handleSendEmail={() => {}}
@@ -52,6 +54,8 @@ describe('UserTable', () => {
     const { container } = render(
       <UserTable
         users={[]}
+        isAdmin={true}
+        userId={defaultUsers[0].userId}
         handleEditClick={() => {}}
         handleDeleteClick={() => {}}
         handleSendEmail={() => {}}
@@ -66,6 +70,8 @@ describe('UserTable', () => {
       <UserTable
         users={[]}
         isLoading={true}
+        isAdmin={true}
+        userId={defaultUsers[0].userId}
         handleEditClick={() => {}}
         handleDeleteClick={() => {}}
         handleSendEmail={() => {}}
@@ -75,33 +81,78 @@ describe('UserTable', () => {
     expect(container.firstChild).toMatchSnapshot()
   })
 
-  it('should display admin chip if user is admin', async () => {
-    const { getByTestId, container } = render(
+  it('should display the pencil icon for all users if user is admin', async () => {
+    const { getAllByTestId, container } = render(
       <UserTable
-        users={[defaultUsers[0]]}
+        users={defaultUsers}
         isLoading={false}
+        isAdmin={true}
+        userId={defaultUsers[0].userId}
         handleEditClick={() => {}}
         handleDeleteClick={() => {}}
         handleSendEmail={() => {}}
       />
     )
-    const adminChip = getByTestId('admin')
 
-    expect(adminChip).toBeDefined()
+    const pencilIcons = getAllByTestId('edit')
+    expect(pencilIcons).toHaveLength(3)
   })
 
-  it('should not display admin chip if user is not admin', async () => {
+  it('should display the pencil icon for current user only if user is not admin', async () => {
+    const { getAllByTestId, container } = render(
+      <UserTable
+        users={defaultUsers}
+        isLoading={false}
+        isAdmin={false}
+        userId={defaultUsers[1].userId}
+        handleEditClick={() => {}}
+        handleDeleteClick={() => {}}
+        handleSendEmail={() => {}}
+      />
+    )
+
+    const pencilIcons = getAllByTestId('edit')
+    expect(pencilIcons).toHaveLength(1)
+  })
+
+  it('should display the delete and evelope icons if user is admin', async () => {
+    const { getByTestId, container } = render(
+      <UserTable
+        users={defaultUsers}
+        isLoading={false}
+        isAdmin={true}
+        userId={defaultUsers[0].userId}
+        handleEditClick={() => {}}
+        handleDeleteClick={() => {}}
+        handleSendEmail={() => {}}
+      />
+    )
+
+    const deleteIcon = getByTestId('delete')
+    expect(deleteIcon).toBeDefined()
+    const emailIcon = getByTestId('email')
+    expect(emailIcon).toBeDefined()
+  })
+
+  it('should not display the delete and evelope icons if user is not admin', async () => {
     const { getByTestId, container } = render(
       <UserTable
         users={[defaultUsers[1]]}
         isLoading={false}
+        isAdmin={false}
+        userId={defaultUsers[1].userId}
         handleEditClick={() => {}}
         handleDeleteClick={() => {}}
         handleSendEmail={() => {}}
       />
     )
+
     expect(() => {
-      const adminChip = getByTestId('admin')
+      const deleteIcon = getByTestId('delete')
+    }).toThrow()
+
+    expect(() => {
+      const emailIcon = getByTestId('email')
     }).toThrow()
   })
 
@@ -114,6 +165,8 @@ describe('UserTable', () => {
       <UserTable
         users={defaultUsers}
         isLoading={true}
+        isAdmin={true}
+        userId={defaultUsers[0].userId}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
         handleSendEmail={handleSendEmail}
@@ -137,6 +190,8 @@ describe('UserTable', () => {
       <UserTable
         users={defaultUsers}
         isLoading={true}
+        isAdmin={true}
+        userId={defaultUsers[0].userId}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
         handleSendEmail={handleSendEmail}
@@ -160,6 +215,8 @@ describe('UserTable', () => {
       <UserTable
         users={defaultUsers}
         isLoading={true}
+        isAdmin={true}
+        userId={defaultUsers[0].userId}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
         handleSendEmail={handleSendEmail}

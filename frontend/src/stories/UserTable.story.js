@@ -47,6 +47,20 @@ storiesOf('UserTable', module)
     return (
       <UserTable
         users={defaultUsers}
+        isAdmin={true}
+        userId={'testUser123'}
+        handleEditClick={handleEditClick}
+        handleDeleteClick={handleDeleteClick}
+        handleSendEmail={handleSendEmail}
+      />
+    )
+  })
+  .add('not admin', () => {
+    return (
+      <UserTable
+        users={defaultUsers}
+        isAdmin={false}
+        userId={'testUser234'}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
         handleSendEmail={handleSendEmail}
@@ -57,6 +71,8 @@ storiesOf('UserTable', module)
     return (
       <UserTable
         users={[]}
+        isAdmin={true}
+        userId={'testUser123'}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
         handleSendEmail={handleSendEmail}
@@ -68,6 +84,8 @@ storiesOf('UserTable', module)
       <UserTable
         users={[]}
         isLoading={true}
+        isAdmin={true}
+        userId={'testUser123'}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
         handleSendEmail={handleSendEmail}
