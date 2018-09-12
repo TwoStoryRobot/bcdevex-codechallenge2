@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 import { UserConsumer } from './UserContext'
 import AppBar from './AppBar'
 import UserTable from './UserTable'
-import { getDefaultHeaders } from '../requests.js'
+import { getUsers } from '../requests.js'
 
 const Container = styled.div`
   padding-top: 64px;
@@ -22,40 +22,33 @@ const Content = styled.div`
 
 class RegisteredUsers extends React.Component {
   state = {
-    isLoadingUsers: false,
+    isFetchingUsers: false,
     currentUser: undefined,
     users: [],
-    controller: new window.AbortController()
+    fetchUsersController: undefined
   }
 
   componentDidMount() {
-    //  Signal used to cancel any pending requests when component unmounts
-    const { signal } = this.state.controller
-    const method = 'GET'
-    const headers = getDefaultHeaders()
-
     //  Fetch all users
-    this.setState({ isLoadingUsers: true })
-    fetch(process.env.REACT_APP_API_URL + 'fetch', {
-      method,
-      headers,
-      signal
-    })
-      .then(res => res.json())
-      .then(users => {
-        const currentUser = users.find(
-          user => user.userId === this.props.userId
-        )
-        this.setState({ users, currentUser, isLoadingUsers: false })
+    this.setState({ isFetchingUsers: true })
+    getUsers().then(({ users, controller }) => {
+      const currentUser = users.find(user => user.userId === this.props.userId)
+      this.setState({
+        users,
+        currentUser,
+        isFetchingUsers: false,
+        fetchUsersController: controller
       })
+    })
   }
 
   componentWillUnmount() {
-    this.state.controller.abort()
+    const { fetchUsersController } = this.state
+    fetchUsersController && fetchUsersController.abort()
   }
 
   render() {
-    const { currentUser, users, isLoadingUsers } = this.state
+    const { currentUser, users, isFetchingUsers } = this.state
     const avatar = currentUser && currentUser.imageURL
     const name =
       currentUser && `${currentUser.firstName} ${currentUser.lastName}`
@@ -70,7 +63,7 @@ class RegisteredUsers extends React.Component {
               onSignOut={logout}
             />
             <Content>
-              <UserTable users={users} isLoading={isLoadingUsers} />
+              <UserTable users={users} isLoading={isFetchingUsers} />
             </Content>
           </Container>
         )}
