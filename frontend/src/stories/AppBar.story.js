@@ -20,7 +20,7 @@ storiesOf('App Bar', module)
   .add('with knobs', () =>
     <AppBar
       title={text('Title', 'Title')}
-      avatar={text('Avatar URL', 'ttps://api.adorable.io/avatars/285/abott@adorable.png')}
+      avatar={text('Avatar URL', 'https://api.adorable.io/avatars/285/abott@adorable.png')}
       name={text('Name', 'John Doe')}
       onEdit={action('edit')}
       onSignOut={action('sign out')}
