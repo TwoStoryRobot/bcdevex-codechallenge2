@@ -275,3 +275,4 @@ TODO: Elaborate more on each environment variable
 * REACT_APP_CLIENT_ID
 * CORS_ORIGIN
 * CLIENT_ID
+* SMTP
