@@ -13,9 +13,8 @@ async function authenticateUser(ctx) {
   const bodyUserId = ctx.request.body.userId
   const record = await queries.selectUserById(stateUserId)
   if (bodyUserId != stateUserId) ctx.throw(400, 'You can only self-register')
-  if (record) ctx.throw(400, 'You are already registered')
-  await queries.insertUser(ctx.request.body)
-  ctx.body = ctx.request.body
+  if (!record) await queries.insertUser(ctx.request.body)
+  ctx.body = record || ctx.request.body
 }
 
 authenticate.post('/', authenticateUser)

@@ -1,3 +1,5 @@
+import jwt from 'jsonwebtoken'
+
 export function generateUser(obj = {}) {
   const defaultUser = {
     userId: '1',
@@ -7,4 +9,12 @@ export function generateUser(obj = {}) {
     lastName: 'User'
   }
   return Object.assign({}, defaultUser, obj)
+}
+
+export function generateToken(userId = '1') {
+  const sub = userId
+  const aud = process.env.CLIENT_ID
+  const iss = 'accounts.google.com'
+  const payload = { sub, aud, iss }
+  return jwt.sign(payload, 'test_secret')
 }

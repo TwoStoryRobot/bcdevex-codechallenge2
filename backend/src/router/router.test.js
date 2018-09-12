@@ -1,6 +1,6 @@
 import app from '../app'
 import { queries, db, pgp } from '../db'
-import { generateUser } from '../helpers'
+import { generateUser, generateToken } from '../helpers'
 import supertest from 'supertest'
 
 const server = app.listen()
@@ -33,6 +33,7 @@ test('/fetch should return all users', async () => {
 
   await request
     .get('/fetch')
+    .set('Authorization', 'Bearer ' + generateToken())
     .expect(200, users)
 })
 
@@ -44,6 +45,7 @@ test('/update should update user details', async () => {
     .post('/update')
     .send(user)
     .set('Accept', 'application/json')
+    .set('Authorization', 'Bearer ' + generateToken())
     .expect(200, user)
 })
 
@@ -52,6 +54,7 @@ test('/update should return 400 when no userId is provided', async () => {
     .post('/update')
     .send({})
     .set('Accept', 'application/json')
+    .set('Authorization', 'Bearer ' + generateToken())
     .expect(400, 'No userId provided')
 })
 
@@ -60,6 +63,7 @@ test('/update should return 400 when non-existant userId is provided', async () 
     .post('/update')
     .send({ userId: '3' })
     .set('Accept', 'application/json')
+    .set('Authorization', 'Bearer ' + generateToken())
     .expect(400, 'Invalid userId')
 })
 
@@ -68,6 +72,7 @@ test('/update should return 400 when an invalid body is sent', async () => {
     .post('/update')
     .send({ userId: '1' })
     .set('Accept', 'application/json')
+    .set('Authorization', 'Bearer ' + generateToken())
     .expect(400)
 })
 
@@ -78,6 +83,7 @@ test('/delete should remove a user from the db', async () => {
     .post('/delete')
     .send(body)
     .set('Accept', 'application/json')
+    .set('Authorization', 'Bearer ' + generateToken())
     .expect(200, body)
 })
 
@@ -86,6 +92,7 @@ test('/delete should return 400 when no userId is provided', async () => {
     .post('/delete')
     .send({})
     .set('Accept', 'application/json')
+    .set('Authorization', 'Bearer ' + generateToken())
     .expect(400, 'No userId provided')
 })
 
@@ -94,23 +101,47 @@ test('/delete should return 400 when non-existant userId is provided', async () 
     .post('/delete')
     .send({ userId: '3' })
     .set('Accept', 'application/json')
+    .set('Authorization', 'Bearer ' + generateToken())
     .expect(400, 'Invalid userId')
 })
 
 test('/authenticate should authenticate a valid user', async () => {
+  const user = generateUser({ userId: 'doesntExist' })
+
   await request
-    .get(`/authenticate`)
-    .expect(501)
+    .post('/authenticate')
+    .send(user)
+    .set('Accept', 'application/json')
+    .set('Authorization', 'Bearer ' + generateToken('doesntExist'))
+    .expect(200, user)
 })
 
-test('/authenticate should reject an invalid user', async () => {
+test('/authenticate should return preexisting users', async () => {
+  const user1 = generateUser()
+  const user2 = generateUser({ emailAddress : 'newEmail@test.test' })
+
   await request
-    .get(`/authenticate`)
-    .expect(501)
+    .post('/authenticate')
+    .send(user2)
+    .set('Accept', 'application/json')
+    .set('Authorization', 'Bearer ' + generateToken())
+    .expect(200, user1)
+})
+
+test('/authenticate should reject non-matching userIds', async () => {
+  const user = generateUser({ id : 'badMatch1' })
+
+  await request
+    .post('/authenticate')
+    .send(user)
+    .set('Accept', 'application/json')
+    .set('Authorization', 'Bearer ' + generateToken('badMatch2'))
+    .expect(400, 'You can only self-register')
 })
 
 test('/sendEmail should dispatch email to provided email address', async () => {
   await request
     .post(`/sendEmail`, {})
+    .set('Authorization', 'Bearer ' + generateToken())
     .expect(501)
 })
