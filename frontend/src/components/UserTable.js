@@ -8,9 +8,8 @@ import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import UserSearchIcon from 'mdi-react/UserSearchIcon'
-import LoadingIcon from 'mdi-react/LoadingIcon'
-import Spinner from './Spinner'
 
 const StyledTableCell = withStyles(theme => ({
   head: {
@@ -100,9 +99,7 @@ const UserTable = ({ users, classes, isLoading }) => (
       )}
     {isLoading && (
       <Message>
-        <Spinner>
-          <LoadingIcon size={64} />
-        </Spinner>
+        <CircularProgress size={64} />
         <p>Loading...</p>
       </Message>
     )}
