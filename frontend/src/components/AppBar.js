@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Toolbar from '@material-ui/core/Toolbar'
 import MAppBar from '@material-ui/core/AppBar'
 import Typography from '@material-ui/core/Typography'
-import IconButton  from '@material-ui/core/IconButton'
+import IconButton from '@material-ui/core/IconButton'
 import Menu from '@material-ui/core/Menu'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import ListItem from '@material-ui/core/ListItem'
@@ -21,13 +21,13 @@ const Grow = styled.div`
 
 const MenuHeader = styled(ListItem)`
   &:focus {
-    outline: none
+    outline: none;
   }
 `
 
 export default class AppBar extends Component {
   state = {
-    anchorEl: null,
+    anchorEl: null
   }
 
   handleMenuOpen = event => {
@@ -42,7 +42,7 @@ export default class AppBar extends Component {
     this.handleMenuClose()
     cb()
   }
-  
+
   render() {
     const { anchorEl } = this.state
     const { title, avatar, name, onEdit, onSignOut } = this.props
@@ -55,21 +55,26 @@ export default class AppBar extends Component {
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMenuOpen}
         onClose={this.handleMenuClose}
-        data-testid="profile-menu"
-      >
+        data-testid="profile-menu">
         <MenuHeader divider>
           <ListItemAvatar>
             <Avatar round size="40" src={avatar} name={name} />
           </ListItemAvatar>
           <ListItemText primary={name} />
         </MenuHeader>
-        <ListItem button onClick={this.handleMenuItemClick(onEdit)} data-testid="edit">
+        <ListItem
+          button
+          onClick={this.handleMenuItemClick(onEdit)}
+          data-testid="edit">
           <ListItemIcon>
             <EditIcon />
           </ListItemIcon>
           <ListItemText inset primary="Edit profile" />
         </ListItem>
-        <ListItem button onClick={this.handleMenuItemClick(onSignOut)} data-testid="signout">
+        <ListItem
+          button
+          onClick={this.handleMenuItemClick(onSignOut)}
+          data-testid="signout">
           <ListItemIcon>
             <SignOutIcon />
           </ListItemIcon>
@@ -87,9 +92,17 @@ export default class AppBar extends Component {
             </Typography>
             <Grow />
             <div>
-              <IconButton onClick={this.handleMenuOpen} data-testid="avatar-button">
+              <IconButton
+                onClick={this.handleMenuOpen}
+                data-testid="avatar-button">
                 <Fade in={!isMenuOpen}>
-                  <Avatar round size="40" src={avatar} name={name} open={isMenuOpen} />
+                  <Avatar
+                    round
+                    size="40"
+                    src={avatar}
+                    name={name}
+                    open={isMenuOpen}
+                  />
                 </Fade>
               </IconButton>
             </div>
@@ -111,11 +124,11 @@ AppBar.propTypes = {
   /** Handler called when the `Edit` menu button is pressed */
   onEdit: PropTypes.func,
   /** Handler called when the `Sign out` menu button is pressed */
-  onSignOut: PropTypes.func,
+  onSignOut: PropTypes.func
 }
 
 AppBar.defaultProps = {
   title: '',
   avatar: '',
-  name: '',
+  name: ''
 }

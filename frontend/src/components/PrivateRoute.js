@@ -1,4 +1,3 @@
-
 /* Private Route
  * Redirects away from this route if the 
  * user is not logged into the application
@@ -17,9 +16,11 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
           isLoggedIn ? (
             <Component {...props} />
           ) : (
-            <Redirect to={{
-              pathname : '/'
-            }} />
+            <Redirect
+              to={{
+                pathname: '/'
+              }}
+            />
           )
         }
       />
