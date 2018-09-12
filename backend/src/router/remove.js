@@ -1,4 +1,3 @@
-
 /* Remove router
  * Delete a user profile
  * 'delete' is a reserved word in JS, so we use the alternate name
@@ -17,8 +16,7 @@ async function removeUser(ctx) {
 
   // Invalid userId provided
   const record = await queries.selectUserById(userId)
-  if (!record)
-    ctx.throw(400, 'Invalid userId')
+  if (!record) ctx.throw(400, 'Invalid userId')
 
   try {
     await queries.deleteUser(userId)

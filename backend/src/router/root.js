@@ -1,4 +1,3 @@
-
 /* Root Router
  * Main router to connect routes
  */
