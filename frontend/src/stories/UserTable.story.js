@@ -48,7 +48,6 @@ storiesOf('UserTable', module)
       <UserTable
         users={defaultUsers}
         isAdmin={true}
-        userId={'testUser123'}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
         handleSendEmail={handleSendEmail}
@@ -60,7 +59,6 @@ storiesOf('UserTable', module)
       <UserTable
         users={defaultUsers}
         isAdmin={false}
-        userId={'testUser234'}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
         handleSendEmail={handleSendEmail}
@@ -72,7 +70,6 @@ storiesOf('UserTable', module)
       <UserTable
         users={[]}
         isAdmin={true}
-        userId={'testUser123'}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
         handleSendEmail={handleSendEmail}
@@ -85,7 +82,6 @@ storiesOf('UserTable', module)
         users={[]}
         isLoading={true}
         isAdmin={true}
-        userId={'testUser123'}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
         handleSendEmail={handleSendEmail}

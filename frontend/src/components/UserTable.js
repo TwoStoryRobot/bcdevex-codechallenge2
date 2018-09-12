@@ -76,7 +76,6 @@ const UserTable = ({
   classes,
   isLoading,
   isAdmin,
-  userId,
   handleEditClick,
   handleDeleteClick,
   handleSendEmail
@@ -90,7 +89,7 @@ const UserTable = ({
           <StyledTableCell>Last</StyledTableCell>
           <StyledTableCell>Email</StyledTableCell>
           <StyledTableCell>Registration</StyledTableCell>
-          <StyledTableCell />
+          {isAdmin && <StyledTableCell />}
         </TableRow>
       </TableHead>
       <TableBody>
@@ -113,34 +112,30 @@ const UserTable = ({
             <StyledTableCell style={{ fontSize: '0.875rem' }}>
               2018 Sept 04
             </StyledTableCell>
-            <StyledTableCell>
-              <StyledButtonsCell>
-                {(isAdmin || user.userId === userId) && (
+            {isAdmin && (
+              <StyledTableCell>
+                <StyledButtonsCell>
                   <IconButton
                     color="primary"
                     onClick={handleEditClick}
                     data-testid="edit">
                     <PencilIcon />
                   </IconButton>
-                )}
-                {isAdmin && (
-                  <React.Fragment>
-                    <IconButton
-                      color="primary"
-                      onClick={handleDeleteClick}
-                      data-testid="delete">
-                      <DeleteIcon />
-                    </IconButton>
-                    <IconButton
-                      color="primary"
-                      onClick={handleSendEmail}
-                      data-testid="email">
-                      <EnvelopeIcon />
-                    </IconButton>
-                  </React.Fragment>
-                )}
-              </StyledButtonsCell>
-            </StyledTableCell>
+                  <IconButton
+                    color="primary"
+                    onClick={handleDeleteClick}
+                    data-testid="delete">
+                    <DeleteIcon />
+                  </IconButton>
+                  <IconButton
+                    color="primary"
+                    onClick={handleSendEmail}
+                    data-testid="email">
+                    <EnvelopeIcon />
+                  </IconButton>
+                </StyledButtonsCell>
+              </StyledTableCell>
+            )}
           </TableRow>
         ))}
       </TableBody>
@@ -183,7 +178,6 @@ UserTable.propTypes = {
   ).isRequired,
   isLoading: PropTypes.bool,
   isAdmin: PropTypes.bool.isRequired,
-  userId: PropTypes.string.isRequired,
   handleEditClick: PropTypes.func.isRequired,
   handleDeleteClick: PropTypes.func.isRequired,
   handleSendEmail: PropTypes.func.isRequired

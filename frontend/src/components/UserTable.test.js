@@ -40,7 +40,6 @@ describe('UserTable', () => {
       <UserTable
         users={defaultUsers}
         isAdmin={true}
-        userId={defaultUsers[0].userId}
         handleEditClick={() => {}}
         handleDeleteClick={() => {}}
         handleSendEmail={() => {}}
@@ -55,7 +54,6 @@ describe('UserTable', () => {
       <UserTable
         users={[]}
         isAdmin={true}
-        userId={defaultUsers[0].userId}
         handleEditClick={() => {}}
         handleDeleteClick={() => {}}
         handleSendEmail={() => {}}
@@ -71,7 +69,6 @@ describe('UserTable', () => {
         users={[]}
         isLoading={true}
         isAdmin={true}
-        userId={defaultUsers[0].userId}
         handleEditClick={() => {}}
         handleDeleteClick={() => {}}
         handleSendEmail={() => {}}
@@ -81,71 +78,41 @@ describe('UserTable', () => {
     expect(container.firstChild).toMatchSnapshot()
   })
 
-  it('should display the pencil icon for all users if user is admin', async () => {
-    const { getAllByTestId, container } = render(
-      <UserTable
-        users={defaultUsers}
-        isLoading={false}
-        isAdmin={true}
-        userId={defaultUsers[0].userId}
-        handleEditClick={() => {}}
-        handleDeleteClick={() => {}}
-        handleSendEmail={() => {}}
-      />
-    )
-
-    const pencilIcons = getAllByTestId('edit')
-    expect(pencilIcons).toHaveLength(3)
-  })
-
-  it('should display the pencil icon for current user only if user is not admin', async () => {
-    const { getAllByTestId, container } = render(
-      <UserTable
-        users={defaultUsers}
-        isLoading={false}
-        isAdmin={false}
-        userId={defaultUsers[1].userId}
-        handleEditClick={() => {}}
-        handleDeleteClick={() => {}}
-        handleSendEmail={() => {}}
-      />
-    )
-
-    const pencilIcons = getAllByTestId('edit')
-    expect(pencilIcons).toHaveLength(1)
-  })
-
-  it('should display the delete and evelope icons if user is admin', async () => {
+  it('should display the action icons if user is admin', async () => {
     const { getByTestId, container } = render(
       <UserTable
         users={defaultUsers}
         isLoading={false}
         isAdmin={true}
-        userId={defaultUsers[0].userId}
         handleEditClick={() => {}}
         handleDeleteClick={() => {}}
         handleSendEmail={() => {}}
       />
     )
 
+    const pencilIcon = getByTestId('edit')
+    expect(pencilIcon).toBeDefined()
     const deleteIcon = getByTestId('delete')
     expect(deleteIcon).toBeDefined()
     const emailIcon = getByTestId('email')
     expect(emailIcon).toBeDefined()
   })
 
-  it('should not display the delete and evelope icons if user is not admin', async () => {
+  it('should not display the action icons if user is not admin', async () => {
     const { getByTestId, container } = render(
       <UserTable
         users={[defaultUsers[1]]}
         isLoading={false}
         isAdmin={false}
-        userId={defaultUsers[1].userId}
         handleEditClick={() => {}}
         handleDeleteClick={() => {}}
         handleSendEmail={() => {}}
       />
     )
+
+    expect(() => {
+      const pencilIcon = getByTestId('edit')
+    }).toThrow()
 
     expect(() => {
       const deleteIcon = getByTestId('delete')
@@ -166,7 +133,6 @@ describe('UserTable', () => {
         users={defaultUsers}
         isLoading={true}
         isAdmin={true}
-        userId={defaultUsers[0].userId}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
         handleSendEmail={handleSendEmail}
@@ -191,7 +157,6 @@ describe('UserTable', () => {
         users={defaultUsers}
         isLoading={true}
         isAdmin={true}
-        userId={defaultUsers[0].userId}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
         handleSendEmail={handleSendEmail}
@@ -216,7 +181,6 @@ describe('UserTable', () => {
         users={defaultUsers}
         isLoading={true}
         isAdmin={true}
-        userId={defaultUsers[0].userId}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
         handleSendEmail={handleSendEmail}
