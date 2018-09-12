@@ -1,4 +1,3 @@
-
 /* Application Index
  * Entry point for backend
  */

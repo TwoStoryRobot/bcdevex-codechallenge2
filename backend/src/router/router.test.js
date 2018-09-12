@@ -37,7 +37,6 @@ test('/fetch should return all users', async () => {
     .expect(200, users)
 })
 
-
 test('/update should update user details', async () => {
   const user = generateUser({ emailAddress: 'new@address.com' })
 
@@ -118,7 +117,7 @@ test('/authenticate should authenticate a valid user', async () => {
 
 test('/authenticate should return preexisting users', async () => {
   const user1 = generateUser()
-  const user2 = generateUser({ emailAddress : 'newEmail@test.test' })
+  const user2 = generateUser({ emailAddress: 'newEmail@test.test' })
 
   await request
     .post('/authenticate')
@@ -129,7 +128,7 @@ test('/authenticate should return preexisting users', async () => {
 })
 
 test('/authenticate should reject non-matching userIds', async () => {
-  const user = generateUser({ id : 'badMatch1' })
+  const user = generateUser({ id: 'badMatch1' })
 
   await request
     .post('/authenticate')
@@ -137,11 +136,4 @@ test('/authenticate should reject non-matching userIds', async () => {
     .set('Accept', 'application/json')
     .set('Authorization', 'Bearer ' + generateToken('badMatch2'))
     .expect(400, 'You can only self-register')
-})
-
-test('/sendEmail should dispatch email to provided email address', async () => {
-  await request
-    .post(`/sendEmail`, {})
-    .set('Authorization', 'Bearer ' + generateToken())
-    .expect(501)
 })
