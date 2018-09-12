@@ -5,14 +5,29 @@
  */
 
 import Router from 'koa-router'
+import { queries } from '../db'
 
 const remove = Router()
 
-function removeUser(ctx, next) {
-  ctx.status = 501
-  ctx.throw(501, 'Not implemented')
+async function removeUser(ctx) {
+  const { userId } = ctx.request.body
+
+  // No userId provided
+  ctx.assert(ctx.request.body.userId, 400, 'No userId provided')
+
+  // Invalid userId provided
+  const record = await queries.selectUserById(userId)
+  if (!record)
+    ctx.throw(400, 'Invalid userId')
+
+  try {
+    await queries.deleteUser(userId)
+    ctx.body = ctx.request.body
+  } catch (e) {
+    ctx.throw(400, e.message)
+  }
 }
 
-remove.all('/', removeUser)
+remove.post('/', removeUser)
 
 export default remove

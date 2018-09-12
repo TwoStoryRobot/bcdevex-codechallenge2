@@ -37,8 +37,8 @@ async function updateUser(user) {
   )
 }
 
-async function deleteUser(id) {
-  await db.any('DELETE FROM public.user WHERE "userId" = $/id/', { id })
+async function deleteUser(userId) {
+  await db.any('DELETE FROM public.user WHERE "userId" = $/userId/', { userId })
 }
 
 export const queries = {
