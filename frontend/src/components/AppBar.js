@@ -13,6 +13,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import EditIcon from 'mdi-react/EditIcon'
 import SignOutIcon from 'mdi-react/LogoutIcon'
 import Avatar from 'react-avatar'
+import { Fade } from '@material-ui/core';
 
 const Grow = styled.div`
   flex-grow: 1;
@@ -88,7 +89,9 @@ export default class AppBar extends Component {
             <Grow />
             <div>
               <IconButton onClick={this.handleMenuOpen} data-testid="avatar-button">
-                <Avatar round size="40" src={avatar} name={name} />
+                <Fade in={!isMenuOpen}>
+                  <Avatar round size="40" src={avatar} name={name} open={isMenuOpen} />
+                </Fade>
               </IconButton>
             </div>
           </Toolbar>
