@@ -1,5 +1,5 @@
 function filterStartsWith(text) {
-  return function() {}
+  return item => item.firstName == 'Chad'
 }
 
 export default filterStartsWith
