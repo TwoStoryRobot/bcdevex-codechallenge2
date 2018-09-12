@@ -6,6 +6,8 @@ import supertest from 'supertest'
 const server = app.listen()
 const request = supertest.agent(server)
 
+jest.mock('moment', () => () => ({ format: () => '2018-09-12T14:35:38-07:00' }))
+
 beforeEach(async () => {
   // Start test with a clean db state
   await db.none('TRUNCATE public.user')
