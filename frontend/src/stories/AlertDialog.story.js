@@ -8,7 +8,7 @@ import docgen from '@twostoryrobot/storybook-addon-docgen'
 import { create } from 'reworm'
 import Button from '@material-ui/core/Button'
 
-import AlertDialog from '../AlertDialog'
+import AlertDialog from '../components/AlertDialog'
 
 const actionConfirm = action('Ok Clicked')
 const actionCancel = action('Cancel Clicked')
@@ -17,7 +17,7 @@ storiesOf('AlertDialog', module)
   .addDecorator(host())
   .addDecorator(withKnobs)
   .addDecorator(docgen(AlertDialog))
-  .add('default - open', () => {
+  .add('Default', () => {
     return (
       <AlertDialog
         open={true}
@@ -26,7 +26,7 @@ storiesOf('AlertDialog', module)
       />
     )
   })
-  .add('send email example', () => {
+  .add('Example - Send email', () => {
     return (
       <AlertDialog
         open={true}
@@ -37,7 +37,7 @@ storiesOf('AlertDialog', module)
       </AlertDialog>
     )
   })
-  .add('confirm delete example', () => {
+  .add('Example - Confirm delete', () => {
     return (
       <AlertDialog
         open={true}
@@ -48,7 +48,7 @@ storiesOf('AlertDialog', module)
       </AlertDialog>
     )
   })
-  .add('with knobs', () => {
+  .add('With knobs', () => {
     // simple story state with reworm
     const { get, set } = create({ open: false })
 
