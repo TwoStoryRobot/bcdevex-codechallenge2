@@ -4,7 +4,6 @@ import Toolbar from '@material-ui/core/Toolbar'
 import MAppBar from '@material-ui/core/AppBar'
 import Typography from '@material-ui/core/Typography'
 import IconButton  from '@material-ui/core/IconButton'
-import Avatar  from '@material-ui/core/Avatar'
 import Menu from '@material-ui/core/Menu'
 import ListItemAvatar from '@material-ui/core/ListItemAvatar'
 import ListItem from '@material-ui/core/ListItem'
@@ -13,6 +12,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import EditIcon from '@material-ui/icons/Edit'
 import ExitToApp from '@material-ui/icons/ExitToApp'
+import Avatar from 'react-avatar'
 
 const Grow = styled.div`
   flex-grow: 1;
@@ -59,7 +59,7 @@ export default class AppBar extends Component {
       >
         <MenuHeader divider>
           <ListItemAvatar>
-            <Avatar src={avatar} />
+            <Avatar round size="40" src={avatar} name={name} />
           </ListItemAvatar>
           <ListItemText primary={name} />
         </MenuHeader>
@@ -88,7 +88,7 @@ export default class AppBar extends Component {
             <Grow />
             <div>
               <IconButton onClick={this.handleMenuOpen} data-testid="avatar-button">
-                <Avatar src={avatar} />
+                <Avatar round size="40" src={avatar} name={name} />
               </IconButton>
             </div>
           </Toolbar>
