@@ -4,14 +4,26 @@
  */
 
 import Koa from 'koa'
+import jwt from 'koa-jwt'
 import cors from '@koa/cors'
 import bodyParser from 'koa-bodyparser'
+import { koaJwtSecret } from 'jwks-rsa'
 import root from './router/root'
 
-const app = new Koa()
+// JWT config
+const cache = true
+const jwksUri = 'https://www.googleapis.com/oauth2/v3/certs'
+const secret = koaJwtSecret({ jwksUri, cache })
+const audience = process.env.CLIENT_ID
+const issuer = 'accounts.google.com'
 
-app.use(cors()) // TODO: Specify origin
+// CORS config
+const origin = process.env.CORS_ORIGIN
+
+const app = new Koa()
 app.use(bodyParser())
+app.use(cors({ origin })) 
+app.use(jwt({ secret, audience, issuer }))
 app.use(root.routes())
 app.use(root.allowedMethods())
 

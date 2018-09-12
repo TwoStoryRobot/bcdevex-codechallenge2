@@ -13,6 +13,6 @@ async function authenticateUser(ctx) {
   ctx.body = ctx.request.body
 }
 
-authenticate.all('/', authenticateUser)
+authenticate.post('/', authenticateUser)
 
 export default authenticate
