@@ -128,6 +128,17 @@ test('/authenticate should return preexisting users', async () => {
     .expect(200, user1)
 })
 
+test('/authenticate should make the first user the admin', async () => {
+  const user = generateUser()
+
+  await request
+    .post('/authenticate')
+    .send(user)
+    .set('Accept', 'application/json')
+    .set('Authorization', 'Bearer ' + generateToken())
+    .expect(200, user1)
+})
+
 test('/authenticate should reject non-matching userIds', async () => {
   const user = generateUser({ id : 'badMatch1' })
 

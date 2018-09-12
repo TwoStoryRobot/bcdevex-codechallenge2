@@ -19,7 +19,7 @@ async function selectUserById(userId) {
 }
 
 async function countAdmins() {
-  return await db.any('SELECT COUNT(*) FROM public.user WHERE "isAdmin" = TRUE')
+  return await db.one('SELECT COUNT(*) FROM public.user WHERE "isAdmin" = TRUE', r => r.count)
 }
 
 async function insertUser(user) {
