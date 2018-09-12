@@ -182,11 +182,14 @@ class UserTable extends React.Component {
                   {sortField === 'emailAddress' ? sortIcon : <EmptyIcon />}
                 </Button>
               </StyledTableCell>
+              <StyledTableCell>
+                <Typography variant="button">Registration</Typography>
+              </StyledTableCell>
               {isAdmin && <StyledTableCell />}
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map(user => (
+            {this.getSortedUsers().map(user => (
               <TableRow key={user.userId} className={classes.row}>
                 <StyledTableCell component="th" scope="row">
                   <Avatar
