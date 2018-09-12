@@ -8,19 +8,20 @@
     "build": "babel src -d build",
     "watch": "babel -w src -d build",
     "test": "jest",
-    "test-router":
-      "POSTGRES_PORT=5544 POSTGRES_PASSWORD=postgrestest POSTGRES_DB=test jest router",
-    "test-integration":
-      "POSTGRES_PORT=5544 POSTGRES_PASSWORD=postgrestest POSTGRES_DB=test jest integration"
+    "test-router": "POSTGRES_PORT=5544 POSTGRES_PASSWORD=postgrestest POSTGRES_DB=test jest router",
+    "test-integration": "POSTGRES_PORT=5544 POSTGRES_PASSWORD=postgrestest POSTGRES_DB=test jest integration"
   },
   "repository": {
     "type": "git",
-    "url":
-      "git+https://github.com/BCDevExchange-CodeChallenge/CodeChallenge2-repo3.git"
+    "url": "git+https://github.com/BCDevExchange-CodeChallenge/CodeChallenge2-repo3.git"
   },
   "dependencies": {
+    "@koa/cors": "^2.2.2",
+    "jsonwebtoken": "^8.3.0",
+    "jwks-rsa": "^1.3.0",
     "koa": "^2.5.2",
     "koa-bodyparser": "^4.2.1",
+    "koa-jwt": "^3.5.1",
     "koa-router": "^7.4.0",
     "pg-promise": "^8.4.6"
   },
