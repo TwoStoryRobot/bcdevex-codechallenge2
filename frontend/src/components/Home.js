@@ -9,17 +9,12 @@ import { authenticate } from '../requests'
 
 class Home extends Component {
 
-  constructor() {
-    super()
-    this.handleLogin = this.handleLogin.bind(this)
-  }
-
-  handleLogin(profile) {
+  handleLogin = profile => {
     authenticate(profile)
     .then(() => this.props.history.push('/private'))
   }
 
-  handleError(err) {
+  handleError = err => {
     console.error(err.message)
   }
 

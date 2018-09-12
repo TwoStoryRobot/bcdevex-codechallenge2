@@ -10,22 +10,18 @@ const UserConsumer = UserContext.Consumer
 
 class UserProvider extends Component {
 
-  constructor() {
-    super()
-    const isLoggedIn = localStorage.getItem('token')
-    this.login = this.login.bind(this)
-    this.logout = this.logout.bind(this)
-    this.state = { isLoggedIn }
+  state = { 
+    isLoggedIn : localStorage.getItem('token')
   }
 
-  login(auth) {
+  login = auth => {
     const isLoggedIn = true
     const token = auth.getAuthResponse().id_token
     localStorage.setItem('token', token)
     this.setState({ isLoggedIn })
   }
 
-  logout() {
+  logout = () => {
     const isLoggedIn = false
     this.setState({ isLoggedIn })
   }

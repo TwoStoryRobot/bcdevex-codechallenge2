@@ -10,12 +10,6 @@ import { UserConsumer } from './UserContext'
 
 class LoginButton extends Component {
 
-  constructor() {
-    super()
-    this.handleLogin = this.handleLogin.bind(this)
-    this.handleFailure = this.handleFailure.bind(this)
-  }
-
   mapProfile(googleUser) {
     const profile = googleUser.getBasicProfile()
     return {
@@ -27,13 +21,13 @@ class LoginButton extends Component {
     }
   }
 
-  handleLogin(addLoginToContext, googleUser) {
+  handleLogin = (addLoginToContext, googleUser) => {
     const profile = this.mapProfile(googleUser)
     addLoginToContext(googleUser)
     this.props.onLogin(profile)
   }
 
-  handleFailure(err) {
+  handleFailure = err => {
     const error = new Error(err.error)
     this.props.onFailure(error)
   }
