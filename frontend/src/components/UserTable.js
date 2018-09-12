@@ -31,6 +31,9 @@ const StyledButtonsCell = withStyles(theme => ({
 ))
 
 const StyledTableCell = withStyles(theme => ({
+  root: {
+    padding: '4px 16px 4px 16px'
+  },
   head: {
     fontSize: '1.25rem',
     color: theme.palette.text.hint,
