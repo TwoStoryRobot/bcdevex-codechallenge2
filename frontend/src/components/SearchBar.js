@@ -10,60 +10,43 @@ import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from 'mdi-react/SearchIcon'
 
 const PaddedPaper = styled(Paper)`
-  padding: 0 32px;
+  padding: 0 8px;
 `
 
+/**
+ * A searchbar that works like an input
+ *
+ * This is a controlled component that is expecting you to pass in a value
+ * and an onChange handler
+ */
 class SearchBar extends React.Component {
-  state = {
-    value: this.props.value
-  }
-
-  handleChange = e => {
-    const value = e.target.value
-    this.setState({ value })
-    this.props.onChange(value)
-  }
-
-  handleSubmit = () => {
-    this.props.onSubmit(this.state.value)
-  }
-
   render() {
     const searchAdornment = (
-      <InputAdornment position="end">
-        <IconButton>
-          <SearchIcon />
-        </IconButton>
+      <InputAdornment position="start">
+        <SearchIcon />
       </InputAdornment>
     )
     return (
       <PaddedPaper>
-        <form data-testid="search-form" onSubmit={this.handleSubmit}>
-          <FormControl>
-            <Input
-              disableUnderline
-              placeholder="Filter"
-              endAdornment={searchAdornment}
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
-          </FormControl>
-        </form>
+        <FormControl>
+          <Input
+            disableUnderline
+            placeholder="Filter"
+            startAdornment={searchAdornment}
+            value={this.props.value}
+            onChange={this.props.onChange}
+          />
+        </FormControl>
       </PaddedPaper>
     )
   }
 }
 
 SearchBar.propTypes = {
-  value: PropTypes.string,
-  onSubmit: PropTypes.func,
-  onChange: PropTypes.func
-}
-
-SearchBar.defaultProps = {
-  value: '',
-  onSubmit: () => {},
-  onChange: () => {}
+  /** value for the search input */
+  value: PropTypes.string.isRequired,
+  /** called whenever user changes the text, like an other input */
+  onChange: PropTypes.func.isRequired
 }
 
 export default SearchBar

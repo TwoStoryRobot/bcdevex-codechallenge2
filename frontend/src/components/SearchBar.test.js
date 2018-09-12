@@ -8,13 +8,15 @@ afterEach(cleanup)
 
 describe('SearchBar', () => {
   it('should render with required props', async () => {
-    const { container } = render(<SearchBar />)
+    const { container } = render(<SearchBar value="" onChange={jest.fn()} />)
 
     expect(container.firstChild).toMatchSnapshot()
   })
 
   it('should render with initial value', async () => {
-    const { getByPlaceholderText } = render(<SearchBar value="initial" />)
+    const { getByPlaceholderText } = render(
+      <SearchBar value="initial" onChange={jest.fn()} />
+    )
 
     const input = getByPlaceholderText('Filter')
 
@@ -23,19 +25,13 @@ describe('SearchBar', () => {
 
   it('should callback when the user changes the search term', async () => {
     const onChange = jest.fn()
-    const onSubmit = jest.fn()
-    const { getByPlaceholderText, getByTestId } = render(
-      <SearchBar onChange={onChange} onSubmit={onSubmit} />
+    const { getByPlaceholderText } = render(
+      <SearchBar value="initial" onChange={onChange} />
     )
 
     const input = getByPlaceholderText('Filter')
     fireEvent.change(input, { target: { value: 'term' } })
 
-    expect(onChange).toHaveBeenCalledWith('term')
-
-    const form = getByTestId('search-form')
-    fireEvent.submit(form)
-
-    expect(onSubmit).toHaveBeenCalledWith('term')
+    expect(onChange).toHaveBeenCalled()
   })
 })
