@@ -1,3 +1,25 @@
+/**
+ * A startsWith filter maker
+ *
+ * Provide a search term, and get back a function for use in array.filter().
+ * e.g. `Ch` will match Chad Fawcett and Chris Foster, `M` will match
+ * Kaileen McCulloch and Monika Piechatzek.
+ *
+ * You can limit filtering to a specific field (first, last, or email)
+ * e.g. `last:M` will ony match on first name.
+ *
+ * For convenience of the typing user, fields are specified in a shorthand
+ * `first`, `last`, `email`
+ *
+ * This function only supports user objects in this application with properties
+ * `firstName`, `lastName`, `emailAddress`
+ *
+ * if no term is provided it returns a truthy match everything function
+ * including field searchs. e.g. `` (empty string) will match all objects.
+ * `first:` will also match all objects
+ *
+ * This only matches the first term provided, everything else is ignored.
+ */
 function filterStartsWith(text) {
   // no text provided is a match everything function, or always return true
   if (text === '' || !text) {
