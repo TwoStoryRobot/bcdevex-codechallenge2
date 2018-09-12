@@ -25,12 +25,19 @@ const defaultUsers = [
     imageUrl: 'https://randomuser.me/api/portraits/women/21.jpg',
     isAdmin: false
   },
-
   {
     userId: 'testUser345',
     firstName: 'James',
     lastName: 'Bond',
     emailAddress: 'james.bond@gmail.com',
+    imageUrl: 'https://twostoryrobot.com/not-a-valid-url',
+    isAdmin: false
+  },
+  {
+    userId: 'testUser678',
+    firstName: 'Mary',
+    lastName: 'Lou',
+    emailAddress: 'mary.lou@gmail.com',
     imageUrl: 'https://twostoryrobot.com/not-a-valid-url',
     isAdmin: false
   }
