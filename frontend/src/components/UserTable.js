@@ -114,7 +114,7 @@ const UserTable = ({
               2018 Sept 04
             </StyledTableCell>
             <StyledTableCell>
-              {user.admin && <Chip label="Admin" className={classes.admin} />}
+              {user.isAdmin && <Chip label="Admin" className={classes.admin} />}
             </StyledTableCell>
             <StyledTableCell>
               <StyledButtonsCell>
@@ -166,7 +166,7 @@ UserTable.propTypes = {
       /** url of user's Avatar */
       imageUrl: PropTypes.string,
       /** admin flag */
-      admin: PropTypes.bool
+      isAdmin: PropTypes.bool
     })
   ).isRequired,
   isLoading: PropTypes.bool,
