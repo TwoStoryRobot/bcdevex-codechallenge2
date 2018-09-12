@@ -76,11 +76,47 @@ const styles = theme => ({
 class UserTable extends React.Component {
   state = {
     sortField: 'lastName',
-    sortDirection: 'ascending'
+    sortDirection: 'asc'
   }
 
   toggleSort = sortField => {
-    this.setState({ sortField })
+    if (this.state.sortField === sortField)
+      this.setState({
+        sortDirection: this.state.sortDirection === 'asc' ? 'desc' : 'asc'
+      })
+    else this.setState({ sortField, sortDirection: 'asc' })
+  }
+
+  getSortedUsers() {
+    //clone a new array for users
+    let users = [...this.props.users]
+    if (this.state.sortDirection === 'asc')
+      users.sort(this.genSortAscendingByField(this.state.sortField))
+    else users.sort(this.genSortDescendingByField(this.state.sortField))
+
+    return users
+  }
+
+  genSortAscendingByField(field) {
+    return (a, b) => {
+      const valA = a[field].toUpperCase()
+      const valB = b[field].toUpperCase()
+      let order = 0
+      if (valA < valB) order = -1
+      if (valB > valA) order = 1
+      return order
+    }
+  }
+
+  genSortDescendingByField(field) {
+    return (a, b) => {
+      const valA = a[field].toUpperCase()
+      const valB = b[field].toUpperCase()
+      let order = 0
+      if (valA > valB) order = -1
+      if (valB < valA) order = 1
+      return order
+    }
   }
 
   render() {
@@ -96,7 +132,7 @@ class UserTable extends React.Component {
 
     const { sortField } = this.state
     const sortIcon =
-      this.state.sortDirection === 'ascending' ? (
+      this.state.sortDirection === 'asc' ? (
         <SortAscendingIcon />
       ) : (
         <SortDescendingIcon />
@@ -125,7 +161,7 @@ class UserTable extends React.Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map(user => (
+            {this.getSortedUsers().map(user => (
               <TableRow key={user.userId} className={classes.row}>
                 <StyledTableCell component="th" scope="row">
                   <Avatar
