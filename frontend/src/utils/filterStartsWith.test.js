@@ -62,4 +62,9 @@ describe('filterStartsWith', () => {
     expect(users.filter(filterStartsWith('M'))).not.toContain(jonathan)
     expect(users.filter(filterStartsWith('M'))).not.toContain(chad)
   })
+
+  it('should make case-insensitive matches', () => {
+    expect(users.filter(filterStartsWith('ch'))).toContain(chad)
+    expect(users.filter(filterStartsWith('ch'))).toContain(chris)
+  })
 })
