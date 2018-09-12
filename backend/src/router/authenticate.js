@@ -15,7 +15,7 @@ async function authenticateUser(ctx) {
   if (bodyUserId != stateUserId) ctx.throw(400, 'You can only self-register')
 
   const adminCount = await queries.countAdmins()
-  if (adminCount == 0) ctx.request.body.isAdmin = true
+  if (adminCount.count == 0) ctx.request.body.isAdmin = true
   else ctx.request.body.isAdmin = false
 
   const record = await queries.selectUserById(stateUserId)
