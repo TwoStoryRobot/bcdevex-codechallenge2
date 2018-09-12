@@ -1,5 +1,5 @@
-/* User List Page
- * Page to display list of active users, search field, and app bar
+/* Registered User Page
+ * Page to display list of registered users, search field, and app bar
  */
 
 import React from 'react'
@@ -13,7 +13,7 @@ const Container = styled.div`
   padding-top: 64px;
 `
 
-class UserListPage extends React.Component {
+class RegisteredUsers extends React.Component {
   state = {
     currentUser: {},
     users: [],
@@ -66,8 +66,8 @@ class UserListPage extends React.Component {
   }
 }
 
-UserListPage.propTypes = {
+RegisteredUsers.propTypes = {
   userId: PropTypes.string
 }
 
-export default UserListPage
+export default RegisteredUsers
