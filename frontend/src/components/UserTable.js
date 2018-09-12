@@ -72,7 +72,7 @@ const UserTable = ({ users, classes, isLoading }) => (
             <StyledTableCell component="th" scope="row">
               <Avatar
                 key={user.userId}
-                src={user.imageUrl}
+                src={user.imageURL}
                 name={`${user.firstName} ${user.lastName}`}
                 size={34}
                 round={true}
@@ -121,7 +121,7 @@ UserTable.propTypes = {
       /** email address of user (used to send email) */
       emailAddress: PropTypes.emailAddress,
       /** url of user's Avatar */
-      imageUrl: PropTypes.string
+      imageURL: PropTypes.string
     })
   ).isRequired,
   isLoading: PropTypes.bool
