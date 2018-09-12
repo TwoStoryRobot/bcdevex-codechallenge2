@@ -41,7 +41,7 @@ class LoginButton extends Component {
   render() {
     return (
       <UserConsumer>
-        {({ login, logout }) => (
+        {({ login }) => (
           <GoogleLogin
             buttonText="Login"
             clientId={process.env.REACT_APP_CLIENT_ID}

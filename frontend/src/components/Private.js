@@ -4,9 +4,14 @@
  */
 
 import React from 'react'
+import { UserConsumer } from './UserContext'
 
 const Private = () => (
-  <div>This is a hidden route</div>
+  <UserConsumer>
+    {({ logout }) => (
+      <button onClick={logout}>Logout</button>
+    )}
+  </UserConsumer>
 )
 
 export default Private

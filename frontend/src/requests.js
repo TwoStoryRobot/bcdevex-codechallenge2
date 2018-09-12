@@ -5,7 +5,7 @@
 
 function getDefaultHeaders() {
   return {
-    'Authorization': `Bearer: ${localStorage.getItem('token')}`,
+    'Authorization': `Bearer ${localStorage.getItem('token')}`,
     'Content-Type': 'application/json; charset=utf-8'
   }
 }
