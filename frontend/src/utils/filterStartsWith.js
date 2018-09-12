@@ -1,5 +1,11 @@
 function filterStartsWith(text) {
-  return item => item.firstName == 'Chad'
+  if (text === '' || !text) {
+    return () => true
+  }
+
+  return item => {
+    return item.firstName == 'Chad'
+  }
 }
 
 export default filterStartsWith
