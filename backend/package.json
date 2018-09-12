@@ -7,7 +7,7 @@
     "start": "node build/index",
     "build": "babel src -d build",
     "watch": "babel -w src -d build",
-    "test": "jest",
+    "test": "jest --runInBand",
     "test-router": "POSTGRES_PORT=5544 POSTGRES_PASSWORD=postgrestest POSTGRES_DB=test jest router",
     "test-integration": "POSTGRES_PORT=5544 POSTGRES_PASSWORD=postgrestest POSTGRES_DB=test jest integration",
     "eslint": "eslint '**/*.js'",
