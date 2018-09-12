@@ -23,7 +23,6 @@ const MenuHeader = styled(ListItem)`
   &:focus {
     outline: none
   }
-  color: ${({ theme }) => theme.primary};
 `
 
 export default class AppBar extends Component {
