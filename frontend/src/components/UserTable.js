@@ -114,7 +114,13 @@ const UserTable = ({
               2018 Sept 04
             </StyledTableCell>
             <StyledTableCell>
-              {user.isAdmin && <Chip label="Admin" className={classes.admin} />}
+              {user.isAdmin && (
+                <Chip
+                  data-testid="admin"
+                  label="Admin"
+                  className={classes.admin}
+                />
+              )}
             </StyledTableCell>
             <StyledTableCell>
               <StyledButtonsCell>

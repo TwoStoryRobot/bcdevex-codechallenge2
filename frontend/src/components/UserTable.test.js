@@ -75,6 +75,36 @@ describe('UserTable', () => {
     expect(container.firstChild).toMatchSnapshot()
   })
 
+  it('should display admin chip if user is admin', async () => {
+    const { getByTestId, container } = render(
+      <UserTable
+        users={[defaultUsers[0]]}
+        isLoading={false}
+        handleEditClick={() => {}}
+        handleDeleteClick={() => {}}
+        handleSendEmail={() => {}}
+      />
+    )
+    const adminChip = getByTestId('admin')
+
+    expect(adminChip).toBeDefined()
+  })
+
+  it('should not display admin chip if user is not admin', async () => {
+    const { getByTestId, container } = render(
+      <UserTable
+        users={[defaultUsers[1]]}
+        isLoading={false}
+        handleEditClick={() => {}}
+        handleDeleteClick={() => {}}
+        handleSendEmail={() => {}}
+      />
+    )
+    expect(() => {
+      const adminChip = getByTestId('admin')
+    }).toThrow()
+  })
+
   it('should fire handleEditClick when the pencil icon is clicked', async () => {
     const handleEditClick = jest.fn()
     const handleDeleteClick = jest.fn()
