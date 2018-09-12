@@ -1,4 +1,3 @@
-
 /* Fetch router
  * Fetch all user profiles
  */
