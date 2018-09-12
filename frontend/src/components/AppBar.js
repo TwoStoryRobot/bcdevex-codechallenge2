@@ -10,10 +10,10 @@ import ListItem from '@material-ui/core/ListItem'
 import styled from 'styled-components'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
+import Fade from '@material-ui/core/Fade'
 import EditIcon from 'mdi-react/EditIcon'
 import SignOutIcon from 'mdi-react/LogoutIcon'
 import Avatar from 'react-avatar'
-import { Fade } from '@material-ui/core';
 
 const Grow = styled.div`
   flex-grow: 1;
