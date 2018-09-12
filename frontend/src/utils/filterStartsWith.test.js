@@ -55,4 +55,11 @@ describe('filterStartsWith', () => {
     expect(users.filter(filterStartsWith('Ch'))).not.toContain(caleb)
     expect(users.filter(filterStartsWith('Jo'))).toContain(jonathan)
   })
+
+  it('should match any any field (firstName, lastName, emailAddress)', () => {
+    expect(users.filter(filterStartsWith('M'))).toContain(monika)
+    expect(users.filter(filterStartsWith('M'))).toContain(kaileen)
+    expect(users.filter(filterStartsWith('M'))).not.toContain(jonathan)
+    expect(users.filter(filterStartsWith('M'))).not.toContain(chad)
+  })
 })

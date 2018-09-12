@@ -1,11 +1,16 @@
 function filterStartsWith(text) {
+  // no text provided is a match everything function, or always return true
   if (text === '' || !text) {
     return () => true
   }
 
-  const pattern = new RegExp('^' + text)
+  const pattern = new RegExp('^' + text, 'i')
   return item => {
-    return item.firstName.match(pattern)
+    const found =
+      item.firstName.match(pattern) ||
+      item.lastName.match(pattern) ||
+      item.emailAddress.match(pattern)
+    return found
   }
 }
 
