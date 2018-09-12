@@ -23,7 +23,7 @@ class LoginButton extends Component {
       firstName : profile.getGivenName(),
       lastName : profile.getFamilyName(),
       emailAddress : profile.getEmail(),
-      imageUrl : profile.getImageUrl()
+      imageURL : profile.getImageUrl()
     }
   }
 
