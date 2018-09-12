@@ -1,4 +1,3 @@
-
 /* Update router
  * Update a user profile
  */
@@ -16,8 +15,7 @@ async function updateUser(ctx) {
 
   // Invalid userId provided
   const record = await queries.selectUserById(user.userId)
-  if (!record)
-    ctx.throw(400, 'Invalid userId')
+  if (!record) ctx.throw(400, 'Invalid userId')
 
   try {
     await queries.updateUser(user)

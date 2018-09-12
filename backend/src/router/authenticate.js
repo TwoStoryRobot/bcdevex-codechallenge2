@@ -1,4 +1,3 @@
-
 /* Authenticate router
  * Authenticate a user with a provider
  */

@@ -25,7 +25,6 @@ test('selectAllUsers should gets all users', async () => {
   expect(users).toHaveLength(2)
 })
 
-
 test('selectUserById should gets a user by ID', async () => {
   const user = await queries.selectUserById('1')
 

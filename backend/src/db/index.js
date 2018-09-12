@@ -15,7 +15,10 @@ async function selectAllUsers() {
 }
 
 async function selectUserById(userId) {
-  return await db.oneOrNone('SELECT * FROM public.user WHERE "userId" = $/userId/', { userId })
+  return await db.oneOrNone(
+    'SELECT * FROM public.user WHERE "userId" = $/userId/',
+    { userId }
+  )
 }
 
 async function countAdmins() {
