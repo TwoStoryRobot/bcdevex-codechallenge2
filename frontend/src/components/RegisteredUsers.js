@@ -7,15 +7,23 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { UserConsumer } from './UserContext'
 import AppBar from './AppBar'
+import UserTable from './UserTable'
 import { getDefaultHeaders } from '../requests.js'
 
 const Container = styled.div`
   padding-top: 64px;
 `
 
+const Content = styled.div`
+  width: 900px;
+  max-width: calc(100vw - 100px);
+  margin: auto;
+`
+
 class RegisteredUsers extends React.Component {
   state = {
-    currentUser: {},
+    isLoadingUsers: false,
+    currentUser: undefined,
     users: [],
     controller: new window.AbortController()
   }
@@ -27,6 +35,7 @@ class RegisteredUsers extends React.Component {
     const headers = getDefaultHeaders()
 
     //  Fetch all users
+    this.setState({ isLoadingUsers: true })
     fetch(process.env.REACT_APP_API_URL + 'fetch', {
       method,
       headers,
@@ -37,7 +46,7 @@ class RegisteredUsers extends React.Component {
         const currentUser = users.find(
           user => user.userId === this.props.userId
         )
-        this.setState({ users, currentUser })
+        this.setState({ users, currentUser, isLoadingUsers: false })
       })
   }
 
@@ -46,9 +55,10 @@ class RegisteredUsers extends React.Component {
   }
 
   render() {
-    const { currentUser } = this.state
-    const avatar = currentUser.imageURL
-    const name = `${currentUser.firstName} ${currentUser.lastName}`
+    const { currentUser, users, isLoadingUsers } = this.state
+    const avatar = currentUser && currentUser.imageURL
+    const name =
+      currentUser && `${currentUser.firstName} ${currentUser.lastName}`
 
     return (
       <UserConsumer>
@@ -59,6 +69,9 @@ class RegisteredUsers extends React.Component {
               {...{ avatar, name }}
               onSignOut={logout}
             />
+            <Content>
+              <UserTable users={users} isLoading={isLoadingUsers} />
+            </Content>
           </Container>
         )}
       </UserConsumer>
