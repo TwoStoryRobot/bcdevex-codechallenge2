@@ -10,8 +10,8 @@ import ListItem from '@material-ui/core/ListItem'
 import styled from 'styled-components'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import EditIcon from '@material-ui/icons/Edit'
-import ExitToApp from '@material-ui/icons/ExitToApp'
+import EditIcon from 'mdi-react/EditIcon'
+import SignOutIcon from 'mdi-react/LogoutIcon'
 import Avatar from 'react-avatar'
 
 const Grow = styled.div`
@@ -71,7 +71,7 @@ export default class AppBar extends Component {
         </ListItem>
         <ListItem button onClick={this.handleMenuItemClick(onSignOut)} data-testid="signout">
           <ListItemIcon>
-            <ExitToApp />
+            <SignOutIcon />
           </ListItemIcon>
           <ListItemText inset primary="Sign out" />
         </ListItem>
