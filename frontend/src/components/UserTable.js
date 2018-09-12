@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Avatar from 'react-avatar'
+import styled from 'styled-components'
 import { withStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table'
@@ -8,8 +9,10 @@ import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
+import Typography from '@material-ui/core/Typography'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import IconButton from '@material-ui/core/IconButton'
+import Button from '@material-ui/core/Button'
 import UserSearchIcon from 'mdi-react/UserSearchIcon'
 import DeleteIcon from 'mdi-react/DeleteIcon'
 import PencilIcon from 'mdi-react/PencilIcon'
@@ -69,6 +72,19 @@ const styles = theme => ({
     backgroundColor: '#f0c243'
   }
 })
+
+const AscIcon = styled(SortAscendingIcon)`
+  margin-left: 8px;
+`
+
+const DescIcon = styled(SortDescendingIcon)`
+  margin-left: 8px;
+`
+
+const EmptyIcon = styled.span`
+  width: 32px;
+  height: 24px;
+`
 
 /**
  *  A table to list all registered users
@@ -132,11 +148,7 @@ class UserTable extends React.Component {
 
     const { sortField } = this.state
     const sortIcon =
-      this.state.sortDirection === 'asc' ? (
-        <SortAscendingIcon />
-      ) : (
-        <SortDescendingIcon />
-      )
+      this.state.sortDirection === 'asc' ? <AscIcon /> : <DescIcon />
 
     return (
       <Paper className={classes.root}>
@@ -144,19 +156,27 @@ class UserTable extends React.Component {
           <TableHead>
             <TableRow>
               <StyledTableCell />
-              <StyledTableCell onClick={() => this.toggleSort('firstName')}>
-                {sortField === 'firstName' && sortIcon}
-                First
+              <StyledTableCell>
+                <Button onClick={() => this.toggleSort('firstName')}>
+                  First
+                  {sortField === 'firstName' ? sortIcon : <EmptyIcon />}
+                </Button>
               </StyledTableCell>
-              <StyledTableCell onClick={() => this.toggleSort('lastName')}>
-                {sortField === 'lastName' && sortIcon}
-                Last
+              <StyledTableCell>
+                <Button onClick={() => this.toggleSort('lastName')}>
+                  Last
+                  {sortField === 'lastName' ? sortIcon : <EmptyIcon />}
+                </Button>
               </StyledTableCell>
-              <StyledTableCell onClick={() => this.toggleSort('emailAddress')}>
-                {sortField === 'emailAddress' && sortIcon}
-                Email
+              <StyledTableCell>
+                <Button onClick={() => this.toggleSort('emailAddress')}>
+                  Email
+                  {sortField === 'emailAddress' ? sortIcon : <EmptyIcon />}
+                </Button>
               </StyledTableCell>
-              <StyledTableCell>Registration</StyledTableCell>
+              <StyledTableCell>
+                <Typography variant="button">Registration</Typography>
+              </StyledTableCell>
               {isAdmin && <StyledTableCell />}
             </TableRow>
           </TableHead>
