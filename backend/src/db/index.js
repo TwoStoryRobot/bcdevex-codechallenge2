@@ -21,10 +21,14 @@ async function selectUserById(userId) {
   )
 }
 
+async function countAdmins() {
+  return await db.one('SELECT COUNT(*) FROM public.user WHERE "isAdmin" = TRUE')
+}
+
 async function insertUser(user) {
   await db.any(
     `INSERT INTO public.user
-     VALUES ($/userId/, $/firstName/, $/imageURL/, $/emailAddress/, $/lastName/)`,
+     VALUES ($/userId/, $/firstName/, $/imageURL/, $/emailAddress/, $/lastName/, $/isAdmin/)`,
     user
   )
 }
@@ -47,6 +51,7 @@ async function deleteUser(userId) {
 export const queries = {
   selectAllUsers,
   selectUserById,
+  countAdmins,
   insertUser,
   updateUser,
   deleteUser
