@@ -9,7 +9,22 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import IconButton from '@material-ui/core/IconButton'
+import Chip from '@material-ui/core/Chip'
 import UserSearchIcon from 'mdi-react/UserSearchIcon'
+import DeleteIcon from 'mdi-react/DeleteIcon'
+import PencilIcon from 'mdi-react/PencilIcon'
+import EnvelopeIcon from 'mdi-react/EnvelopeIcon'
+
+const StyledButtonsCell = withStyles(theme => ({
+  root: {
+    display: 'flex'
+  }
+}))(({ classes, children, ...rest }) => (
+  <div {...rest} className={classes.root}>
+    {children}
+  </div>
+))
 
 const StyledTableCell = withStyles(theme => ({
   head: {
@@ -48,13 +63,23 @@ const styles = theme => ({
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.background.default
     }
+  },
+  admin: {
+    backgroundColor: '#f0c243'
   }
 })
 
 /**
  *  A table to list all registered users
  */
-const UserTable = ({ users, classes, isLoading }) => (
+const UserTable = ({
+  users,
+  classes,
+  isLoading,
+  handleEditClick,
+  handleDeleteClick,
+  handleSendEmail
+}) => (
   <Paper className={classes.root}>
     <Table className={classes.table}>
       <TableHead>
@@ -64,6 +89,8 @@ const UserTable = ({ users, classes, isLoading }) => (
           <StyledTableCell>Last</StyledTableCell>
           <StyledTableCell>Email</StyledTableCell>
           <StyledTableCell>Registration</StyledTableCell>
+          <StyledTableCell />
+          <StyledTableCell />
         </TableRow>
       </TableHead>
       <TableBody>
@@ -85,6 +112,22 @@ const UserTable = ({ users, classes, isLoading }) => (
             {/* Note: We are manually overriding this individual column font size */}
             <StyledTableCell style={{ fontSize: '0.875rem' }}>
               2018 Sept 04
+            </StyledTableCell>
+            <StyledTableCell>
+              {user.admin && <Chip label="Admin" className={classes.admin} />}
+            </StyledTableCell>
+            <StyledTableCell>
+              <StyledButtonsCell>
+                <IconButton color="primary" onClick={handleEditClick}>
+                  <PencilIcon />
+                </IconButton>
+                <IconButton color="primary" onClick={handleDeleteClick}>
+                  <DeleteIcon />
+                </IconButton>
+                <IconButton color="primary" onClick={handleSendEmail}>
+                  <EnvelopeIcon />
+                </IconButton>
+              </StyledButtonsCell>
             </StyledTableCell>
           </TableRow>
         ))}
@@ -121,10 +164,15 @@ UserTable.propTypes = {
       /** email address of user (used to send email) */
       emailAddress: PropTypes.emailAddress,
       /** url of user's Avatar */
-      imageUrl: PropTypes.string
+      imageUrl: PropTypes.string,
+      /** admin flag */
+      admin: PropTypes.bool
     })
   ).isRequired,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  handleEditClick: PropTypes.func.isRequired,
+  handleDeleteClick: PropTypes.func.isRequired,
+  handleSendEmail: PropTypes.func.isRequired
 }
 
 UserTable.defaultProps = {

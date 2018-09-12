@@ -33,19 +33,41 @@ describe('UserTable', () => {
   ]
 
   it('should render with required props', async () => {
-    const { container } = render(<UserTable users={defaultUsers} />)
+    const { container } = render(
+      <UserTable
+        users={defaultUsers}
+        handleEditClick={() => {}}
+        handleDeleteClick={() => {}}
+        handleSendEmail={() => {}}
+      />
+    )
 
     expect(container.firstChild).toMatchSnapshot()
   })
 
   it('should display message when there are no registered users', async () => {
-    const { container } = render(<UserTable users={[]} />)
+    const { container } = render(
+      <UserTable
+        users={[]}
+        handleEditClick={() => {}}
+        handleDeleteClick={() => {}}
+        handleSendEmail={() => {}}
+      />
+    )
 
     expect(container.firstChild).toMatchSnapshot()
   })
 
   it('should display loading spinner when isLoaded is true', async () => {
-    const { container } = render(<UserTable users={[]} isLoading={true} />)
+    const { container } = render(
+      <UserTable
+        users={[]}
+        isLoading={true}
+        handleEditClick={() => {}}
+        handleDeleteClick={() => {}}
+        handleSendEmail={() => {}}
+      />
+    )
 
     expect(container.firstChild).toMatchSnapshot()
   })
