@@ -14,6 +14,8 @@ import UserSearchIcon from 'mdi-react/UserSearchIcon'
 import DeleteIcon from 'mdi-react/DeleteIcon'
 import PencilIcon from 'mdi-react/PencilIcon'
 import EnvelopeIcon from 'mdi-react/EnvelopeIcon'
+import SortDescendingIcon from 'mdi-react/SortAscendingIcon'
+import SortAscendingIcon from 'mdi-react/SortDescendingIcon'
 
 const StyledButtonsCell = withStyles(theme => ({
   root: {
@@ -71,90 +73,122 @@ const styles = theme => ({
 /**
  *  A table to list all registered users
  */
-const UserTable = ({
-  users,
-  classes,
-  isLoading,
-  isAdmin,
-  handleEditClick,
-  handleDeleteClick,
-  handleSendEmail
-}) => (
-  <Paper className={classes.root}>
-    <Table className={classes.table}>
-      <TableHead>
-        <TableRow>
-          <StyledTableCell />
-          <StyledTableCell>First</StyledTableCell>
-          <StyledTableCell>Last</StyledTableCell>
-          <StyledTableCell>Email</StyledTableCell>
-          <StyledTableCell>Registration</StyledTableCell>
-          {isAdmin && <StyledTableCell />}
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {users.map(user => (
-          <TableRow key={user.userId} className={classes.row}>
-            <StyledTableCell component="th" scope="row">
-              <Avatar
-                key={user.userId}
-                src={user.imageUrl}
-                name={`${user.firstName} ${user.lastName}`}
-                size={34}
-                round={true}
-              />
-            </StyledTableCell>
-            <StyledTableCell>{user.firstName}</StyledTableCell>
-            <StyledTableCell>{user.lastName}</StyledTableCell>
-            <StyledTableCell>{user.emailAddress}</StyledTableCell>
-            {/* TODO This needs to come from the user prop */}
-            {/* Note: We are manually overriding this individual column font size */}
-            <StyledTableCell style={{ fontSize: '0.875rem' }}>
-              2018 Sept 04
-            </StyledTableCell>
-            {isAdmin && (
-              <StyledTableCell>
-                <StyledButtonsCell>
-                  <IconButton
-                    color="primary"
-                    onClick={handleEditClick}
-                    data-testid="edit">
-                    <PencilIcon />
-                  </IconButton>
-                  <IconButton
-                    color="primary"
-                    onClick={handleDeleteClick}
-                    data-testid="delete">
-                    <DeleteIcon />
-                  </IconButton>
-                  <IconButton
-                    color="primary"
-                    onClick={handleSendEmail}
-                    data-testid="email">
-                    <EnvelopeIcon />
-                  </IconButton>
-                </StyledButtonsCell>
+class UserTable extends React.Component {
+  state = {
+    sortField: 'lastName',
+    sortDirection: 'ascending'
+  }
+
+  toggleSort = sortField => {
+    this.setState({ sortField })
+  }
+
+  render() {
+    const {
+      users,
+      classes,
+      isLoading,
+      isAdmin,
+      handleEditClick,
+      handleDeleteClick,
+      handleSendEmail
+    } = this.props
+
+    const { sortField } = this.state
+    const sortIcon =
+      this.state.sortDirection === 'ascending' ? (
+        <SortAscendingIcon />
+      ) : (
+        <SortDescendingIcon />
+      )
+
+    return (
+      <Paper className={classes.root}>
+        <Table className={classes.table}>
+          <TableHead>
+            <TableRow>
+              <StyledTableCell />
+              <StyledTableCell onClick={() => this.toggleSort('firstName')}>
+                {sortField === 'firstName' && sortIcon}
+                First
               </StyledTableCell>
-            )}
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-    {users.length === 0 &&
-      !isLoading && (
-        <Message>
-          <UserSearchIcon size={64} />
-          <p>There are currently no registered users.</p>
-        </Message>
-      )}
-    {isLoading && (
-      <Message>
-        <CircularProgress size={64} />
-        <p>Loading...</p>
-      </Message>
-    )}
-  </Paper>
-)
+              <StyledTableCell onClick={() => this.toggleSort('lastName')}>
+                {sortField === 'lastName' && sortIcon}
+                Last
+              </StyledTableCell>
+              <StyledTableCell onClick={() => this.toggleSort('emailAddress')}>
+                {sortField === 'emailAddress' && sortIcon}
+                Email
+              </StyledTableCell>
+              <StyledTableCell>Registration</StyledTableCell>
+              {isAdmin && <StyledTableCell />}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {users.map(user => (
+              <TableRow key={user.userId} className={classes.row}>
+                <StyledTableCell component="th" scope="row">
+                  <Avatar
+                    key={user.userId}
+                    src={user.imageUrl}
+                    name={`${user.firstName} ${user.lastName}`}
+                    size={34}
+                    round={true}
+                  />
+                </StyledTableCell>
+                <StyledTableCell>{user.firstName}</StyledTableCell>
+                <StyledTableCell>{user.lastName}</StyledTableCell>
+                <StyledTableCell>{user.emailAddress}</StyledTableCell>
+                {/* TODO This needs to come from the user prop */}
+                {/* Note: We are manually overriding this individual column font size */}
+                <StyledTableCell style={{ fontSize: '0.875rem' }}>
+                  2018 Sept 04
+                </StyledTableCell>
+                {isAdmin && (
+                  <StyledTableCell>
+                    <StyledButtonsCell>
+                      <IconButton
+                        color="primary"
+                        onClick={handleEditClick}
+                        data-testid="edit">
+                        <PencilIcon />
+                      </IconButton>
+                      <IconButton
+                        color="primary"
+                        onClick={handleDeleteClick}
+                        data-testid="delete">
+                        <DeleteIcon />
+                      </IconButton>
+                      <IconButton
+                        color="primary"
+                        onClick={handleSendEmail}
+                        data-testid="email">
+                        <EnvelopeIcon />
+                      </IconButton>
+                    </StyledButtonsCell>
+                  </StyledTableCell>
+                )}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+        {users.length === 0 &&
+          !isLoading && (
+            <Message>
+              <UserSearchIcon size={64} />
+              <p>There are currently no registered users.</p>
+            </Message>
+          )}
+        {isLoading && (
+          <Message>
+            <CircularProgress size={64} />
+            <p>Loading...</p>
+          </Message>
+        )}
+      </Paper>
+    )
+  }
+}
 
 UserTable.propTypes = {
   /** classes provided by the withStyles HOC */
