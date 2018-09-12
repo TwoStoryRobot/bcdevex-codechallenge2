@@ -12,8 +12,8 @@ function filterStartsWith(text) {
   // look for things like 'first:jon' where field is optional
   // (first|last|email)? optionally matches the specific field
   // \s*:?\s* optionally matches ' : ' with any number of spaces
-  // (\w+) matches the search term (and word character)
-  const parser = /(first|last|email)?\s*:?\s*(\w+)/i
+  // (\w+)? matches the search term (and word character) - also optional
+  const parser = /(first|last|email)?\s*:?\s*(\w+)?/i
   const result = parser.exec(text)
   const field = result[1] // (first|last|email)?
   const term = result[2] // (\w+)
@@ -23,6 +23,9 @@ function filterStartsWith(text) {
     let found = false
 
     if (field) {
+      // if there is a field, but no term, match everything
+      if (term === '' || !term) return true
+
       // look up the field name (case insentively)
       const fieldName = fieldMap[field.toLowerCase()]
       found = item[fieldName].match(pattern)

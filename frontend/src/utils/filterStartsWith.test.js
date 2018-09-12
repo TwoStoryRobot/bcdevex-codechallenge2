@@ -82,4 +82,13 @@ describe('filterStartsWith', () => {
   it('should match email addresses', () => {
     expect(users.filter(filterStartsWith('email:caleb.'))).toContain(caleb)
   })
+
+  it('should match nothing on an unsupported field name', () => {
+    expect(users.filter(filterStartsWith('unsupported:Jon'))).toHaveLength(0)
+  })
+
+  it('should match everything on empty field search term', () => {
+    expect(users.filter(filterStartsWith('first:'))).toEqual(users)
+    expect(users.filter(filterStartsWith('first: '))).toEqual(users)
+  })
 })
