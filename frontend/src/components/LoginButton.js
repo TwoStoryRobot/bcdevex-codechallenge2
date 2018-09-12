@@ -6,7 +6,25 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import GoogleLogin from 'react-google-login'
+import Button from '@material-ui/core/Button'
+import AccountIcon from 'mdi-react/AccountIcon'
+import { withTheme } from '@material-ui/core/styles'
+import grey from '@material-ui/core/colors/grey';
+import styled from 'styled-components'
 import { UserConsumer } from './UserContext'
+
+const StyledAccountIcon = styled(AccountIcon)`
+  margin-right: ${({ theme }) => theme.spacing.unit}px;
+`
+
+const StyledButton = styled(Button)`
+  && {
+    text-transform: none;
+    width: 200px;
+    background-color: #fff;
+    color: ${grey[600]};
+  }
+`
 
 class LoginButton extends Component {
 
@@ -41,6 +59,12 @@ class LoginButton extends Component {
             clientId={process.env.REACT_APP_CLIENT_ID}
             onSuccess={googleUser => this.handleLogin(login, googleUser)}
             onFailure={err => this.handleFailure(err)}
+            render={({ onClick }) => 
+              <StyledButton onClick={onClick} variant="raised">
+                <StyledAccountIcon theme={this.props.theme} />
+                Sign in with Google
+              </StyledButton>
+            }
           />
         )}
       </UserConsumer>
@@ -54,4 +78,4 @@ LoginButton.propTypes = {
   onFailure: PropTypes.func
 }
 
-export default LoginButton
+export default withTheme()(LoginButton)
