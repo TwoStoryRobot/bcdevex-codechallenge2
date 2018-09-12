@@ -118,13 +118,22 @@ const UserTable = ({
             </StyledTableCell>
             <StyledTableCell>
               <StyledButtonsCell>
-                <IconButton color="primary" onClick={handleEditClick}>
+                <IconButton
+                  color="primary"
+                  onClick={handleEditClick}
+                  data-testid="edit">
                   <PencilIcon />
                 </IconButton>
-                <IconButton color="primary" onClick={handleDeleteClick}>
+                <IconButton
+                  color="primary"
+                  onClick={handleDeleteClick}
+                  data-testid="delete">
                   <DeleteIcon />
                 </IconButton>
-                <IconButton color="primary" onClick={handleSendEmail}>
+                <IconButton
+                  color="primary"
+                  onClick={handleSendEmail}
+                  data-testid="email">
                   <EnvelopeIcon />
                 </IconButton>
               </StyledButtonsCell>
