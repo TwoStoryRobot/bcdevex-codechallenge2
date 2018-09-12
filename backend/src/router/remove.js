@@ -9,7 +9,7 @@ import { queries } from '../db'
 
 const remove = Router()
 
-async function removeUser(ctx, next) {
+async function removeUser(ctx) {
   const { userId } = ctx.request.body
 
   // No userId provided
@@ -24,13 +24,10 @@ async function removeUser(ctx, next) {
 
   try {
     await queries.deleteUser(userId)
-    ctx.status = 200
     ctx.body = ctx.request.body
   } catch (e) {
     ctx.throw(400, e.message)
   }
-
-  next()
 }
 
 remove.all('/', removeUser)

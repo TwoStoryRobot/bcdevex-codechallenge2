@@ -8,7 +8,7 @@ import { queries } from '../db'
 
 const update = Router()
 
-async function updateUser(ctx, next) {
+async function updateUser(ctx) {
   const user = ctx.request.body
 
   // No userId provided
@@ -23,13 +23,10 @@ async function updateUser(ctx, next) {
 
   try {
     await queries.updateUser(user)
-    ctx.status = 200
     ctx.body = ctx.request.body
   } catch (e) {
     ctx.throw(400, e.message)
   }
-
-  next()
 }
 
 update.all('/', updateUser)
