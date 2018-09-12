@@ -1,7 +1,6 @@
 
-/* Select router
+/* Fetch router
  * Fetch all user profiles
- * 'fetch' is a reserved word in JS, so we use an alternate name
  */
 
 import Router from 'koa-router'
