@@ -10,7 +10,6 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import IconButton from '@material-ui/core/IconButton'
-import Chip from '@material-ui/core/Chip'
 import UserSearchIcon from 'mdi-react/UserSearchIcon'
 import DeleteIcon from 'mdi-react/DeleteIcon'
 import PencilIcon from 'mdi-react/PencilIcon'
@@ -90,7 +89,6 @@ const UserTable = ({
           <StyledTableCell>Email</StyledTableCell>
           <StyledTableCell>Registration</StyledTableCell>
           <StyledTableCell />
-          <StyledTableCell />
         </TableRow>
       </TableHead>
       <TableBody>
@@ -112,15 +110,6 @@ const UserTable = ({
             {/* Note: We are manually overriding this individual column font size */}
             <StyledTableCell style={{ fontSize: '0.875rem' }}>
               2018 Sept 04
-            </StyledTableCell>
-            <StyledTableCell>
-              {user.isAdmin && (
-                <Chip
-                  data-testid="admin"
-                  label="Admin"
-                  className={classes.admin}
-                />
-              )}
             </StyledTableCell>
             <StyledTableCell>
               <StyledButtonsCell>
