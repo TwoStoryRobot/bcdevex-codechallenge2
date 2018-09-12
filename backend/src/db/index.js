@@ -18,10 +18,14 @@ async function selectUserById(userId) {
   return await db.oneOrNone('SELECT * FROM public.user WHERE "userId" = $/userId/', { userId })
 }
 
+async function countAdmins() {
+  return await db.any('SELECT COUNT(*) FROM public.user WHERE "isAdmin" = TRUE')
+}
+
 async function insertUser(user) {
   await db.any(
     `INSERT INTO public.user
-     VALUES ($/userId/, $/firstName/, $/imageURL/, $/emailAddress/, $/lastName/)`,
+     VALUES ($/userId/, $/firstName/, $/imageURL/, $/emailAddress/, $/lastName/, $/isAdmin/)`,
     user
   )
 }
@@ -44,6 +48,7 @@ async function deleteUser(userId) {
 export const queries = {
   selectAllUsers,
   selectUserById,
+  countAdmins,
   insertUser,
   updateUser,
   deleteUser
