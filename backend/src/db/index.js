@@ -28,7 +28,7 @@ async function countAdmins() {
 async function insertUser(user) {
   await db.any(
     `INSERT INTO public.user
-     VALUES ($/userId/, $/firstName/, $/imageURL/, $/emailAddress/, $/lastName/, $/isAdmin/)`,
+     VALUES ($/userId/, $/firstName/, $/imageURL/, $/emailAddress/, $/lastName/, $/isAdmin/, $/registeredAt/)`,
     user
   )
 }
@@ -37,8 +37,8 @@ async function updateUser(user) {
   await db.any(
     `UPDATE public.user
      SET
-       ("userId", "firstName", "imageURL", "emailAddress", "lastName") =
-       ($/userId/, $/firstName/, $/imageURL/, $/emailAddress/, $/lastName/)
+       ("userId", "firstName", "imageURL", "emailAddress", "lastName", "isAdmin", "registeredAt") =
+       ($/userId/, $/firstName/, $/imageURL/, $/emailAddress/, $/lastName/, $/isAdmin/, $/registeredAt/)
      WHERE "userId" = $/userId/`,
     user
   )

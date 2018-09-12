@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 import Avatar from 'react-avatar'
 import styled from 'styled-components'
 import { withStyles } from '@material-ui/core/styles'
@@ -202,7 +203,7 @@ class UserTable extends React.Component {
                 {/* TODO This needs to come from the user prop */}
                 {/* Note: We are manually overriding this individual column font size */}
                 <StyledTableCell style={{ fontSize: '0.875rem' }}>
-                  2018 Sept 04
+                  {moment(user.registeredAt).format('DD-MMM-YYYY')}
                 </StyledTableCell>
                 {isAdmin && (
                   <StyledTableCell>
@@ -267,7 +268,9 @@ UserTable.propTypes = {
       /** url of user's Avatar */
       imageURL: PropTypes.string,
       /** admin flag */
-      isAdmin: PropTypes.bool
+      isAdmin: PropTypes.bool,
+      /** date of user registration */
+      registeredAt: PropTypes.string
     })
   ).isRequired,
   isLoading: PropTypes.bool,

@@ -363,13 +363,9 @@ exports[`UserTable should render with required props 1`] = `
             class=" sb-avatar"
             style="display: inline-block; vertical-align: middle; width: 34px; height: 34px; border-radius: 100%; font-family: Helvetica, Arial, sans-serif;"
           >
-            <img
-              class=" sb-avatar__image"
-              width="34px"
-              height="34px"
-              style="max-width: 100%; width: 34px; height: 34px; border-radius: 100%;"
-              src="https://d3iw72m71ie81c.cloudfront.net/male-52.jpg"
-              alt="Bob Smith"
+            <div
+              class=" sb-avatar__text"
+              style="width: 34px; height: 34px; font-size: 11.3333px; line-height: 34px; text-align: center; text-transform: uppercase; color: rgb(255, 255, 255); border-radius: 100%;"
             />
           </div>
         </th>
@@ -392,7 +388,7 @@ exports[`UserTable should render with required props 1`] = `
           class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
           style="font-size: 0.875rem;"
         >
-          2018 Sept 04
+          12-Sep-2018
         </td>
         <td
           class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
@@ -489,13 +485,9 @@ exports[`UserTable should render with required props 1`] = `
             class=" sb-avatar"
             style="display: inline-block; vertical-align: middle; width: 34px; height: 34px; border-radius: 100%; font-family: Helvetica, Arial, sans-serif;"
           >
-            <img
-              class=" sb-avatar__image"
-              width="34px"
-              height="34px"
-              style="max-width: 100%; width: 34px; height: 34px; border-radius: 100%;"
-              src="https://randomuser.me/api/portraits/women/21.jpg"
-              alt="Jane Doe"
+            <div
+              class=" sb-avatar__text"
+              style="width: 34px; height: 34px; font-size: 11.3333px; line-height: 34px; text-align: center; text-transform: uppercase; color: rgb(255, 255, 255); border-radius: 100%;"
             />
           </div>
         </th>
@@ -518,7 +510,7 @@ exports[`UserTable should render with required props 1`] = `
           class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
           style="font-size: 0.875rem;"
         >
-          2018 Sept 04
+          13-Sep-2018
         </td>
         <td
           class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
@@ -615,13 +607,9 @@ exports[`UserTable should render with required props 1`] = `
             class=" sb-avatar"
             style="display: inline-block; vertical-align: middle; width: 34px; height: 34px; border-radius: 100%; font-family: Helvetica, Arial, sans-serif;"
           >
-            <img
-              class=" sb-avatar__image"
-              width="34px"
-              height="34px"
-              style="max-width: 100%; width: 34px; height: 34px; border-radius: 100%;"
-              src="https://twostoryrobot.com/not-a-valid-url"
-              alt="James Bond"
+            <div
+              class=" sb-avatar__text"
+              style="width: 34px; height: 34px; font-size: 11.3333px; line-height: 34px; text-align: center; text-transform: uppercase; color: rgb(255, 255, 255); border-radius: 100%;"
             />
           </div>
         </th>
@@ -644,7 +632,7 @@ exports[`UserTable should render with required props 1`] = `
           class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
           style="font-size: 0.875rem;"
         >
-          2018 Sept 04
+          14-Sep-2018
         </td>
         <td
           class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
