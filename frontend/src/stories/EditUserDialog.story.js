@@ -14,7 +14,7 @@ storiesOf('Edit User Dialog', module)
       onClose={action('close')}
     />
   ))
-  .add('With default values', () => (
+  .add('With supplied values', () => (
     <EditUserDialog
       firstName="Caleb"
       lastName="Sharp"
