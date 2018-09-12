@@ -267,4 +267,11 @@ The sendEmail operation must be implemented by making a server-side REST API cal
 3.	Update the repo’s README file to include any instructions required for the code challenge evaluators to build and run your team’s application.
 
 
+## Environment Variables
 
+TODO: Elaborate more on each environment variable
+
+* REACT_APP_API_URL
+* REACT_APP_CLIENT_ID
+* CORS_ORIGIN
+* CLIENT_ID

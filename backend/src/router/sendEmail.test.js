@@ -1,6 +1,6 @@
 import app from '../app'
 import { queries, db, pgp } from '../db'
-import { generateUser } from '../helpers'
+import { generateUser, generateToken } from '../helpers'
 import supertest from 'supertest'
 import nodemailer from 'nodemailer'
 
@@ -16,6 +16,7 @@ beforeEach(async () => {
     .agent(server)
     .post('/sendEmail')
     .set('Accept', 'application/json')
+    .set('Authorization', 'Bearer ' + generateToken())
 
   //  Start test with a clean db state
   await db.none('TRUNCATE public.user')
