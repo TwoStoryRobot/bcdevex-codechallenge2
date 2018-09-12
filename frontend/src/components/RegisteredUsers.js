@@ -47,6 +47,21 @@ class RegisteredUsers extends React.Component {
     fetchUsersController && fetchUsersController.abort()
   }
 
+  //  TODO: Implement this function
+  handleUserEditClick() {
+    console.log('Edit User Clicked')
+  }
+
+  //  TODO: Implement this function
+  handleUserDeleteClick() {
+    console.log('Delete User Clicked')
+  }
+
+  //  TODO: Implement this function
+  handleUserSendEmailClick() {
+    console.log('Send User Email Clicked')
+  }
+
   render() {
     const { currentUser, users, isFetchingUsers } = this.state
     const avatar = currentUser && currentUser.imageURL
@@ -63,7 +78,14 @@ class RegisteredUsers extends React.Component {
               onSignOut={logout}
             />
             <Content>
-              <UserTable users={users} isLoading={isFetchingUsers} />
+              <UserTable
+                users={users}
+                isLoading={isFetchingUsers}
+                isAdmin={currentUser && !currentUser.isAdmin}
+                handleEditClick={this.handleUserEditClick}
+                handleDeleteClick={this.handleUserDeleteClick}
+                handleSendEmailClick={this.handleUserSendEmailClick}
+              />
             </Content>
           </Container>
         )}

@@ -78,7 +78,7 @@ const UserTable = ({
   isAdmin,
   handleEditClick,
   handleDeleteClick,
-  handleSendEmail
+  handleSendEmailClick
 }) => (
   <Paper className={classes.root}>
     <Table className={classes.table}>
@@ -129,7 +129,7 @@ const UserTable = ({
                   </IconButton>
                   <IconButton
                     color="primary"
-                    onClick={handleSendEmail}
+                    onClick={handleSendEmailClick}
                     data-testid="email">
                     <EnvelopeIcon />
                   </IconButton>
@@ -180,11 +180,12 @@ UserTable.propTypes = {
   isAdmin: PropTypes.bool.isRequired,
   handleEditClick: PropTypes.func.isRequired,
   handleDeleteClick: PropTypes.func.isRequired,
-  handleSendEmail: PropTypes.func.isRequired
+  handleSendEmailClick: PropTypes.func.isRequired
 }
 
 UserTable.defaultProps = {
-  isLoading: false
+  isLoading: false,
+  isAdmin: false
 }
 
 export default withStyles(styles)(UserTable)
