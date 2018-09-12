@@ -98,6 +98,8 @@ class UserTable extends React.Component {
     sortDirection: 'asc'
   }
 
+  // This function sets the active sort field and toggles the direction
+  // By default, if the sort field is changed we use ascending direction
   toggleSort = sortField => {
     if (this.state.sortField === sortField)
       this.setState({
@@ -106,6 +108,7 @@ class UserTable extends React.Component {
     else this.setState({ sortField, sortDirection: 'asc' })
   }
 
+  // Return a new array with users sorted according to the current sort state
   getSortedUsers() {
     //clone a new array for users
     let users = [...this.props.users]
@@ -116,6 +119,7 @@ class UserTable extends React.Component {
     return users
   }
 
+  // get a ascending sorting function for a specific field
   genSortAscendingByField(field) {
     return (a, b) => {
       const valA = a[field].toUpperCase()
@@ -127,6 +131,7 @@ class UserTable extends React.Component {
     }
   }
 
+  // get a descending sorting function for a specific field
   genSortDescendingByField(field) {
     return (a, b) => {
       const valA = a[field].toUpperCase()
@@ -149,9 +154,8 @@ class UserTable extends React.Component {
       handleSendEmail
     } = this.props
 
-    const { sortField } = this.state
-    const sortIcon =
-      this.state.sortDirection === 'asc' ? <AscIcon /> : <DescIcon />
+    const { sortField, sortDirection } = this.state
+    const sortIcon = sortDirection === 'asc' ? <AscIcon /> : <DescIcon />
 
     return (
       <Paper className={classes.root}>
