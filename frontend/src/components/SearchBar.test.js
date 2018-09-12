@@ -13,6 +13,14 @@ describe('SearchBar', () => {
     expect(container.firstChild).toMatchSnapshot()
   })
 
+  it('should render with initial value', async () => {
+    const { getByPlaceholderText } = render(<SearchBar value="initial" />)
+
+    const input = getByPlaceholderText('Filter')
+
+    expect(input.value).toEqual('initial')
+  })
+
   it('should callback when the user changes the search term', async () => {
     const onChange = jest.fn()
     const onSubmit = jest.fn()
