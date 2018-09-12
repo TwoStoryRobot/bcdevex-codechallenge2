@@ -1,4 +1,3 @@
-
 /* SendEmail router
  * Sends a boilerplate email to a user
  */
@@ -10,7 +9,10 @@ import nodemailer from 'nodemailer'
 import { queries } from '../db'
 
 const transporter = nodemailer.createTransport(process.env.SMTP)
-const boilerplateEmailBody = fs.readFileSync(path.resolve(__dirname, '../../../email-message.txt'), 'utf-8')
+const boilerplateEmailBody = fs.readFileSync(
+  path.resolve(__dirname, '../../../email-message.txt'),
+  'utf-8'
+)
 
 const sendEmail = Router()
 

@@ -31,11 +31,8 @@ afterAll(async () => {
 test('/fetch should return all users', async () => {
   const users = await queries.selectAllUsers()
 
-  await request
-    .get('/fetch')
-    .expect(200, users)
+  await request.get('/fetch').expect(200, users)
 })
-
 
 test('/update should update user details', async () => {
   const user = generateUser({ emailAddress: 'new@address.com' })
@@ -98,19 +95,13 @@ test('/delete should return 400 when non-existant userId is provided', async () 
 })
 
 test('/authenticate should authenticate a valid user', async () => {
-  await request
-    .get(`/authenticate`)
-    .expect(501)
+  await request.get(`/authenticate`).expect(501)
 })
 
 test('/authenticate should reject an invalid user', async () => {
-  await request
-    .get(`/authenticate`)
-    .expect(501)
+  await request.get(`/authenticate`).expect(501)
 })
 
 test('/sendEmail should dispatch email to provided email address', async () => {
-  await request
-    .post(`/sendEmail`, {})
-    .expect(501)
+  await request.post(`/sendEmail`, {}).expect(501)
 })

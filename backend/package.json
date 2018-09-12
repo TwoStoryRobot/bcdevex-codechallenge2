@@ -8,10 +8,10 @@
     "build": "babel src -d build",
     "watch": "babel -w src -d build",
     "test": "jest",
-    "test-router":
-      "POSTGRES_PORT=5544 POSTGRES_PASSWORD=postgrestest POSTGRES_DB=test jest router",
-    "test-integration":
-      "POSTGRES_PORT=5544 POSTGRES_PASSWORD=postgrestest POSTGRES_DB=test jest integration"
+    "test-router": "POSTGRES_PORT=5544 POSTGRES_PASSWORD=postgrestest POSTGRES_DB=test jest router",
+    "test-integration": "POSTGRES_PORT=5544 POSTGRES_PASSWORD=postgrestest POSTGRES_DB=test jest integration",
+    "eslint": "eslint '**/*.js'",
+    "prettier": "prettier --write '**/*.js'"
   },
   "repository": {
     "type": "git",
@@ -25,9 +25,16 @@
     "pg-promise": "^8.4.6"
   },
   "devDependencies": {
+    "@twostoryrobot/eslint-config": "^2.2.0",
+    "@twostoryrobot/prettier-config": "^2.0.1",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.10.0",
+    "eslint-plugin-jest": "^21.22.0",
+    "eslint-plugin-react": "^7.11.1",
     "jest": "^23.6.0",
+    "prettier": "^1.14.2",
     "supertest": "^3.3.0"
   },
   "jest": {
