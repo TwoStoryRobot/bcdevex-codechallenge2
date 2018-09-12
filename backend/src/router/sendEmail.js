@@ -10,7 +10,7 @@ import { queries } from '../db'
 
 const transporter = nodemailer.createTransport(process.env.SMTP)
 const boilerplateEmailBody = fs.readFileSync(
-  path.resolve(__dirname, '../../../email-message.txt'),
+  path.resolve(__dirname, '../../email-message.txt'),
   'utf-8'
 )
 

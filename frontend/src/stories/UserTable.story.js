@@ -41,7 +41,7 @@ const defaultUsers = [
 
 const handleEditClick = linkTo('Edit User Dialog', 'With supplied values')
 const handleDeleteClick = linkTo('AlertDialog', 'Example - Confirm delete')
-const handleSendEmail = linkTo('AlertDialog', 'Example - Send email')
+const handleSendEmailClick = linkTo('AlertDialog', 'Example - Send email')
 
 storiesOf('UserTable', module)
   .addDecorator(host())
@@ -53,7 +53,7 @@ storiesOf('UserTable', module)
         isAdmin={true}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
-        handleSendEmail={handleSendEmail}
+        handleSendEmailClick={handleSendEmailClick}
       />
     )
   })
@@ -64,7 +64,7 @@ storiesOf('UserTable', module)
         isAdmin={false}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
-        handleSendEmail={handleSendEmail}
+        handleSendEmailClick={handleSendEmailClick}
       />
     )
   })
@@ -75,7 +75,7 @@ storiesOf('UserTable', module)
         isAdmin={true}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
-        handleSendEmail={handleSendEmail}
+        handleSendEmailClick={handleSendEmailClick}
       />
     )
   })
@@ -87,7 +87,7 @@ storiesOf('UserTable', module)
         isAdmin={true}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
-        handleSendEmail={handleSendEmail}
+        handleSendEmailClick={handleSendEmailClick}
       />
     )
   })

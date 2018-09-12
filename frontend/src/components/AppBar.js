@@ -91,21 +91,24 @@ export default class AppBar extends Component {
               {title}
             </Typography>
             <Grow />
-            <div>
-              <IconButton
-                onClick={this.handleMenuOpen}
-                data-testid="avatar-button">
-                <Fade in={!isMenuOpen}>
-                  <Avatar
-                    round
-                    size="40"
-                    src={avatar}
-                    name={name}
-                    open={isMenuOpen}
-                  />
-                </Fade>
-              </IconButton>
-            </div>
+            {avatar &&
+              name && (
+                <div>
+                  <IconButton
+                    onClick={this.handleMenuOpen}
+                    data-testid="avatar-button">
+                    <Fade in={!isMenuOpen}>
+                      <Avatar
+                        round
+                        size="40"
+                        src={avatar}
+                        name={name}
+                        open={isMenuOpen}
+                      />
+                    </Fade>
+                  </IconButton>
+                </div>
+              )}
           </Toolbar>
         </MAppBar>
         {renderMenu}
