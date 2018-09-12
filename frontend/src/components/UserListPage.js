@@ -46,12 +46,19 @@ class UserListPage extends React.Component {
   }
 
   render() {
+    const { currentUser } = this.state
+    const avatar = currentUser.imageURL
+    const name = `${currentUser.firstName} ${currentUser.lastName}`
+
     return (
       <UserConsumer>
         {({ logout }) => (
           <Container>
-            <AppBar />
-            <button onClick={logout}>Logout</button>
+            <AppBar
+              title="Registered Users"
+              {...{ avatar, name }}
+              onSignOut={logout}
+            />
           </Container>
         )}
       </UserConsumer>
