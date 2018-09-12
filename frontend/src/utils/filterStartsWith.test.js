@@ -67,4 +67,19 @@ describe('filterStartsWith', () => {
     expect(users.filter(filterStartsWith('ch'))).toContain(chad)
     expect(users.filter(filterStartsWith('ch'))).toContain(chris)
   })
+
+  it('should match specific fields if : separator provided', () => {
+    expect(users.filter(filterStartsWith('last:M'))).toContain(kaileen)
+    expect(users.filter(filterStartsWith('last:M'))).not.toContain(monika)
+    expect(users.filter(filterStartsWith('last:M'))).not.toContain(chad)
+  })
+
+  it('should match specific fields case and space insensitive', () => {
+    expect(users.filter(filterStartsWith('Last : M '))).toContain(kaileen)
+    expect(users.filter(filterStartsWith('Last : M '))).not.toContain(monika)
+  })
+
+  it('should match email addresses', () => {
+    expect(users.filter(filterStartsWith('email:caleb.'))).toContain(caleb)
+  })
 })
