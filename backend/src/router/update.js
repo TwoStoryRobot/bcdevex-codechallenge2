@@ -16,9 +16,8 @@ async function updateUser(ctx) {
     ctx.throw(400, 'No userId provided')
 
   // Invalid userId provided
-  const users = await queries.selectAllUsers()
-  const userIds = users.map(u => u.userId)
-  if (!userIds.includes(user.userId))
+  const record = await queries.selectUserById(user.userId)
+  if (!record)
     ctx.throw(400, 'Invalid userId')
 
   try {

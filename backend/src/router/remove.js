@@ -17,9 +17,8 @@ async function removeUser(ctx) {
     ctx.throw(400, 'No userId provided')
 
   // Invalid userId provided
-  const users = await queries.selectAllUsers()
-  const userIds = users.map(u => u.userId)
-  if (!userIds.includes(userId))
+  const record = await queries.selectUserById(userId)
+  if (!record)
     ctx.throw(400, 'Invalid userId')
 
   try {
