@@ -1,4 +1,3 @@
-
 /* Private Page
  * Demo private page
  */
@@ -8,9 +7,7 @@ import { UserConsumer } from './UserContext'
 
 const Private = () => (
   <UserConsumer>
-    {({ logout }) => (
-      <button onClick={logout}>Logout</button>
-    )}
+    {({ logout }) => <button onClick={logout}>Logout</button>}
   </UserConsumer>
 )
 
