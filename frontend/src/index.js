@@ -1,10 +1,9 @@
-
 /* Application entry point
  */
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter} from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { UserProvider } from './components/UserContext'
 import App from './components/App'

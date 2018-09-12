@@ -24,7 +24,7 @@ const origin = process.env.CORS_ORIGIN
 
 const app = new Koa()
 app.use(bodyParser())
-app.use(cors({ origin })) 
+app.use(cors({ origin }))
 app.use(jwt({ secret, audience, issuer }))
 app.use(root.routes())
 app.use(root.allowedMethods())
