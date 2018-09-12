@@ -9,6 +9,8 @@ import styled from 'styled-components'
 import { authenticate } from '../requests'
 import { Typography } from '@material-ui/core';
 
+import background from '../images/background.jpeg';
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -19,7 +21,7 @@ const Container = styled.div`
   padding: 0;
   margin: 0;
 
-  background-image: url('https://s3-alpha.figma.com/img/2710/dbdd/39bc1f5598ebee1d7704cb83f640b139');
+  background-image: url('${background}');
   background-size: cover;
 `
 
