@@ -12,4 +12,22 @@ describe('SearchBar', () => {
 
     expect(container.firstChild).toMatchSnapshot()
   })
+
+  it('should callback when the user changes the search term', async () => {
+    const onChange = jest.fn()
+    const onSubmit = jest.fn()
+    const { getByPlaceholderText, getByTestId } = render(
+      <SearchBar onChange={onChange} onSubmit={onSubmit} />
+    )
+
+    const input = getByPlaceholderText('Filter')
+    fireEvent.change(input, { target: { value: 'term' } })
+
+    expect(onChange).toHaveBeenCalledWith('term')
+
+    const form = getByTestId('search-form')
+    fireEvent.submit(form)
+
+    expect(onSubmit).toHaveBeenCalledWith('term')
+  })
 })

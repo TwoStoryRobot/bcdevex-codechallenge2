@@ -14,6 +14,20 @@ const PaddedPaper = styled(Paper)`
 `
 
 class SearchBar extends React.Component {
+  state = {
+    text: this.props.text
+  }
+
+  handleChange = e => {
+    const text = e.target.value
+    this.setState({ text })
+    this.props.onChange(text)
+  }
+
+  handleSubmit = () => {
+    this.props.onSubmit(this.state.text)
+  }
+
   render() {
     const searchAdornment = (
       <InputAdornment position="end">
@@ -24,16 +38,32 @@ class SearchBar extends React.Component {
     )
     return (
       <PaddedPaper>
-        <FormControl>
-          <Input
-            disableUnderline
-            placeholder="Filter"
-            endAdornment={searchAdornment}
-          />
-        </FormControl>
+        <form data-testid="search-form" onSubmit={this.handleSubmit}>
+          <FormControl>
+            <Input
+              disableUnderline
+              placeholder="Filter"
+              endAdornment={searchAdornment}
+              value={this.state.text}
+              onChange={this.handleChange}
+            />
+          </FormControl>
+        </form>
       </PaddedPaper>
     )
   }
+}
+
+SearchBar.propTypes = {
+  text: PropTypes.string,
+  onSubmit: PropTypes.func,
+  onChange: PropTypes.func
+}
+
+SearchBar.defaultProps = {
+  text: '',
+  onSubmit: () => {},
+  onChange: () => {}
 }
 
 export default SearchBar
