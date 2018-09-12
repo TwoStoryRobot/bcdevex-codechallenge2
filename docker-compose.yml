@@ -1,3 +1,26 @@
+
+#
+# Demo and dev stack configuration
+#
+
+backend:
+  build: ./backend
+  links:
+    - postgresdb
+    - mailhog
+  ports:
+    - "3500:3500"
+  environment:
+    - POSTGRES_HOST=postgresdb
+    - CORS_ORIGIN=http://dockerhost:3000
+    - CLIENT_ID=656587629888-4rvd0pv398dgderln9s6kuvr7kdn99k5.apps.googleusercontent.com
+    - SMTP=smtp://mailhog:1025
+
+frontend:
+  build: ./frontend
+  ports:
+    - "3000:80"
+
 postgresdb:
   image: postgres
   ports:
