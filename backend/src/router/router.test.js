@@ -1,6 +1,6 @@
 import app from '../app'
 import { queries, db, pgp } from '../db'
-import { generateUser, generateToken } from '../helpers'
+import { generateUser, generateNewUser, generateToken } from '../helpers'
 import supertest from 'supertest'
 
 const server = app.listen()
@@ -107,26 +107,49 @@ test('/delete should return 400 when non-existant userId is provided', async () 
 })
 
 test('/authenticate should authenticate a valid user', async () => {
-  const user = generateUser({ userId: 'doesntExist' })
+  const user = generateNewUser({ userId: 'doesntExist' })
+  const response = { isAdmin : true }
 
   await request
     .post('/authenticate')
     .send(user)
     .set('Accept', 'application/json')
     .set('Authorization', 'Bearer ' + generateToken('doesntExist'))
-    .expect(200, user)
+    .expect(200, Object.assign(user, response))
 })
 
 test('/authenticate should return preexisting users', async () => {
-  const user1 = generateUser()
-  const user2 = generateUser({ emailAddress: 'newEmail@test.test' })
+  const oldUser = generateUser()
+  const newUser = generateNewUser()
+
+  await request
+    .post('/authenticate')
+    .send(newUser)
+    .set('Accept', 'application/json')
+    .set('Authorization', 'Bearer ' + generateToken())
+    .expect(200, oldUser)
+})
+
+test('/authenticate should make secondary users non-admin', async () => {
+  const user1 = generateNewUser({ userId: 'firstUser' })
+  const response1 = { isAdmin : true }
+
+  await request
+    .post('/authenticate')
+    .send(user1)
+    .set('Accept', 'application/json')
+    .set('Authorization', 'Bearer ' + generateToken('firstUser'))
+    .expect(200, Object.assign(user1, response1))
+
+  const user2 = generateNewUser({ userId: 'secondUser' })
+  const response2 = { isAdmin : false }
 
   await request
     .post('/authenticate')
     .send(user2)
     .set('Accept', 'application/json')
-    .set('Authorization', 'Bearer ' + generateToken())
-    .expect(200, user1)
+    .set('Authorization', 'Bearer ' + generateToken('secondUser'))
+    .expect(200, Object.assign(user2, response2))
 })
 
 test('/authenticate should reject non-matching userIds', async () => {

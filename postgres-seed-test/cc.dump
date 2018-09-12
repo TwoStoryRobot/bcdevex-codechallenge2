@@ -43,6 +43,7 @@ CREATE TABLE public."user" (
     "imageURL" text,
     "emailAddress" text,
     "lastName" text,
+    "isAdmin" boolean NOT NULL,
     "registeredAt" text
 );
 
@@ -53,9 +54,9 @@ ALTER TABLE public."user" OWNER TO pguser;
 -- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: pguser
 --
 
-COPY public."user" ("userId", "firstName", "imageURL", "emailAddress", "lastName") FROM stdin;
-testUser123	Bob	https://previews.123rf.com/images/triken/triken1608/triken160800028/61320729-male-avatar-profile-picture-default-user-avatar-guest-avatar-simply-human-head-vector-illustration-i.jpg	testuser@bcdevexchange.org	Smith  2018-09-12T14:35:38-07:00
-testUser456	Joe	https://previews.123rf.com/images/triken/triken1608/triken160800028/61320729-male-avatar-profile-picture-default-user-avatar-guest-avatar-simply-human-head-vector-illustration-i.jpg	testuser2@bcdevexchange.org	Farthing  2018-09-12T14:35:38-07:00
+COPY public."user" ("userId", "firstName", "imageURL", "emailAddress", "lastName", "isAdmin", "registeredAt") FROM stdin;
+testUser123	Bob	https://previews.123rf.com/images/triken/triken1608/triken160800028/61320729-male-avatar-profile-picture-default-user-avatar-guest-avatar-simply-human-head-vector-illustration-i.jpg	testuser@bcdevexchange.org	Smith	false	2018-09-12T14:35:38-07:00
+testUser456	Joe	https://previews.123rf.com/images/triken/triken1608/triken160800028/61320729-male-avatar-profile-picture-default-user-avatar-guest-avatar-simply-human-head-vector-illustration-i.jpg	testuser2@bcdevexchange.org	Farthing	false	2018-09-12T14:35:38-07:00
 \.
 
 
