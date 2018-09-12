@@ -7,13 +7,13 @@
 import Router from 'koa-router'
 import { queries } from '../db'
 
-const select = Router()
+const fetch = Router()
 
-async function selectUsers(ctx) {
+async function fetchUsers(ctx) {
   const users = await queries.selectAllUsers()
   ctx.body = users
 }
 
-select.get('/', selectUsers)
+fetch.get('/', fetchUsers)
 
-export default select
+export default fetch
