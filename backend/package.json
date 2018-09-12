@@ -8,7 +8,8 @@
     "build": "babel src -d build",
     "watch": "babel -w src -d build",
     "test": "jest",
-    "test-router": "jest router",
+    "test-router":
+      "POSTGRES_PORT=5544 POSTGRES_PASSWORD=postgrestest POSTGRES_DB=test jest router",
     "test-integration":
       "POSTGRES_PORT=5544 POSTGRES_PASSWORD=postgrestest POSTGRES_DB=test jest integration"
   },
@@ -19,6 +20,7 @@
   },
   "dependencies": {
     "koa": "^2.5.2",
+    "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "pg-promise": "^8.4.6"
   },
