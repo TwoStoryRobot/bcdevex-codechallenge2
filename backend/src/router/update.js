@@ -29,6 +29,6 @@ async function updateUser(ctx) {
   }
 }
 
-update.all('/', updateUser)
+update.post('/', updateUser)
 
 export default update

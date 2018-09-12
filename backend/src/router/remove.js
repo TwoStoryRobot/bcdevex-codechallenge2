@@ -30,6 +30,6 @@ async function removeUser(ctx) {
   }
 }
 
-remove.all('/', removeUser)
+remove.post('/', removeUser)
 
 export default remove
