@@ -12,8 +12,7 @@ async function updateUser(ctx) {
   const user = ctx.request.body
 
   // No userId provided
-  if (!user.userId)
-    ctx.throw(400, 'No userId provided')
+  ctx.assert(user.userId, 400, 'No userId provided')
 
   // Invalid userId provided
   const record = await queries.selectUserById(user.userId)

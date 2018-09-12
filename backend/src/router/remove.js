@@ -13,8 +13,7 @@ async function removeUser(ctx) {
   const { userId } = ctx.request.body
 
   // No userId provided
-  if (!userId)
-    ctx.throw(400, 'No userId provided')
+  ctx.assert(ctx.request.body.userId, 400, 'No userId provided')
 
   // Invalid userId provided
   const record = await queries.selectUserById(userId)
