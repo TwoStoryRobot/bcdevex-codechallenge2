@@ -54,7 +54,7 @@ const ButtonContainer = styled.div`
 
 class Home extends Component {
   handleLogin = profile => {
-    authenticate(profile).then(() => this.props.history.push('/private'))
+    authenticate(profile).then(() => this.props.history.push('/users'))
   }
 
   handleError = err => {

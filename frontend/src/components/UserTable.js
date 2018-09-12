@@ -78,7 +78,7 @@ const UserTable = ({
   isAdmin,
   handleEditClick,
   handleDeleteClick,
-  handleSendEmail
+  handleSendEmailClick
 }) => (
   <Paper className={classes.root}>
     <Table className={classes.table}>
@@ -98,7 +98,7 @@ const UserTable = ({
             <StyledTableCell component="th" scope="row">
               <Avatar
                 key={user.userId}
-                src={user.imageUrl}
+                src={user.imageURL}
                 name={`${user.firstName} ${user.lastName}`}
                 size={34}
                 round={true}
@@ -129,7 +129,7 @@ const UserTable = ({
                   </IconButton>
                   <IconButton
                     color="primary"
-                    onClick={handleSendEmail}
+                    onClick={handleSendEmailClick}
                     data-testid="email">
                     <EnvelopeIcon />
                   </IconButton>
@@ -171,7 +171,7 @@ UserTable.propTypes = {
       /** email address of user (used to send email) */
       emailAddress: PropTypes.emailAddress,
       /** url of user's Avatar */
-      imageUrl: PropTypes.string,
+      imageURL: PropTypes.string,
       /** admin flag */
       isAdmin: PropTypes.bool
     })
@@ -180,11 +180,12 @@ UserTable.propTypes = {
   isAdmin: PropTypes.bool.isRequired,
   handleEditClick: PropTypes.func.isRequired,
   handleDeleteClick: PropTypes.func.isRequired,
-  handleSendEmail: PropTypes.func.isRequired
+  handleSendEmailClick: PropTypes.func.isRequired
 }
 
 UserTable.defaultProps = {
-  isLoading: false
+  isLoading: false,
+  isAdmin: false
 }
 
 export default withStyles(styles)(UserTable)
