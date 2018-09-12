@@ -1,4 +1,3 @@
-
 /* Private Route
  * Redirects away from this route if the 
  * user is not logged into the application
@@ -10,16 +9,18 @@ import { UserConsumer } from './UserContext'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <UserConsumer>
-    {({ isLoggedIn }) => (
+    {({ isLoggedIn, userId }) => (
       <Route
         {...rest}
         render={props =>
           isLoggedIn ? (
-            <Component {...props} />
+            <Component {...props} userId={userId} />
           ) : (
-            <Redirect to={{
-              pathname : '/'
-            }} />
+            <Redirect
+              to={{
+                pathname: '/'
+              }}
+            />
           )
         }
       />

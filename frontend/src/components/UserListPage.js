@@ -4,6 +4,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 import { UserConsumer } from './UserContext'
 import AppBar from './AppBar'
 import { getDefaultHeaders } from '../requests.js'
@@ -14,7 +15,7 @@ const Container = styled.div`
 
 class UserListPage extends React.Component {
   state = {
-    currentUser: undefined,
+    currentUser: {},
     users: [],
     controller: new window.AbortController()
   }
@@ -25,25 +26,19 @@ class UserListPage extends React.Component {
     const method = 'GET'
     const headers = getDefaultHeaders()
 
-    Promise.all([
-      //  Fetch all users
-      fetch(process.env.REACT_APP_API_URL + 'fetch', {
-        method,
-        headers,
-        signal
-      }).then(res => res.json()),
-
-      //  TODO: Fetch current user from DB (See #84)
-      //  Fetch current logged in user
-      Promise.resolve({
-        userId: '104971212562092916943',
-        firstName: 'Chad',
-        imageURL:
-          'https://lh5.googleusercontent.com/-CZCghI5fZkI/AAAAAAAAAAI/AAAAAAAAAA4/JLhrIPGYesI/s96-c/photo.jpg',
-        emailAddress: 'chad.fawcett@twostoryrobot.com',
-        lastName: 'Fawcett'
+    //  Fetch all users
+    fetch(process.env.REACT_APP_API_URL + 'fetch', {
+      method,
+      headers,
+      signal
+    })
+      .then(res => res.json())
+      .then(users => {
+        const currentUser = users.find(
+          user => user.userId === this.props.userId
+        )
+        this.setState({ users, currentUser })
       })
-    ]).then(([users, currentUser]) => this.setState({ users, currentUser }))
   }
 
   componentWillUnmount() {
@@ -62,6 +57,10 @@ class UserListPage extends React.Component {
       </UserConsumer>
     )
   }
+}
+
+UserListPage.propTypes = {
+  userId: PropTypes.string
 }
 
 export default UserListPage
