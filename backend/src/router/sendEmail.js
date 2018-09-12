@@ -23,7 +23,7 @@ async function emailUser(ctx) {
   ctx.assert(userId, 400, 'No userId provided')
 
   const user = await queries.selectUserById(userId)
-  ctx.assert(user, 404, 'User does not exist')
+  ctx.assert(user, 400, 'User does not exist')
   ctx.assert(user.emailAddress, 400, 'User does not have an email address')
 
   const mailOptions = {

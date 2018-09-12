@@ -5,14 +5,17 @@ import supertest from 'supertest'
 import nodemailer from 'nodemailer'
 
 const server = app.listen()
-const postAgent = supertest
-  .agent(server)
-  .post('/sendEmail')
-  .set('Accept', 'application/json')
+let postAgent
 
 beforeEach(async () => {
   //  Restore mocks to clear any calls
   jest.restoreAllMocks()
+
+  //  Setup postAgent
+  postAgent = supertest
+    .agent(server)
+    .post('/sendEmail')
+    .set('Accept', 'application/json')
 
   //  Start test with a clean db state
   await db.none('TRUNCATE public.user')
@@ -40,8 +43,8 @@ test('/sendEmail should 400 if userId is not provided', async () => {
   await postAgent.send({}).expect(400)
 })
 
-test('/sendEmail should 404 if user does not exist', async () => {
-  await postAgent.send({ userId: 'not-a-user' }).expect(404)
+test('/sendEmail should 400 if user does not exist', async () => {
+  await postAgent.send({ userId: 'not-a-user' }).expect(400)
 })
 
 test('/sendEmail should 400 if user does not have an email address', async () => {
