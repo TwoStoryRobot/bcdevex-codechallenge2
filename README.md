@@ -52,6 +52,10 @@ Start the react dev server. For development purposes.
 Builds and runs storybook explorer for component driven development. All 
 components will be viewable and interactable within storybook.
 
+## Backend
+
+The backend of the application is a koa server in [`/backend`](./backend).
+
 #### 
 
 # Code Challenge (Mines)
@@ -265,14 +269,3 @@ The sendEmail operation must be implemented by making a server-side REST API cal
 1.	Submit all code by way of a pull request to this repository.  Your team’s final pull request must be submitted before 4 p.m. Pacific Time on Thursday, September 13, 2018.
 2.	Attach an Apache License 2.0 to your pull request.
 3.	Update the repo’s README file to include any instructions required for the code challenge evaluators to build and run your team’s application.
-
-
-## Environment Variables
-
-TODO: Elaborate more on each environment variable
-
-* REACT_APP_API_URL
-* REACT_APP_CLIENT_ID
-* CORS_ORIGIN
-* CLIENT_ID
-* SMTP

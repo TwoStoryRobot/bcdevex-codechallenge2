@@ -1,4 +1,3 @@
-
 /* App
  * Main application wrapper
  */
@@ -11,8 +10,8 @@ import Home from './Home'
 
 const App = () => (
   <Switch>
-    <Route exact path='/' component={Home} />
-    <PrivateRoute exact path='/private' component={Private} />
+    <Route exact path="/" component={Home} />
+    <PrivateRoute exact path="/private" component={Private} />
   </Switch>
 )
 

@@ -14,6 +14,7 @@ backend:
     - POSTGRES_HOST=postgresdb
     - CORS_ORIGIN=http://dockerhost:3000
     - CLIENT_ID=656587629888-4rvd0pv398dgderln9s6kuvr7kdn99k5.apps.googleusercontent.com
+    - FROM_EMAIL=codechallenge@twostoryrobot.com
     - SMTP=smtp://mailhog:1025
 
 frontend:

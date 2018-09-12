@@ -1,5 +1,10 @@
 import React from 'react'
-import { cleanup, render , bindElementToQueries, fireEvent } from 'react-testing-library'
+import {
+  cleanup,
+  render,
+  bindElementToQueries,
+  fireEvent
+} from 'react-testing-library'
 
 import EditUserDialog from './EditUserDialog'
 
@@ -9,18 +14,20 @@ afterEach(cleanup)
 
 describe('EditUserDialog', () => {
   it('should only be shown when open=true', () => {
-      const { queryByTestId, getByTestId } = bindElementToQueries(document.body)
+    const { queryByTestId, getByTestId } = bindElementToQueries(document.body)
 
-      const { rerender } = render(<EditUserDialog open={false} />)
-      expect(queryByTestId('edit-user-dialog')).toBeNull()
+    const { rerender } = render(<EditUserDialog open={false} />)
+    expect(queryByTestId('edit-user-dialog')).toBeNull()
 
-      rerender(<EditUserDialog open={true} />)
-      expect(getByTestId('edit-user-dialog')).toBeInTheDocument()
+    rerender(<EditUserDialog open={true} />)
+    expect(getByTestId('edit-user-dialog')).toBeInTheDocument()
   })
 
   it('should save any data the user entered when the save button is pressed', () => {
     const save = jest.fn()
-    const { getByLabelText, getByTestId } = render(<EditUserDialog open={true} onSave={save} />)
+    const { getByLabelText, getByTestId } = render(
+      <EditUserDialog open={true} onSave={save} />
+    )
 
     const firstName = 'John'
     const lastName = 'Doe'
@@ -37,13 +44,20 @@ describe('EditUserDialog', () => {
     const button = getByTestId('save')
     fireEvent.click(button)
 
-    expect(save).toHaveBeenCalledWith({ firstName, lastName, email: '', avatarUrl: '' })
+    expect(save).toHaveBeenCalledWith({
+      firstName,
+      lastName,
+      email: '',
+      avatarUrl: ''
+    })
   })
 
   it('Closes without saving when the close button is pressed', () => {
     const save = jest.fn()
     const close = jest.fn()
-    const { getByTestId } = render(<EditUserDialog open={true} onSave={save} onClose={close} />)
+    const { getByTestId } = render(
+      <EditUserDialog open={true} onSave={save} onClose={close} />
+    )
 
     const button = getByTestId('close')
     fireEvent.click(button)

@@ -18,7 +18,7 @@ describe('AppBar', () => {
     const { getByTestId, queryByTestId } = render(<AppBar />)
 
     expect(queryByTestId('profile-menu')).toBeNull()
-    
+
     fireEvent.click(getByTestId('avatar-button'))
 
     expect(getByTestId('profile-menu')).toBeVisible()
@@ -29,7 +29,7 @@ describe('AppBar', () => {
 
     fireEvent.click(getByTestId('avatar-button'))
     fireEvent.click(getByTestId('edit'))
-    
+
     expect(queryByTestId('profile-menu').firstChild).toHaveStyle('opacity: 0')
   })
 
@@ -39,14 +39,14 @@ describe('AppBar', () => {
 
     const { getByTestId } = render(<AppBar onEdit={edit} onSignOut={signout} />)
 
-    // The menu has to be opened for each test because it closes automatically when 
+    // The menu has to be opened for each test because it closes automatically when
     // a MenuItem is selected
     const openMenu = () => fireEvent.click(getByTestId('avatar-button'))
 
     openMenu()
     fireEvent.click(getByTestId('edit'))
     expect(edit).toHaveBeenCalled()
-    
+
     openMenu()
     fireEvent.click(getByTestId('signout'))
     expect(signout).toHaveBeenCalled()

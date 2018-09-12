@@ -1,4 +1,3 @@
-
 /* LoginButton
  * Button to trigger Google Login flow
  */
@@ -9,7 +8,7 @@ import GoogleLogin from 'react-google-login'
 import Button from '@material-ui/core/Button'
 import AccountIcon from 'mdi-react/AccountIcon'
 import { withTheme } from '@material-ui/core/styles'
-import grey from '@material-ui/core/colors/grey';
+import grey from '@material-ui/core/colors/grey'
 import styled from 'styled-components'
 import { UserConsumer } from './UserContext'
 
@@ -27,15 +26,14 @@ const StyledButton = styled(Button)`
 `
 
 class LoginButton extends Component {
-
   mapProfile(googleUser) {
     const profile = googleUser.getBasicProfile()
     return {
-      userId : profile.getId(),
-      firstName : profile.getGivenName(),
-      lastName : profile.getFamilyName(),
-      emailAddress : profile.getEmail(),
-      imageURL : profile.getImageUrl()
+      userId: profile.getId(),
+      firstName: profile.getGivenName(),
+      lastName: profile.getFamilyName(),
+      emailAddress: profile.getEmail(),
+      imageURL: profile.getImageUrl()
     }
   }
 
@@ -59,18 +57,17 @@ class LoginButton extends Component {
             clientId={process.env.REACT_APP_CLIENT_ID}
             onSuccess={googleUser => this.handleLogin(login, googleUser)}
             onFailure={err => this.handleFailure(err)}
-            render={({ onClick }) => 
+            render={({ onClick }) => (
               <StyledButton onClick={onClick} variant="raised">
                 <StyledAccountIcon theme={this.props.theme} />
                 Sign in with Google
               </StyledButton>
-            }
+            )}
           />
         )}
       </UserConsumer>
     )
   }
-
 }
 
 LoginButton.propTypes = {

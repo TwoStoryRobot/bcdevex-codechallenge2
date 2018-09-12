@@ -1,4 +1,3 @@
-
 /* Home Page
  * Login and welcome display
  */
@@ -7,9 +6,9 @@ import React, { Component } from 'react'
 import LoginButton from './LoginButton'
 import styled from 'styled-components'
 import { authenticate } from '../requests'
-import { Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core'
 
-import background from '../images/background.jpeg';
+import background from '../images/background.jpeg'
 
 const Container = styled.div`
   display: flex;
@@ -54,10 +53,8 @@ const ButtonContainer = styled.div`
 `
 
 class Home extends Component {
-
   handleLogin = profile => {
-    authenticate(profile)
-    .then(() => this.props.history.push('/private'))
+    authenticate(profile).then(() => this.props.history.push('/private'))
   }
 
   handleError = err => {
@@ -69,19 +66,18 @@ class Home extends Component {
       <Container>
         <Transparency>
           <IntroText variant="subheading" component="p">
-            Manage users and send the exact email to any of them with ease! 
+            Manage users and send the exact email to any of them with ease!
           </IntroText>
           <ButtonContainer>
-            <LoginButton 
-              onLogin={profile => this.handleLogin(profile)} 
-              onFailure={err => this.handleError(err)} 
+            <LoginButton
+              onLogin={profile => this.handleLogin(profile)}
+              onFailure={err => this.handleError(err)}
             />
           </ButtonContainer>
         </Transparency>
       </Container>
     )
   }
-
 }
 
 export default Home

@@ -1,4 +1,3 @@
-
 /* User Context
  * React context object that represents the active user
  */
@@ -9,9 +8,8 @@ const UserContext = React.createContext({})
 const UserConsumer = UserContext.Consumer
 
 class UserProvider extends Component {
-
-  state = { 
-    isLoggedIn : localStorage.getItem('token')
+  state = {
+    isLoggedIn: localStorage.getItem('token')
   }
 
   login = auth => {
@@ -28,16 +26,16 @@ class UserProvider extends Component {
 
   render() {
     return (
-      <UserContext.Provider value={{
-        isLoggedIn: this.state.isLoggedIn,
-        logout: this.logout,
-        login: this.login
-      }}>
+      <UserContext.Provider
+        value={{
+          isLoggedIn: this.state.isLoggedIn,
+          logout: this.logout,
+          login: this.login
+        }}>
         {this.props.children}
       </UserContext.Provider>
     )
   }
-
 }
 
 export { UserProvider, UserConsumer }
