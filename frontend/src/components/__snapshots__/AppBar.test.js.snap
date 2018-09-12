@@ -24,11 +24,17 @@ exports[`AppBar should match the snapshot 1`] = `
           class="MuiIconButton-label-071"
         >
           <div
-            class="MuiAvatar-root-075"
-          />
+            class=" sb-avatar"
+            style="display: inline-block; vertical-align: middle; width: 40px; height: 40px; border-radius: 100%; font-family: Helvetica, Arial, sans-serif; opacity: 1; -webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+          >
+            <div
+              class=" sb-avatar__text"
+              style="width: 40px; height: 40px; font-size: 13.3333px; line-height: 40px; text-align: center; text-transform: uppercase; color: rgb(255, 255, 255); border-radius: 100%;"
+            />
+          </div>
         </span>
         <span
-          class="MuiTouchRipple-root-078"
+          class="MuiTouchRipple-root-075"
         />
       </button>
     </div>
