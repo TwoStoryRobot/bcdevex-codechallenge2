@@ -1,0 +1,325 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserTable should display loading spinner when isLoaded is true 1`] = `
+<div
+  class="MuiPaper-root-0101 MuiPaper-elevation2-0105 MuiPaper-rounded-0102 UserTable-root-098"
+>
+  <table
+    class="MuiTable-root-0128 UserTable-table-099"
+  >
+    <thead
+      class="MuiTableHead-root-0129"
+    >
+      <tr
+        class="MuiTableRow-root-0130 MuiTableRow-head-0133"
+      >
+        <th
+          class="MuiTableCell-root-0137 MuiTableCell-head-0138 WithStyles-TableCell--head-0135"
+          scope="col"
+        />
+        <th
+          class="MuiTableCell-root-0137 MuiTableCell-head-0138 WithStyles-TableCell--head-0135"
+          scope="col"
+        >
+          First
+        </th>
+        <th
+          class="MuiTableCell-root-0137 MuiTableCell-head-0138 WithStyles-TableCell--head-0135"
+          scope="col"
+        >
+          Last
+        </th>
+        <th
+          class="MuiTableCell-root-0137 MuiTableCell-head-0138 WithStyles-TableCell--head-0135"
+          scope="col"
+        >
+          Email
+        </th>
+        <th
+          class="MuiTableCell-root-0137 MuiTableCell-head-0138 WithStyles-TableCell--head-0135"
+          scope="col"
+        >
+          Registration
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="MuiTableBody-root-0145"
+    />
+  </table>
+  <div
+    class="Component-root-0146"
+  >
+    <div
+      class="MuiCircularProgress-root-0147 MuiCircularProgress-colorPrimary-0150 MuiCircularProgress-indeterminate-0149"
+      style="width: 64px; height: 64px;"
+      role="progressbar"
+    >
+      <svg
+        class="MuiCircularProgress-svg-0152"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle-0153 MuiCircularProgress-circleIndeterminate-0155"
+          cx="44"
+          cy="44"
+          r="20.2"
+          fill="none"
+          stroke-width="3.6"
+        />
+      </svg>
+    </div>
+    <p>
+      Loading...
+    </p>
+  </div>
+</div>
+`;
+
+exports[`UserTable should display message when there are no registered users 1`] = `
+<div
+  class="MuiPaper-root-052 MuiPaper-elevation2-056 MuiPaper-rounded-053 UserTable-root-049"
+>
+  <table
+    class="MuiTable-root-079 UserTable-table-050"
+  >
+    <thead
+      class="MuiTableHead-root-080"
+    >
+      <tr
+        class="MuiTableRow-root-081 MuiTableRow-head-084"
+      >
+        <th
+          class="MuiTableCell-root-088 MuiTableCell-head-089 WithStyles-TableCell--head-086"
+          scope="col"
+        />
+        <th
+          class="MuiTableCell-root-088 MuiTableCell-head-089 WithStyles-TableCell--head-086"
+          scope="col"
+        >
+          First
+        </th>
+        <th
+          class="MuiTableCell-root-088 MuiTableCell-head-089 WithStyles-TableCell--head-086"
+          scope="col"
+        >
+          Last
+        </th>
+        <th
+          class="MuiTableCell-root-088 MuiTableCell-head-089 WithStyles-TableCell--head-086"
+          scope="col"
+        >
+          Email
+        </th>
+        <th
+          class="MuiTableCell-root-088 MuiTableCell-head-089 WithStyles-TableCell--head-086"
+          scope="col"
+        >
+          Registration
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="MuiTableBody-root-096"
+    />
+  </table>
+  <div
+    class="Component-root-097"
+  >
+    <svg
+      class="mdi-icon "
+      width="64"
+      height="64"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M15.5,12C18,12 20,14 20,16.5C20,17.38 19.75,18.21 19.31,18.9L22.39,22L21,23.39L17.88,20.32C17.19,20.75 16.37,21 15.5,21C13,21 11,19 11,16.5C11,14 13,12 15.5,12M15.5,14C14.12,14 13,15.12 13,16.5C13,17.88 14.12,19 15.5,19C16.88,19 18,17.88 18,16.5C18,15.12 16.88,14 15.5,14M10,4C12.21,4 14,5.79 14,8C14,8.91 13.69,9.75 13.18,10.43C12.32,10.75 11.55,11.26 10.91,11.9L10,12C7.79,12 6,10.21 6,8C6,5.79 7.79,4 10,4M2,20V18C2,15.88 5.31,14.14 9.5,14C9.18,14.78 9,15.62 9,16.5C9,17.79 9.38,19 10,20H2Z"
+      />
+    </svg>
+    <p>
+      There are currently no registered users.
+    </p>
+  </div>
+</div>
+`;
+
+exports[`UserTable should render with required props 1`] = `
+<div
+  class="MuiPaper-root-04 MuiPaper-elevation2-08 MuiPaper-rounded-05 UserTable-root-01"
+>
+  <table
+    class="MuiTable-root-031 UserTable-table-02"
+  >
+    <thead
+      class="MuiTableHead-root-032"
+    >
+      <tr
+        class="MuiTableRow-root-033 MuiTableRow-head-036"
+      >
+        <th
+          class="MuiTableCell-root-040 MuiTableCell-head-041 WithStyles-TableCell--head-038"
+          scope="col"
+        />
+        <th
+          class="MuiTableCell-root-040 MuiTableCell-head-041 WithStyles-TableCell--head-038"
+          scope="col"
+        >
+          First
+        </th>
+        <th
+          class="MuiTableCell-root-040 MuiTableCell-head-041 WithStyles-TableCell--head-038"
+          scope="col"
+        >
+          Last
+        </th>
+        <th
+          class="MuiTableCell-root-040 MuiTableCell-head-041 WithStyles-TableCell--head-038"
+          scope="col"
+        >
+          Email
+        </th>
+        <th
+          class="MuiTableCell-root-040 MuiTableCell-head-041 WithStyles-TableCell--head-038"
+          scope="col"
+        >
+          Registration
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="MuiTableBody-root-048"
+    >
+      <tr
+        class="MuiTableRow-root-033 UserTable-row-03"
+      >
+        <th
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+          scope="row"
+        >
+          <div
+            class=" sb-avatar"
+            style="display: inline-block; vertical-align: middle; width: 34px; height: 34px; border-radius: 100%; font-family: Helvetica, Arial, sans-serif;"
+          >
+            <img
+              class=" sb-avatar__image"
+              width="34px"
+              height="34px"
+              style="max-width: 100%; width: 34px; height: 34px; border-radius: 100%;"
+              src="https://d3iw72m71ie81c.cloudfront.net/male-52.jpg"
+              alt="Bob Smith"
+            />
+          </div>
+        </th>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          Bob
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          Smith
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          bob.smith@gmail.com
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+          style="font-size: 0.875rem;"
+        >
+          2018 Sept 04
+        </td>
+      </tr>
+      <tr
+        class="MuiTableRow-root-033 UserTable-row-03"
+      >
+        <th
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+          scope="row"
+        >
+          <div
+            class=" sb-avatar"
+            style="display: inline-block; vertical-align: middle; width: 34px; height: 34px; border-radius: 100%; font-family: Helvetica, Arial, sans-serif;"
+          >
+            <img
+              class=" sb-avatar__image"
+              width="34px"
+              height="34px"
+              style="max-width: 100%; width: 34px; height: 34px; border-radius: 100%;"
+              src="https://randomuser.me/api/portraits/women/21.jpg"
+              alt="Jane Doe"
+            />
+          </div>
+        </th>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          Jane
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          Doe
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          jane.doe@gmail.com
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+          style="font-size: 0.875rem;"
+        >
+          2018 Sept 04
+        </td>
+      </tr>
+      <tr
+        class="MuiTableRow-root-033 UserTable-row-03"
+      >
+        <th
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+          scope="row"
+        >
+          <div
+            class=" sb-avatar"
+            style="display: inline-block; vertical-align: middle; width: 34px; height: 34px; border-radius: 100%; font-family: Helvetica, Arial, sans-serif;"
+          >
+            <img
+              class=" sb-avatar__image"
+              width="34px"
+              height="34px"
+              style="max-width: 100%; width: 34px; height: 34px; border-radius: 100%;"
+              src="https://twostoryrobot.com/not-a-valid-url"
+              alt="James Bond"
+            />
+          </div>
+        </th>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          James
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          Bond
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+        >
+          james.bond@gmail.com
+        </td>
+        <td
+          class="MuiTableCell-root-040 MuiTableCell-body-042 WithStyles-TableCell--body-039"
+          style="font-size: 0.875rem;"
+        >
+          2018 Sept 04
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
