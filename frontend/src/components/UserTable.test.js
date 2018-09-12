@@ -43,4 +43,10 @@ describe('UserTable', () => {
 
     expect(container.firstChild).toMatchSnapshot()
   })
+
+  it('should display loading spinner when isLoaded is true', async () => {
+    const { container } = render(<UserTable users={[]} isLoading={true} />)
+
+    expect(container.firstChild).toMatchSnapshot()
+  })
 })
