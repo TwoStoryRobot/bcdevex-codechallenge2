@@ -15,7 +15,8 @@ const defaultUsers = [
     lastName: 'Smith',
     emailAddress: 'bob.smith@gmail.com',
     imageUrl: 'https://d3iw72m71ie81c.cloudfront.net/male-52.jpg',
-    isAdmin: true
+    isAdmin: true,
+    registeredAt: '2018-09-12T14:35:38-07:00'
   },
   {
     userId: 'testUser234',
@@ -23,7 +24,8 @@ const defaultUsers = [
     lastName: 'Doe',
     emailAddress: 'jane.doe@gmail.com',
     imageUrl: 'https://randomuser.me/api/portraits/women/21.jpg',
-    isAdmin: false
+    isAdmin: false,
+    registeredAt: '2018-09-13T14:35:38-07:00'
   },
 
   {
@@ -32,7 +34,8 @@ const defaultUsers = [
     lastName: 'Bond',
     emailAddress: 'james.bond@gmail.com',
     imageUrl: 'https://twostoryrobot.com/not-a-valid-url',
-    isAdmin: false
+    isAdmin: false,
+    registeredAt: '2018-09-14T14:35:38-07:00'
   }
 ]
 

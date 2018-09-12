@@ -242,7 +242,7 @@ exports[`UserTable should render with required props 1`] = `
           class="MuiTableCell-root-041 MuiTableCell-body-043 WithStyles-TableCell--body-040"
           style="font-size: 0.875rem;"
         >
-          2018 Sept 04
+          12-Sep-2018
         </td>
         <td
           class="MuiTableCell-root-041 MuiTableCell-body-043 WithStyles-TableCell--body-040"
@@ -368,7 +368,7 @@ exports[`UserTable should render with required props 1`] = `
           class="MuiTableCell-root-041 MuiTableCell-body-043 WithStyles-TableCell--body-040"
           style="font-size: 0.875rem;"
         >
-          2018 Sept 04
+          13-Sep-2018
         </td>
         <td
           class="MuiTableCell-root-041 MuiTableCell-body-043 WithStyles-TableCell--body-040"
@@ -494,7 +494,7 @@ exports[`UserTable should render with required props 1`] = `
           class="MuiTableCell-root-041 MuiTableCell-body-043 WithStyles-TableCell--body-040"
           style="font-size: 0.875rem;"
         >
-          2018 Sept 04
+          14-Sep-2018
         </td>
         <td
           class="MuiTableCell-root-041 MuiTableCell-body-043 WithStyles-TableCell--body-040"
