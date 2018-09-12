@@ -100,10 +100,15 @@ export default class AppBar extends Component {
 }
 
 AppBar.propTypes = {
+  /** Title to display */
   title: PropTypes.string,
+  /** URL of avatar */
   avatar: PropTypes.string,
+  /** Name of the user to display in the profile menu */
   name: PropTypes.string,
+  /** Handler called when the `Edit` menu button is pressed */
   onEdit: PropTypes.func,
+  /** Handler called when the `Sign out` menu button is pressed */
   onSignOut: PropTypes.func,
 }
 
