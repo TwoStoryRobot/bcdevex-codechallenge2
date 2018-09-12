@@ -1,4 +1,3 @@
-
 /* App
  * Main application wrapper
  */
@@ -8,11 +7,13 @@ import { Route, Switch } from 'react-router-dom'
 import PrivateRoute from './PrivateRoute'
 import Private from './Private'
 import Home from './Home'
+import UserListPage from './UserListPage'
 
 const App = () => (
   <Switch>
-    <Route exact path='/' component={Home} />
-    <PrivateRoute exact path='/private' component={Private} />
+    <Route exact path="/" component={Home} />
+    <PrivateRoute exact path="/private" component={Private} />
+    <PrivateRoute exact path="/users" component={UserListPage} />
   </Switch>
 )
 
