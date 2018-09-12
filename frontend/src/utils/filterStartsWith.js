@@ -3,8 +3,9 @@ function filterStartsWith(text) {
     return () => true
   }
 
+  const pattern = new RegExp('^' + text)
   return item => {
-    return item.firstName == 'Chad'
+    return item.firstName.match(pattern)
   }
 }
 

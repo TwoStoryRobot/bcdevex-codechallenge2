@@ -44,12 +44,15 @@ describe('filterStartsWith', () => {
     expect(typeof filterStartsWith('partial')).toBe('function')
   })
 
-  it('should match any text field (firstName, lastName, emailAddress)', () => {
-    expect(users.filter(filterStartsWith('Cha'))).toContain(chad)
-    expect(users.filter(filterStartsWith('Cha'))).not.toContain(chris)
+  it('should match everything if no text provided', () => {
+    expect(users.filter(filterStartsWith(''))).toEqual(users)
   })
 
-  it('should return a truthy function if no text provided', () => {
-    expect(users.filter(filterStartsWith(''))).toEqual(users)
+  it('should match any firstName', () => {
+    expect(users.filter(filterStartsWith('Ch'))).toContain(chad)
+    expect(users.filter(filterStartsWith('Ch'))).toContain(chris)
+    expect(users.filter(filterStartsWith('Ch'))).not.toContain(jonathan)
+    expect(users.filter(filterStartsWith('Ch'))).not.toContain(caleb)
+    expect(users.filter(filterStartsWith('Jo'))).toContain(jonathan)
   })
 })
