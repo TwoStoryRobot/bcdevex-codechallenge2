@@ -13,7 +13,7 @@ describe('UserTable', () => {
       firstName: 'Bob',
       lastName: 'Smith',
       emailAddress: 'bob.smith@gmail.com',
-      imageUrl: 'https://d3iw72m71ie81c.cloudfront.net/male-52.jpg',
+      imageURL: 'https://d3iw72m71ie81c.cloudfront.net/male-52.jpg',
       isAdmin: true
     },
     {
@@ -21,7 +21,7 @@ describe('UserTable', () => {
       firstName: 'Jane',
       lastName: 'Doe',
       emailAddress: 'jane.doe@gmail.com',
-      imageUrl: 'https://randomuser.me/api/portraits/women/21.jpg',
+      imageURL: 'https://randomuser.me/api/portraits/women/21.jpg',
       isAdmin: false
     },
 
@@ -30,7 +30,7 @@ describe('UserTable', () => {
       firstName: 'James',
       lastName: 'Bond',
       emailAddress: 'james.bond@gmail.com',
-      imageUrl: 'https://twostoryrobot.com/not-a-valid-url',
+      imageURL: 'https://twostoryrobot.com/not-a-valid-url',
       isAdmin: false
     }
   ]
@@ -42,7 +42,7 @@ describe('UserTable', () => {
         isAdmin={true}
         handleEditClick={() => {}}
         handleDeleteClick={() => {}}
-        handleSendEmail={() => {}}
+        handleSendEmailClick={() => {}}
       />
     )
 
@@ -56,7 +56,7 @@ describe('UserTable', () => {
         isAdmin={true}
         handleEditClick={() => {}}
         handleDeleteClick={() => {}}
-        handleSendEmail={() => {}}
+        handleSendEmailClick={() => {}}
       />
     )
 
@@ -71,7 +71,7 @@ describe('UserTable', () => {
         isAdmin={true}
         handleEditClick={() => {}}
         handleDeleteClick={() => {}}
-        handleSendEmail={() => {}}
+        handleSendEmailClick={() => {}}
       />
     )
 
@@ -86,7 +86,7 @@ describe('UserTable', () => {
         isAdmin={true}
         handleEditClick={() => {}}
         handleDeleteClick={() => {}}
-        handleSendEmail={() => {}}
+        handleSendEmailClick={() => {}}
       />
     )
 
@@ -106,7 +106,7 @@ describe('UserTable', () => {
         isAdmin={false}
         handleEditClick={() => {}}
         handleDeleteClick={() => {}}
-        handleSendEmail={() => {}}
+        handleSendEmailClick={() => {}}
       />
     )
 
@@ -126,7 +126,7 @@ describe('UserTable', () => {
   it('should fire handleEditClick when the pencil icon is clicked', async () => {
     const handleEditClick = jest.fn()
     const handleDeleteClick = jest.fn()
-    const handleSendEmail = jest.fn()
+    const handleSendEmailClick = jest.fn()
 
     const { getByTestId } = render(
       <UserTable
@@ -135,7 +135,7 @@ describe('UserTable', () => {
         isAdmin={true}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
-        handleSendEmail={handleSendEmail}
+        handleSendEmailClick={handleSendEmailClick}
       />
     )
 
@@ -144,13 +144,13 @@ describe('UserTable', () => {
 
     expect(handleEditClick).toHaveBeenCalled()
     expect(handleDeleteClick).not.toHaveBeenCalled()
-    expect(handleSendEmail).not.toHaveBeenCalled()
+    expect(handleSendEmailClick).not.toHaveBeenCalled()
   })
 
   it('should fire handleDeleteClick when the delete icon is clicked', async () => {
     const handleEditClick = jest.fn()
     const handleDeleteClick = jest.fn()
-    const handleSendEmail = jest.fn()
+    const handleSendEmailClick = jest.fn()
 
     const { getByTestId } = render(
       <UserTable
@@ -159,7 +159,7 @@ describe('UserTable', () => {
         isAdmin={true}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
-        handleSendEmail={handleSendEmail}
+        handleSendEmailClick={handleSendEmailClick}
       />
     )
 
@@ -168,13 +168,13 @@ describe('UserTable', () => {
 
     expect(handleDeleteClick).toHaveBeenCalled()
     expect(handleEditClick).not.toHaveBeenCalled()
-    expect(handleSendEmail).not.toHaveBeenCalled()
+    expect(handleSendEmailClick).not.toHaveBeenCalled()
   })
 
-  it('should fire handleSendEmail when the envelope icon is clicked', async () => {
+  it('should fire handleSendEmailClick when the envelope icon is clicked', async () => {
     const handleEditClick = jest.fn()
     const handleDeleteClick = jest.fn()
-    const handleSendEmail = jest.fn()
+    const handleSendEmailClick = jest.fn()
 
     const { getByTestId } = render(
       <UserTable
@@ -183,14 +183,14 @@ describe('UserTable', () => {
         isAdmin={true}
         handleEditClick={handleEditClick}
         handleDeleteClick={handleDeleteClick}
-        handleSendEmail={handleSendEmail}
+        handleSendEmailClick={handleSendEmailClick}
       />
     )
 
     const button = getByTestId('email')
     fireEvent.click(button)
 
-    expect(handleSendEmail).toHaveBeenCalled()
+    expect(handleSendEmailClick).toHaveBeenCalled()
     expect(handleEditClick).not.toHaveBeenCalled()
     expect(handleDeleteClick).not.toHaveBeenCalled()
   })

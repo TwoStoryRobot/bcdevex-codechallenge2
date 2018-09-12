@@ -151,7 +151,7 @@ class UserTable extends React.Component {
       isAdmin,
       handleEditClick,
       handleDeleteClick,
-      handleSendEmail
+      handleSendEmailClick
     } = this.props
 
     const { sortField, sortDirection } = this.state
@@ -181,19 +181,16 @@ class UserTable extends React.Component {
                   {sortField === 'emailAddress' ? sortIcon : <EmptyIcon />}
                 </Button>
               </StyledTableCell>
-              <StyledTableCell>
-                <Typography variant="button">Registration</Typography>
-              </StyledTableCell>
               {isAdmin && <StyledTableCell />}
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.getSortedUsers().map(user => (
+            {users.map(user => (
               <TableRow key={user.userId} className={classes.row}>
                 <StyledTableCell component="th" scope="row">
                   <Avatar
                     key={user.userId}
-                    src={user.imageUrl}
+                    src={user.imageURL}
                     name={`${user.firstName} ${user.lastName}`}
                     size={34}
                     round={true}
@@ -224,7 +221,7 @@ class UserTable extends React.Component {
                       </IconButton>
                       <IconButton
                         color="primary"
-                        onClick={handleSendEmail}
+                        onClick={handleSendEmailClick}
                         data-testid="email">
                         <EnvelopeIcon />
                       </IconButton>
@@ -268,7 +265,7 @@ UserTable.propTypes = {
       /** email address of user (used to send email) */
       emailAddress: PropTypes.emailAddress,
       /** url of user's Avatar */
-      imageUrl: PropTypes.string,
+      imageURL: PropTypes.string,
       /** admin flag */
       isAdmin: PropTypes.bool
     })
@@ -277,11 +274,12 @@ UserTable.propTypes = {
   isAdmin: PropTypes.bool.isRequired,
   handleEditClick: PropTypes.func.isRequired,
   handleDeleteClick: PropTypes.func.isRequired,
-  handleSendEmail: PropTypes.func.isRequired
+  handleSendEmailClick: PropTypes.func.isRequired
 }
 
 UserTable.defaultProps = {
-  isLoading: false
+  isLoading: false,
+  isAdmin: false
 }
 
 export default withStyles(styles)(UserTable)
