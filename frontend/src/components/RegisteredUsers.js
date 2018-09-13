@@ -31,15 +31,22 @@ class RegisteredUsers extends React.Component {
   componentDidMount() {
     //  Fetch all users
     this.setState({ isFetchingUsers: true })
-    getUsers().then(({ users, controller }) => {
-      const currentUser = users.find(user => user.userId === this.props.userId)
-      this.setState({
-        users,
-        currentUser,
-        isFetchingUsers: false,
-        fetchUsersController: controller
+    getUsers()
+      .then(({ users, controller }) => {
+        const currentUser = users.find(
+          user => user.userId === this.props.userId
+        )
+        this.setState({
+          users,
+          currentUser,
+          isFetchingUsers: false,
+          fetchUsersController: controller
+        })
       })
-    })
+      .catch(err => {
+        if (err && err.status === 401) return this.props.history.push('/logout')
+        else throw err
+      })
   }
 
   componentWillUnmount() {
