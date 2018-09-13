@@ -129,7 +129,7 @@ describe('UserTable', () => {
     }).toThrow()
   })
 
-  it('should fire handleEditClick when the pencil icon is clicked', async () => {
+  it('should fire handleEditClick when pencil icon is clicked', async () => {
     const handleEditClick = jest.fn()
     const handleDeleteClick = jest.fn()
     const handleSendEmailClick = jest.fn()
@@ -153,7 +153,7 @@ describe('UserTable', () => {
     expect(handleSendEmailClick).not.toHaveBeenCalled()
   })
 
-  it('should fire handleDeleteClick when the delete icon is clicked', async () => {
+  it('should fire handleDeleteClick when delete icon is clicked', async () => {
     const handleEditClick = jest.fn()
     const handleDeleteClick = jest.fn()
     const handleSendEmailClick = jest.fn()
@@ -177,27 +177,30 @@ describe('UserTable', () => {
     expect(handleSendEmailClick).not.toHaveBeenCalled()
   })
 
-  it('should fire handleSendEmailClick when the envelope icon is clicked', async () => {
-    const handleEditClick = jest.fn()
-    const handleDeleteClick = jest.fn()
-    const handleSendEmailClick = jest.fn()
+  it(
+    'should fire handleSendEmailClick when envelope icon is clicked',
+    async () => {
+      const handleEditClick = jest.fn()
+      const handleDeleteClick = jest.fn()
+      const handleSendEmailClick = jest.fn()
 
-    const { getByTestId } = render(
-      <UserTable
-        users={defaultUsers}
-        isLoading={true}
-        isAdmin={true}
-        handleEditClick={handleEditClick}
-        handleDeleteClick={handleDeleteClick}
-        handleSendEmailClick={handleSendEmailClick}
-      />
-    )
+      const { getByTestId } = render(
+        <UserTable
+          users={defaultUsers}
+          isLoading={true}
+          isAdmin={true}
+          handleEditClick={handleEditClick}
+          handleDeleteClick={handleDeleteClick}
+          handleSendEmailClick={handleSendEmailClick}
+        />
+      )
 
-    const button = getByTestId('email')
-    fireEvent.click(button)
+      const button = getByTestId('email')
+      fireEvent.click(button)
 
-    expect(handleSendEmailClick).toHaveBeenCalled()
-    expect(handleEditClick).not.toHaveBeenCalled()
-    expect(handleDeleteClick).not.toHaveBeenCalled()
-  })
+      expect(handleSendEmailClick).toHaveBeenCalled()
+      expect(handleEditClick).not.toHaveBeenCalled()
+      expect(handleDeleteClick).not.toHaveBeenCalled()
+    }
+  )
 })
