@@ -44,4 +44,10 @@ class UserProvider extends Component {
   }
 }
 
-export { UserProvider, UserConsumer }
+const withUserContext = Component => props => (
+  <UserConsumer>
+    {userProps => <Component {...props} {...userProps} />}
+  </UserConsumer>
+)
+
+export { UserProvider, UserConsumer, withUserContext }
