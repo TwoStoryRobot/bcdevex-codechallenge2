@@ -278,10 +278,15 @@ UserTable.propTypes = {
       registeredAt: PropTypes.string
     })
   ).isRequired,
+  /** specify whether to display loading spinner */
   isLoading: PropTypes.bool,
+  /** specify whether to display extra admin UI */
   isAdmin: PropTypes.bool.isRequired,
+  /** called when edit icon is clicked */
   handleEditClick: PropTypes.func.isRequired,
+  /** called when delete icon is clicked */
   handleDeleteClick: PropTypes.func.isRequired,
+  /** called when email icon is clicked */
   handleSendEmailClick: PropTypes.func.isRequired
 }
 
@@ -290,4 +295,5 @@ UserTable.defaultProps = {
   isAdmin: false
 }
 
+export { UserTable as Docs }
 export default withStyles(styles)(UserTable)

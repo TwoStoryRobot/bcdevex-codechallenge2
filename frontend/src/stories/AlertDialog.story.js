@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { host } from 'storybook-host'
 import { withKnobs, text } from '@storybook/addon-knobs/react'
 import { action } from '@storybook/addon-actions'
-import docgen from '@twostoryrobot/storybook-addon-docgen'
+import docgen from './addons/docgen'
 
 import { create } from 'reworm'
 import Button from '@material-ui/core/Button'

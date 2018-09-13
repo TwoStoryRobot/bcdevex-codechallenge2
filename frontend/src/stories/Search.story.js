@@ -2,7 +2,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { host } from 'storybook-host'
 import { withKnobs } from '@storybook/addon-knobs/react'
-import docgen from '@twostoryrobot/storybook-addon-docgen'
+import docgen from './addons/docgen'
 
 import SearchBar from '../components/SearchBar'
 

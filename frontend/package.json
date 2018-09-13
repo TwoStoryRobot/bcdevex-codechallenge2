@@ -32,7 +32,6 @@
     "@storybook/react": "^3.4.10",
     "@twostoryrobot/eslint-config": "^2.2.0",
     "@twostoryrobot/prettier-config": "^2.0.1",
-    "@twostoryrobot/storybook-addon-docgen": "^1.0.5",
     "babel-core": "^6.26.3",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.10.0",
@@ -40,6 +39,7 @@
     "eslint-plugin-react": "^7.11.1",
     "jest-dom": "^1.12.0",
     "prettier": "^1.14.2",
+    "react-markdown": "^3.6.0",
     "react-testing-library": "^5.0.1",
     "reworm": "^1.0.4",
     "storybook-host": "^5.0.0"
