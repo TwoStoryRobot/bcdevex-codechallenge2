@@ -30,7 +30,6 @@ Chrome browser.
 The following are stories and test procedures for all features required in this 
 code challenge.
 
-
 ### User Story #1 – Register with the application
 
 As a user, I want to be able to register with the application.
@@ -49,8 +48,62 @@ Users screen.
 
 ![Login screen](./screenshots/Login.png)
 
-**Note** the first user that authenticates will automatically be given admin 
+**Note** The first user that authenticates will automatically be given admin 
 permissions. Any subsequent user will not have admin permissions
+
+### User Story #2 – Delete my own profile
+
+As a user, I want to be able to delete my profile from the application.
+
+**Given** that I am a User<br/>
+**And** that I have signed in to the application<br/>
+**When** I activate the “Delete” UI control related to my user profile<br/>
+**Then** my profile is deleted from the Registered Users List<br/>
+
+When you are signed in to the application you will see your profile image in 
+the top right of the interface. Clicking your profile image will reveal a menu 
+with an option to delete your account. Click the "Delete account" item. You 
+will be prompted to confirm if you would like to delete your account. Clicking 
+"Confirm" will permanently delete your account. Clicking "Cancel" will abort 
+the delete operation.
+
+Your account will be deleted and you will be signed out of the application.
+
+![Reveal the menu by clicking on your profile 
+image](./screenshots/Delete-step1.png)
+
+![The user operations menu](./screenshots/Delete-step2.png)
+
+![Confirm the delete operation](./screenshots/Delete-step3.png)
+
+**Note** If you are signed in as the admin user and you delete your account, 
+the next **new** user to be created will be assigned admin permissions.
+
+### User Story #3 – Delete a user profile (Admin)
+
+As an administrator, I want to be able to delete any given user profile from 
+the application.
+
+**Given** that I am an Administrator<br/>
+**And** that I have signed in to the application as an Administrator<br/>
+**When** I activate the “Delete” UI control related to a user profile<br/>
+**Then** that user profile is deleted from the Registered Users List<br/>
+
+When you are signed in as the administrator you will see trash can icons next 
+to each user in the Registered Users list (including your own account).  
+Clicking the trash can icon will bring up a propmt asking if you to confirm the 
+account deletion. Clicking "confirm" will delete the user account permanently 
+and remove them from the Registered User List. Clicking "cancel" will abort the 
+delete operation.
+
+![Clicking the trash icon next to a user 
+profile](./screenshots/Admin-delete-step1.png)
+
+![Confirm the delete operation](./screenshots/Admin-delete-step2.png)
+
+**Note** If you delete the admin account, the next **new** user to be created 
+will be assigned admin permissions.
+
 
 
 # Architecture
