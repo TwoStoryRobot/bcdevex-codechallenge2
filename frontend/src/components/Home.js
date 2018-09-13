@@ -3,6 +3,7 @@
  */
 
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import LoginButton from './LoginButton'
 import styled from 'styled-components'
 import { authenticate } from '../requests'
@@ -56,6 +57,7 @@ const ButtonContainer = styled.div`
 class Home extends Component {
   componentDidMount() {
     if (this.props.isLoggedIn) {
+      console.log(this.props.isLoggedIn)
       this.props.history.push('/users')
     }
   }
@@ -86,6 +88,13 @@ class Home extends Component {
       </Container>
     )
   }
+}
+
+Home.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired
 }
 
 export default withAuthContext(Home)
