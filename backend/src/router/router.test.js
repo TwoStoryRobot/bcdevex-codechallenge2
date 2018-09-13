@@ -2,6 +2,7 @@ import app from '../app'
 import { queries, db, pgp } from '../db'
 import { generateUser, generateNewUser, generateToken } from '../helpers'
 import supertest from 'supertest'
+import moment from 'moment'
 
 const server = app.listen()
 const request = supertest.agent(server)
@@ -108,7 +109,7 @@ test('/delete should return 400 when non-existant userId is provided', async () 
 
 test('/authenticate should authenticate a valid user', async () => {
   const user = generateNewUser({ userId: 'doesntExist' })
-  const response = { isAdmin : true }
+  const response = { isAdmin : true, registeredAt : moment().format() }
 
   await request
     .post('/authenticate')
@@ -132,7 +133,7 @@ test('/authenticate should return preexisting users', async () => {
 
 test('/authenticate should make secondary users non-admin', async () => {
   const user1 = generateNewUser({ userId: 'firstUser' })
-  const response1 = { isAdmin : true }
+  const response1 = { isAdmin : true, registeredAt : moment().format() }
 
   await request
     .post('/authenticate')
@@ -142,7 +143,7 @@ test('/authenticate should make secondary users non-admin', async () => {
     .expect(200, Object.assign(user1, response1))
 
   const user2 = generateNewUser({ userId: 'secondUser' })
-  const response2 = { isAdmin : false }
+  const response2 = { isAdmin : false, registeredAt : moment().format() }
 
   await request
     .post('/authenticate')
@@ -153,7 +154,7 @@ test('/authenticate should make secondary users non-admin', async () => {
 })
 
 test('/authenticate should reject non-matching userIds', async () => {
-  const user = generateUser({ id: 'badMatch1' })
+  const user = generateNewUser({ userId: 'badMatch1' })
 
   await request
     .post('/authenticate')
@@ -161,4 +162,17 @@ test('/authenticate should reject non-matching userIds', async () => {
     .set('Accept', 'application/json')
     .set('Authorization', 'Bearer ' + generateToken('badMatch2'))
     .expect(400, 'You can only self-register')
+})
+
+test('/authenticate should reject poorly formed queries', async () => {
+  const user = generateNewUser()
+  delete user.firstName
+  delete user.lastName
+
+  await request
+    .post('/authenticate')
+    .send(user)
+    .set('Accept', 'application/json')
+    .set('Authorization', 'Bearer ' + generateToken())
+    .expect(400)
 })
