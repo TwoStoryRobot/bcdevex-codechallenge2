@@ -82,7 +82,7 @@ describe('UserTable', () => {
   })
 
   it('should display the action icons if user is admin', async () => {
-    const { getByTestId, container } = render(
+    const { getByTestId } = render(
       <UserTable
         users={defaultUsers}
         isLoading={false}
@@ -102,7 +102,7 @@ describe('UserTable', () => {
   })
 
   it('should not display the action icons if user is not admin', async () => {
-    const { getByTestId, container } = render(
+    const { getByTestId } = render(
       <UserTable
         users={[defaultUsers[1]]}
         isLoading={false}
@@ -114,15 +114,15 @@ describe('UserTable', () => {
     )
 
     expect(() => {
-      const pencilIcon = getByTestId('edit')
+      getByTestId('edit')
     }).toThrow()
 
     expect(() => {
-      const deleteIcon = getByTestId('delete')
+      getByTestId('delete')
     }).toThrow()
 
     expect(() => {
-      const emailIcon = getByTestId('email')
+      getByTestId('email')
     }).toThrow()
   })
 

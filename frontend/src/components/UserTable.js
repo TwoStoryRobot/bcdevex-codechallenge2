@@ -21,7 +21,7 @@ import EnvelopeIcon from 'mdi-react/EnvelopeIcon'
 import SortAscendingIcon from 'mdi-react/SortAscendingIcon'
 import SortDescendingIcon from 'mdi-react/SortDescendingIcon'
 
-const StyledButtonsCell = withStyles(theme => ({
+const StyledButtonsCell = withStyles(() => ({
   root: {
     display: 'flex'
   }
