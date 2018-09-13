@@ -23,6 +23,8 @@ const sendEmail = Router()
 
 //  TODO: User must be an admin to send an email
 async function emailUser(ctx) {
+  ctx.assert(ctx.state.isAdmin, 403)
+
   const result = schema.validate(ctx.request.body)
   if (result.error) ctx.throw(400, result.error)
 

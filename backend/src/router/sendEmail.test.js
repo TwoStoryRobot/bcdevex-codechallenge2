@@ -22,8 +22,8 @@ beforeEach(async () => {
   await db.none('TRUNCATE public.user')
 
   await Promise.all([
-    queries.insertUser(generateUser({ userId: '1' })),
-    queries.insertUser(generateUser({ userId: '2' }))
+    queries.insertUser(generateUser({ userId: 'admin', isAdmin: true })),
+    queries.insertUser(generateUser({ userId: 'user' }))
   ])
 })
 
@@ -39,42 +39,41 @@ afterAll(async () => {
 })
 
 test('/sendEmail should require admin role', async () => {
-  const admin = generateUser({ userId: 'admin' })
-  await supertest
-    .agent(server)
-    .post('/authenticate')
-    .send(admin)
-    .set('Authorization', 'Bearer ' + generateToken('admin'))
-
-  const user = generateUser({ userId: 'not-admin' })
-  const res = await supertest
-    .agent(server)
-    .post('/authenticate')
-    .send(user)
-    .set('Authorization', 'Bearer ' + generateToken('not-admin'))
-    .expect(200)
-  expect(res.body.isAdmin).not.toBeTruthy()
-
-  await postAgent.send({ userId: 'admin' }).expect(401)
+  await postAgent
+    .send({ userId: 'admin' })
+    .set('Authorization', 'Bearer ' + generateToken('user'))
+    .expect(403)
 })
 
 test('/sendEmail should reject poorly formed requests', async () => {
-  await postAgent.send({}).expect(400)
+  await postAgent
+    .send({})
+    .set('Authorization', 'Bearer ' + generateToken('admin'))
+    .expect(400)
 })
 
 test('/sendEmail should 400 if user does not exist', async () => {
-  await postAgent.send({ userId: 'not-a-user' }).expect(400)
+  await postAgent
+    .send({ userId: 'not-a-user' })
+    .set('Authorization', 'Bearer ' + generateToken('admin'))
+    .expect(400)
 })
 
 test('/sendEmail should 400 if user does not have an email address', async () => {
   const userId = 'noemail'
   await queries.insertUser(generateUser({ userId, emailAddress: '' }))
 
-  await postAgent.send({ userId }).expect(400)
+  await postAgent
+    .send({ userId })
+    .set('Authorization', 'Bearer ' + generateToken('admin'))
+    .expect(400)
 })
 
 test('/sendEmail should email user', async () => {
-  await postAgent.send({ userId: '1' }).expect(200)
+  await postAgent
+    .send({ userId: 'user' })
+    .set('Authorization', 'Bearer ' + generateToken('admin'))
+    .expect(200)
 
   nodemailer.sendMail()
   expect(nodemailer.sendMail).toHaveBeenCalled()
