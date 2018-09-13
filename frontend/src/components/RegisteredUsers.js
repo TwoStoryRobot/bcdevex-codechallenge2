@@ -5,7 +5,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { UserConsumer } from './UserContext'
+import { UserConsumer, withUserContext } from './UserContext'
 import AppBar from './AppBar'
 import UserTable from './UserTable'
 import { getUsers } from '../requests.js'
@@ -105,4 +105,4 @@ RegisteredUsers.propTypes = {
   userId: PropTypes.string
 }
 
-export default RegisteredUsers
+export default withUserContext(RegisteredUsers)
