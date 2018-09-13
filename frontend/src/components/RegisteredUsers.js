@@ -7,6 +7,8 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { UserConsumer } from './UserContext'
 import AppBar from './AppBar'
+import SearchBar from './SearchBar'
+import filterStartsWith from '../utils/filterStartsWith'
 import UserTable from './UserTable'
 import { getUsers } from '../requests.js'
 
@@ -17,7 +19,7 @@ const Container = styled.div`
 const Content = styled.div`
   width: 900px;
   max-width: calc(100vw - 100px);
-  margin: auto;
+  margin: 50px auto;
 `
 
 class RegisteredUsers extends React.Component {
@@ -25,6 +27,7 @@ class RegisteredUsers extends React.Component {
     isFetchingUsers: false,
     currentUser: undefined,
     users: [],
+    searchText: '',
     fetchUsersController: undefined
   }
 
@@ -47,6 +50,10 @@ class RegisteredUsers extends React.Component {
     fetchUsersController && fetchUsersController.abort()
   }
 
+  handleSearchChange = e => {
+    this.setState({ searchText: e.target.value })
+  }
+
   //  TODO: Implement this function
   handleUserEditClick() {
     console.log('Edit User Clicked')
@@ -63,7 +70,7 @@ class RegisteredUsers extends React.Component {
   }
 
   render() {
-    const { currentUser, users, isFetchingUsers } = this.state
+    const { currentUser, users, isFetchingUsers, searchText } = this.state
     const avatar = currentUser && currentUser.imageURL
     const name =
       currentUser && `${currentUser.firstName} ${currentUser.lastName}`
@@ -78,8 +85,12 @@ class RegisteredUsers extends React.Component {
               onSignOut={logout}
             />
             <Content>
+              <SearchBar
+                value={searchText}
+                onChange={this.handleSearchChange}
+              />
               <UserTable
-                users={users}
+                users={users.filter(filterStartsWith(searchText))}
                 isLoading={isFetchingUsers}
                 isAdmin={currentUser && currentUser.isAdmin}
                 handleEditClick={this.handleUserEditClick}
