@@ -1,16 +1,12 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { host } from 'storybook-host'
-import { withKnobs, text } from '@storybook/addon-knobs/react'
-import { action } from '@storybook/addon-actions'
+import { withKnobs } from '@storybook/addon-knobs/react'
 import docgen from '@twostoryrobot/storybook-addon-docgen'
 
 import SearchBar from '../components/SearchBar'
 
 import { create } from 'reworm'
-
-const onChange = action('onChange')
-const onSubmit = action('onSubmit')
 
 storiesOf('SearchBar', module)
   .addDecorator(host({ width: 500 }))

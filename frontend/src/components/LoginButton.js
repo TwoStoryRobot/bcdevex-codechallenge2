@@ -72,7 +72,8 @@ class LoginButton extends Component {
 
 LoginButton.propTypes = {
   onLogin: PropTypes.func,
-  onFailure: PropTypes.func
+  onFailure: PropTypes.func,
+  theme: PropTypes.object
 }
 
 export default withTheme()(LoginButton)
