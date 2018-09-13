@@ -1,4 +1,4 @@
-/* Delete router tests
+/* Update router tests
  */
 
 import app from '../app'
@@ -16,7 +16,7 @@ beforeEach(async () => {
   //  Setup postAgent
   postAgent = supertest
     .agent(server)
-    .post('/delete')
+    .post('/update')
     .set('Accept', 'application/json')
     .set('Authorization', 'Bearer ' + generateToken())
 
@@ -40,22 +40,24 @@ afterAll(async () => {
   await pgp.end()
 })
 
-test('/delete should remove a user from the db', async () => {
-  const body = generateUser()
+test('/update should update user details', async () => {
+  const user = generateUser({ emailAddress: 'new@address.com' })
 
   await postAgent
-    .send(body)
-    .expect(200, body)
+    .send(user)
+    .expect(200, user)
 })
 
-test('/delete should return 400 for poorly formed queries', async () => {
+test('/update should reject invalid requests', async () => {
   await postAgent
     .send({})
     .expect(400)
 })
 
-test('/delete should return 400 when non-existant userId is provided', async () => {
+test('/update should return 400 when non-existant userId is provided', async () => {
+  const user = generateUser({ userId: '3' })
+
   await postAgent
-    .send(generateUser({ userId: '3' }))
+    .send(user)
     .expect(400, 'Invalid userId')
 })
