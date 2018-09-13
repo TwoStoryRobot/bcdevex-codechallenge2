@@ -145,7 +145,7 @@ class RegisteredUsers extends React.Component {
 
     const { users } = await getUsers()
 
-    this.setState({ users, alertUserId: null })
+    this.setState({ users, alertUserId: null, snackbar: 'User deleted' })
   }
 
   handleUserSendEmailClick = user => {
@@ -166,7 +166,7 @@ class RegisteredUsers extends React.Component {
 
     await sendEmail(this.state.alertUserId)
 
-    this.setState({ alertUserId: null })
+    this.setState({ alertUserId: null, snackbar: 'Email sent' })
   }
 
   getConfirmAlertFunction = {
