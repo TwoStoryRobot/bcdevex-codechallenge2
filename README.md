@@ -1,11 +1,12 @@
 # Two Story Robot Code Challenge Submission
 
 This is Two Story Robot's Code Code Challenge submission for the "Data Driven 
-Mine Development - Team Expansion" RFP.
+Mine Development - Team Expansion" RFP.  It is a simple user management application with various interactive features.
 
-It is a simple user management application with various interactive features.
-The [backend](./backend/README.md) of the application is written in Javascript 
-in Nodejs using the Koa framework with a Postgres database. The 
+We recommend reading the accompanying READMEs for the frontend and backend to 
+get a better understanding of the approach we took. The 
+[backend](./backend/README.md) of the application is written in Javascript in 
+Nodejs using the Koa framework with a Postgres database. The 
 [frontend](./frontend/README.md) is written in React with Material UI 
 components.  All testing is written in Jest.  Component development is done 
 with Storybook.
