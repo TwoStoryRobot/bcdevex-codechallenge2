@@ -4,6 +4,12 @@
 
 import createError from 'http-errors'
 
+//  Fetch does not throw http errors by default. This will throw
+function handleError(res) {
+  if (!res.ok) throw createError(res.status, res.statusText)
+  else return res
+}
+
 function getDefaultHeaders() {
   return {
     Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -25,20 +31,32 @@ export function getUsers() {
   const method = 'GET'
   const headers = getDefaultHeaders()
 
-  return (
-    fetch(process.env.REACT_APP_API_URL + 'fetch', {
-      method,
-      headers,
-      signal: controller.signal
-    })
-      //  Fetch does not throw http errors by default. This will throw
-      .then(res => {
-        if (!res.ok) throw createError(res.status, res.statusText)
-        else return res
-      })
-      .then(res => res.json())
-      .then(users => ({ users, controller }))
-  )
+  return fetch(process.env.REACT_APP_API_URL + 'fetch', {
+    method,
+    headers,
+    signal: controller.signal
+  })
+    .then(handleError)
+    .then(res => res.json())
+    .then(users => ({ users, controller }))
+}
+
+export function sendEmail(userId) {
+  //  controller is used to abort request
+  const controller = new window.AbortController()
+  const method = 'POST'
+  const headers = getDefaultHeaders()
+  const body = JSON.stringify({ userId })
+
+  return fetch(process.env.REACT_APP_API_URL + 'sendEmail', {
+    method,
+    headers,
+    body,
+    signal: controller.signal
+  })
+    .then(handleError)
+    .then(res => res.text())
+    .then(body => ({ body, controller }))
 }
 
 export function deleteUser(userId) {

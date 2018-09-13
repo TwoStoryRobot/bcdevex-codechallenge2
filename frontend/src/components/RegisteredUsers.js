@@ -13,7 +13,7 @@ import SearchBar from './SearchBar'
 import filterStartsWith from '../utils/filterStartsWith'
 import UserTable from './UserTable'
 import EditUserDialog from './EditUserDialog'
-import { getUsers, updateUser, deleteUser } from '../requests.js'
+import { getUsers, updateUser, deleteUser, sendEmail } from '../requests.js'
 
 const Container = styled.div`
   padding-top: 64px;
@@ -148,13 +148,30 @@ class RegisteredUsers extends React.Component {
     this.setState({ users, alertUserId: null, snackbar: 'User deleted' })
   }
 
-  //  TODO: Implement this function
-  handleUserSendEmailClick() {
-    console.log('Send User Email Clicked')
+  handleUserSendEmailClick = user => {
+    //  TODO: alert user if email doesn't exist
+    this.setState({
+      isAlertDialogOpen: true,
+      alertType: 'sendEmail',
+      alertMessage: `Send email to ${user.firstName} ${user.lastName} (${
+        user.emailAddress
+      })?`,
+      alertUserId: user.userId
+    })
+  }
+
+  onConfirmSendEmail = async () => {
+    this.setState({ isAlertDialogOpen: false })
+    if (!this.state.alertUserId) return
+
+    await sendEmail(this.state.alertUserId)
+
+    this.setState({ alertUserId: null, snackbar: 'Email sent' })
   }
 
   getConfirmAlertFunction = {
-    delete: this.onConfirmDelete
+    delete: this.onConfirmDelete,
+    sendEmail: this.onConfirmSendEmail
   }
 
   render() {

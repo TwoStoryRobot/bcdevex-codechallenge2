@@ -141,16 +141,13 @@ class UserTable extends React.Component {
     }
   }
 
-  handleEditClick = user => () => {
-    this.props.handleEditClick(user)
-  }
-
   render() {
     const {
       users,
       classes,
       isLoading,
       isAdmin,
+      handleEditClick,
       handleDeleteClick,
       handleSendEmailClick
     } = this.props
@@ -213,7 +210,7 @@ class UserTable extends React.Component {
                     <StyledButtonsCell>
                       <IconButton
                         color="primary"
-                        onClick={this.handleEditClick(user)}
+                        onClick={() => handleEditClick(user)}
                         data-testid="edit">
                         <PencilIcon />
                       </IconButton>
@@ -230,7 +227,7 @@ class UserTable extends React.Component {
                       </IconButton>
                       <IconButton
                         color="primary"
-                        onClick={handleSendEmailClick}
+                        onClick={() => handleSendEmailClick(user)}
                         data-testid="email">
                         <EnvelopeIcon />
                       </IconButton>
