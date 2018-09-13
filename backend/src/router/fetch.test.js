@@ -7,8 +7,6 @@ import { generateUser, generateToken } from '../helpers'
 import supertest from 'supertest'
 import nodemailer from 'nodemailer'
 
-//jest.mock('moment', () => () => ({ format: () => '2018-09-12T14:35:38-07:00' }))
-
 const server = app.listen()
 let postAgent
 

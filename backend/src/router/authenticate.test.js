@@ -7,6 +7,8 @@ import { generateUser, generateNewUser, generateToken } from '../helpers'
 import supertest from 'supertest'
 import moment from 'moment'
 
+jest.mock('moment', () => () => ({ format: () => '2018-09-12T14:35:38-07:00' }))
+
 let postAgent
 const server = app.listen()
 
