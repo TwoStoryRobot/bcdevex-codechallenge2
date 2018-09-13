@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withUserContext } from './UserContext'
+import { withAuthContext } from './AuthContext'
 
 class Logout extends React.Component {
   componentDidMount() {
@@ -18,4 +18,4 @@ Logout.propTypes = {
   logout: PropTypes.func.isRequired
 }
 
-export default withUserContext(Logout)
+export default withAuthContext(Logout)

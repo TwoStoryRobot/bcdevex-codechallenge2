@@ -5,7 +5,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { UserConsumer, withUserContext } from './UserContext'
+import { withAuthContext } from './AuthContext'
 import AppBar from './AppBar'
 import SearchBar from './SearchBar'
 import filterStartsWith from '../utils/filterStartsWith'
@@ -82,31 +82,27 @@ class RegisteredUsers extends React.Component {
       currentUser && `${currentUser.firstName} ${currentUser.lastName}`
 
     return (
-      <UserConsumer>
-        {({ logout }) => (
-          <Container>
-            <AppBar
-              title="Registered Users"
-              {...{ avatar, name }}
-              onSignOut={logout}
-            />
-            <Content>
-              <SearchBar
+      <Container>
+        <AppBar
+          title="Registered Users"
+          {...{ avatar, name }}
+          onSignOut={this.props.logout}
+        />
+        <Content>
+        <SearchBar
                 value={searchText}
                 onChange={this.handleSearchChange}
               />
-              <UserTable
-                users={users.filter(filterStartsWith(searchText))}
-                isLoading={isFetchingUsers}
-                isAdmin={currentUser && currentUser.isAdmin}
-                handleEditClick={this.handleUserEditClick}
-                handleDeleteClick={this.handleUserDeleteClick}
-                handleSendEmailClick={this.handleUserSendEmailClick}
-              />
-            </Content>
-          </Container>
-        )}
-      </UserConsumer>
+          <UserTable
+            users={users.filter(filterStartsWith(searchText))}
+            isLoading={isFetchingUsers}
+            isAdmin={currentUser && currentUser.isAdmin}
+            handleEditClick={this.handleUserEditClick}
+            handleDeleteClick={this.handleUserDeleteClick}
+            handleSendEmailClick={this.handleUserSendEmailClick}
+          />
+        </Content>
+      </Container>
     )
   }
 }
@@ -115,4 +111,4 @@ RegisteredUsers.propTypes = {
   userId: PropTypes.string
 }
 
-export default withUserContext(RegisteredUsers)
+export default withAuthContext(RegisteredUsers)
