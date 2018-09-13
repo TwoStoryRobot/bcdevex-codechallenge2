@@ -145,7 +145,7 @@ class RegisteredUsers extends React.Component {
 
     const { users } = await getUsers()
 
-    this.setState({ users, alertUserId: null })
+    this.setState({ users, alertUserId: null, snackbar: 'User deleted' })
   }
 
   //  TODO: Implement this function
