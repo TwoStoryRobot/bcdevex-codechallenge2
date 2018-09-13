@@ -226,6 +226,7 @@ class UserTable extends React.Component {
                       </IconButton>
                       <IconButton
                         color="primary"
+                        disabled={!user.emailAddress}
                         onClick={() => handleSendEmailClick(user)}
                         data-testid="email">
                         <EnvelopeIcon />
