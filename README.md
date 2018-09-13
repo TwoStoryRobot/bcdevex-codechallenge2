@@ -104,7 +104,63 @@ profile](./screenshots/Admin-delete-step1.png)
 **Note** If you delete the admin account, the next **new** user to be created 
 will be assigned admin permissions.
 
+### User Story #4 – Edit my own user profile 
 
+As a user, I want to be able to edit my own user profile.
+
+**Given** that I am a User<br/>
+**And** that I have signed in to the application<br/>
+**When** I activate the “Edit” UI control related to my profile<br/>
+**Then** I am shown a modal interface that allows me to edit my info<br/>
+**And** I am allowed to save my modified profile<br/>
+
+When you are signed into the application, you will see your profile image in 
+the top right of the interface. Clicking your profile image will reveal a menu 
+with an option to edit your account. Click the 'edit profile' item. You will be 
+shown a form with your profile information. You may change this information.  
+Clicking "save" will update your account with any information you have changed.  
+Clicking "cancel" will discard any changes you made and will not update your 
+account information.
+
+![Reveal the menu by clicking on your profile 
+image](./screenshots/Delete-step1.png)
+
+![The user operations menu](./screenshots/Delete-step2.png)
+
+![The user edit form](./screenshots/Edit-user-form.png)
+
+**Note** changing the Avatar URL to an something that does not retrieve as an 
+image will cause the avatar to generate the initials of the user on a random 
+color.
+
+### User Story #5 – Edit a user profile (Admin)
+
+As an administrator, I want to be able to edit any user profile.
+
+**Given** that I am an Administrator<br/>
+**And** that I have signed in to the application as an Administrator<br/>
+**When** I activate the “Edit” UI control related to an arbitrary user 
+profile<br/>
+**Then** I am shown a modal interface that allows me to edit the select user 
+info<br/>
+**And** I am allowed to save the modified profile<br/>
+
+When you are signed in as the administrator you will see pencil icons next to 
+each user in the Registered Users list (including your own account).  Clicking 
+the pencil icon will bring up the user edit form where you can change 
+information about the user. Clicking "save" will update the user account with 
+any new information you provided about the user.  Clicking "cancel" will 
+discard any changes you made about the user and will not update their account 
+information. 
+
+![Clicking the pencil icon next to a user 
+profile](./screenshots/Admin-edit-step1.png)
+
+![The user edit form](./screenshots/Admin-edit-step2.png)
+
+**Note** changing the Avatar URL to an something that does not retrieve as an 
+image will cause the avatar to generate the initials of the user on a random 
+color.
 
 # Architecture
 
