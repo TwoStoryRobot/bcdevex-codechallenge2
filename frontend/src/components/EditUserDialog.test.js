@@ -47,8 +47,8 @@ describe('EditUserDialog', () => {
     expect(save).toHaveBeenCalledWith({
       firstName,
       lastName,
-      email: '',
-      avatarUrl: ''
+      emailAddress: '',
+      imageURL: ''
     })
   })
 
@@ -69,16 +69,16 @@ describe('EditUserDialog', () => {
   it('Opens with values if the user is editing existing details', () => {
     const firstName = 'John'
     const lastName = 'Doe'
-    const avatarUrl = 'https://api.adorable.io/avatars/285/abott@adorable.png'
-    const email = 'john.doe@example.com'
+    const imageURL = 'https://api.adorable.io/avatars/285/abott@adorable.png'
+    const emailAddress = 'john.doe@example.com'
 
     const { getByLabelText } = render(
       <EditUserDialog
         open={true}
         firstName={firstName}
         lastName={lastName}
-        avatarUrl={avatarUrl}
-        email={email}
+        imageURL={imageURL}
+        emailAddress={emailAddress}
       />
     )
 
@@ -89,8 +89,8 @@ describe('EditUserDialog', () => {
 
     expect(firstInput.value).toEqual(firstName)
     expect(lastInput.value).toEqual(lastName)
-    expect(avatarInput.value).toEqual(avatarUrl)
-    expect(emailInput.value).toEqual(email)
+    expect(avatarInput.value).toEqual(imageURL)
+    expect(emailInput.value).toEqual(emailAddress)
   })
 
   it('should match the snapshot', () => {

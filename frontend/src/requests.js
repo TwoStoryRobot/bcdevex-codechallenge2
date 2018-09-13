@@ -48,3 +48,19 @@ export function deleteUser(userId) {
   const url = process.env.REACT_APP_API_URL + 'delete'
   return fetch(url, { method, body, headers })
 }
+
+export function updateUser(user) {
+  const controller = new window.AbortController()
+  const method = 'POST'
+  const headers = getDefaultHeaders()
+  const body = JSON.stringify(user)
+
+  return fetch(process.env.REACT_APP_API_URL + 'update', {
+    method,
+    headers,
+    body,
+    signal: controller.signal
+  })
+    .then(res => res.json())
+    .then(users => ({ users, controller }))
+}
