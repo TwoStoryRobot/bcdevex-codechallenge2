@@ -210,6 +210,42 @@ Additionally, trying to access an unknow page will show a 404 error.
 
 ![404 screen when accessing an unknown page](./screenshots/404.png)
 
+### User Story #8 – Send Email to User (Admin)
+
+As an administrator, I want to able to send a boilerplate email to a user.
+
+**Given** that I am signed in as an administrator<br/>
+**And** I want to send a boilerplate email to an individual user<br/>
+**When** I active the “Mail” UI control related to an individual user<br/>
+**Then** a boilerplate email is sent to the email address associated with that 
+user<br/>
+
+**Implementation Notes:**<br/>
+The boilerplate email template will be provided in a separate file called 
+“email-message.txt”.<br/>
+A successful implementation merely needs to email the provide template to a 
+given user.
+
+When you are signed in as the administrator you will see envelope icons next to 
+each user in the Registered Users list. Clicking the envelope icon will prompt 
+you to confirm that you would like to send an email to the user. Clicking 
+"confirm" will send an email to the user. Clicking "cancel" will abort the send 
+operation.
+
+![Click the envelope to start sending an 
+email](./screenshots/Email-user-step1.png)
+
+![Click confirm to send the email](./screenshots/Email-user-step2.png)
+
+If you have configured the stack to connect to an actual SMTP server, the email 
+will be sent using that server. If you wish to just test email functionality 
+without sending emails, you can connect to the included mailhog server at 
+`localhost:8025` which has been configured as the default SMTP server and will 
+trap any emails sent to it.
+
+![Mailhog interface for email testing](./screenshots/Mailhog.png)
+
+
 # Architecture
 
 This is a single repo containing two node packages for both frontend and 
