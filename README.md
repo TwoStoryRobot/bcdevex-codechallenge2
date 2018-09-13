@@ -302,9 +302,65 @@ lot of experience working with data client side and chose to implement the
 approach has a few tradeoffs: It's faster for the user as the data is already 
 loaded into the browser and doesn't require another query to the server, 
 however it doesn't scale well for large data sets. Most applications tend to 
-have limited user sets so this approach works well. In rare cases where 
-applications have consumer scale size, we would likely use an entirely 
-different UX pattern modeled after search.
+have limited user sets so this approach works well. Additionally we can get 
+better performance as it permits us to update the UI with every keystroke 
+without having to refetch the data. This also allows for this feature to be 
+available when the application is offline.
+
+In rare cases where applications have consumer scale size, we would likely use 
+an entirely different UX pattern modeled after search.
+
+### User Story #10 – Simple Sort
+
+As a user, I want to be able to sort columns of type “String” in ascending and 
+descending order.
+
+Use Case #1 (Ascending Order)
+
+**Given** that I am signed-in to the application as a user or as an 
+administrator<br/>
+**And** I have selected a field in the Registered Users List<br/>
+**When** I click on the UI control that allows the field to be sorted in 
+ascending order<br/>
+**Then** the users in the list are displayed in ascending order<br/>
+
+Use Case #2 (Descending Order)
+
+**Given** that I am signed-in to the application as a user or as an 
+administrator<br/>
+**And** I have selected a field in the Registered Users List<br/>
+**And** I have previously sorted that field in ascending order<br/>
+**When** I click on the “Sort” UI control<br/> 
+**Then** the users in the list are displayed in descending order<br/>
+
+**Implementation Notes:**<br/>
+The sort operation shall apply only to fields with text content.<br/>
+The sort operation shall not apply hierarchically.  That is, the sort operation 
+shall sort the database for a single column only.  For instance, a sort 
+operation that first sorts Column A in ascending order and then sorts Column C 
+in ascending order does not need to be supported (and no additional points will 
+be given for such an implementation).
+
+When you are viewing the registered users table, you can sort any of the text 
+fields (first name, last name, email address). Each column in the table has a 
+header which is interactable. Clicking on the column header will sort the users 
+present in either ascending or descending order (alternatively). By default the 
+list is sorted by last name in ascending order.
+
+If you click the last name field while it is in ascending order, it will toggle 
+to sort in descending order.
+
+Clicking a new column will sort by that new field in ascending order.
+
+![Sort by last name ascending](./screenshots/Sort-ascend.png)
+
+![Sort by last name descending](./screenshots/Sort-descend.png)
+
+**Technical Notes**: This sort operation is performed client side. Similar to 
+our reasoning for client side filtering, we believe the data size of this 
+application is small and the data can be held in the browser without a problem.  
+This allows for a faster UI for the user (as well as future support in offline 
+situations).
 
 
 # Architecture
