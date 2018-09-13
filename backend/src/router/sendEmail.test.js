@@ -38,7 +38,25 @@ afterAll(async () => {
   await pgp.end()
 })
 
-test.skip('/sendEmail should require admin role', () => {})
+test('/sendEmail should require admin role', async () => {
+  const admin = generateUser({ userId: 'admin' })
+  await supertest
+    .agent(server)
+    .post('/authenticate')
+    .send(admin)
+    .set('Authorization', 'Bearer ' + generateToken('admin'))
+
+  const user = generateUser({ userId: 'not-admin' })
+  const res = await supertest
+    .agent(server)
+    .post('/authenticate')
+    .send(user)
+    .set('Authorization', 'Bearer ' + generateToken('not-admin'))
+    .expect(200)
+  expect(res.body.isAdmin).not.toBeTruthy()
+
+  await postAgent.send({ userId: 'admin' }).expect(401)
+})
 
 test('/sendEmail should 400 if userId is not provided', async () => {
   await postAgent.send({}).expect(400)
