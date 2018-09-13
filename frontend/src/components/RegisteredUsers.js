@@ -134,9 +134,9 @@ class RegisteredUsers extends React.Component {
     if (this.state.currentUser.userId === this.state.deleteUserId)
       return this.props.logout()
 
-    this.setState({ deleteUserId: null })
+    const { users } = await getUsers()
 
-    getUsers().then(({ users }) => this.setState({ users }))
+    this.setState({ users, deleteUserId: null })
   }
 
   //  TODO: Implement this function
