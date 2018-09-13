@@ -3,6 +3,7 @@
  */
 
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import LoginButton from './LoginButton'
 import styled from 'styled-components'
 import { authenticate } from '../requests'
@@ -78,6 +79,12 @@ class Home extends Component {
       </Container>
     )
   }
+}
+
+Home.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired
 }
 
 export default Home

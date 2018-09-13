@@ -63,7 +63,7 @@ const NotFound = ({ history: { goBack } }) => (
     <Transparency>
       <TitleText variant="display4">404</TitleText>
       <IntroText variant="subheading" component="p">
-        Uh oh! We can't find what you're looking for.
+        Uh oh! We can&#39;t find what you&#39;re looking for.
       </IntroText>
       <ButtonContainer>
         <Button variant="raised" color="primary" onClick={goBack}>
