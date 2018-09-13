@@ -245,6 +245,67 @@ trap any emails sent to it.
 
 ![Mailhog interface for email testing](./screenshots/Mailhog.png)
 
+### User Story #9 – Simple Filter
+
+As a user, I want to be able to filter columns with text content using a 
+“startsWith” filter.
+
+**Given** that I am signed in to the application as a user or an 
+administrator<br/>
+**And** I have selected a field in the Registered Users List<br/>
+**When** I enter a filter term<br/>
+**Then** all database entries that satisfy the filter term for the selected 
+field are displayed<br/>
+**And** no other database entries are displayed<br/>
+
+**Implementation Notes:**<br/>
+The filter shall be a “startsWith” filter only.<br/>
+The filter shall apply only to fields with text content.<br/>
+The filter shall not apply hierarchically.  That is, the filter shall filter 
+the database for a single column only.  For instance, an operation that first 
+filters Column A for term B and then filters Column C for term D does not need 
+to be supported (and no additional points will be given for such an 
+implementation).
+
+When viewing the registered users screen you can filter all users by typing the 
+starting characters in the search bar. This will peform a starts with filter on 
+all users on all fields. You may also filter by a specific field by typing the 
+field name with a colon and the desired filter text.
+
+The resulting users will be displayed below in the table.
+
+Supported fields are `first:`, `last:`, or `email:`. The filter is 
+case-insensitive and space insensitive. Only the first word or field:word is 
+supported.
+
+An empty string or an empty field will match all records.
+
+Examples:
+
+* `B` the system will filter any field that starts with a `B`
+* `first:B` the system will filter users who's first name starts 
+  with a `B`
+* `first:` will match all records untill you supply more characters
+
+![Filtering all fields by 'Bo'](./screenshots/Filter-all.png)
+
+![Filtering by first name 'Bo'](./screenshots/Filter-field.png)
+
+**UX Notes**: We believe filtering across all fields is a more natural solution 
+to the problem of finding a specific user. In most cases this will result in 
+matches more quickly with less friction as the user is not required to specify 
+the field first.
+
+**Technical Notes**: This search operation is performed client side. We have a 
+lot of experience working with data client side and chose to implement the 
+""starts with"" filtering in the client rather than in the backend. This 
+approach has a few tradeoffs: It's faster for the user as the data is already 
+loaded into the browser and doesn't require another query to the server, 
+however it doesn't scale well for large data sets. Most applications tend to 
+have limited user sets so this approach works well. In rare cases where 
+applications have consumer scale size, we would likely use an entirely 
+different UX pattern modeled after search.
+
 
 # Architecture
 
