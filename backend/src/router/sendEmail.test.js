@@ -40,7 +40,7 @@ afterAll(async () => {
 
 test.skip('/sendEmail should require admin role', () => {})
 
-test('/sendEmail should 400 if userId is not provided', async () => {
+test('/sendEmail should reject poorly formed requests', async () => {
   await postAgent.send({}).expect(400)
 })
 
