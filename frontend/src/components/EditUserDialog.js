@@ -29,16 +29,12 @@ const StyledForm = styled.form`
  * For editing a user. Wraps Dialog
  */
 export default class EditUserDialog extends Component {
-  constructor(props) {
-    super(props)
-
-    const { firstName, lastName, avatarUrl, email } = props
-    this.state = {
-      firstName,
-      lastName,
-      email,
-      avatarUrl
-    }
+  state = {
+    firstName: this.props.firstName,
+    lastName: this.props.lastName,
+    emailAddress: this.props.emailAddress,
+    imageURL: this.props.imageURL,
+    userId: this.props.userId
   }
 
   handleTextFieldChange = name => event => {
@@ -54,9 +50,7 @@ export default class EditUserDialog extends Component {
   }
 
   handleSave = () => {
-    const { firstName, lastName, email, avatarUrl } = this.state
-
-    this.props.onSave({ firstName, lastName, email, avatarUrl })
+    this.props.onSave(this.state)
   }
 
   handleKeyDown = event => {
@@ -67,7 +61,7 @@ export default class EditUserDialog extends Component {
 
   render() {
     const { open, onClose } = this.props
-    const { firstName, lastName, avatarUrl, email } = this.state
+    const { firstName, lastName, imageURL, emailAddress } = this.state
 
     return (
       <Dialog open={open} onClose={onClose} data-testid="edit-user-dialog">
@@ -75,7 +69,7 @@ export default class EditUserDialog extends Component {
         <StyledDialogContent>
           <AvatarWrapper>
             <Avatar
-              src={avatarUrl}
+              src={imageURL}
               name={`${firstName} ${lastName}`}
               round
               size={40}
@@ -102,20 +96,20 @@ export default class EditUserDialog extends Component {
               margin="dense"
             />
             <TextField
-              id="email"
+              id="emailAddress"
               label="Email"
-              value={email}
-              onChange={this.handleTextFieldChange('email')}
+              value={emailAddress}
+              onChange={this.handleTextFieldChange('emailAddress')}
               onKeyDown={this.handleKeyDown}
-              type="email"
+              type="emailAddress"
               fullWidth
               margin="dense"
             />
             <TextField
               id="avatar"
               label="Avatar URL"
-              value={avatarUrl}
-              onChange={this.handleTextFieldChange('avatarUrl')}
+              value={imageURL}
+              onChange={this.handleTextFieldChange('imageURL')}
               onKeyDown={this.handleKeyDown}
               fullWidth
               margin="dense"
@@ -147,16 +141,18 @@ EditUserDialog.propTypes = {
   /** initial state last name of the user */
   lastName: PropTypes.string,
   /** initial state email of the user */
-  email: PropTypes.string,
+  emailAddress: PropTypes.string,
   /** initial state avatar of the user */
-  avatarUrl: PropTypes.string
+  imageURL: PropTypes.string,
+  /** the id of the user  */
+  userId: PropTypes.string
 }
 
 EditUserDialog.defaultProps = {
   firstName: '',
   lastName: '',
-  email: '',
-  avatarUrl: '',
+  emailAddress: '',
+  imageURL: '',
   open: false,
   onClose: () => {},
   onSave: () => {}

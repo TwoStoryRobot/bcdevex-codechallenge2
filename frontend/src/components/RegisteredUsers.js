@@ -5,12 +5,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import Snackbar from '@material-ui/core/Snackbar'
 import { withAuthContext } from './AuthContext'
 import AppBar from './AppBar'
 import SearchBar from './SearchBar'
 import filterStartsWith from '../utils/filterStartsWith'
 import UserTable from './UserTable'
-import { getUsers } from '../requests.js'
+import EditUserDialog from './EditUserDialog'
+import { getUsers, updateUser } from '../requests.js'
 
 const Container = styled.div`
   padding-top: 64px;
@@ -26,8 +28,17 @@ class RegisteredUsers extends React.Component {
     isFetchingUsers: false,
     currentUser: undefined,
     users: [],
-    searchText: '',
-    fetchUsersController: undefined
+    fetchUsersController: undefined,
+    editing: false,
+    editingUser: {
+      firstName: null,
+      lastName: null,
+      emailAddress: null,
+      imageURL: null,
+      userId: null
+    },
+    snackbar: '',
+    searchText: ''
   }
 
   componentDidMount() {
@@ -56,6 +67,43 @@ class RegisteredUsers extends React.Component {
     fetchUsersController && fetchUsersController.abort()
   }
 
+  closeSnackbar = () => {
+    this.setState({ snackbar: '' })
+  }
+
+  handleUserEditClick = user => {
+    this.setState({ editingUser: user, editing: true })
+  }
+
+  handleEditCurrentUser = () => {
+    this.setState({ editingUser: this.state.currentUser, editing: true })
+  }
+
+  handleEditDialogClose = () => {
+    this.setState({ editing: false })
+  }
+
+  handleEditDialogSave = async updatedUser => {
+    const oldUser = this.state.users.find(user => user.userId === updatedUser.userId)
+    
+    // Just in case user has properties that aren't passed to EditUserDialog
+    const mergedUser = {
+      ...oldUser,
+      ...updatedUser
+    }
+
+    const { userId } = mergedUser
+
+    this.setState({
+      users: this.state.users.map(user => user.userId === userId ? mergedUser : user),
+      currentUser: this.state.currentUser.userId === userId ? mergedUser : this.state.currentUser,
+      snackbar: 'User updated'
+    })
+
+    updateUser(mergedUser)
+
+    this.handleEditDialogClose()
+
   handleSearchChange = e => {
     this.setState({ searchText: e.target.value })
   }
@@ -63,6 +111,7 @@ class RegisteredUsers extends React.Component {
   //  TODO: Implement this function
   handleUserEditClick() {
     console.log('Edit User Clicked')
+
   }
 
   //  TODO: Implement this function
@@ -77,30 +126,57 @@ class RegisteredUsers extends React.Component {
 
   render() {
     const { currentUser, users, isFetchingUsers, searchText } = this.state
+    const { logout } = this.props
     const avatar = currentUser && currentUser.imageURL
     const name =
       currentUser && `${currentUser.firstName} ${currentUser.lastName}`
 
     return (
-      <Container>
-        <AppBar
-          title="Registered Users"
-          {...{ avatar, name }}
-          onSignOut={this.props.logout}
-        />
-        <Content>
-          <SearchBar value={searchText} onChange={this.handleSearchChange} />
-          <UserTable
-            users={users.filter(filterStartsWith(searchText))}
-            isLoading={isFetchingUsers}
-            isAdmin={currentUser && currentUser.isAdmin}
-            handleEditClick={this.handleUserEditClick}
-            handleDeleteClick={this.handleUserDeleteClick}
-            handleSendEmailClick={this.handleUserSendEmailClick}
+      <React.Fragment>
+        <Container>
+          <AppBar
+            title="Registered Users"
+            {...{ avatar, name }}
+            onSignOut={logout}
+            onEdit={this.handleEditCurrentUser}
           />
-        </Content>
-      </Container>
-    )
+          <Content>
+            <SearchBar value={searchText} onChange={this.handleSearchChange} />
+            <UserTable
+              users={users.filter(filterStartsWith(searchText))}
+              isLoading={isFetchingUsers}
+              isAdmin={currentUser && currentUser.isAdmin}
+              handleEditClick={this.handleUserEditClick}
+              handleDeleteClick={this.handleUserDeleteClick}
+              handleSendEmailClick={this.handleUserSendEmailClick}
+            />
+          </Content>
+        </Container>
+        <EditUserDialog
+          // the key prop is needed to ensure the state is reset when a
+          // different user is chosen
+          key={this.state.editingUser.userId}
+          open={this.state.editing}
+          onClose={this.handleEditDialogClose}
+          onSave={this.handleEditDialogSave}
+          firstName={this.state.editingUser.firstName}
+          lastName={this.state.editingUser.lastName}
+          emailAddress={this.state.editingUser.emailAddress}
+          imageURL={this.state.editingUser.imageURL}
+          userId={this.state.editingUser.userId}
+        />
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={!!this.state.snackbar}
+          autoHideDuration={3000}
+          onClose={this.closeSnackbar}
+          message={this.state.snackbar}
+        />
+      </React.Fragment>
+)
   }
 }
 
