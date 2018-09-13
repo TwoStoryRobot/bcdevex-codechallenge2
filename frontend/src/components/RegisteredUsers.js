@@ -89,10 +89,7 @@ class RegisteredUsers extends React.Component {
           onSignOut={this.props.logout}
         />
         <Content>
-        <SearchBar
-                value={searchText}
-                onChange={this.handleSearchChange}
-              />
+          <SearchBar value={searchText} onChange={this.handleSearchChange} />
           <UserTable
             users={users.filter(filterStartsWith(searchText))}
             isLoading={isFetchingUsers}
