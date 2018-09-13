@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import addons from '@storybook/addons'
 import Markdown from 'react-markdown'
 import generateMarkdown from './generateMarkdown'
@@ -43,8 +44,6 @@ class DocgenPanel extends React.Component {
   render() {
     const { docgenInfo } = this.state
 
-    console.log(docgenInfo)
-
     if (docgenInfo) {
       return (
         <div>
@@ -58,6 +57,11 @@ class DocgenPanel extends React.Component {
       return <p>Loading...</p>
     }
   }
+}
+
+DocgenPanel.propTypes = {
+  channel: PropTypes.object.isRequired,
+  api: PropTypes.object.isRequired
 }
 
 addons.register('twostoryrobot/docgen', api => {

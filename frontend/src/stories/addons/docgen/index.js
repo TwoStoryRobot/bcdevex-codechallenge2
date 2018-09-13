@@ -1,4 +1,3 @@
-import React from 'react'
 import addons from '@storybook/addons'
 
 const docgenAddon = component => storyFn => {
