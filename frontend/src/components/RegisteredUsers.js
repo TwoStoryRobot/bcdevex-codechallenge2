@@ -5,6 +5,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import Snackbar from '@material-ui/core/Snackbar'
 import { withAuthContext } from './AuthContext'
 import AppBar from './AppBar'
 import UserTable from './UserTable'
@@ -35,6 +36,7 @@ class RegisteredUsers extends React.Component {
       imageURL: null,
       userId: null
     },
+    snackbar: '',
   }
 
   componentDidMount() {
@@ -63,6 +65,10 @@ class RegisteredUsers extends React.Component {
     fetchUsersController && fetchUsersController.abort()
   }
 
+  closeSnackbar = () => {
+    this.setState({ snackbar: '' })
+  }
+
   handleUserEditClick = user => {
     this.setState({ editingUser: user, editing: true })
   }
@@ -88,7 +94,8 @@ class RegisteredUsers extends React.Component {
 
     this.setState({
       users: this.state.users.map(user => user.userId === userId ? mergedUser : user),
-      currentUser: this.state.currentUser.userId === userId ? mergedUser : this.state.currentUser
+      currentUser: this.state.currentUser.userId === userId ? mergedUser : this.state.currentUser,
+      snackbar: 'User updated'
     })
 
     updateUser(mergedUser)
@@ -145,6 +152,16 @@ class RegisteredUsers extends React.Component {
           emailAddress={this.state.editingUser.emailAddress}
           imageURL={this.state.editingUser.imageURL}
           userId={this.state.editingUser.userId}
+        />
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={!!this.state.snackbar}
+          autoHideDuration={3000}
+          onClose={this.closeSnackbar}
+          message={this.state.snackbar}
         />
       </React.Fragment>
 )
