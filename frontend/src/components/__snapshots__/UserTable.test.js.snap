@@ -2,32 +2,32 @@
 
 exports[`UserTable should display loading spinner when isLoaded is true 1`] = `
 <div
-  class="MuiPaper-root-0235 MuiPaper-elevation2-0239 MuiPaper-rounded-0236 UserTable-root-0231"
+  class="MuiPaper-root-0232 MuiPaper-elevation2-0236 MuiPaper-rounded-0233 UserTable-root-0229"
 >
   <table
-    class="MuiTable-root-0262 UserTable-table-0232"
+    class="MuiTable-root-0259 UserTable-table-0230"
   >
     <thead
-      class="MuiTableHead-root-0263"
+      class="MuiTableHead-root-0260"
     >
       <tr
-        class="MuiTableRow-root-0264 MuiTableRow-head-0267"
+        class="MuiTableRow-root-0261 MuiTableRow-head-0264"
       >
         <th
-          class="MuiTableCell-root-0272 WithStyles-TableCell--root-0269 MuiTableCell-head-0273 WithStyles-TableCell--head-0270"
+          class="MuiTableCell-root-0269 WithStyles-TableCell--root-0266 MuiTableCell-head-0270 WithStyles-TableCell--head-0267"
           scope="col"
         />
         <th
-          class="MuiTableCell-root-0272 WithStyles-TableCell--root-0269 MuiTableCell-head-0273 WithStyles-TableCell--head-0270"
+          class="MuiTableCell-root-0269 WithStyles-TableCell--root-0266 MuiTableCell-head-0270 WithStyles-TableCell--head-0267"
           scope="col"
         >
           <button
             tabindex="0"
-            class="MuiButtonBase-root-0306 MuiButton-root-0280 MuiButton-text-0282 MuiButton-flat-0285"
+            class="MuiButtonBase-root-0303 MuiButton-root-0277 MuiButton-text-0279 MuiButton-flat-0282"
             type="button"
           >
             <span
-              class="MuiButton-label-0281"
+              class="MuiButton-label-0278"
             >
               First
               <span
@@ -35,21 +35,21 @@ exports[`UserTable should display loading spinner when isLoaded is true 1`] = `
               />
             </span>
             <span
-              class="MuiTouchRipple-root-0309"
+              class="MuiTouchRipple-root-0306"
             />
           </button>
         </th>
         <th
-          class="MuiTableCell-root-0272 WithStyles-TableCell--root-0269 MuiTableCell-head-0273 WithStyles-TableCell--head-0270"
+          class="MuiTableCell-root-0269 WithStyles-TableCell--root-0266 MuiTableCell-head-0270 WithStyles-TableCell--head-0267"
           scope="col"
         >
           <button
             tabindex="0"
-            class="MuiButtonBase-root-0306 MuiButton-root-0280 MuiButton-text-0282 MuiButton-flat-0285"
+            class="MuiButtonBase-root-0303 MuiButton-root-0277 MuiButton-text-0279 MuiButton-flat-0282"
             type="button"
           >
             <span
-              class="MuiButton-label-0281"
+              class="MuiButton-label-0278"
             >
               Last
               <svg
@@ -65,21 +65,21 @@ exports[`UserTable should display loading spinner when isLoaded is true 1`] = `
               </svg>
             </span>
             <span
-              class="MuiTouchRipple-root-0309"
+              class="MuiTouchRipple-root-0306"
             />
           </button>
         </th>
         <th
-          class="MuiTableCell-root-0272 WithStyles-TableCell--root-0269 MuiTableCell-head-0273 WithStyles-TableCell--head-0270"
+          class="MuiTableCell-root-0269 WithStyles-TableCell--root-0266 MuiTableCell-head-0270 WithStyles-TableCell--head-0267"
           scope="col"
         >
           <button
             tabindex="0"
-            class="MuiButtonBase-root-0306 MuiButton-root-0280 MuiButton-text-0282 MuiButton-flat-0285"
+            class="MuiButtonBase-root-0303 MuiButton-root-0277 MuiButton-text-0279 MuiButton-flat-0282"
             type="button"
           >
             <span
-              class="MuiButton-label-0281"
+              class="MuiButton-label-0278"
             >
               Email
               <span
@@ -87,44 +87,44 @@ exports[`UserTable should display loading spinner when isLoaded is true 1`] = `
               />
             </span>
             <span
-              class="MuiTouchRipple-root-0309"
+              class="MuiTouchRipple-root-0306"
             />
           </button>
         </th>
         <th
-          class="MuiTableCell-root-0272 WithStyles-TableCell--root-0269 MuiTableCell-head-0273 WithStyles-TableCell--head-0270"
+          class="MuiTableCell-root-0269 WithStyles-TableCell--root-0266 MuiTableCell-head-0270 WithStyles-TableCell--head-0267"
           scope="col"
         >
           <span
-            class="MuiTypography-root-0316 MuiTypography-button-0327"
+            class="MuiTypography-root-0313 MuiTypography-button-0324"
           >
             Registration
           </span>
         </th>
         <th
-          class="MuiTableCell-root-0272 WithStyles-TableCell--root-0269 MuiTableCell-head-0273 WithStyles-TableCell--head-0270"
+          class="MuiTableCell-root-0269 WithStyles-TableCell--root-0266 MuiTableCell-head-0270 WithStyles-TableCell--head-0267"
           scope="col"
         />
       </tr>
     </thead>
     <tbody
-      class="MuiTableBody-root-0341"
+      class="MuiTableBody-root-0338"
     />
   </table>
   <div
-    class="Component-root-0342"
+    class="Component-root-0339"
   >
     <div
-      class="MuiCircularProgress-root-0343 MuiCircularProgress-colorPrimary-0346 MuiCircularProgress-indeterminate-0345"
+      class="MuiCircularProgress-root-0340 MuiCircularProgress-colorPrimary-0343 MuiCircularProgress-indeterminate-0342"
       style="width: 64px; height: 64px;"
       role="progressbar"
     >
       <svg
-        class="MuiCircularProgress-svg-0348"
+        class="MuiCircularProgress-svg-0345"
         viewBox="22 22 44 44"
       >
         <circle
-          class="MuiCircularProgress-circle-0349 MuiCircularProgress-circleIndeterminate-0351"
+          class="MuiCircularProgress-circle-0346 MuiCircularProgress-circleIndeterminate-0348"
           cx="44"
           cy="44"
           r="20.2"
@@ -142,32 +142,32 @@ exports[`UserTable should display loading spinner when isLoaded is true 1`] = `
 
 exports[`UserTable should display message when there are no registered users 1`] = `
 <div
-  class="MuiPaper-root-0123 MuiPaper-elevation2-0127 MuiPaper-rounded-0124 UserTable-root-0119"
+  class="MuiPaper-root-0121 MuiPaper-elevation2-0125 MuiPaper-rounded-0122 UserTable-root-0118"
 >
   <table
-    class="MuiTable-root-0150 UserTable-table-0120"
+    class="MuiTable-root-0148 UserTable-table-0119"
   >
     <thead
-      class="MuiTableHead-root-0151"
+      class="MuiTableHead-root-0149"
     >
       <tr
-        class="MuiTableRow-root-0152 MuiTableRow-head-0155"
+        class="MuiTableRow-root-0150 MuiTableRow-head-0153"
       >
         <th
-          class="MuiTableCell-root-0160 WithStyles-TableCell--root-0157 MuiTableCell-head-0161 WithStyles-TableCell--head-0158"
+          class="MuiTableCell-root-0158 WithStyles-TableCell--root-0155 MuiTableCell-head-0159 WithStyles-TableCell--head-0156"
           scope="col"
         />
         <th
-          class="MuiTableCell-root-0160 WithStyles-TableCell--root-0157 MuiTableCell-head-0161 WithStyles-TableCell--head-0158"
+          class="MuiTableCell-root-0158 WithStyles-TableCell--root-0155 MuiTableCell-head-0159 WithStyles-TableCell--head-0156"
           scope="col"
         >
           <button
             tabindex="0"
-            class="MuiButtonBase-root-0194 MuiButton-root-0168 MuiButton-text-0170 MuiButton-flat-0173"
+            class="MuiButtonBase-root-0192 MuiButton-root-0166 MuiButton-text-0168 MuiButton-flat-0171"
             type="button"
           >
             <span
-              class="MuiButton-label-0169"
+              class="MuiButton-label-0167"
             >
               First
               <span
@@ -175,21 +175,21 @@ exports[`UserTable should display message when there are no registered users 1`]
               />
             </span>
             <span
-              class="MuiTouchRipple-root-0197"
+              class="MuiTouchRipple-root-0195"
             />
           </button>
         </th>
         <th
-          class="MuiTableCell-root-0160 WithStyles-TableCell--root-0157 MuiTableCell-head-0161 WithStyles-TableCell--head-0158"
+          class="MuiTableCell-root-0158 WithStyles-TableCell--root-0155 MuiTableCell-head-0159 WithStyles-TableCell--head-0156"
           scope="col"
         >
           <button
             tabindex="0"
-            class="MuiButtonBase-root-0194 MuiButton-root-0168 MuiButton-text-0170 MuiButton-flat-0173"
+            class="MuiButtonBase-root-0192 MuiButton-root-0166 MuiButton-text-0168 MuiButton-flat-0171"
             type="button"
           >
             <span
-              class="MuiButton-label-0169"
+              class="MuiButton-label-0167"
             >
               Last
               <svg
@@ -205,21 +205,21 @@ exports[`UserTable should display message when there are no registered users 1`]
               </svg>
             </span>
             <span
-              class="MuiTouchRipple-root-0197"
+              class="MuiTouchRipple-root-0195"
             />
           </button>
         </th>
         <th
-          class="MuiTableCell-root-0160 WithStyles-TableCell--root-0157 MuiTableCell-head-0161 WithStyles-TableCell--head-0158"
+          class="MuiTableCell-root-0158 WithStyles-TableCell--root-0155 MuiTableCell-head-0159 WithStyles-TableCell--head-0156"
           scope="col"
         >
           <button
             tabindex="0"
-            class="MuiButtonBase-root-0194 MuiButton-root-0168 MuiButton-text-0170 MuiButton-flat-0173"
+            class="MuiButtonBase-root-0192 MuiButton-root-0166 MuiButton-text-0168 MuiButton-flat-0171"
             type="button"
           >
             <span
-              class="MuiButton-label-0169"
+              class="MuiButton-label-0167"
             >
               Email
               <span
@@ -227,32 +227,32 @@ exports[`UserTable should display message when there are no registered users 1`]
               />
             </span>
             <span
-              class="MuiTouchRipple-root-0197"
+              class="MuiTouchRipple-root-0195"
             />
           </button>
         </th>
         <th
-          class="MuiTableCell-root-0160 WithStyles-TableCell--root-0157 MuiTableCell-head-0161 WithStyles-TableCell--head-0158"
+          class="MuiTableCell-root-0158 WithStyles-TableCell--root-0155 MuiTableCell-head-0159 WithStyles-TableCell--head-0156"
           scope="col"
         >
           <span
-            class="MuiTypography-root-0204 MuiTypography-button-0215"
+            class="MuiTypography-root-0202 MuiTypography-button-0213"
           >
             Registration
           </span>
         </th>
         <th
-          class="MuiTableCell-root-0160 WithStyles-TableCell--root-0157 MuiTableCell-head-0161 WithStyles-TableCell--head-0158"
+          class="MuiTableCell-root-0158 WithStyles-TableCell--root-0155 MuiTableCell-head-0159 WithStyles-TableCell--head-0156"
           scope="col"
         />
       </tr>
     </thead>
     <tbody
-      class="MuiTableBody-root-0229"
+      class="MuiTableBody-root-0227"
     />
   </table>
   <div
-    class="Component-root-0230"
+    class="Component-root-0228"
   >
     <svg
       class="mdi-icon "
@@ -274,32 +274,32 @@ exports[`UserTable should display message when there are no registered users 1`]
 
 exports[`UserTable should render with required props 1`] = `
 <div
-  class="MuiPaper-root-05 MuiPaper-elevation2-09 MuiPaper-rounded-06 UserTable-root-01"
+  class="MuiPaper-root-04 MuiPaper-elevation2-08 MuiPaper-rounded-05 UserTable-root-01"
 >
   <table
-    class="MuiTable-root-032 UserTable-table-02"
+    class="MuiTable-root-031 UserTable-table-02"
   >
     <thead
-      class="MuiTableHead-root-033"
+      class="MuiTableHead-root-032"
     >
       <tr
-        class="MuiTableRow-root-034 MuiTableRow-head-037"
+        class="MuiTableRow-root-033 MuiTableRow-head-036"
       >
         <th
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-head-043 WithStyles-TableCell--head-040"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-head-042 WithStyles-TableCell--head-039"
           scope="col"
         />
         <th
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-head-043 WithStyles-TableCell--head-040"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-head-042 WithStyles-TableCell--head-039"
           scope="col"
         >
           <button
             tabindex="0"
-            class="MuiButtonBase-root-076 MuiButton-root-050 MuiButton-text-052 MuiButton-flat-055"
+            class="MuiButtonBase-root-075 MuiButton-root-049 MuiButton-text-051 MuiButton-flat-054"
             type="button"
           >
             <span
-              class="MuiButton-label-051"
+              class="MuiButton-label-050"
             >
               First
               <span
@@ -307,21 +307,21 @@ exports[`UserTable should render with required props 1`] = `
               />
             </span>
             <span
-              class="MuiTouchRipple-root-079"
+              class="MuiTouchRipple-root-078"
             />
           </button>
         </th>
         <th
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-head-043 WithStyles-TableCell--head-040"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-head-042 WithStyles-TableCell--head-039"
           scope="col"
         >
           <button
             tabindex="0"
-            class="MuiButtonBase-root-076 MuiButton-root-050 MuiButton-text-052 MuiButton-flat-055"
+            class="MuiButtonBase-root-075 MuiButton-root-049 MuiButton-text-051 MuiButton-flat-054"
             type="button"
           >
             <span
-              class="MuiButton-label-051"
+              class="MuiButton-label-050"
             >
               Last
               <svg
@@ -337,21 +337,21 @@ exports[`UserTable should render with required props 1`] = `
               </svg>
             </span>
             <span
-              class="MuiTouchRipple-root-079"
+              class="MuiTouchRipple-root-078"
             />
           </button>
         </th>
         <th
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-head-043 WithStyles-TableCell--head-040"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-head-042 WithStyles-TableCell--head-039"
           scope="col"
         >
           <button
             tabindex="0"
-            class="MuiButtonBase-root-076 MuiButton-root-050 MuiButton-text-052 MuiButton-flat-055"
+            class="MuiButtonBase-root-075 MuiButton-root-049 MuiButton-text-051 MuiButton-flat-054"
             type="button"
           >
             <span
-              class="MuiButton-label-051"
+              class="MuiButton-label-050"
             >
               Email
               <span
@@ -359,34 +359,34 @@ exports[`UserTable should render with required props 1`] = `
               />
             </span>
             <span
-              class="MuiTouchRipple-root-079"
+              class="MuiTouchRipple-root-078"
             />
           </button>
         </th>
         <th
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-head-043 WithStyles-TableCell--head-040"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-head-042 WithStyles-TableCell--head-039"
           scope="col"
         >
           <span
-            class="MuiTypography-root-086 MuiTypography-button-097"
+            class="MuiTypography-root-085 MuiTypography-button-096"
           >
             Registration
           </span>
         </th>
         <th
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-head-043 WithStyles-TableCell--head-040"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-head-042 WithStyles-TableCell--head-039"
           scope="col"
         />
       </tr>
     </thead>
     <tbody
-      class="MuiTableBody-root-0111"
+      class="MuiTableBody-root-0110"
     >
       <tr
-        class="MuiTableRow-root-034 UserTable-row-03"
+        class="MuiTableRow-root-033"
       >
         <th
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
           scope="row"
         >
           <div
@@ -404,40 +404,40 @@ exports[`UserTable should render with required props 1`] = `
           </div>
         </th>
         <td
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
         >
           James
         </td>
         <td
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
         >
           Bond
         </td>
         <td
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
         >
           james.bond@gmail.com
         </td>
         <td
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
           style="font-size: 0.875rem;"
         >
           14-Sep-2018
         </td>
         <td
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
         >
           <div
-            class="Component-root-0112"
+            class="Component-root-0111"
           >
             <button
               tabindex="0"
-              class="MuiButtonBase-root-076 MuiIconButton-root-0113 MuiIconButton-colorPrimary-0115"
+              class="MuiButtonBase-root-075 MuiIconButton-root-0112 MuiIconButton-colorPrimary-0114"
               type="button"
               data-testid="edit"
             >
               <span
-                class="MuiIconButton-label-0118"
+                class="MuiIconButton-label-0117"
               >
                 <svg
                   class="mdi-icon "
@@ -452,17 +452,17 @@ exports[`UserTable should render with required props 1`] = `
                 </svg>
               </span>
               <span
-                class="MuiTouchRipple-root-079"
+                class="MuiTouchRipple-root-078"
               />
             </button>
             <button
               tabindex="0"
-              class="MuiButtonBase-root-076 MuiIconButton-root-0113 MuiIconButton-colorPrimary-0115"
+              class="MuiButtonBase-root-075 MuiIconButton-root-0112 MuiIconButton-colorPrimary-0114"
               type="button"
               data-testid="delete"
             >
               <span
-                class="MuiIconButton-label-0118"
+                class="MuiIconButton-label-0117"
               >
                 <svg
                   class="mdi-icon "
@@ -477,17 +477,17 @@ exports[`UserTable should render with required props 1`] = `
                 </svg>
               </span>
               <span
-                class="MuiTouchRipple-root-079"
+                class="MuiTouchRipple-root-078"
               />
             </button>
             <button
               tabindex="0"
-              class="MuiButtonBase-root-076 MuiIconButton-root-0113 MuiIconButton-colorPrimary-0115"
+              class="MuiButtonBase-root-075 MuiIconButton-root-0112 MuiIconButton-colorPrimary-0114"
               type="button"
               data-testid="email"
             >
               <span
-                class="MuiIconButton-label-0118"
+                class="MuiIconButton-label-0117"
               >
                 <svg
                   class="mdi-icon "
@@ -502,17 +502,17 @@ exports[`UserTable should render with required props 1`] = `
                 </svg>
               </span>
               <span
-                class="MuiTouchRipple-root-079"
+                class="MuiTouchRipple-root-078"
               />
             </button>
           </div>
         </td>
       </tr>
       <tr
-        class="MuiTableRow-root-034 UserTable-row-03"
+        class="MuiTableRow-root-033"
       >
         <th
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
           scope="row"
         >
           <div
@@ -530,40 +530,40 @@ exports[`UserTable should render with required props 1`] = `
           </div>
         </th>
         <td
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
         >
           Jane
         </td>
         <td
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
         >
           Doe
         </td>
         <td
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
         >
           jane.doe@gmail.com
         </td>
         <td
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
           style="font-size: 0.875rem;"
         >
           13-Sep-2018
         </td>
         <td
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
         >
           <div
-            class="Component-root-0112"
+            class="Component-root-0111"
           >
             <button
               tabindex="0"
-              class="MuiButtonBase-root-076 MuiIconButton-root-0113 MuiIconButton-colorPrimary-0115"
+              class="MuiButtonBase-root-075 MuiIconButton-root-0112 MuiIconButton-colorPrimary-0114"
               type="button"
               data-testid="edit"
             >
               <span
-                class="MuiIconButton-label-0118"
+                class="MuiIconButton-label-0117"
               >
                 <svg
                   class="mdi-icon "
@@ -578,17 +578,17 @@ exports[`UserTable should render with required props 1`] = `
                 </svg>
               </span>
               <span
-                class="MuiTouchRipple-root-079"
+                class="MuiTouchRipple-root-078"
               />
             </button>
             <button
               tabindex="0"
-              class="MuiButtonBase-root-076 MuiIconButton-root-0113 MuiIconButton-colorPrimary-0115"
+              class="MuiButtonBase-root-075 MuiIconButton-root-0112 MuiIconButton-colorPrimary-0114"
               type="button"
               data-testid="delete"
             >
               <span
-                class="MuiIconButton-label-0118"
+                class="MuiIconButton-label-0117"
               >
                 <svg
                   class="mdi-icon "
@@ -603,17 +603,17 @@ exports[`UserTable should render with required props 1`] = `
                 </svg>
               </span>
               <span
-                class="MuiTouchRipple-root-079"
+                class="MuiTouchRipple-root-078"
               />
             </button>
             <button
               tabindex="0"
-              class="MuiButtonBase-root-076 MuiIconButton-root-0113 MuiIconButton-colorPrimary-0115"
+              class="MuiButtonBase-root-075 MuiIconButton-root-0112 MuiIconButton-colorPrimary-0114"
               type="button"
               data-testid="email"
             >
               <span
-                class="MuiIconButton-label-0118"
+                class="MuiIconButton-label-0117"
               >
                 <svg
                   class="mdi-icon "
@@ -628,17 +628,17 @@ exports[`UserTable should render with required props 1`] = `
                 </svg>
               </span>
               <span
-                class="MuiTouchRipple-root-079"
+                class="MuiTouchRipple-root-078"
               />
             </button>
           </div>
         </td>
       </tr>
       <tr
-        class="MuiTableRow-root-034 UserTable-row-03"
+        class="MuiTableRow-root-033"
       >
         <th
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
           scope="row"
         >
           <div
@@ -656,40 +656,40 @@ exports[`UserTable should render with required props 1`] = `
           </div>
         </th>
         <td
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
         >
           Bob
         </td>
         <td
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
         >
           Smith
         </td>
         <td
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
         >
           bob.smith@gmail.com
         </td>
         <td
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
           style="font-size: 0.875rem;"
         >
           12-Sep-2018
         </td>
         <td
-          class="MuiTableCell-root-042 WithStyles-TableCell--root-039 MuiTableCell-body-044 WithStyles-TableCell--body-041"
+          class="MuiTableCell-root-041 WithStyles-TableCell--root-038 MuiTableCell-body-043 WithStyles-TableCell--body-040"
         >
           <div
-            class="Component-root-0112"
+            class="Component-root-0111"
           >
             <button
               tabindex="0"
-              class="MuiButtonBase-root-076 MuiIconButton-root-0113 MuiIconButton-colorPrimary-0115"
+              class="MuiButtonBase-root-075 MuiIconButton-root-0112 MuiIconButton-colorPrimary-0114"
               type="button"
               data-testid="edit"
             >
               <span
-                class="MuiIconButton-label-0118"
+                class="MuiIconButton-label-0117"
               >
                 <svg
                   class="mdi-icon "
@@ -704,17 +704,17 @@ exports[`UserTable should render with required props 1`] = `
                 </svg>
               </span>
               <span
-                class="MuiTouchRipple-root-079"
+                class="MuiTouchRipple-root-078"
               />
             </button>
             <button
               tabindex="0"
-              class="MuiButtonBase-root-076 MuiIconButton-root-0113 MuiIconButton-colorPrimary-0115"
+              class="MuiButtonBase-root-075 MuiIconButton-root-0112 MuiIconButton-colorPrimary-0114"
               type="button"
               data-testid="delete"
             >
               <span
-                class="MuiIconButton-label-0118"
+                class="MuiIconButton-label-0117"
               >
                 <svg
                   class="mdi-icon "
@@ -729,17 +729,17 @@ exports[`UserTable should render with required props 1`] = `
                 </svg>
               </span>
               <span
-                class="MuiTouchRipple-root-079"
+                class="MuiTouchRipple-root-078"
               />
             </button>
             <button
               tabindex="0"
-              class="MuiButtonBase-root-076 MuiIconButton-root-0113 MuiIconButton-colorPrimary-0115"
+              class="MuiButtonBase-root-075 MuiIconButton-root-0112 MuiIconButton-colorPrimary-0114"
               type="button"
               data-testid="email"
             >
               <span
-                class="MuiIconButton-label-0118"
+                class="MuiIconButton-label-0117"
               >
                 <svg
                   class="mdi-icon "
@@ -754,7 +754,7 @@ exports[`UserTable should render with required props 1`] = `
                 </svg>
               </span>
               <span
-                class="MuiTouchRipple-root-079"
+                class="MuiTouchRipple-root-078"
               />
             </button>
           </div>
