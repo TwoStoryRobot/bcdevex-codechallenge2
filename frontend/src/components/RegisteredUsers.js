@@ -7,8 +7,9 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { UserConsumer } from './UserContext'
 import AppBar from './AppBar'
+import AlertDialog from './AlertDialog'
 import UserTable from './UserTable'
-import { getUsers } from '../requests.js'
+import { getUsers, deleteUser } from '../requests.js'
 
 const Container = styled.div`
   padding-top: 64px;
@@ -25,7 +26,10 @@ class RegisteredUsers extends React.Component {
     isFetchingUsers: false,
     currentUser: undefined,
     users: [],
-    fetchUsersController: undefined
+    fetchUsersController: undefined,
+    isAlertDialogOpen: false,
+    alertMessage: '',
+    deleteUserId: null
   }
 
   componentDidMount() {
@@ -52,9 +56,30 @@ class RegisteredUsers extends React.Component {
     console.log('Edit User Clicked')
   }
 
-  //  TODO: Implement this function
-  handleUserDeleteClick() {
-    console.log('Delete User Clicked')
+  handleUserDeleteClick = (name, userId) => {
+    this.setState({
+      isAlertDialogOpen: true,
+      alertMessage: `Are you sure you want to delete ${name}?`,
+      deleteUserId: userId
+    })
+  }
+
+  onCancelDelete = () => {
+    this.setState({ isAlertDialogOpen: false })
+  }
+
+  onConfirmDelete = async logout => {
+    this.setState({ isAlertDialogOpen: false })
+    if (!this.state.deleteUserId) return
+
+    await deleteUser(this.state.deleteUserId)
+
+    if (this.state.currentUser.userId === this.state.deleteUserId)
+      return logout()
+
+    this.setState({ deleteUserId: null })
+
+    getUsers().then(({ users }) => this.setState({ users }))
   }
 
   //  TODO: Implement this function
@@ -72,10 +97,19 @@ class RegisteredUsers extends React.Component {
       <UserConsumer>
         {({ logout }) => (
           <Container>
+            <AlertDialog
+              open={this.state.isAlertDialogOpen}
+              onCancel={this.onCancelDelete}
+              onConfirm={() => this.onConfirmDelete(logout)}>
+              {this.state.alertMessage}
+            </AlertDialog>
             <AppBar
               title="Registered Users"
               {...{ avatar, name }}
               onSignOut={logout}
+              onDelete={() =>
+                this.handleUserDeleteClick('your profile', currentUser.userId)
+              }
             />
             <Content>
               <UserTable

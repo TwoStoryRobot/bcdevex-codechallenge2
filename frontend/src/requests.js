@@ -31,3 +31,11 @@ export function getUsers() {
     .then(res => res.json())
     .then(users => ({ users, controller }))
 }
+
+export function deleteUser(userId) {
+  const method = 'POST'
+  const body = JSON.stringify({ userId })
+  const headers = getDefaultHeaders()
+  const url = process.env.REACT_APP_API_URL + 'delete'
+  return fetch(url, { method, body, headers })
+}

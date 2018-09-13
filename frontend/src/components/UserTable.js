@@ -219,7 +219,12 @@ class UserTable extends React.Component {
                       </IconButton>
                       <IconButton
                         color="primary"
-                        onClick={handleDeleteClick}
+                        onClick={() =>
+                          handleDeleteClick(
+                            `${user.firstName} ${user.lastName}`,
+                            user.userId
+                          )
+                        }
                         data-testid="delete">
                         <DeleteIcon />
                       </IconButton>
