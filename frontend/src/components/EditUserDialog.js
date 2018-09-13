@@ -1,4 +1,3 @@
-
 /* Edit User Dialog
  * Popup dialog for editing users
  */

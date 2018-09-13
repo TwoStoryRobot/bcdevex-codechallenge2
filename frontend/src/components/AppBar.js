@@ -1,4 +1,3 @@
-
 /* App Bar
  * Top Level Material Toolbar
  */
