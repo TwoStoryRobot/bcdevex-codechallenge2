@@ -96,7 +96,7 @@ const EmptyIcon = styled.span`
 class UserTable extends React.Component {
   state = {
     sortField: 'lastName',
-    sortDirection: 'asc'
+    sortDirection: 'desc'
   }
 
   // This function sets the active sort field and toggles the direction
@@ -106,16 +106,18 @@ class UserTable extends React.Component {
       this.setState({
         sortDirection: this.state.sortDirection === 'asc' ? 'desc' : 'asc'
       })
-    else this.setState({ sortField, sortDirection: 'asc' })
+    else this.setState({ sortField, sortDirection: 'desc' })
   }
 
   // Return a new array with users sorted according to the current sort state
   getSortedUsers() {
     //clone a new array for users
     let users = [...this.props.users]
-    if (this.state.sortDirection === 'asc')
+    if (this.state.sortDirection === 'asc') {
       users.sort(this.genSortAscendingByField(this.state.sortField))
-    else users.sort(this.genSortDescendingByField(this.state.sortField))
+    } else {
+      users.sort(this.genSortDescendingByField(this.state.sortField))
+    }
 
     return users
   }
