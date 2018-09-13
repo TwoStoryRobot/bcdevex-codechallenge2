@@ -162,6 +162,25 @@ profile](./screenshots/Admin-edit-step1.png)
 image will cause the avatar to generate the initials of the user on a random 
 color.
 
+### User Story #6 – Sign-in
+
+As a user I want to sign in to the application using my username and password 
+AND As an application manager, I want all users to be authenticated before they 
+access the application.  
+
+**Given** that a User is attempting to access the application<br/>
+**When** the User properly authenticates using the appropriate credentials<br/>
+**Then** the User is granted user-level access to the application.<br/>
+
+If you have been signed out of the application and you try to access the URL 
+for the registered users page `localhost:3000/users`, you will be redirected to 
+the login screen.  Once you have clicked "Sign in with Google" you will be 
+logged in and permitted to access the application.
+
+![Login screen](./screenshots/Login.png)
+
+![404 screen when accessing an unknown page](./screenshots/404.png)
+
 # Architecture
 
 This is a single repo containing two node packages for both frontend and 
