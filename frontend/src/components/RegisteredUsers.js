@@ -5,7 +5,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { AuthConsumer, withAuthContext } from './AuthContext'
+import { withAuthContext } from './AuthContext'
 import AppBar from './AppBar'
 import UserTable from './UserTable'
 import { getUsers } from '../requests.js'
@@ -76,27 +76,23 @@ class RegisteredUsers extends React.Component {
       currentUser && `${currentUser.firstName} ${currentUser.lastName}`
 
     return (
-      <AuthConsumer>
-        {({ logout }) => (
-          <Container>
-            <AppBar
-              title="Registered Users"
-              {...{ avatar, name }}
-              onSignOut={logout}
-            />
-            <Content>
-              <UserTable
-                users={users}
-                isLoading={isFetchingUsers}
-                isAdmin={currentUser && currentUser.isAdmin}
-                handleEditClick={this.handleUserEditClick}
-                handleDeleteClick={this.handleUserDeleteClick}
-                handleSendEmailClick={this.handleUserSendEmailClick}
-              />
-            </Content>
-          </Container>
-        )}
-      </AuthConsumer>
+      <Container>
+        <AppBar
+          title="Registered Users"
+          {...{ avatar, name }}
+          onSignOut={this.props.logout}
+        />
+        <Content>
+          <UserTable
+            users={users}
+            isLoading={isFetchingUsers}
+            isAdmin={currentUser && currentUser.isAdmin}
+            handleEditClick={this.handleUserEditClick}
+            handleDeleteClick={this.handleUserDeleteClick}
+            handleSendEmailClick={this.handleUserSendEmailClick}
+          />
+        </Content>
+      </Container>
     )
   }
 }
