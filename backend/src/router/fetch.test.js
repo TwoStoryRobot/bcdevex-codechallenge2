@@ -5,7 +5,6 @@ import app from '../app'
 import { queries, db, pgp } from '../db'
 import { generateUser, generateToken } from '../helpers'
 import supertest from 'supertest'
-import nodemailer from 'nodemailer'
 
 const server = app.listen()
 let postAgent
