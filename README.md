@@ -43,8 +43,9 @@ As a user, I want to be able to register with the application.
 When you visit the main page of the application at `http://localhost:3000` you 
 will be presented with a 'Signin with Google' button. Click this button and you 
 will be prompted to signin or specify a google account. Once you've selected an 
-account you will be authenticated, a new user account will be created for you, 
-and you will be presented with the Registered Users screen.
+account you will be authenticated, a new user account with your details from 
+Google will be created for you, and you will be presented with the Registered 
+Users screen.
 
 ![Login screen](./screenshots/Login.png)
 
