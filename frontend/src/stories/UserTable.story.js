@@ -14,7 +14,7 @@ const defaultUsers = [
     firstName: 'Bob',
     lastName: 'Smith',
     emailAddress: 'bob.smith@gmail.com',
-    imageUrl: 'https://d3iw72m71ie81c.cloudfront.net/male-52.jpg',
+    imageURL: 'https://d3iw72m71ie81c.cloudfront.net/male-52.jpg',
     isAdmin: true,
     registeredAt: '2018-09-12T14:35:38-07:00'
   },
@@ -23,17 +23,25 @@ const defaultUsers = [
     firstName: 'Jane',
     lastName: 'Doe',
     emailAddress: 'jane.doe@gmail.com',
-    imageUrl: 'https://randomuser.me/api/portraits/women/21.jpg',
+    imageURL: 'https://randomuser.me/api/portraits/women/21.jpg',
     isAdmin: false,
     registeredAt: '2018-09-13T14:35:38-07:00'
   },
-
   {
     userId: 'testUser345',
     firstName: 'James',
     lastName: 'Bond',
     emailAddress: 'james.bond@gmail.com',
-    imageUrl: 'https://twostoryrobot.com/not-a-valid-url',
+    imageURL: 'https://twostoryrobot.com/not-a-valid-url',
+    isAdmin: false,
+    registeredAt: '2018-09-14T14:35:38-07:00'
+  },
+  {
+    userId: 'testUser678',
+    firstName: 'Mary',
+    lastName: 'Lou',
+    emailAddress: 'mary.lou@gmail.com',
+    imageURL: 'https://twostoryrobot.com/not-a-valid-url',
     isAdmin: false,
     registeredAt: '2018-09-14T14:35:38-07:00'
   }
