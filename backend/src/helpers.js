@@ -1,3 +1,6 @@
+/* Helper functions for tests
+ */
+
 import jwt from 'jsonwebtoken'
 
 export function generateNewUser(obj = {}) {

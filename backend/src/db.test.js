@@ -1,5 +1,8 @@
-import { queries, db, pgp } from './index'
-import { generateUser } from '../helpers'
+/* Database helper tests
+ */
+
+import { queries, db, pgp } from './db'
+import { generateUser } from './helpers'
 
 beforeEach(async () => {
   // Start test with a clean db state

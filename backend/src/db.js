@@ -1,3 +1,7 @@
+/* Database
+ * Helper functions for interacting with the database
+ */
+
 import pgPromise from 'pg-promise'
 
 export const pgp = pgPromise()
