@@ -32,7 +32,7 @@ describe('EditUserDialog', () => {
     const firstName = 'John'
     const lastName = 'Doe'
 
-    const firstInput = getByLabelText('First')
+    const firstInput = getByLabelText('First *')
     const lastInput = getByLabelText('Last')
 
     fireEvent.change(firstInput, { target: { value: firstName } })
@@ -82,7 +82,7 @@ describe('EditUserDialog', () => {
       />
     )
 
-    const firstInput = getByLabelText('First')
+    const firstInput = getByLabelText('First *')
     const lastInput = getByLabelText('Last')
     const avatarInput = getByLabelText('Avatar URL')
     const emailInput = getByLabelText('Email')
