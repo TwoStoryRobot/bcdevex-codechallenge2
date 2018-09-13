@@ -1,3 +1,6 @@
+/* App Bar Tests
+ */
+
 import React from 'react'
 import { cleanup, render, fireEvent } from 'react-testing-library'
 
@@ -62,8 +65,8 @@ describe('AppBar', () => {
       />
     )
 
-    // The menu has to be opened for each test because it closes automatically when
-    // a MenuItem is selected
+    // The menu has to be opened for each test because it closes automatically
+    // when a MenuItem is selected
     const openMenu = () => fireEvent.click(getByTestId('avatar-button'))
 
     openMenu()

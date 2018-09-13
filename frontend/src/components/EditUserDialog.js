@@ -1,3 +1,7 @@
+/* Edit User Dialog
+ * Popup dialog for editing users
+ */
+
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Dialog from '@material-ui/core/Dialog'

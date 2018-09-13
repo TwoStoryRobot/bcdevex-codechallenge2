@@ -1,3 +1,10 @@
+/* Search Bar
+ * A searchbar that works like an input
+ *
+ * This is a controlled component that is expecting you to pass in a value
+ * and an onChange handler
+ */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
@@ -11,12 +18,6 @@ const PaddedPaper = styled(Paper)`
   padding: 8px;
 `
 
-/**
- * A searchbar that works like an input
- *
- * This is a controlled component that is expecting you to pass in a value
- * and an onChange handler
- */
 class SearchBar extends React.Component {
   render() {
     const searchAdornment = (

@@ -1,3 +1,6 @@
+/* Edit User Dialog Tests
+ */
+
 import React from 'react'
 import {
   cleanup,
@@ -23,7 +26,7 @@ describe('EditUserDialog', () => {
     expect(getByTestId('edit-user-dialog')).toBeInTheDocument()
   })
 
-  it('should save any data the user entered when the save button is pressed', () => {
+  it('should save data the user entered when save is pressed', () => {
     const save = jest.fn()
     const { getByLabelText, getByTestId } = render(
       <EditUserDialog open={true} onSave={save} />

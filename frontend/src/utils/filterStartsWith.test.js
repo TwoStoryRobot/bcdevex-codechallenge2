@@ -1,3 +1,6 @@
+/* Tests for filterStartsWith 
+ */
+
 import filterStartsWith from './filterStartsWith'
 
 const jonathan = {

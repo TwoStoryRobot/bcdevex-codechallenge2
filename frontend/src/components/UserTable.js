@@ -1,3 +1,7 @@
+/* User Table
+ * Lists the registered users in a table
+ */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
@@ -200,7 +204,8 @@ class UserTable extends React.Component {
                 <StyledTableCell>{user.firstName}</StyledTableCell>
                 <StyledTableCell>{user.lastName}</StyledTableCell>
                 <StyledTableCell>{user.emailAddress}</StyledTableCell>
-                {/* Note: We are manually overriding this individual column font size */}
+                {/* Note: We are manually overriding this individual
+                          column font size */}
                 <StyledTableCell style={{ fontSize: '0.875rem' }}>
                   {moment(user.registeredAt).format('DD-MMM-YYYY')}
                 </StyledTableCell>

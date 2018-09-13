@@ -1,3 +1,7 @@
+/* Alert Dialog
+ * A reusable AlertDialog wrapping Dialog
+ */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -7,9 +11,6 @@ import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogActions from '@material-ui/core/DialogActions'
 import Button from '@material-ui/core/Button'
 
-/**
- * A reusable AlertDialog wrapping Dialog
- */
 function AlertDialog({
   children,
   onCancel,

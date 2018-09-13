@@ -1,5 +1,4 @@
-/**
- * A startsWith filter maker
+/* A startsWith filter maker
  *
  * Provide a search term, and get back a function for use in array.filter().
  * e.g. `Ch` will match Chad Fawcett and Chris Foster, `M` will match
