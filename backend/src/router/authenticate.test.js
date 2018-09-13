@@ -45,7 +45,7 @@ afterAll(async () => {
 
 test('/authenticate should authenticate a valid user', async () => {
   const user = generateNewUser({ userId: 'doesntExist' })
-  const response = { isAdmin : true, registeredAt : moment().format() }
+  const response = { isAdmin: true, registeredAt: moment().format() }
 
   await postAgent
     .send(user)
@@ -57,14 +57,12 @@ test('/authenticate should return preexisting users', async () => {
   const oldUser = generateUser()
   const newUser = generateNewUser()
 
-  await postAgent
-    .send(newUser)
-    .expect(200, oldUser)
+  await postAgent.send(newUser).expect(200, oldUser)
 })
 
 test('/authenticate should make secondary users non-admin', async () => {
   const user1 = generateNewUser({ userId: 'firstUser' })
-  const response1 = { isAdmin : true, registeredAt : moment().format() }
+  const response1 = { isAdmin: true, registeredAt: moment().format() }
 
   await postAgent
     .send(user1)
@@ -72,7 +70,7 @@ test('/authenticate should make secondary users non-admin', async () => {
     .expect(200, Object.assign(user1, response1))
 
   const user2 = generateNewUser({ userId: 'secondUser' })
-  const response2 = { isAdmin : false, registeredAt : moment().format() }
+  const response2 = { isAdmin: false, registeredAt: moment().format() }
 
   await postAgent
     .send(user2)
@@ -94,7 +92,5 @@ test('/authenticate should reject poorly formed queries', async () => {
   delete user.firstName
   delete user.lastName
 
-  await postAgent
-    .send(user)
-    .expect(400)
+  await postAgent.send(user).expect(400)
 })

@@ -8,8 +8,12 @@ import { queries } from '../db'
 
 const schema = Joi.object().keys({
   userId: Joi.string().required(),
-  emailAddress: Joi.string().email().required(),
-  imageURL: Joi.string().uri().required(),
+  emailAddress: Joi.string()
+    .email()
+    .required(),
+  imageURL: Joi.string()
+    .uri()
+    .required(),
   firstName: Joi.string().required(),
   lastName: Joi.string().required(),
   isAdmin: Joi.boolean().required(),
@@ -24,10 +28,10 @@ async function updateUser(ctx) {
 
   const user = ctx.request.body
 
-  // Check privileges 
+  // Check privileges
   const isAdmin = ctx.state.isAdmin
   const selfUpdate = user.userId == ctx.state.user.sub
-  if (!selfUpdate && !isAdmin) ctx.throw(400, 'You can\'t update this user')
+  if (!selfUpdate && !isAdmin) ctx.throw(400, "You can't update this user")
 
   // Invalid userId provided
   const record = await queries.selectUserById(user.userId)

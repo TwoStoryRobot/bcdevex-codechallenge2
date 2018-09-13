@@ -43,6 +43,5 @@ afterAll(async () => {
 test('/fetch should return all users', async () => {
   const users = await queries.selectAllUsers()
 
-  await postAgent
-    .expect(200, users)
+  await postAgent.expect(200, users)
 })

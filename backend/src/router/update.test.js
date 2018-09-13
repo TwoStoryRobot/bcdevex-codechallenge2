@@ -25,9 +25,9 @@ beforeEach(async () => {
 
   // Insert test data
   await Promise.all([
-    queries.insertUser(generateUser({ userId : '1' })),
-    queries.insertUser(generateUser({ userId : '2' })),
-    queries.insertUser(generateUser({ userId: 'admin', isAdmin : true }))
+    queries.insertUser(generateUser({ userId: '1' })),
+    queries.insertUser(generateUser({ userId: '2' })),
+    queries.insertUser(generateUser({ userId: 'admin', isAdmin: true }))
   ])
 })
 
@@ -44,15 +44,11 @@ afterAll(async () => {
 
 test('/update should update user details', async () => {
   const user = generateUser({ emailAddress: 'new@address.com' })
-  await postAgent
-    .send(user)
-    .expect(200, user)
+  await postAgent.send(user).expect(200, user)
 })
 
 test('/update should reject invalid requests', async () => {
-  await postAgent
-    .send({})
-    .expect(400)
+  await postAgent.send({}).expect(400)
 })
 
 test('/update should reject non-existant userIds', async () => {
@@ -65,9 +61,7 @@ test('/update should reject non-existant userIds', async () => {
 
 test('/update should reject a user updating another user', async () => {
   const user = generateUser({ userId: '2' })
-  await postAgent
-    .send(user)
-    .expect(400, 'You can\'t update this user')
+  await postAgent.send(user).expect(400, "You can't update this user")
 })
 
 test('/update should allow admins to update another user', async () => {

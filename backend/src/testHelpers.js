@@ -10,7 +10,7 @@ export function generateNewUser(obj = {}) {
     firstName: 'Test',
     imageURL: 'https://test.com/test.jpg',
     emailAddress: 'test@user.com',
-    lastName: 'User',
+    lastName: 'User'
   }
   return Object.assign({}, defaultUser, obj)
 }
