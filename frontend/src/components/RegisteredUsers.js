@@ -89,8 +89,10 @@ class RegisteredUsers extends React.Component {
   }
 
   handleEditDialogSave = async updatedUser => {
-    const oldUser = this.state.users.find(user => user.userId === updatedUser.userId)
-    
+    const oldUser = this.state.users.find(
+      user => user.userId === updatedUser.userId
+    )
+
     // Just in case user has properties that aren't passed to EditUserDialog
     const mergedUser = {
       ...oldUser,
@@ -100,8 +102,13 @@ class RegisteredUsers extends React.Component {
     const { userId } = mergedUser
 
     this.setState({
-      users: this.state.users.map(user => user.userId === userId ? mergedUser : user),
-      currentUser: this.state.currentUser.userId === userId ? mergedUser : this.state.currentUser,
+      users: this.state.users.map(
+        user => (user.userId === userId ? mergedUser : user)
+      ),
+      currentUser:
+        this.state.currentUser.userId === userId
+          ? mergedUser
+          : this.state.currentUser,
       snackbar: 'User updated'
     })
 
@@ -206,7 +213,7 @@ class RegisteredUsers extends React.Component {
         <Snackbar
           anchorOrigin={{
             vertical: 'bottom',
-            horizontal: 'left',
+            horizontal: 'left'
           }}
           open={!!this.state.snackbar}
           autoHideDuration={3000}
