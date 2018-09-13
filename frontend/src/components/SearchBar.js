@@ -8,7 +8,7 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 import SearchIcon from 'mdi-react/SearchIcon'
 
 const PaddedPaper = styled(Paper)`
-  padding: 0 8px;
+  padding: 8px;
 `
 
 /**
