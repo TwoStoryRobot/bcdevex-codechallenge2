@@ -3,6 +3,17 @@
 This is a React client application that performs user management in coordination
 with a REST API. It utilizes Google OAuth to log the user in and register them.
 
+## Environment Variables
+
+The following environment variables are utilized:
+
+```
+REACT_APP_API_URL=http://localhost:3500 # Location of the REST API to query
+REACT_APP_CLIENT_ID=test.apps.googleusercontent.com # Google Developer Client ID
+```
+
+The `REACT_APP_CLIENT_ID` must match the `CLIENT_ID` on the REST API.
+
 ## Quickstart
 
 Provided you have node installed, you can get started with:
@@ -24,17 +35,6 @@ npm run storybook # Start the storybook developer tool
 npm run prettier # Run autoformatter
 npm run eslint # Run code linter
 ```
-
-## Environment Variables
-
-The following environment variables are utilized:
-
-```
-REACT_APP_API_URL=http://localhost:3500 # Location of the REST API to query
-REACT_APP_CLIENT_ID=test.apps.googleusercontent.com # Google Developer Client ID
-```
-
-The `REACT_APP_CLIENT_ID` must match the `CLIENT_ID` on the REST API.
 
 ## Docker
 

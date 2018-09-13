@@ -3,6 +3,23 @@
 This is a node.js Koa-based API server that exposes API endpoints for user 
 registration, user management, and email.
 
+## Environment Variables
+
+The following environment variables are utilized:
+
+```
+PORT=3500 # Port to listen on (Defaults to specified)
+FROM_EMAIL=no-reply@code-challenge.com # Email to send from 
+SMTP=smtp://username:password@host:1025 # SMTP service authentication
+CORS_ORIGIN=http://myhost/ # Allowed CORS URI (Defaults to all origins) 
+CLIENT_ID=test.apps.googleusercontent.com # Google Developer Client ID
+POSTGRES_HOST=localhost # Database authentication (Defaults to specified)
+POSTGRES_DB=code_challenge # Database authentication (Defaults to specified)
+POSTGRES_PASSWORD=postgresadmin # Datbase authentication (Defaults to specified)
+POSTGRES_USER=postgres # Database authentication (Defaults to specified)
+POSTGRES_PORT=5432 # Database authentication (Defaults to specified)
+```
+
 ## Quickstart
 
 Provided you have node installed, you can get started with:
@@ -26,23 +43,6 @@ npm run test-router # Run only the router tests
 npm run test-integration # Run only integration tests
 npm run prettier # Run autoformatter
 npm run eslint # Run code linter
-```
-
-## Environment Variables
-
-The following environment variables are utilized:
-
-```
-PORT=3500 # Port to listen on (Defaults to specified)
-FROM_EMAIL=no-reply@code-challenge.com # Email to send from 
-SMTP=smtp://username:password@host:1025 # SMTP service authentication
-CORS_ORIGIN=http://myhost/ # Allowed CORS URI (Defaults to all origins) 
-CLIENT_ID=test.apps.googleusercontent.com # Google Developer Client ID
-POSTGRES_HOST=localhost # Database authentication (Defaults to specified)
-POSTGRES_DB=code_challenge # Database authentication (Defaults to specified)
-POSTGRES_PASSWORD=postgresadmin # Datbase authentication (Defaults to specified)
-POSTGRES_USER=postgres # Database authentication (Defaults to specified)
-POSTGRES_PORT=5432 # Database authentication (Defaults to specified)
 ```
 
 ## Docker
