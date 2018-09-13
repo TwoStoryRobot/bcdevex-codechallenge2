@@ -2,13 +2,25 @@
  * Authenticate a user with a provider
  */
 
+import Joi from 'joi'
 import Router from 'koa-router'
 import moment from 'moment'
 import { queries } from '../db'
 
+const schema = Joi.object().keys({
+  userId: Joi.string().required(),
+  emailAddress: Joi.string().email().required(),
+  imageURL: Joi.string().uri().required(),
+  firstName: Joi.string().required(),
+  lastName: Joi.string().required()
+})
+
 const authenticate = Router()
 
 async function authenticateUser(ctx) {
+
+  const result = schema.validate(ctx.request.body)
+  if (result.error) ctx.throw(400, result.error)
 
   const stateUserId = ctx.state.user.sub
   const bodyUserId = ctx.request.body.userId
