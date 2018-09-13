@@ -8,6 +8,9 @@ import DialogActions from '@material-ui/core/DialogActions'
 import Button from '@material-ui/core/Button'
 import Avatar from 'react-avatar'
 import styled from 'styled-components'
+import { FormControl, FormHelperText } from '@material-ui/core'
+import validateEmail from '../utils/validateEmail'
+import validateUrl from 'valid-url'
 
 const StyledDialogContent = styled(DialogContent)`
   display: grid;
@@ -34,10 +37,53 @@ export default class EditUserDialog extends Component {
     lastName: this.props.lastName,
     emailAddress: this.props.emailAddress,
     imageURL: this.props.imageURL,
-    userId: this.props.userId
+    userId: this.props.userId,
+    errors: {}
   }
 
   handleTextFieldChange = name => event => {
+    // Checks that any required field is not an empty string
+    // Currently only the 'First Name' field is required
+    if (event.target.required && event.target.value.trim() === '') {
+      this.setState({
+        errors: Object.assign(this.state.errors, {
+          [name]: 'The field is required'
+        })
+      })
+    } else {
+      this.setState({
+        errors: Object.assign(this.state.errors, {
+          [name]: null
+        })
+      })
+    }
+
+    // Check that a valid email address is supplied
+    const validEmail =
+      validateEmail(event.target.value.trim()) ||
+      event.target.value.trim() === ''
+
+    if (name === 'emailAddress' && !validEmail) {
+      this.setState({
+        errors: Object.assign(this.state.errors, {
+          emailAddress: 'Please enter a valid email (eg. user@mail.com)'
+        })
+      })
+    }
+
+    // Check that a valid URL is supplied
+    const validURL =
+      validateUrl.isWebUri(event.target.value.trim()) ||
+      event.target.value.trim() === ''
+
+    if (name === 'imageURL' && !validURL) {
+      this.setState({
+        errors: Object.assign(this.state.errors, {
+          imageURL: 'Please enter a valid URL'
+        })
+      })
+    }
+
     this.setState({
       [name]: event.target.value
     })
@@ -50,7 +96,12 @@ export default class EditUserDialog extends Component {
   }
 
   handleSave = () => {
-    this.props.onSave(this.state)
+    if (!Object.values(this.state.errors).filter(n => n).length) {
+      const user = { ...this.state }
+      delete user.errors
+
+      this.props.onSave(user)
+    }
   }
 
   handleKeyDown = event => {
@@ -61,7 +112,7 @@ export default class EditUserDialog extends Component {
 
   render() {
     const { open, onClose } = this.props
-    const { firstName, lastName, imageURL, emailAddress } = this.state
+    const { firstName, lastName, imageURL, emailAddress, errors } = this.state
 
     return (
       <Dialog open={open} onClose={onClose} data-testid="edit-user-dialog">
@@ -76,16 +127,23 @@ export default class EditUserDialog extends Component {
             />
           </AvatarWrapper>
           <StyledForm onSubmit={this.handleSave}>
-            <TextField
-              id="first"
-              label="First"
-              value={firstName}
-              onChange={this.handleTextFieldChange('firstName')}
-              onKeyDown={this.handleKeyDown}
-              fullWidth
-              margin="dense"
-              autoFocus
-            />
+            <FormControl fullWidth>
+              <TextField
+                id="first"
+                label="First"
+                value={firstName}
+                onChange={this.handleTextFieldChange('firstName')}
+                onKeyDown={this.handleKeyDown}
+                fullWidth
+                margin="dense"
+                autoFocus
+                required
+                error={errors.firstName ? true : false}
+              />
+              {errors.firstName && (
+                <FormHelperText>{errors.firstName}</FormHelperText>
+              )}
+            </FormControl>
             <TextField
               id="last"
               label="Last"
@@ -95,25 +153,37 @@ export default class EditUserDialog extends Component {
               fullWidth
               margin="dense"
             />
-            <TextField
-              id="emailAddress"
-              label="Email"
-              value={emailAddress}
-              onChange={this.handleTextFieldChange('emailAddress')}
-              onKeyDown={this.handleKeyDown}
-              type="emailAddress"
-              fullWidth
-              margin="dense"
-            />
-            <TextField
-              id="avatar"
-              label="Avatar URL"
-              value={imageURL}
-              onChange={this.handleTextFieldChange('imageURL')}
-              onKeyDown={this.handleKeyDown}
-              fullWidth
-              margin="dense"
-            />
+            <FormControl fullWidth>
+              <TextField
+                id="emailAddress"
+                label="Email"
+                value={emailAddress}
+                onChange={this.handleTextFieldChange('emailAddress')}
+                onKeyDown={this.handleKeyDown}
+                type="emailAddress"
+                fullWidth
+                margin="dense"
+                error={errors.emailAddress ? true : false}
+              />
+              {errors.emailAddress && (
+                <FormHelperText>{errors.emailAddress}</FormHelperText>
+              )}
+            </FormControl>
+            <FormControl fullWidth>
+              <TextField
+                id="avatar"
+                label="Avatar URL"
+                value={imageURL}
+                onChange={this.handleTextFieldChange('imageURL')}
+                onKeyDown={this.handleKeyDown}
+                fullWidth
+                margin="dense"
+                error={errors.imageURL ? true : false}
+              />
+              {errors.imageURL && (
+                <FormHelperText>{errors.imageURL}</FormHelperText>
+              )}
+            </FormControl>
           </StyledForm>
         </StyledDialogContent>
         <DialogActions>
