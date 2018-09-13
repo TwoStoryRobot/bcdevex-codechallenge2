@@ -9,8 +9,12 @@ import { queries } from '../db'
 
 const schema = Joi.object().keys({
   userId: Joi.string().required(),
-  emailAddress: Joi.string().email().allow(''),
-  imageURL: Joi.string().uri().allow(''),
+  emailAddress: Joi.string()
+    .email()
+    .allow(''),
+  imageURL: Joi.string()
+    .uri()
+    .allow(''),
   firstName: Joi.string().required(),
   lastName: Joi.string().allow('')
 })
@@ -18,7 +22,6 @@ const schema = Joi.object().keys({
 const authenticate = Router()
 
 async function authenticateUser(ctx) {
-
   const result = schema.validate(ctx.request.body)
   if (result.error) ctx.throw(400, result.error)
 
@@ -37,7 +40,6 @@ async function authenticateUser(ctx) {
     )
 
   ctx.body = record || ctx.request.body
-
 }
 
 authenticate.post('/', authenticateUser)

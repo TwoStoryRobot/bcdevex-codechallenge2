@@ -3,13 +3,14 @@
  */
 
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 const AuthContext = React.createContext({})
 const AuthConsumer = AuthContext.Consumer
 
 class AuthProvider extends Component {
   state = {
-    isLoggedIn: localStorage.getItem('token'),
+    isLoggedIn: !!localStorage.getItem('token'),
     userId: localStorage.getItem('userId')
   }
 
@@ -42,6 +43,10 @@ class AuthProvider extends Component {
       </AuthContext.Provider>
     )
   }
+}
+
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 const withAuthContext = Component => props => (

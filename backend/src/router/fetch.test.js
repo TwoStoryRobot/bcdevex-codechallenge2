@@ -3,7 +3,7 @@
 
 import app from '../app'
 import { queries, db, pgp } from '../db'
-import { generateUser, generateToken } from '../helpers'
+import { generateUser, generateToken } from '../testHelpers'
 import supertest from 'supertest'
 
 const server = app.listen()
@@ -43,6 +43,5 @@ afterAll(async () => {
 test('/fetch should return all users', async () => {
   const users = await queries.selectAllUsers()
 
-  await postAgent
-    .expect(200, users)
+  await postAgent.expect(200, users)
 })

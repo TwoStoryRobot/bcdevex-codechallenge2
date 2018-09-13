@@ -3,10 +3,12 @@
  */
 
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import LoginButton from './LoginButton'
 import styled from 'styled-components'
 import { authenticate } from '../requests'
 import { Typography } from '@material-ui/core'
+import { withAuthContext } from './AuthContext'
 
 import background from '../images/background.jpeg'
 
@@ -53,8 +55,15 @@ const ButtonContainer = styled.div`
 `
 
 class Home extends Component {
-  handleLogin = profile => {
-    authenticate(profile).then(() => this.props.history.push('/users'))
+  componentDidMount() {
+    if (this.props.isLoggedIn) {
+      this.props.history.push('/users')
+    }
+  }
+
+  handleLogin = async profile => {
+    await authenticate(profile)
+    this.props.history.push('/users')
   }
 
   handleError = err => {
@@ -80,4 +89,11 @@ class Home extends Component {
   }
 }
 
-export default Home
+Home.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired
+}
+
+export default withAuthContext(Home)

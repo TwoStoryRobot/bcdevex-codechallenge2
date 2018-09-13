@@ -1,6 +1,9 @@
+/* SendEmail router tests
+ */
+
 import app from '../app'
 import { queries, db, pgp } from '../db'
-import { generateUser, generateToken } from '../helpers'
+import { generateUser, generateToken } from '../testHelpers'
 import supertest from 'supertest'
 import nodemailer from 'nodemailer'
 
