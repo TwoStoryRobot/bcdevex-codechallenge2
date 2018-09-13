@@ -138,7 +138,10 @@ class RegisteredUsers extends React.Component {
     this.setState({ isAlertDialogOpen: false })
     if (!this.state.alertUserId) return
 
-    await deleteUser(this.state.alertUserId)
+    const user = this.state.users.find(
+      user => user.userId === this.state.alertUserId
+    )
+    await deleteUser(user)
 
     if (this.state.currentUser.userId === this.state.alertUserId)
       return this.props.logout()
