@@ -9,10 +9,10 @@ import { queries } from '../db'
 
 const schema = Joi.object().keys({
   userId: Joi.string().required(),
-  emailAddress: Joi.string().email().required(),
-  imageURL: Joi.string().uri().required(),
+  emailAddress: Joi.string().email().allow(''),
+  imageURL: Joi.string().uri().allow(''),
   firstName: Joi.string().required(),
-  lastName: Joi.string().required()
+  lastName: Joi.string().allow('')
 })
 
 const authenticate = Router()

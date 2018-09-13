@@ -9,12 +9,12 @@ import { queries } from '../db'
 
 const schema = Joi.object().keys({
   userId: Joi.string().required(),
-  emailAddress: Joi.string().email().required(),
-  imageURL: Joi.string().uri().required(),
+  emailAddress: Joi.string().email().allow(''),
+  imageURL: Joi.string().uri().allow(''),
   firstName: Joi.string().required(),
-  lastName: Joi.string().required(),
+  lastName: Joi.string().allow(''),
   isAdmin: Joi.boolean().required(),
-  registeredAt: Joi.date().required()
+  registeredAt: Joi.date()
 })
 
 const remove = Router()
