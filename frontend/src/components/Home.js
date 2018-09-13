@@ -66,7 +66,7 @@ class Home extends Component {
       <Container>
         <Transparency>
           <IntroText variant="subheading" component="p">
-            Manage users and send the exact email to any of them with ease!
+            Manage users, send them emails!
           </IntroText>
           <ButtonContainer>
             <LoginButton
