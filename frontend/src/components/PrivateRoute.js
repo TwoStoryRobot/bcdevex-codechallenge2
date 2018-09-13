@@ -5,16 +5,16 @@
 
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import { UserConsumer } from './UserContext'
+import { AuthConsumer } from './AuthContext'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
-  <UserConsumer>
-    {({ isLoggedIn, userId }) => (
+  <AuthConsumer>
+    {({ isLoggedIn }) => (
       <Route
         {...rest}
         render={props =>
           isLoggedIn ? (
-            <Component {...props} userId={userId} />
+            <Component {...props} />
           ) : (
             <Redirect
               to={{
@@ -25,7 +25,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
         }
       />
     )}
-  </UserConsumer>
+  </AuthConsumer>
 )
 
 export default PrivateRoute

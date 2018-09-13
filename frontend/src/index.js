@@ -5,7 +5,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import { UserProvider } from './components/UserContext'
+import { AuthProvider } from './components/AuthContext'
 import App from './components/App'
 
 import 'typeface-roboto'
@@ -16,9 +16,9 @@ const theme = createMuiTheme()
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>
     <BrowserRouter>
-      <UserProvider>
+      <AuthProvider>
         <App />
-      </UserProvider>
+      </AuthProvider>
     </BrowserRouter>
   </MuiThemeProvider>,
   document.getElementById('root')
