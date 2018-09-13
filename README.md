@@ -3,7 +3,7 @@
 This is Two Story Robot's Code Code Challenge submission for the "Data Driven 
 Mine Development - Team Expansion" RFP.
 
-It is a simple user management application with various iteractive features.
+It is a simple user management application with various interactive features.
 The backend of the application is written in Javascript in Nodejs using the Koa 
 framework with a Postgres database. The frontend is written in React with 
 Material UI components. All testing is written in Jest. Component development 
@@ -91,7 +91,7 @@ the application.
 
 When you are signed in as the administrator you will see trash can icons next 
 to each user in the Registered Users list (including your own account).  
-Clicking the trash can icon will bring up a propmt asking if you to confirm the 
+Clicking the trash can icon will bring up a prompt asking if you to confirm the 
 account deletion. Clicking "confirm" will delete the user account permanently 
 and remove them from the Registered User List. Clicking "cancel" will abort the 
 delete operation.
@@ -129,7 +129,7 @@ image](./screenshots/Delete-step1.png)
 
 ![The user edit form](./screenshots/Edit-user-form.png)
 
-**Note** changing the Avatar URL to an something that does not retrieve as an 
+**Note** changing the Avatar URL to something that does not retrieve as an 
 image will cause the avatar to generate the initials of the user on a random 
 color.
 
@@ -158,7 +158,7 @@ profile](./screenshots/Admin-edit-step1.png)
 
 ![The user edit form](./screenshots/Admin-edit-step2.png)
 
-**Note** changing the Avatar URL to an something that does not retrieve as an 
+**Note** changing the Avatar URL to something that does not retrieve as an 
 image will cause the avatar to generate the initials of the user on a random 
 color.
 
@@ -242,6 +242,8 @@ will be sent using that server. If you wish to just test email functionality
 without sending emails, you can connect to the included mailhog server at 
 `localhost:8025` which has been configured as the default SMTP server and will 
 trap any emails sent to it.
+
+If the user does not have an email address, the envelope icon will not appear.
 
 ![Mailhog interface for email testing](./screenshots/Mailhog.png)
 
