@@ -18,8 +18,8 @@ import UserSearchIcon from 'mdi-react/UserSearchIcon'
 import DeleteIcon from 'mdi-react/DeleteIcon'
 import PencilIcon from 'mdi-react/PencilIcon'
 import EnvelopeIcon from 'mdi-react/EnvelopeIcon'
-import SortDescendingIcon from 'mdi-react/SortAscendingIcon'
-import SortAscendingIcon from 'mdi-react/SortDescendingIcon'
+import SortAscendingIcon from 'mdi-react/SortAscendingIcon'
+import SortDescendingIcon from 'mdi-react/SortDescendingIcon'
 
 const StyledButtonsCell = withStyles(theme => ({
   root: {
@@ -96,7 +96,7 @@ const EmptyIcon = styled.span`
 class UserTable extends React.Component {
   state = {
     sortField: 'lastName',
-    sortDirection: 'desc'
+    sortDirection: 'asc'
   }
 
   // This function sets the active sort field and toggles the direction
@@ -129,7 +129,7 @@ class UserTable extends React.Component {
       const valB = b[field].toUpperCase()
       let order = 0
       if (valA < valB) order = -1
-      if (valB > valA) order = 1
+      if (valA > valB) order = 1
       return order
     }
   }
@@ -140,8 +140,8 @@ class UserTable extends React.Component {
       const valA = a[field].toUpperCase()
       const valB = b[field].toUpperCase()
       let order = 0
+      if (valA < valB) order = 1
       if (valA > valB) order = -1
-      if (valB < valA) order = 1
       return order
     }
   }
