@@ -39,8 +39,6 @@ npm start # Start the server
 npm test # Run all test suites
 npm run build # Build the application
 npm run watch # Start a build watch task for development
-npm run test-router # Run only the router tests
-npm run test-integration # Run only integration tests
 npm run prettier # Run autoformatter
 npm run eslint # Run code linter
 ```
