@@ -7,7 +7,7 @@ import jwt from 'koa-jwt'
 import cors from '@koa/cors'
 import bodyParser from 'koa-bodyparser'
 import { koaJwtSecret } from 'jwks-rsa'
-import root from './router/root'
+import root from './router'
 
 const isTest = process.env.NODE_ENV == 'test'
 
