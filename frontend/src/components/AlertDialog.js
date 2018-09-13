@@ -36,6 +36,8 @@ function AlertDialog({
 }
 
 AlertDialog.propTypes = {
+  /** a boolean indidcating whether the dialog is visible */
+  open: PropTypes.bool,
   /** the confirmation message to display */
   children: PropTypes.string,
   /** label for the cancel button */
@@ -49,6 +51,7 @@ AlertDialog.propTypes = {
 }
 
 AlertDialog.defaultProps = {
+  open: false,
   children: 'Are you sure you want to do this?',
   cancelLabel: 'Cancel',
   confirmLabel: 'Confirm'

@@ -8,11 +8,12 @@ import PropTypes from 'prop-types'
 import Snackbar from '@material-ui/core/Snackbar'
 import { withAuthContext } from './AuthContext'
 import AppBar from './AppBar'
+import AlertDialog from './AlertDialog'
 import SearchBar from './SearchBar'
 import filterStartsWith from '../utils/filterStartsWith'
 import UserTable from './UserTable'
 import EditUserDialog from './EditUserDialog'
-import { getUsers, updateUser } from '../requests.js'
+import { getUsers, updateUser, deleteUser } from '../requests.js'
 
 const Container = styled.div`
   padding-top: 64px;
@@ -29,6 +30,10 @@ class RegisteredUsers extends React.Component {
     currentUser: undefined,
     users: [],
     fetchUsersController: undefined,
+    isAlertDialogOpen: false,
+    alertMessage: '',
+    alertUserId: null,
+    alertType: null,
     editing: false,
     editingUser: {
       firstName: null,
@@ -84,8 +89,10 @@ class RegisteredUsers extends React.Component {
   }
 
   handleEditDialogSave = async updatedUser => {
-    const oldUser = this.state.users.find(user => user.userId === updatedUser.userId)
-    
+    const oldUser = this.state.users.find(
+      user => user.userId === updatedUser.userId
+    )
+
     // Just in case user has properties that aren't passed to EditUserDialog
     const mergedUser = {
       ...oldUser,
@@ -95,8 +102,13 @@ class RegisteredUsers extends React.Component {
     const { userId } = mergedUser
 
     this.setState({
-      users: this.state.users.map(user => user.userId === userId ? mergedUser : user),
-      currentUser: this.state.currentUser.userId === userId ? mergedUser : this.state.currentUser,
+      users: this.state.users.map(
+        user => (user.userId === userId ? mergedUser : user)
+      ),
+      currentUser:
+        this.state.currentUser.userId === userId
+          ? mergedUser
+          : this.state.currentUser,
       snackbar: 'User updated'
     })
 
@@ -109,20 +121,40 @@ class RegisteredUsers extends React.Component {
     this.setState({ searchText: e.target.value })
   }
 
-  //  TODO: Implement this function
-  handleUserEditClick() {
-    console.log('Edit User Clicked')
-
+  handleUserDeleteClick = (name, userId) => {
+    this.setState({
+      isAlertDialogOpen: true,
+      alertType: 'delete',
+      alertMessage: `Are you sure you want to delete ${name}?`,
+      alertUserId: userId
+    })
   }
 
-  //  TODO: Implement this function
-  handleUserDeleteClick() {
-    console.log('Delete User Clicked')
+  onCancelAlert = () => {
+    this.setState({ isAlertDialogOpen: false })
+  }
+
+  onConfirmDelete = async () => {
+    this.setState({ isAlertDialogOpen: false })
+    if (!this.state.alertUserId) return
+
+    await deleteUser(this.state.alertUserId)
+
+    if (this.state.currentUser.userId === this.state.alertUserId)
+      return this.props.logout()
+
+    const { users } = await getUsers()
+
+    this.setState({ users, alertUserId: null })
   }
 
   //  TODO: Implement this function
   handleUserSendEmailClick() {
     console.log('Send User Email Clicked')
+  }
+
+  getConfirmAlertFunction = {
+    delete: this.onConfirmDelete
   }
 
   render() {
@@ -140,6 +172,9 @@ class RegisteredUsers extends React.Component {
             {...{ avatar, name }}
             onSignOut={logout}
             onEdit={this.handleEditCurrentUser}
+            onDelete={() =>
+              this.handleUserDeleteClick('your profile', currentUser.userId)
+            }
           />
           <Content>
             <SearchBar value={searchText} onChange={this.handleSearchChange} />
@@ -153,6 +188,15 @@ class RegisteredUsers extends React.Component {
             />
           </Content>
         </Container>
+        <AlertDialog
+          open={this.state.isAlertDialogOpen}
+          onCancel={this.onCancelAlert}
+          onConfirm={
+            this.getConfirmAlertFunction[this.state.alertType] ||
+            this.onCancelAlert
+          }>
+          {this.state.alertMessage}
+        </AlertDialog>
         <EditUserDialog
           // the key prop is needed to ensure the state is reset when a
           // different user is chosen
@@ -169,7 +213,7 @@ class RegisteredUsers extends React.Component {
         <Snackbar
           anchorOrigin={{
             vertical: 'bottom',
-            horizontal: 'left',
+            horizontal: 'left'
           }}
           open={!!this.state.snackbar}
           autoHideDuration={3000}
@@ -177,7 +221,7 @@ class RegisteredUsers extends React.Component {
           message={this.state.snackbar}
         />
       </React.Fragment>
-)
+    )
   }
 }
 

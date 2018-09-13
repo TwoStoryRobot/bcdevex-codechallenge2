@@ -22,7 +22,7 @@ const Container = styled.div`
 
 const Transparency = styled.div`
   display: grid;
-  grid-template-rows: 2fr .5fr 1fr;
+  grid-template-rows: 2fr 0.5fr 1fr;
   grid-template-columns: 1fr;
   /* grid-row-gap: 10px */
 
@@ -61,18 +61,12 @@ const ButtonContainer = styled.div`
 const NotFound = ({ history: { goBack } }) => (
   <Container>
     <Transparency>
-      <TitleText variant="display4">
-        404
-      </TitleText>
+      <TitleText variant="display4">404</TitleText>
       <IntroText variant="subheading" component="p">
         Uh oh! We can't find what you're looking for.
       </IntroText>
       <ButtonContainer>
-        <Button
-          variant="raised"
-          color="primary"
-          onClick={goBack}
-        >
+        <Button variant="raised" color="primary" onClick={goBack}>
           Whoops! Go Back
         </Button>
       </ButtonContainer>
@@ -81,7 +75,7 @@ const NotFound = ({ history: { goBack } }) => (
 )
 
 NotFound.propTypes = {
-  history: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 }
 
 export default NotFound
