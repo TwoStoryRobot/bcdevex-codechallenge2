@@ -8,7 +8,9 @@ import DialogActions from '@material-ui/core/DialogActions'
 import Button from '@material-ui/core/Button'
 import Avatar from 'react-avatar'
 import styled from 'styled-components'
-import { FormControl, FormHelperText } from '@material-ui/core';
+import { FormControl, FormHelperText } from '@material-ui/core'
+import validateEmail from '../utils/validateEmail'
+import validateUrl from 'valid-url'
 
 const StyledDialogContent = styled(DialogContent)`
   display: grid;
@@ -40,17 +42,45 @@ export default class EditUserDialog extends Component {
   }
 
   handleTextFieldChange = name => event => {
+    // Checks that any required field is not an empty string
+    // Currently only the 'First Name' field is required
     if (event.target.required && event.target.value.trim() === '') {
-      this.setState({ 
-        errors: {
+      this.setState({
+        errors: Object.assign(this.state.errors, {
           [name]: 'Thie field is required'
-        }
+        })
       })
     } else {
       this.setState({
-        errors: {
+        errors: Object.assign(this.state.errors, {
           [name]: null
-        }
+        })
+      })
+    }
+
+    // Check that a valid email address is supplied
+    const validEmail =
+      validateEmail(event.target.value.trim()) ||
+      event.target.value.trim() === ''
+
+    if (name === 'emailAddress' && !validEmail) {
+      this.setState({
+        errors: Object.assign(this.state.errors, {
+          emailAddress: 'Please enter a valid email (eg. user@mail.com)'
+        })
+      })
+    }
+
+    // Check that a valid URL is supplied
+    const validURL =
+      validateUrl.isWebUri(event.target.value.trim()) ||
+      event.target.value.trim() === ''
+
+    if (name === 'imageURL' && !validURL) {
+      this.setState({
+        errors: Object.assign(this.state.errors, {
+          imageURL: 'Please enter a valid URL'
+        })
       })
     }
 
@@ -66,9 +96,11 @@ export default class EditUserDialog extends Component {
   }
 
   handleSave = () => {
-    // TODO: this probably doesn't work
-    if (Object.values(this.state.errors) === []) {
-      this.props.onSave(this.state)
+    if (!Object.values(this.state.errors).filter(n => n).length) {
+      const user = { ...this.state }
+      delete user.errors
+
+      this.props.onSave(user)
     }
   }
 
@@ -106,9 +138,11 @@ export default class EditUserDialog extends Component {
                 margin="dense"
                 autoFocus
                 required
-                error={errors.firstName}
+                error={errors.firstName ? true : false}
               />
-              {errors.firstName && <FormHelperText>{errors.firstName}</FormHelperText>}
+              {errors.firstName && (
+                <FormHelperText>{errors.firstName}</FormHelperText>
+              )}
             </FormControl>
             <TextField
               id="last"
@@ -118,28 +152,38 @@ export default class EditUserDialog extends Component {
               onKeyDown={this.handleKeyDown}
               fullWidth
               margin="dense"
-              required
             />
-            <TextField
-              id="emailAddress"
-              label="Email"
-              value={emailAddress}
-              onChange={this.handleTextFieldChange('emailAddress')}
-              onKeyDown={this.handleKeyDown}
-              type="emailAddress"
-              fullWidth
-              margin="dense"
-              required
-            />
-            <TextField
-              id="avatar"
-              label="Avatar URL"
-              value={imageURL}
-              onChange={this.handleTextFieldChange('imageURL')}
-              onKeyDown={this.handleKeyDown}
-              fullWidth
-              margin="dense"
-            />
+            <FormControl fullWidth>
+              <TextField
+                id="emailAddress"
+                label="Email"
+                value={emailAddress}
+                onChange={this.handleTextFieldChange('emailAddress')}
+                onKeyDown={this.handleKeyDown}
+                type="emailAddress"
+                fullWidth
+                margin="dense"
+                error={errors.emailAddress ? true : false}
+              />
+              {errors.emailAddress && (
+                <FormHelperText>{errors.emailAddress}</FormHelperText>
+              )}
+            </FormControl>
+            <FormControl fullWidth>
+              <TextField
+                id="avatar"
+                label="Avatar URL"
+                value={imageURL}
+                onChange={this.handleTextFieldChange('imageURL')}
+                onKeyDown={this.handleKeyDown}
+                fullWidth
+                margin="dense"
+                error={errors.imageURL ? true : false}
+              />
+              {errors.imageURL && (
+                <FormHelperText>{errors.imageURL}</FormHelperText>
+              )}
+            </FormControl>
           </StyledForm>
         </StyledDialogContent>
         <DialogActions>
