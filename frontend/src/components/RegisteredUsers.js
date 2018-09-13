@@ -153,7 +153,7 @@ class RegisteredUsers extends React.Component {
     this.setState({
       isAlertDialogOpen: true,
       alertType: 'sendEmail',
-      alertMessage: `Email ${user.firstName} ${user.lastName} (${
+      alertMessage: `Send email to ${user.firstName} ${user.lastName} (${
         user.emailAddress
       })?`,
       alertUserId: user.userId
