@@ -15,24 +15,42 @@ export const db = pgp({
 })
 
 async function selectAllUsers() {
-  return await db.any('SELECT * FROM public.user')
+  return await db.any(
+    `SELECT *
+     FROM public.user`
+  )
 }
 
 async function selectUserById(userId) {
   return await db.oneOrNone(
-    'SELECT * FROM public.user WHERE "userId" = $/userId/',
+    `SELECT *
+     FROM public.user
+     WHERE "userId" = $/userId/`,
     { userId }
   )
 }
 
 async function countAdmins() {
-  return await db.one('SELECT COUNT(*) FROM public.user WHERE "isAdmin" = TRUE')
+  return await db.one(
+    `SELECT COUNT(*)
+     FROM public.user
+     WHERE "isAdmin" = TRUE`
+  )
 }
 
 async function insertUser(user) {
   await db.any(
-    `INSERT INTO public.user
-     VALUES ($/userId/, $/firstName/, $/imageURL/, $/emailAddress/, $/lastName/, $/isAdmin/, $/registeredAt/)`,
+    `INSERT
+     INTO public.user
+     VALUES (
+       $/userId/,
+       $/firstName/,
+       $/imageURL/,
+       $/emailAddress/, 
+       $/lastName/,
+       $/isAdmin/,
+       $/registeredAt/
+     )`,
     user
   )
 }
@@ -40,16 +58,33 @@ async function insertUser(user) {
 async function updateUser(user) {
   await db.any(
     `UPDATE public.user
-     SET
-       ("firstName", "imageURL", "emailAddress", "lastName", "isAdmin", "registeredAt") =
-       ($/firstName/, $/imageURL/, $/emailAddress/, $/lastName/, $/isAdmin/, $/registeredAt/)
+     SET (
+       "firstName",
+       "imageURL",
+       "emailAddress",
+       "lastName",
+       "isAdmin",
+       "registeredAt"
+     ) = (
+       $/firstName/,
+       $/imageURL/,
+       $/emailAddress/,
+       $/lastName/,
+       $/isAdmin/,
+       $/registeredAt/
+     )
      WHERE "userId" = $/userId/`,
     user
   )
 }
 
 async function removeUser(userId) {
-  await db.any('DELETE FROM public.user WHERE "userId" = $/userId/', { userId })
+  await db.any(
+    `DELETE 
+     FROM public.user
+     WHERE "userId" = $/userId/`,
+    { userId }
+  )
 }
 
 export const queries = {
