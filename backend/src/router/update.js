@@ -10,14 +10,14 @@ const schema = Joi.object().keys({
   userId: Joi.string().required(),
   emailAddress: Joi.string()
     .email()
-    .required(),
+    .allow(''),
   imageURL: Joi.string()
     .uri()
-    .required(),
+    .allow(''),
   firstName: Joi.string().required(),
-  lastName: Joi.string().required(),
+  lastName: Joi.string().allow(''),
   isAdmin: Joi.boolean().required(),
-  registeredAt: Joi.date().required()
+  registeredAt: Joi.date()
 })
 
 const update = Router()
