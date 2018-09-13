@@ -23,9 +23,11 @@ beforeEach(async () => {
   // Start test with a clean db state
   await db.none('TRUNCATE public.user')
 
+  // Insert test data
   await Promise.all([
-    queries.insertUser(generateUser({ userId: '1' })),
-    queries.insertUser(generateUser({ userId: '2' }))
+    queries.insertUser(generateUser({ userId : '1' })),
+    queries.insertUser(generateUser({ userId : '2' })),
+    queries.insertUser(generateUser({ userId: 'admin', isAdmin : true }))
   ])
 })
 
@@ -48,14 +50,30 @@ test('/delete should remove a user from the db', async () => {
     .expect(200, body)
 })
 
-test('/delete should return 400 for poorly formed queries', async () => {
+test('/delete should reject invalid requests', async () => {
   await postAgent
     .send({})
     .expect(400)
 })
 
-test('/delete should return 400 when non-existant userId is provided', async () => {
+test('/delete should reject non-existant userIds', async () => {
   await postAgent
     .send(generateUser({ userId: '3' }))
+    .set('Authorization', 'Bearer ' + generateToken('3'))
     .expect(400, 'Invalid userId')
+})
+
+test('/delete should reject a user removing another user', async () => {
+  const user = generateUser({ userId: '2' })
+  await postAgent
+    .send(user)
+    .expect(400, 'You can\'t delete this user')
+})
+
+test('/delete should allow admins to remove another user', async () => {
+  const user = generateUser({ userId: '2' })
+  await postAgent
+    .send(user)
+    .set('Authorization', 'Bearer ' + generateToken('admin'))
+    .expect(200, user)
 })
