@@ -21,7 +21,6 @@ const schema = Joi.object().keys({
 
 const sendEmail = Router()
 
-//  TODO: User must be an admin to send an email
 async function emailUser(ctx) {
   ctx.assert(ctx.state.isAdmin, 403)
 
