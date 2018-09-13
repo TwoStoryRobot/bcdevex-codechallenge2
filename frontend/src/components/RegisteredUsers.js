@@ -108,49 +108,46 @@ class RegisteredUsers extends React.Component {
 
   render() {
     const { currentUser, users, isFetchingUsers } = this.state
+    const { logout } = this.props
     const avatar = currentUser && currentUser.imageURL
     const name =
       currentUser && `${currentUser.firstName} ${currentUser.lastName}`
 
     return (
-      <UserConsumer>
-        {({ logout }) => (
-          <React.Fragment>
-            <Container>
-              <AppBar
-                title="Registered Users"
-                {...{ avatar, name }}
-                onSignOut={logout}
-                onEdit={this.handleEditCurrentUser}
-              />
-              <Content>
-                <UserTable
-                  users={users}
-                  isLoading={isFetchingUsers}
-                  isAdmin={currentUser && currentUser.isAdmin}
-                  handleEditClick={this.handleUserEditClick}
-                  handleDeleteClick={this.handleUserDeleteClick}
-                  handleSendEmailClick={this.handleUserSendEmailClick}
-                />
-              </Content>
-            </Container>
-            <EditUserDialog
-              // the key prop is needed to ensure the state is reset when a
-              // different user is chosen
-              key={this.state.editingUser.userId}
-              open={this.state.editing}
-              onClose={this.handleEditDialogClose}
-              onSave={this.handleEditDialogSave}
-              firstName={this.state.editingUser.firstName}
-              lastName={this.state.editingUser.lastName}
-              emailAddress={this.state.editingUser.emailAddress}
-              imageURL={this.state.editingUser.imageURL}
-              userId={this.state.editingUser.userId}
+      <React.Fragment>
+        <Container>
+          <AppBar
+            title="Registered Users"
+            {...{ avatar, name }}
+            onSignOut={logout}
+            onEdit={this.handleEditCurrentUser}
+          />
+          <Content>
+            <UserTable
+              users={users}
+              isLoading={isFetchingUsers}
+              isAdmin={currentUser && currentUser.isAdmin}
+              handleEditClick={this.handleUserEditClick}
+              handleDeleteClick={this.handleUserDeleteClick}
+              handleSendEmailClick={this.handleUserSendEmailClick}
             />
-          </React.Fragment>
-        )}
-      </UserConsumer>
-    )
+          </Content>
+        </Container>
+        <EditUserDialog
+          // the key prop is needed to ensure the state is reset when a
+          // different user is chosen
+          key={this.state.editingUser.userId}
+          open={this.state.editing}
+          onClose={this.handleEditDialogClose}
+          onSave={this.handleEditDialogSave}
+          firstName={this.state.editingUser.firstName}
+          lastName={this.state.editingUser.lastName}
+          emailAddress={this.state.editingUser.emailAddress}
+          imageURL={this.state.editingUser.imageURL}
+          userId={this.state.editingUser.userId}
+        />
+      </React.Fragment>
+)
   }
 }
 
