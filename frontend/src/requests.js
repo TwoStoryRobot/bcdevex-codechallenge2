@@ -31,3 +31,19 @@ export function getUsers() {
     .then(res => res.json())
     .then(users => ({ users, controller }))
 }
+
+export function updateUser(user) {
+  const controller = new window.AbortController()
+  const method = 'POST'
+  const headers = getDefaultHeaders()
+  const body = JSON.stringify(user)
+
+  return fetch(process.env.REACT_APP_API_URL + 'update', {
+    method,
+    headers,
+    body,
+    signal: controller.signal
+  })
+    .then(res => res.json())
+    .then(users => ({ users, controller }))
+}
