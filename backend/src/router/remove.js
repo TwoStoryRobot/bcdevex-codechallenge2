@@ -3,16 +3,27 @@
  * 'delete' is a reserved word in JS, so we use the alternate name
  */
 
+import Joi from 'joi'
 import Router from 'koa-router'
 import { queries } from '../db'
+
+const schema = Joi.object().keys({
+  userId: Joi.string().required(),
+  emailAddress: Joi.string().email().required(),
+  imageURL: Joi.string().uri().required(),
+  firstName: Joi.string().required(),
+  lastName: Joi.string().required(),
+  isAdmin: Joi.boolean().required(),
+  registeredAt: Joi.date().required()
+})
 
 const remove = Router()
 
 async function removeUser(ctx) {
-  const { userId } = ctx.request.body
+  const result = schema.validate(ctx.request.body)
+  if (result.error) ctx.throw(400, result.error)
 
-  // No userId provided
-  ctx.assert(ctx.request.body.userId, 400, 'No userId provided')
+  const { userId } = ctx.request.body
 
   // Invalid userId provided
   const record = await queries.selectUserById(userId)

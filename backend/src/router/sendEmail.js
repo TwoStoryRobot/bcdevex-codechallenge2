@@ -3,6 +3,7 @@
  */
 
 import fs from 'fs'
+import Joi from 'joi'
 import path from 'path'
 import Router from 'koa-router'
 import nodemailer from 'nodemailer'
@@ -14,13 +15,18 @@ const boilerplateEmailBody = fs.readFileSync(
   'utf-8'
 )
 
+const schema = Joi.object().keys({
+  userId: Joi.string().required()
+})
+
 const sendEmail = Router()
 
 //  TODO: User must be an admin to send an email
 async function emailUser(ctx) {
-  const { userId } = ctx.request.body
+  const result = schema.validate(ctx.request.body)
+  if (result.error) ctx.throw(400, result.error)
 
-  ctx.assert(userId, 400, 'No userId provided')
+  const { userId } = ctx.request.body
 
   const user = await queries.selectUserById(userId)
   ctx.assert(user, 400, 'User does not exist')

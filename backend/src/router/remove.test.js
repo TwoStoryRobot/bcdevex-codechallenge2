@@ -1,11 +1,13 @@
+/* Delete router tests
+ */
+
 import app from '../app'
 import { queries, db, pgp } from '../db'
 import { generateUser, generateToken } from '../helpers'
 import supertest from 'supertest'
-import nodemailer from 'nodemailer'
 
-const server = app.listen()
 let postAgent
+const server = app.listen()
 
 beforeEach(async () => {
   // Restore mocks to clear any calls
@@ -14,7 +16,7 @@ beforeEach(async () => {
   // Setup postAgent
   postAgent = supertest
     .agent(server)
-    .post('/sendEmail')
+    .post('/delete')
     .set('Accept', 'application/json')
     .set('Authorization', 'Bearer ' + generateToken())
 
@@ -38,26 +40,22 @@ afterAll(async () => {
   await pgp.end()
 })
 
-test.skip('/sendEmail should require admin role', () => {})
+test('/delete should remove a user from the db', async () => {
+  const body = generateUser()
 
-test('/sendEmail should reject poorly formed requests', async () => {
-  await postAgent.send({}).expect(400)
+  await postAgent
+    .send(body)
+    .expect(200, body)
 })
 
-test('/sendEmail should 400 if user does not exist', async () => {
-  await postAgent.send({ userId: 'not-a-user' }).expect(400)
+test('/delete should return 400 for poorly formed queries', async () => {
+  await postAgent
+    .send({})
+    .expect(400)
 })
 
-test('/sendEmail should 400 if user does not have an email address', async () => {
-  const userId = 'noemail'
-  await queries.insertUser(generateUser({ userId, emailAddress: '' }))
-
-  await postAgent.send({ userId }).expect(400)
-})
-
-test('/sendEmail should email user', async () => {
-  await postAgent.send({ userId: '1' }).expect(200)
-
-  nodemailer.sendMail()
-  expect(nodemailer.sendMail).toHaveBeenCalled()
+test('/delete should return 400 when non-existant userId is provided', async () => {
+  await postAgent
+    .send(generateUser({ userId: '3' }))
+    .expect(400, 'Invalid userId')
 })
