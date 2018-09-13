@@ -47,7 +47,7 @@ export default class EditUserDialog extends Component {
     if (event.target.required && event.target.value.trim() === '') {
       this.setState({
         errors: Object.assign(this.state.errors, {
-          [name]: 'Thie field is required'
+          [name]: 'The field is required'
         })
       })
     } else {
