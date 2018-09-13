@@ -172,12 +172,41 @@ access the application.
 **When** the User properly authenticates using the appropriate credentials<br/>
 **Then** the User is granted user-level access to the application.<br/>
 
-If you have been signed out of the application and you try to access the URL 
-for the registered users page `localhost:3000/users`, you will be redirected to 
-the login screen.  Once you have clicked "Sign in with Google" you will be 
-logged in and permitted to access the application.
+Once you have clicked "Sign in with Google" you will be logged in and permitted 
+to access the application.
+
+Admin users will see operation icons next to each user in the registered users 
+list and can perform operations on all user accounts.
+
+Non-admin users will not see operation icons, but can perform operations on 
+their own account from the profile image drop down menu.
 
 ![Login screen](./screenshots/Login.png)
+
+
+### User Story #7 – Sign-out
+
+As a user or as an administrator, I want to be able to sign out of the 
+application.
+
+**Given** that I am signed in as a user or as an administrator<br/>
+**And** I want to sign out of the application<br/>
+**When** I active the Sign-out or Logout UI element<br/>
+**Then** I am logged out of the application<br/> **And** I cannot access 
+associated UI elements until I sign back in<br/>
+
+When you are signed in you will see your user profile in the top right of the 
+application. Clicking this will reveal a menu with the option to sign out of 
+the application. Clicking "sign out" will terminate your session token and you 
+will not be permitted to perform actions until you sign in again. Trying to 
+access the `localhost:3000/users` page will redirect you back to the login 
+screen. 
+
+![Click the user profile image](./screenshots/Delete-step1.png)
+
+![Click the sign out item](./screenshots/Delete-step2.png)
+
+Additionally, trying to access an unknow page will show a 404 error.
 
 ![404 screen when accessing an unknown page](./screenshots/404.png)
 
