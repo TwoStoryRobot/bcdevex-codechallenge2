@@ -233,7 +233,7 @@ class UserTable extends React.Component {
                       </IconButton>
                       <IconButton
                         color="primary"
-                        onClick={handleSendEmailClick}
+                        onClick={() => handleSendEmailClick(user)}
                         data-testid="email">
                         <EnvelopeIcon />
                       </IconButton>
