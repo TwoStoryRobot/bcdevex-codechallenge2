@@ -61,9 +61,7 @@ export default class EditUserDialog extends Component {
   }
 
   handleSave = () => {
-    const { firstName, lastName, emailAddress, imageURL, userId } = this.state
-
-    this.props.onSave({ firstName, lastName, emailAddress, imageURL, userId })
+    this.props.onSave(this.state)
   }
 
   handleKeyDown = event => {
