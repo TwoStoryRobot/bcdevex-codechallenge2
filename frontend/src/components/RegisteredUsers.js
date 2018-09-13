@@ -17,8 +17,7 @@ const Container = styled.div`
 `
 
 const Content = styled.div`
-  width: 900px;
-  max-width: calc(100vw - 100px);
+  max-width: calc(100vw - 150px);
   margin: 50px auto;
 `
 
