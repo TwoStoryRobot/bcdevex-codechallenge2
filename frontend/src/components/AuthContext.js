@@ -10,7 +10,7 @@ const AuthConsumer = AuthContext.Consumer
 
 class AuthProvider extends Component {
   state = {
-    isLoggedIn: localStorage.getItem('token'),
+    isLoggedIn: !!localStorage.getItem('token'),
     userId: localStorage.getItem('userId')
   }
 
