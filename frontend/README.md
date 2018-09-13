@@ -65,8 +65,8 @@ environments that may not support Version 2 compose files.
 This application is relatively simple in scope and we have chosen to structure 
 the application with this in mind. We opted not to use Redux as the state is 
 fairly shallow and easily communicated through props or React Context. If this 
-were a more complex REST application we would have explored Redux. Ideally we 
-would build using Apollo client to connect to a GraphQL server.
+were a more complex REST application we would have used Redux. Ideally we would 
+build using Apollo client to connect to a GraphQL server.
 
 ## Code organization
 
@@ -126,5 +126,4 @@ development server:
 And connect to the server at [localhost:9001](http://localhost:9001/)
 
 As with tests, we did not storybook our data boundary components as this would 
-have required additional mocking tools that we did not feel there was time 
-fore.
+have required additional mocking tools that we did not feel there was time for.
