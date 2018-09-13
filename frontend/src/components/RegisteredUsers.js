@@ -5,7 +5,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { UserConsumer } from './UserContext'
+import { withAuthContext } from './AuthContext'
 import AppBar from './AppBar'
 import UserTable from './UserTable'
 import EditUserDialog from './EditUserDialog'
@@ -40,15 +40,22 @@ class RegisteredUsers extends React.Component {
   componentDidMount() {
     //  Fetch all users
     this.setState({ isFetchingUsers: true })
-    getUsers().then(({ users, controller }) => {
-      const currentUser = users.find(user => user.userId === this.props.userId)
-      this.setState({
-        users,
-        currentUser,
-        isFetchingUsers: false,
-        fetchUsersController: controller
+    getUsers()
+      .then(({ users, controller }) => {
+        const currentUser = users.find(
+          user => user.userId === this.props.userId
+        )
+        this.setState({
+          users,
+          currentUser,
+          isFetchingUsers: false,
+          fetchUsersController: controller
+        })
       })
-    })
+      .catch(err => {
+        if (err && err.status === 401) return this.props.history.push('/logout')
+        else throw err
+      })
   }
 
   componentWillUnmount() {
@@ -143,4 +150,4 @@ RegisteredUsers.propTypes = {
   userId: PropTypes.string
 }
 
-export default RegisteredUsers
+export default withAuthContext(RegisteredUsers)

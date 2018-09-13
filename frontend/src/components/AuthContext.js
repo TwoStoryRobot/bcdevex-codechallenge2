@@ -1,13 +1,13 @@
-/* User Context
+/* Auth Context
  * React context object that represents the active user
  */
 
 import React, { Component } from 'react'
 
-const UserContext = React.createContext({})
-const UserConsumer = UserContext.Consumer
+const AuthContext = React.createContext({})
+const AuthConsumer = AuthContext.Consumer
 
-class UserProvider extends Component {
+class AuthProvider extends Component {
   state = {
     isLoggedIn: localStorage.getItem('token'),
     userId: localStorage.getItem('userId')
@@ -23,13 +23,15 @@ class UserProvider extends Component {
   }
 
   logout = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('userId')
     const isLoggedIn = false
     this.setState({ isLoggedIn })
   }
 
   render() {
     return (
-      <UserContext.Provider
+      <AuthContext.Provider
         value={{
           userId: this.state.userId,
           isLoggedIn: this.state.isLoggedIn,
@@ -37,9 +39,15 @@ class UserProvider extends Component {
           login: this.login
         }}>
         {this.props.children}
-      </UserContext.Provider>
+      </AuthContext.Provider>
     )
   }
 }
 
-export { UserProvider, UserConsumer }
+const withAuthContext = Component => props => (
+  <AuthConsumer>
+    {authProps => <Component {...props} {...authProps} />}
+  </AuthConsumer>
+)
+
+export { AuthProvider, AuthConsumer, withAuthContext }
