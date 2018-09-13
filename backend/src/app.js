@@ -21,7 +21,7 @@ const audience = process.env.CLIENT_ID
 const issuer = 'accounts.google.com'
 
 // CORS config
-const origin = process.env.CORS_ORIGIN
+const origin = process.env.CORS_ORIGIN || undefined
 
 const app = new Koa()
 app.use(bodyParser())

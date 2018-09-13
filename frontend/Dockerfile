@@ -6,7 +6,7 @@
 FROM node:8-alpine as build
 WORKDIR /usr/src/app
 COPY . /usr/src/app/
-ENV REACT_APP_API_URL http://dockerhost:3500/
+ENV REACT_APP_API_URL http://localhost:3500/
 ENV REACT_APP_CLIENT_ID 656587629888-4rvd0pv398dgderln9s6kuvr7kdn99k5.apps.googleusercontent.com
 RUN npm install 
 RUN npm run build
