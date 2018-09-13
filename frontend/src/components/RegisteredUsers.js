@@ -32,7 +32,8 @@ class RegisteredUsers extends React.Component {
     fetchUsersController: undefined,
     isAlertDialogOpen: false,
     alertMessage: '',
-    deleteUserId: null,
+    alertUserId: null,
+    alertType: null,
     editing: false,
     editingUser: {
       firstName: null,
@@ -116,32 +117,37 @@ class RegisteredUsers extends React.Component {
   handleUserDeleteClick = (name, userId) => {
     this.setState({
       isAlertDialogOpen: true,
+      alertType: 'delete',
       alertMessage: `Are you sure you want to delete ${name}?`,
-      deleteUserId: userId
+      alertUserId: userId
     })
   }
 
-  onCancelDelete = () => {
+  onCancelAlert = () => {
     this.setState({ isAlertDialogOpen: false })
   }
 
   onConfirmDelete = async () => {
     this.setState({ isAlertDialogOpen: false })
-    if (!this.state.deleteUserId) return
+    if (!this.state.alertUserId) return
 
-    await deleteUser(this.state.deleteUserId)
+    await deleteUser(this.state.alertUserId)
 
-    if (this.state.currentUser.userId === this.state.deleteUserId)
+    if (this.state.currentUser.userId === this.state.alertUserId)
       return this.props.logout()
 
     const { users } = await getUsers()
 
-    this.setState({ users, deleteUserId: null })
+    this.setState({ users, alertUserId: null })
   }
 
   //  TODO: Implement this function
   handleUserSendEmailClick() {
     console.log('Send User Email Clicked')
+  }
+
+  getConfirmAlertFunction = {
+    delete: this.onConfirmDelete
   }
 
   render() {
@@ -159,9 +165,9 @@ class RegisteredUsers extends React.Component {
             {...{ avatar, name }}
             onSignOut={logout}
             onEdit={this.handleEditCurrentUser}
-          onDelete={() =>
-            this.handleUserDeleteClick('your profile', currentUser.userId)
-          }
+            onDelete={() =>
+              this.handleUserDeleteClick('your profile', currentUser.userId)
+            }
           />
           <Content>
             <SearchBar value={searchText} onChange={this.handleSearchChange} />
@@ -177,8 +183,11 @@ class RegisteredUsers extends React.Component {
         </Container>
         <AlertDialog
           open={this.state.isAlertDialogOpen}
-          onCancel={this.onCancelDelete}
-          onConfirm={this.onConfirmDelete}>
+          onCancel={this.onCancelAlert}
+          onConfirm={
+            this.getConfirmAlertFunction[this.state.alertType] ||
+            this.onCancelAlert
+          }>
           {this.state.alertMessage}
         </AlertDialog>
         <EditUserDialog
