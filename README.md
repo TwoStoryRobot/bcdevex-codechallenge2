@@ -1,3 +1,84 @@
+# Two Story Robot Code Challenge Submission
+
+This is Two Story Robot's Code Code Challenge submission for the "Data Driven 
+Mine Development - Team Expansion" RFP.
+
+It is a simple user management application with various iteractive features.
+The backend of the application is written in Javascript in Nodejs using the Koa 
+framework with a Postgres database. The frontend is written in React with 
+Material UI components. All testing is written in Jest. Component development 
+is done with Storybook.
+
+# Evaluation the UI 
+
+**Required tools**:
+
+* Docker
+* Chrome
+
+Both the frontend and the backend are built as docker images for easier 
+evaluation. You can start the entire stack by running
+
+    ./start.sh
+
+This may take a few minutes as it needs to pull down all the packages and build 
+the applications. Once things have started visit `http://localhost:3000` in a 
+Chrome browser.
+
+## Testing Features
+
+The following are stories and test procedures for all features required in this 
+code challenge.
+
+
+### User Story #1 – Register with the application
+
+As a user, I want to be able to register with the application.
+
+**Given** that I am a User<br/>
+**And** that I have not already registered<br/>
+**When** I properly authenticate using the appropriate credentials<br/>
+**Then** my profile is created and visible in the Registered Users List<br/>
+
+When you visit the main page of the application at `http://localhost:3000` you 
+will be presented with a 'Signin with Google' button. Click this button and you 
+will be prompted to signin or specify a google account. Once you've selected an 
+account you will be authenticated, a new user account will be created for you, 
+and you will be presented with the Registered Users screen.
+
+![Login screen](./screenshots/Login.png)
+
+**Note** the first user that authenticates will automatically be given admin 
+permissions. Any subsequent user will not have admin permissions
+
+
+# Architecture
+
+This is a single repo containing two node packages for both frontend and 
+backend. Each directory will maintain it's own `package.json` and scripts for 
+better isolation. You will need to change into each directory to run the 
+appropriate npm scripts.
+
+## Frontend
+
+The frontend of the application is a react app in [`/frontend`](./frontend).  
+
+### Scripts
+
+    npm start
+
+Start the react dev server. For development purposes.
+
+    npm run storybook
+
+Builds and runs storybook explorer for component driven development. All 
+components will be viewable and interactable within storybook.
+
+## Backend
+
+The backend of the application is a koa server in [`/backend`](./backend).
+ 
+
 # Code Challenge Notice, Instructions & Rules
 Re: Competition "Data Driven Mine Development - Team Expansion" (the “RFP”)
 
@@ -49,33 +130,6 @@ Deadline:
 10. The rules and instructions set forth in this notice are in addition to any 
 rules, terms and conditions set forth elsewhere in the RFP.
 
-# Architecture
-
-This is a single repo containing two node packages for both frontend and 
-backend. Each directory will maintain it's own `package.json` and scripts for 
-better isolation. You will need to change into each directory to run the 
-appropriate npm scripts.
-
-## Frontend
-
-The frontend of the application is a react app in [`/frontend`](./frontend).  
-
-### Scripts
-
-    npm start
-
-Start the react dev server. For development purposes.
-
-    npm run storybook
-
-Builds and runs storybook explorer for component driven development. All 
-components will be viewable and interactable within storybook.
-
-## Backend
-
-The backend of the application is a koa server in [`/backend`](./backend).
-
-#### 
 
 # Code Challenge (Mines)
 
