@@ -67,11 +67,6 @@ const styles = theme => ({
   table: {
     minWidth: 700
   },
-  row: {
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.background.default
-    }
-  },
   admin: {
     backgroundColor: '#f0c243'
   }
@@ -195,7 +190,7 @@ class UserTable extends React.Component {
           </TableHead>
           <TableBody>
             {this.getSortedUsers().map(user => (
-              <TableRow key={user.userId} className={classes.row}>
+              <TableRow key={user.userId}>
                 <StyledTableCell component="th" scope="row">
                   <Avatar
                     key={user.userId}
