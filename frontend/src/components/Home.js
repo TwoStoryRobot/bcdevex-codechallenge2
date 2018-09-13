@@ -57,7 +57,6 @@ const ButtonContainer = styled.div`
 class Home extends Component {
   componentDidMount() {
     if (this.props.isLoggedIn) {
-      console.log(this.props.isLoggedIn)
       this.props.history.push('/users')
     }
   }
