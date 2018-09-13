@@ -141,16 +141,13 @@ class UserTable extends React.Component {
     }
   }
 
-  handleEditClick = user => () => {
-    this.props.handleEditClick(user)
-  }
-
   render() {
     const {
       users,
       classes,
       isLoading,
       isAdmin,
+      handleEditClick,
       handleDeleteClick,
       handleSendEmailClick
     } = this.props
@@ -203,7 +200,6 @@ class UserTable extends React.Component {
                 <StyledTableCell>{user.firstName}</StyledTableCell>
                 <StyledTableCell>{user.lastName}</StyledTableCell>
                 <StyledTableCell>{user.emailAddress}</StyledTableCell>
-                {/* TODO This needs to come from the user prop */}
                 {/* Note: We are manually overriding this individual column font size */}
                 <StyledTableCell style={{ fontSize: '0.875rem' }}>
                   {moment(user.registeredAt).format('DD-MMM-YYYY')}
@@ -213,7 +209,7 @@ class UserTable extends React.Component {
                     <StyledButtonsCell>
                       <IconButton
                         color="primary"
-                        onClick={this.handleEditClick(user)}
+                        onClick={() => handleEditClick(user)}
                         data-testid="edit">
                         <PencilIcon />
                       </IconButton>
@@ -230,7 +226,8 @@ class UserTable extends React.Component {
                       </IconButton>
                       <IconButton
                         color="primary"
-                        onClick={handleSendEmailClick}
+                        disabled={!user.emailAddress}
+                        onClick={() => handleSendEmailClick(user)}
                         data-testid="email">
                         <EnvelopeIcon />
                       </IconButton>
