@@ -2,7 +2,7 @@
  */
 
 import { queries, db, pgp } from './db'
-import { generateUser } from './helpers'
+import { generateUser } from './testHelpers'
 
 beforeEach(async () => {
   // Start test with a clean db state

@@ -3,7 +3,7 @@
 
 import app from '../app'
 import { queries, db, pgp } from '../db'
-import { generateUser, generateNewUser, generateToken } from '../helpers'
+import { generateUser, generateNewUser, generateToken } from '../testHelpers'
 import supertest from 'supertest'
 import moment from 'moment'
 
