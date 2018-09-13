@@ -5,7 +5,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { UserConsumer } from './UserContext'
+import { withAuthContext } from './AuthContext'
 import AppBar from './AppBar'
 import AlertDialog from './AlertDialog'
 import UserTable from './UserTable'
@@ -35,15 +35,22 @@ class RegisteredUsers extends React.Component {
   componentDidMount() {
     //  Fetch all users
     this.setState({ isFetchingUsers: true })
-    getUsers().then(({ users, controller }) => {
-      const currentUser = users.find(user => user.userId === this.props.userId)
-      this.setState({
-        users,
-        currentUser,
-        isFetchingUsers: false,
-        fetchUsersController: controller
+    getUsers()
+      .then(({ users, controller }) => {
+        const currentUser = users.find(
+          user => user.userId === this.props.userId
+        )
+        this.setState({
+          users,
+          currentUser,
+          isFetchingUsers: false,
+          fetchUsersController: controller
+        })
       })
-    })
+      .catch(err => {
+        if (err && err.status === 401) return this.props.history.push('/logout')
+        else throw err
+      })
   }
 
   componentWillUnmount() {
@@ -68,14 +75,14 @@ class RegisteredUsers extends React.Component {
     this.setState({ isAlertDialogOpen: false })
   }
 
-  onConfirmDelete = async logout => {
+  onConfirmDelete = async () => {
     this.setState({ isAlertDialogOpen: false })
     if (!this.state.deleteUserId) return
 
     await deleteUser(this.state.deleteUserId)
 
     if (this.state.currentUser.userId === this.state.deleteUserId)
-      return logout()
+      return this.props.logout()
 
     this.setState({ deleteUserId: null })
 
@@ -94,36 +101,32 @@ class RegisteredUsers extends React.Component {
       currentUser && `${currentUser.firstName} ${currentUser.lastName}`
 
     return (
-      <UserConsumer>
-        {({ logout }) => (
-          <Container>
-            <AlertDialog
-              open={this.state.isAlertDialogOpen}
-              onCancel={this.onCancelDelete}
-              onConfirm={() => this.onConfirmDelete(logout)}>
-              {this.state.alertMessage}
-            </AlertDialog>
-            <AppBar
-              title="Registered Users"
-              {...{ avatar, name }}
-              onSignOut={logout}
-              onDelete={() =>
-                this.handleUserDeleteClick('your profile', currentUser.userId)
-              }
-            />
-            <Content>
-              <UserTable
-                users={users}
-                isLoading={isFetchingUsers}
-                isAdmin={currentUser && currentUser.isAdmin}
-                handleEditClick={this.handleUserEditClick}
-                handleDeleteClick={this.handleUserDeleteClick}
-                handleSendEmailClick={this.handleUserSendEmailClick}
-              />
-            </Content>
-          </Container>
-        )}
-      </UserConsumer>
+      <Container>
+        <AlertDialog
+          open={this.state.isAlertDialogOpen}
+          onCancel={this.onCancelDelete}
+          onConfirm={this.onConfirmDelete}>
+          {this.state.alertMessage}
+        </AlertDialog>
+        <AppBar
+          title="Registered Users"
+          {...{ avatar, name }}
+          onSignOut={this.props.logout}
+          onDelete={() =>
+            this.handleUserDeleteClick('your profile', currentUser.userId)
+          }
+        />
+        <Content>
+          <UserTable
+            users={users}
+            isLoading={isFetchingUsers}
+            isAdmin={currentUser && currentUser.isAdmin}
+            handleEditClick={this.handleUserEditClick}
+            handleDeleteClick={this.handleUserDeleteClick}
+            handleSendEmailClick={this.handleUserSendEmailClick}
+          />
+        </Content>
+      </Container>
     )
   }
 }
@@ -132,4 +135,4 @@ RegisteredUsers.propTypes = {
   userId: PropTypes.string
 }
 
-export default RegisteredUsers
+export default withAuthContext(RegisteredUsers)

@@ -10,7 +10,7 @@ import AccountIcon from 'mdi-react/AccountIcon'
 import { withTheme } from '@material-ui/core/styles'
 import grey from '@material-ui/core/colors/grey'
 import styled from 'styled-components'
-import { UserConsumer } from './UserContext'
+import { AuthConsumer } from './AuthContext'
 
 const StyledAccountIcon = styled(AccountIcon)`
   margin-right: ${({ theme }) => theme.spacing.unit}px;
@@ -50,7 +50,7 @@ class LoginButton extends Component {
 
   render() {
     return (
-      <UserConsumer>
+      <AuthConsumer>
         {({ login }) => (
           <GoogleLogin
             buttonText="Login"
@@ -65,7 +65,7 @@ class LoginButton extends Component {
             )}
           />
         )}
-      </UserConsumer>
+      </AuthConsumer>
     )
   }
 }
