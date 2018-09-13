@@ -13,6 +13,9 @@ beforeEach(async () => {
   // Restore mocks to clear any calls
   jest.restoreAllMocks()
 
+  // Start test with a clean db state
+  await db.none('TRUNCATE public.user')
+
   // Setup postAgent
   postAgent = supertest
     .agent(server)
@@ -20,12 +23,11 @@ beforeEach(async () => {
     .set('Accept', 'application/json')
     .set('Authorization', 'Bearer ' + generateToken())
 
-  // Start test with a clean db state
-  await db.none('TRUNCATE public.user')
-
+  // Insert test data
   await Promise.all([
-    queries.insertUser(generateUser({ userId: '1' })),
-    queries.insertUser(generateUser({ userId: '2' }))
+    queries.insertUser(generateUser({ userId : '1' })),
+    queries.insertUser(generateUser({ userId : '2' })),
+    queries.insertUser(generateUser({ userId: 'admin', isAdmin : true }))
   ])
 })
 
@@ -42,7 +44,6 @@ afterAll(async () => {
 
 test('/update should update user details', async () => {
   const user = generateUser({ emailAddress: 'new@address.com' })
-
   await postAgent
     .send(user)
     .expect(200, user)
@@ -54,10 +55,25 @@ test('/update should reject invalid requests', async () => {
     .expect(400)
 })
 
-test('/update should return 400 when non-existant userId is provided', async () => {
+test('/update should reject non-existant userIds', async () => {
   const user = generateUser({ userId: '3' })
-
   await postAgent
     .send(user)
+    .set('Authorization', 'Bearer ' + generateToken('3'))
     .expect(400, 'Invalid userId')
+})
+
+test('/update should reject a user updating another user', async () => {
+  const user = generateUser({ userId: '2' })
+  await postAgent
+    .send(user)
+    .expect(400, 'You can\'t update this user')
+})
+
+test('/update should allow admins to update another user', async () => {
+  const user = generateUser({ userId: '2' })
+  await postAgent
+    .send(user)
+    .set('Authorization', 'Bearer ' + generateToken('admin'))
+    .expect(200, user)
 })
