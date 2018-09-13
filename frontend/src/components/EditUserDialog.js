@@ -8,6 +8,7 @@ import DialogActions from '@material-ui/core/DialogActions'
 import Button from '@material-ui/core/Button'
 import Avatar from 'react-avatar'
 import styled from 'styled-components'
+import { FormControl, FormHelperText } from '@material-ui/core';
 
 const StyledDialogContent = styled(DialogContent)`
   display: grid;
@@ -34,10 +35,25 @@ export default class EditUserDialog extends Component {
     lastName: this.props.lastName,
     emailAddress: this.props.emailAddress,
     imageURL: this.props.imageURL,
-    userId: this.props.userId
+    userId: this.props.userId,
+    errors: {}
   }
 
   handleTextFieldChange = name => event => {
+    if (event.target.required && event.target.value.trim() === '') {
+      this.setState({ 
+        errors: {
+          [name]: 'Thie field is required'
+        }
+      })
+    } else {
+      this.setState({
+        errors: {
+          [name]: null
+        }
+      })
+    }
+
     this.setState({
       [name]: event.target.value
     })
@@ -50,7 +66,10 @@ export default class EditUserDialog extends Component {
   }
 
   handleSave = () => {
-    this.props.onSave(this.state)
+    // TODO: this probably doesn't work
+    if (Object.values(this.state.errors) === []) {
+      this.props.onSave(this.state)
+    }
   }
 
   handleKeyDown = event => {
@@ -61,7 +80,7 @@ export default class EditUserDialog extends Component {
 
   render() {
     const { open, onClose } = this.props
-    const { firstName, lastName, imageURL, emailAddress } = this.state
+    const { firstName, lastName, imageURL, emailAddress, errors } = this.state
 
     return (
       <Dialog open={open} onClose={onClose} data-testid="edit-user-dialog">
@@ -76,16 +95,21 @@ export default class EditUserDialog extends Component {
             />
           </AvatarWrapper>
           <StyledForm onSubmit={this.handleSave}>
-            <TextField
-              id="first"
-              label="First"
-              value={firstName}
-              onChange={this.handleTextFieldChange('firstName')}
-              onKeyDown={this.handleKeyDown}
-              fullWidth
-              margin="dense"
-              autoFocus
-            />
+            <FormControl fullWidth>
+              <TextField
+                id="first"
+                label="First"
+                value={firstName}
+                onChange={this.handleTextFieldChange('firstName')}
+                onKeyDown={this.handleKeyDown}
+                fullWidth
+                margin="dense"
+                autoFocus
+                required
+                error={errors.firstName}
+              />
+              {errors.firstName && <FormHelperText>{errors.firstName}</FormHelperText>}
+            </FormControl>
             <TextField
               id="last"
               label="Last"
@@ -94,6 +118,7 @@ export default class EditUserDialog extends Component {
               onKeyDown={this.handleKeyDown}
               fullWidth
               margin="dense"
+              required
             />
             <TextField
               id="emailAddress"
@@ -104,6 +129,7 @@ export default class EditUserDialog extends Component {
               type="emailAddress"
               fullWidth
               margin="dense"
+              required
             />
             <TextField
               id="avatar"
