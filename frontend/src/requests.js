@@ -41,9 +41,9 @@ export function getUsers() {
   )
 }
 
-export function deleteUser(userId) {
+export function deleteUser(user) {
   const method = 'POST'
-  const body = JSON.stringify({ userId })
+  const body = JSON.stringify(user)
   const headers = getDefaultHeaders()
   const url = process.env.REACT_APP_API_URL + 'delete'
   return fetch(url, { method, body, headers })
