@@ -5,6 +5,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@material-ui/core": "^3.0.3",
+    "http-errors": "^1.7.1",
     "mdi-react": "^4.3.0",
     "moment": "^2.22.2",
     "prop-types": "^15.6.2",

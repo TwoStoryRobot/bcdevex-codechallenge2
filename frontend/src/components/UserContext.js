@@ -23,6 +23,8 @@ class UserProvider extends Component {
   }
 
   logout = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('userId')
     const isLoggedIn = false
     this.setState({ isLoggedIn })
   }
@@ -42,4 +44,10 @@ class UserProvider extends Component {
   }
 }
 
-export { UserProvider, UserConsumer }
+const withUserContext = Component => props => (
+  <UserConsumer>
+    {userProps => <Component {...props} {...userProps} />}
+  </UserConsumer>
+)
+
+export { UserProvider, UserConsumer, withUserContext }
