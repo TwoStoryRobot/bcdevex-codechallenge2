@@ -103,6 +103,7 @@ class RegisteredUsers extends React.Component {
     updateUser(mergedUser)
 
     this.handleEditDialogClose()
+  }
 
   handleSearchChange = e => {
     this.setState({ searchText: e.target.value })
