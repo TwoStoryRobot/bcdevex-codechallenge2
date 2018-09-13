@@ -76,32 +76,3 @@ test('/update should return 400 when an invalid body is sent', async () => {
     .set('Authorization', 'Bearer ' + generateToken())
     .expect(400)
 })
-
-test('/delete should remove a user from the db', async () => {
-  const body = { userId: '1' }
-
-  await request
-    .post('/delete')
-    .send(body)
-    .set('Accept', 'application/json')
-    .set('Authorization', 'Bearer ' + generateToken())
-    .expect(200, body)
-})
-
-test('/delete should return 400 when no userId is provided', async () => {
-  await request
-    .post('/delete')
-    .send({})
-    .set('Accept', 'application/json')
-    .set('Authorization', 'Bearer ' + generateToken())
-    .expect(400, 'No userId provided')
-})
-
-test('/delete should return 400 when non-existant userId is provided', async () => {
-  await request
-    .post('/delete')
-    .send({ userId: '3' })
-    .set('Accept', 'application/json')
-    .set('Authorization', 'Bearer ' + generateToken())
-    .expect(400, 'Invalid userId')
-})
