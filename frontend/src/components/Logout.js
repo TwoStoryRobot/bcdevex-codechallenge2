@@ -1,3 +1,7 @@
+/* Logout Button
+ * Logs a user out and redirects to main page
+ */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withAuthContext } from './AuthContext'

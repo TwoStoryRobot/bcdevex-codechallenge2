@@ -1,3 +1,6 @@
+/* Alert Dialog Story
+ */
+
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { host } from 'storybook-host'

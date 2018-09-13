@@ -1,3 +1,6 @@
+/* App Bar Tests
+ */
+
 import React from 'react'
 import { cleanup, render, fireEvent } from 'react-testing-library'
 

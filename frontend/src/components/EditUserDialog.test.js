@@ -1,3 +1,6 @@
+/* Edit User Dialog Tests
+ */
+
 import React from 'react'
 import {
   cleanup,

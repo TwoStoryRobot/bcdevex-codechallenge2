@@ -1,3 +1,7 @@
+/* User Table
+ * Lists the registered users in a table
+ */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'

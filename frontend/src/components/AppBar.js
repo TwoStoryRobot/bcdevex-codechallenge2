@@ -1,3 +1,8 @@
+
+/* App Bar
+ * Top Level Material Toolbar
+ */
+
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Toolbar from '@material-ui/core/Toolbar'
