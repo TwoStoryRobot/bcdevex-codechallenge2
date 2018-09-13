@@ -60,21 +60,28 @@ class RegisteredUsers extends React.Component {
     this.setState({ editingUser: user, editing: true })
   }
 
+  handleEditCurrentUser = () => {
+    this.setState({ editingUser: this.state.currentUser, editing: true })
+  }
+
   handleEditDialogClose = () => {
     this.setState({ editing: false })
   }
 
   handleEditDialogSave = async updatedUser => {
     const oldUser = this.state.users.find(user => user.userId === updatedUser.userId)
-
+    
     // Just in case user has properties that aren't passed to EditUserDialog
     const mergedUser = {
       ...oldUser,
       ...updatedUser
     }
 
+    const { userId } = mergedUser
+
     this.setState({
-      users: this.state.users.map(user => user.userId === mergedUser.userId ? mergedUser : user)
+      users: this.state.users.map(user => user.userId === userId ? mergedUser : user),
+      currentUser: this.state.currentUser.userId === userId ? mergedUser : this.state.currentUser
     })
 
     updateUser(mergedUser)
@@ -107,6 +114,7 @@ class RegisteredUsers extends React.Component {
                 title="Registered Users"
                 {...{ avatar, name }}
                 onSignOut={logout}
+                onEdit={this.handleEditCurrentUser}
               />
               <Content>
                 <UserTable
