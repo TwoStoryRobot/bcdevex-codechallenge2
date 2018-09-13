@@ -9,7 +9,7 @@ import { UserConsumer } from './UserContext'
 import AppBar from './AppBar'
 import UserTable from './UserTable'
 import EditUserDialog from './EditUserDialog'
-import { getUsers } from '../requests.js'
+import { getUsers, updateUser } from '../requests.js'
 
 const Container = styled.div`
   padding-top: 64px;
@@ -64,12 +64,20 @@ class RegisteredUsers extends React.Component {
     this.setState({ editing: false })
   }
 
-  handleEditDialogSave = updatedUser => {
+  handleEditDialogSave = async updatedUser => {
+    const oldUser = this.state.users.find(user => user.userId === updatedUser.userId)
+
+    // Just in case user has properties that aren't passed to EditUserDialog
+    const mergedUser = {
+      ...oldUser,
+      ...updatedUser
+    }
+
     this.setState({
-      users: this.state.users.map(user =>
-        user.userId === updatedUser.userId ? updatedUser : user
-      )
+      users: this.state.users.map(user => user.userId === mergedUser.userId ? mergedUser : user)
     })
+
+    updateUser(mergedUser)
 
     this.handleEditDialogClose()
   }
