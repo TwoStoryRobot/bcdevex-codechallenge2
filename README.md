@@ -4,10 +4,11 @@ This is Two Story Robot's Code Code Challenge submission for the "Data Driven
 Mine Development - Team Expansion" RFP.
 
 It is a simple user management application with various interactive features.
-The backend of the application is written in Javascript in Nodejs using the Koa 
-framework with a Postgres database. The frontend is written in React with 
-Material UI components. All testing is written in Jest. Component development 
-is done with Storybook.
+The [backend](./backend/README.md) of the application is written in Javascript 
+in Nodejs using the Koa framework with a Postgres database. The 
+[frontend](./frontend/README.md) is written in React with Material UI 
+components.  All testing is written in Jest.  Component development is done 
+with Storybook.
 
 # Evaluation the UI 
 
@@ -24,6 +25,9 @@ evaluation. You can start the entire stack by running
 This may take a few minutes as it needs to pull down all the packages and build 
 the applications. Once things have started visit `http://localhost:3000` in a 
 Chrome browser.
+
+In a production environment these builds would be done in a CI process with 
+built images pushed to a docker image registry.
 
 ## Testing Features
 
@@ -372,25 +376,19 @@ backend. Each directory will maintain it's own `package.json` and scripts for
 better isolation. You will need to change into each directory to run the 
 appropriate npm scripts.
 
+You can read about each ascpect of the application with their corresponding 
+READMEs.
+
 ## Frontend
 
-The frontend of the application is a react app in [`/frontend`](./frontend).  
-
-### Scripts
-
-    npm start
-
-Start the react dev server. For development purposes.
-
-    npm run storybook
-
-Builds and runs storybook explorer for component driven development. All 
-components will be viewable and interactable within storybook.
+The frontend of the application is a react app in 
+[`/frontend`](./frontend/README.md).  
 
 ## Backend
 
-The backend of the application is a koa server in [`/backend`](./backend).
- 
+The backend of the application is a koa server in 
+[`/backend`](./backend/README.md).
+
 
 # Code Challenge Notice, Instructions & Rules
 Re: Competition "Data Driven Mine Development - Team Expansion" (the “RFP”)
