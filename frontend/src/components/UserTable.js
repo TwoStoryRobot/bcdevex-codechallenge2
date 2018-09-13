@@ -18,8 +18,8 @@ import UserSearchIcon from 'mdi-react/UserSearchIcon'
 import DeleteIcon from 'mdi-react/DeleteIcon'
 import PencilIcon from 'mdi-react/PencilIcon'
 import EnvelopeIcon from 'mdi-react/EnvelopeIcon'
-import SortDescendingIcon from 'mdi-react/SortAscendingIcon'
-import SortAscendingIcon from 'mdi-react/SortDescendingIcon'
+import SortAscendingIcon from 'mdi-react/SortAscendingIcon'
+import SortDescendingIcon from 'mdi-react/SortDescendingIcon'
 
 const StyledButtonsCell = withStyles(theme => ({
   root: {
@@ -106,16 +106,18 @@ class UserTable extends React.Component {
       this.setState({
         sortDirection: this.state.sortDirection === 'asc' ? 'desc' : 'asc'
       })
-    else this.setState({ sortField, sortDirection: 'asc' })
+    else this.setState({ sortField, sortDirection: 'desc' })
   }
 
   // Return a new array with users sorted according to the current sort state
   getSortedUsers() {
     //clone a new array for users
     let users = [...this.props.users]
-    if (this.state.sortDirection === 'asc')
+    if (this.state.sortDirection === 'asc') {
       users.sort(this.genSortAscendingByField(this.state.sortField))
-    else users.sort(this.genSortDescendingByField(this.state.sortField))
+    } else {
+      users.sort(this.genSortDescendingByField(this.state.sortField))
+    }
 
     return users
   }
@@ -127,7 +129,7 @@ class UserTable extends React.Component {
       const valB = b[field].toUpperCase()
       let order = 0
       if (valA < valB) order = -1
-      if (valB > valA) order = 1
+      if (valA > valB) order = 1
       return order
     }
   }
@@ -138,8 +140,8 @@ class UserTable extends React.Component {
       const valA = a[field].toUpperCase()
       const valB = b[field].toUpperCase()
       let order = 0
+      if (valA < valB) order = 1
       if (valA > valB) order = -1
-      if (valB < valA) order = 1
       return order
     }
   }
