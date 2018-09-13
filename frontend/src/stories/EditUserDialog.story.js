@@ -18,8 +18,8 @@ storiesOf('Edit User Dialog', module)
     <EditUserDialog
       firstName="Caleb"
       lastName="Sharp"
-      email="caleb.sharp@twostoryrobot.com"
-      avatarUrl="https://api.adorable.io/avatars/285/abott@adorable.png"
+      emailAddress="caleb.sharp@twostoryrobot.com"
+      imageURL="https://api.adorable.io/avatars/285/abott@adorable.png"
       open={true}
     />
   ))
