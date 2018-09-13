@@ -6,7 +6,6 @@ import Paper from '@material-ui/core/Paper'
 import FormControl from '@material-ui/core/FormControl'
 import Input from '@material-ui/core/Input'
 import InputAdornment from '@material-ui/core/InputAdornment'
-import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from 'mdi-react/SearchIcon'
 
 const PaddedPaper = styled(Paper)`

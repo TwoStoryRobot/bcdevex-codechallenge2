@@ -8,6 +8,8 @@ import PropTypes from 'prop-types'
 import Snackbar from '@material-ui/core/Snackbar'
 import { withAuthContext } from './AuthContext'
 import AppBar from './AppBar'
+import SearchBar from './SearchBar'
+import filterStartsWith from '../utils/filterStartsWith'
 import UserTable from './UserTable'
 import EditUserDialog from './EditUserDialog'
 import { getUsers, updateUser } from '../requests.js'
@@ -17,9 +19,8 @@ const Container = styled.div`
 `
 
 const Content = styled.div`
-  width: 900px;
-  max-width: calc(100vw - 100px);
-  margin: auto;
+  max-width: calc(100vw - 150px);
+  margin: 50px auto;
 `
 
 class RegisteredUsers extends React.Component {
@@ -37,6 +38,7 @@ class RegisteredUsers extends React.Component {
       userId: null
     },
     snackbar: '',
+    searchText: ''
   }
 
   componentDidMount() {
@@ -101,6 +103,15 @@ class RegisteredUsers extends React.Component {
     updateUser(mergedUser)
 
     this.handleEditDialogClose()
+
+  handleSearchChange = e => {
+    this.setState({ searchText: e.target.value })
+  }
+
+  //  TODO: Implement this function
+  handleUserEditClick() {
+    console.log('Edit User Clicked')
+
   }
 
   //  TODO: Implement this function
@@ -114,7 +125,7 @@ class RegisteredUsers extends React.Component {
   }
 
   render() {
-    const { currentUser, users, isFetchingUsers } = this.state
+    const { currentUser, users, isFetchingUsers, searchText } = this.state
     const { logout } = this.props
     const avatar = currentUser && currentUser.imageURL
     const name =
@@ -130,8 +141,9 @@ class RegisteredUsers extends React.Component {
             onEdit={this.handleEditCurrentUser}
           />
           <Content>
+            <SearchBar value={searchText} onChange={this.handleSearchChange} />
             <UserTable
-              users={users}
+              users={users.filter(filterStartsWith(searchText))}
               isLoading={isFetchingUsers}
               isAdmin={currentUser && currentUser.isAdmin}
               handleEditClick={this.handleUserEditClick}
