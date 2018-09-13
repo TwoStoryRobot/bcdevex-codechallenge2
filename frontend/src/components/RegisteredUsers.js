@@ -5,7 +5,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { UserConsumer, withUserContext } from './UserContext'
+import { AuthConsumer, withAuthContext } from './AuthContext'
 import AppBar from './AppBar'
 import UserTable from './UserTable'
 import { getUsers } from '../requests.js'
@@ -76,7 +76,7 @@ class RegisteredUsers extends React.Component {
       currentUser && `${currentUser.firstName} ${currentUser.lastName}`
 
     return (
-      <UserConsumer>
+      <AuthConsumer>
         {({ logout }) => (
           <Container>
             <AppBar
@@ -96,7 +96,7 @@ class RegisteredUsers extends React.Component {
             </Content>
           </Container>
         )}
-      </UserConsumer>
+      </AuthConsumer>
     )
   }
 }
@@ -105,4 +105,4 @@ RegisteredUsers.propTypes = {
   userId: PropTypes.string
 }
 
-export default withUserContext(RegisteredUsers)
+export default withAuthContext(RegisteredUsers)
