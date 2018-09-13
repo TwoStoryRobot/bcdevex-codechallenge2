@@ -1,4 +1,4 @@
 import '@storybook/addon-actions/register'
 import '@storybook/addon-knobs/register'
 import '@storybook/addon-links/register'
-import '@twostoryrobot/storybook-addon-docgen/register'
+import '../src/stories/addons/docgen/register'

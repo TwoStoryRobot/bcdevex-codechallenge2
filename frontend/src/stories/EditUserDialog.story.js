@@ -6,9 +6,11 @@ import { storiesOf } from '@storybook/react'
 import EditUserDialog from '../components/EditUserDialog'
 import { withKnobs, boolean } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
+import docgen from './addons/docgen'
 
 storiesOf('Edit User Dialog', module)
   .addDecorator(withKnobs)
+  .addDecorator(docgen(EditUserDialog))
   .add('Default', () => <EditUserDialog open={true} />)
   .add('With knobs', () => (
     <EditUserDialog

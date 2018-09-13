@@ -5,9 +5,9 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { host } from 'storybook-host'
 import { linkTo } from '@storybook/addon-links'
-import docgen from '@twostoryrobot/storybook-addon-docgen'
+import docgen from './addons/docgen'
 
-import UserTable from '../components/UserTable'
+import UserTable, { Docs } from '../components/UserTable'
 
 const defaultUsers = [
   {
@@ -54,49 +54,42 @@ const handleSendEmailClick = linkTo('AlertDialog', 'Example - Send email')
 
 storiesOf('UserTable', module)
   .addDecorator(host())
-  .addDecorator(docgen(UserTable))
-  .add('default', () => {
-    return (
-      <UserTable
-        users={defaultUsers}
-        isAdmin={true}
-        handleEditClick={handleEditClick}
-        handleDeleteClick={handleDeleteClick}
-        handleSendEmailClick={handleSendEmailClick}
-      />
-    )
-  })
-  .add('not admin', () => {
-    return (
-      <UserTable
-        users={defaultUsers}
-        isAdmin={false}
-        handleEditClick={handleEditClick}
-        handleDeleteClick={handleDeleteClick}
-        handleSendEmailClick={handleSendEmailClick}
-      />
-    )
-  })
-  .add('empty users array', () => {
-    return (
-      <UserTable
-        users={[]}
-        isAdmin={true}
-        handleEditClick={handleEditClick}
-        handleDeleteClick={handleDeleteClick}
-        handleSendEmailClick={handleSendEmailClick}
-      />
-    )
-  })
-  .add('loading state', () => {
-    return (
-      <UserTable
-        users={[]}
-        isLoading={true}
-        isAdmin={true}
-        handleEditClick={handleEditClick}
-        handleDeleteClick={handleDeleteClick}
-        handleSendEmailClick={handleSendEmailClick}
-      />
-    )
-  })
+  .addDecorator(docgen(Docs))
+  .add('default', () => (
+    <UserTable
+      users={defaultUsers}
+      isAdmin={true}
+      handleEditClick={handleEditClick}
+      handleDeleteClick={handleDeleteClick}
+      handleSendEmailClick={handleSendEmailClick}
+    />
+  ))
+
+  .add('not admin', () => (
+    <UserTable
+      users={defaultUsers}
+      isAdmin={false}
+      handleEditClick={handleEditClick}
+      handleDeleteClick={handleDeleteClick}
+      handleSendEmailClick={handleSendEmailClick}
+    />
+  ))
+  .add('empty users array', () => (
+    <UserTable
+      users={[]}
+      isAdmin={true}
+      handleEditClick={handleEditClick}
+      handleDeleteClick={handleDeleteClick}
+      handleSendEmailClick={handleSendEmailClick}
+    />
+  ))
+  .add('loading state', () => (
+    <UserTable
+      users={[]}
+      isLoading={true}
+      isAdmin={true}
+      handleEditClick={handleEditClick}
+      handleDeleteClick={handleDeleteClick}
+      handleSendEmailClick={handleSendEmailClick}
+    />
+  ))
