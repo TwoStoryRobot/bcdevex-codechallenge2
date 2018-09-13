@@ -12,6 +12,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Fade from '@material-ui/core/Fade'
 import EditIcon from 'mdi-react/EditIcon'
+import DeleteIcon from 'mdi-react/DeleteIcon'
 import SignOutIcon from 'mdi-react/LogoutIcon'
 import Avatar from 'react-avatar'
 
@@ -22,6 +23,16 @@ const Grow = styled.div`
 const MenuHeader = styled(ListItem)`
   &:focus {
     outline: none;
+  }
+`
+
+const DeleteListItem = styled(ListItem)`
+  > svg {
+    fill: #ff4242;
+  }
+
+  > div > span {
+    color: #ff4242;
   }
 `
 
@@ -45,7 +56,7 @@ export default class AppBar extends Component {
 
   render() {
     const { anchorEl } = this.state
-    const { title, avatar, name, onEdit, onSignOut } = this.props
+    const { title, avatar, name, onEdit, onDelete, onSignOut } = this.props
     const isMenuOpen = !!anchorEl
 
     const renderMenu = (
@@ -80,6 +91,15 @@ export default class AppBar extends Component {
           </ListItemIcon>
           <ListItemText inset primary="Sign out" />
         </ListItem>
+        <DeleteListItem
+          button
+          onClick={this.handleMenuItemClick(onDelete)}
+          data-testid="delete">
+          <ListItemIcon>
+            <DeleteIcon />
+          </ListItemIcon>
+          <ListItemText inset primary="Delete account" />
+        </DeleteListItem>
       </Menu>
     )
 
@@ -127,7 +147,9 @@ AppBar.propTypes = {
   /** Handler called when the `Edit` menu button is pressed */
   onEdit: PropTypes.func,
   /** Handler called when the `Sign out` menu button is pressed */
-  onSignOut: PropTypes.func
+  onSignOut: PropTypes.func,
+  /** Handler called when the `Delete` menu button is pressed */
+  onDelete: PropTypes.func
 }
 
 AppBar.defaultProps = {

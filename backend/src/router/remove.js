@@ -25,16 +25,17 @@ async function removeUser(ctx) {
 
   const { userId } = ctx.request.body
 
+  // Check privileges 
+  const isAdmin = ctx.state.isAdmin
+  const selfRemoval = userId == ctx.state.user.sub
+  if (!selfRemoval && !isAdmin) ctx.throw(400, 'You can\'t delete this user')
+
   // Invalid userId provided
   const record = await queries.selectUserById(userId)
   if (!record) ctx.throw(400, 'Invalid userId')
 
-  try {
-    await queries.deleteUser(userId)
-    ctx.body = ctx.request.body
-  } catch (e) {
-    ctx.throw(400, e.message)
-  }
+  await queries.removeUser(userId)
+  ctx.body = ctx.request.body
 }
 
 remove.post('/', removeUser)

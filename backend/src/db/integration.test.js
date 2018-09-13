@@ -58,8 +58,8 @@ test('updateUser should update the user details', async () => {
   expect(userFirstNames).not.toContain('Test')
 })
 
-test('deleteUser should removes a user from the db', async () => {
-  await queries.deleteUser('1')
+test('removeUser should removes a user from the db', async () => {
+  await queries.removeUser('1')
 
   const users = await queries.selectAllUsers()
   const userIds = users.map(u => u.userId)

@@ -37,14 +37,14 @@ async function updateUser(user) {
   await db.any(
     `UPDATE public.user
      SET
-       ("userId", "firstName", "imageURL", "emailAddress", "lastName", "isAdmin", "registeredAt") =
-       ($/userId/, $/firstName/, $/imageURL/, $/emailAddress/, $/lastName/, $/isAdmin/, $/registeredAt/)
+       ("firstName", "imageURL", "emailAddress", "lastName", "isAdmin", "registeredAt") =
+       ($/firstName/, $/imageURL/, $/emailAddress/, $/lastName/, $/isAdmin/, $/registeredAt/)
      WHERE "userId" = $/userId/`,
     user
   )
 }
 
-async function deleteUser(userId) {
+async function removeUser(userId) {
   await db.any('DELETE FROM public.user WHERE "userId" = $/userId/', { userId })
 }
 
@@ -54,5 +54,5 @@ export const queries = {
   countAdmins,
   insertUser,
   updateUser,
-  deleteUser
+  removeUser
 }

@@ -101,7 +101,7 @@ exports[`EditUserDialog should match the snapshot 1`] = `
             <label
               class="MuiFormLabel-root-0628 MuiInputLabel-root-0623 MuiInputLabel-formControl-0624 MuiInputLabel-animated-0627 MuiInputLabel-marginDense-0625"
               data-shrink="false"
-              for="email"
+              for="emailAddress"
             >
               Email
             </label>
@@ -111,8 +111,8 @@ exports[`EditUserDialog should match the snapshot 1`] = `
               <input
                 aria-invalid="false"
                 class="MuiInput-input-0643 MuiInput-inputType-0646 MuiInput-inputMarginDense-0644"
-                id="email"
-                type="email"
+                id="emailAddress"
+                type="emailAddress"
                 value=""
               />
             </div>

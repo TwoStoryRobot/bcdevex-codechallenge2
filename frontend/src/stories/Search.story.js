@@ -13,7 +13,7 @@ const onChange = action('onChange')
 const onSubmit = action('onSubmit')
 
 storiesOf('SearchBar', module)
-  .addDecorator(host())
+  .addDecorator(host({ width: 500 }))
   .addDecorator(withKnobs)
   .addDecorator(docgen(SearchBar))
   .add('Default', () => {
