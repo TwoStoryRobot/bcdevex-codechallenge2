@@ -81,7 +81,7 @@ class RegisteredUsers extends React.Component {
               <UserTable
                 users={users}
                 isLoading={isFetchingUsers}
-                isAdmin={currentUser && !currentUser.isAdmin}
+                isAdmin={currentUser && currentUser.isAdmin}
                 handleEditClick={this.handleUserEditClick}
                 handleDeleteClick={this.handleUserDeleteClick}
                 handleSendEmailClick={this.handleUserSendEmailClick}
