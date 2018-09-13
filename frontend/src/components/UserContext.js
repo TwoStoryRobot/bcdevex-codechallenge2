@@ -23,8 +23,8 @@ class UserProvider extends Component {
   }
 
   logout = () => {
-    delete localStorage.token
-    delete localStorage.userId
+    localStorage.removeItem('token')
+    localStorage.removeItem('userId')
     const isLoggedIn = false
     this.setState({ isLoggedIn })
   }
