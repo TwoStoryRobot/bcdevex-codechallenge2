@@ -30,22 +30,11 @@ const StyledForm = styled.form`
  */
 export default class EditUserDialog extends Component {
   state = {
-    firstName: '',
-    lastName: '',
-    emailAddress: '',
-    imageURL: '',
-    userId: ''
-  }
-
-  componentDidMount() {
-    const { firstName, lastName, imageURL, emailAddress, userId } = this.props
-    this.setState({
-      firstName,
-      lastName,
-      emailAddress,
-      imageURL,
-      userId
-    })
+    firstName: this.props.firstName,
+    lastName: this.props.lastName,
+    emailAddress: this.props.emailAddress,
+    imageURL: this.props.imageURL,
+    userId: this.props.userId
   }
 
   handleTextFieldChange = name => event => {
