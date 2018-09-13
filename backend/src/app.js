@@ -7,7 +7,8 @@ import jwt from 'koa-jwt'
 import cors from '@koa/cors'
 import bodyParser from 'koa-bodyparser'
 import { koaJwtSecret } from 'jwks-rsa'
-import root from './router/root'
+import adminCheck from './adminCheck'
+import root from './router'
 
 const isTest = process.env.NODE_ENV == 'test'
 
@@ -26,6 +27,7 @@ const app = new Koa()
 app.use(bodyParser())
 app.use(cors({ origin }))
 app.use(jwt({ secret, audience, issuer }))
+app.use(adminCheck())
 app.use(root.routes())
 app.use(root.allowedMethods())
 
