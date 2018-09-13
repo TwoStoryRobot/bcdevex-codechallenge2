@@ -53,7 +53,7 @@ exports[`UserTable should display loading spinner when isLoaded is true 1`] = `
             >
               Last
               <svg
-                class="mdi-icon sc-bwzfXH eKCKCH"
+                class="mdi-icon sc-bdVaJa pPqKJ"
                 width="24"
                 height="24"
                 fill="currentColor"
@@ -193,7 +193,7 @@ exports[`UserTable should display message when there are no registered users 1`]
             >
               Last
               <svg
-                class="mdi-icon sc-bwzfXH eKCKCH"
+                class="mdi-icon sc-bdVaJa pPqKJ"
                 width="24"
                 height="24"
                 fill="currentColor"
@@ -325,7 +325,7 @@ exports[`UserTable should render with required props 1`] = `
             >
               Last
               <svg
-                class="mdi-icon sc-bwzfXH eKCKCH"
+                class="mdi-icon sc-bdVaJa pPqKJ"
                 width="24"
                 height="24"
                 fill="currentColor"
