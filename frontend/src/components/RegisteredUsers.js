@@ -8,6 +8,7 @@ import PropTypes from 'prop-types'
 import { UserConsumer } from './UserContext'
 import AppBar from './AppBar'
 import UserTable from './UserTable'
+import EditUserDialog from './EditUserDialog'
 import { getUsers } from '../requests.js'
 
 const Container = styled.div`
@@ -25,7 +26,15 @@ class RegisteredUsers extends React.Component {
     isFetchingUsers: false,
     currentUser: undefined,
     users: [],
-    fetchUsersController: undefined
+    fetchUsersController: undefined,
+    editing: false,
+    editingUser: {
+      firstName: null,
+      lastName: null,
+      emailAddress: null,
+      imageURL: null,
+      userId: null
+    },
   }
 
   componentDidMount() {
@@ -47,9 +56,22 @@ class RegisteredUsers extends React.Component {
     fetchUsersController && fetchUsersController.abort()
   }
 
-  //  TODO: Implement this function
-  handleUserEditClick() {
-    console.log('Edit User Clicked')
+  handleUserEditClick = user => {
+    this.setState({ editingUser: user, editing: true })
+  }
+
+  handleEditDialogClose = () => {
+    this.setState({ editing: false })
+  }
+
+  handleEditDialogSave = updatedUser => {
+    this.setState({
+      users: this.state.users.map(user =>
+        user.userId === updatedUser.userId ? updatedUser : user
+      )
+    })
+
+    this.handleEditDialogClose()
   }
 
   //  TODO: Implement this function
@@ -71,23 +93,38 @@ class RegisteredUsers extends React.Component {
     return (
       <UserConsumer>
         {({ logout }) => (
-          <Container>
-            <AppBar
-              title="Registered Users"
-              {...{ avatar, name }}
-              onSignOut={logout}
-            />
-            <Content>
-              <UserTable
-                users={users}
-                isLoading={isFetchingUsers}
-                isAdmin={currentUser && currentUser.isAdmin}
-                handleEditClick={this.handleUserEditClick}
-                handleDeleteClick={this.handleUserDeleteClick}
-                handleSendEmailClick={this.handleUserSendEmailClick}
+          <React.Fragment>
+            <Container>
+              <AppBar
+                title="Registered Users"
+                {...{ avatar, name }}
+                onSignOut={logout}
               />
-            </Content>
-          </Container>
+              <Content>
+                <UserTable
+                  users={users}
+                  isLoading={isFetchingUsers}
+                  isAdmin={currentUser && currentUser.isAdmin}
+                  handleEditClick={this.handleUserEditClick}
+                  handleDeleteClick={this.handleUserDeleteClick}
+                  handleSendEmailClick={this.handleUserSendEmailClick}
+                />
+              </Content>
+            </Container>
+            <EditUserDialog
+              // the key prop is needed to ensure the state is reset when a
+              // different user is chosen
+              key={this.state.editingUser.userId}
+              open={this.state.editing}
+              onClose={this.handleEditDialogClose}
+              onSave={this.handleEditDialogSave}
+              firstName={this.state.editingUser.firstName}
+              lastName={this.state.editingUser.lastName}
+              emailAddress={this.state.editingUser.emailAddress}
+              imageURL={this.state.editingUser.imageURL}
+              userId={this.state.editingUser.userId}
+            />
+          </React.Fragment>
         )}
       </UserConsumer>
     )
