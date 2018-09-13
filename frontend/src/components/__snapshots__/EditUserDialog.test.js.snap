@@ -52,25 +52,35 @@ exports[`EditUserDialog should match the snapshot 1`] = `
           class="sc-htpNat ibEjym"
         >
           <div
-            class="MuiFormControl-root-0619 MuiFormControl-marginDense-0621 MuiFormControl-fullWidth-0622"
+            class="MuiFormControl-root-0619 MuiFormControl-fullWidth-0622"
           >
-            <label
-              class="MuiFormLabel-root-0628 MuiFormLabel-focused-0629 MuiInputLabel-root-0623 MuiInputLabel-formControl-0624 MuiInputLabel-animated-0627 MuiInputLabel-shrink-0626 MuiInputLabel-marginDense-0625"
-              data-shrink="true"
-              for="first"
-            >
-              First
-            </label>
             <div
-              class="MuiInput-root-0635 MuiInput-fullWidth-0642 MuiInput-focused-0637 MuiInput-formControl-0636 MuiInput-underline-0639"
+              class="MuiFormControl-root-0619 MuiFormControl-marginDense-0621 MuiFormControl-fullWidth-0622"
             >
-              <input
-                aria-invalid="false"
-                class="MuiInput-input-0643 MuiInput-inputMarginDense-0644"
-                id="first"
-                type="text"
-                value=""
-              />
+              <label
+                class="MuiFormLabel-root-0628 MuiFormLabel-focused-0629 MuiFormLabel-required-0633 MuiInputLabel-root-0623 MuiInputLabel-formControl-0624 MuiInputLabel-animated-0627 MuiInputLabel-shrink-0626 MuiInputLabel-marginDense-0625"
+                data-shrink="true"
+                for="first"
+              >
+                First
+                <span
+                  class="MuiFormLabel-asterisk-0634"
+                >
+                  *
+                </span>
+              </label>
+              <div
+                class="MuiInput-root-0635 MuiInput-fullWidth-0642 MuiInput-focused-0637 MuiInput-formControl-0636 MuiInput-underline-0639"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInput-input-0643 MuiInput-inputMarginDense-0644"
+                  id="first"
+                  required=""
+                  type="text"
+                  value=""
+                />
+              </div>
             </div>
           </div>
           <div
@@ -96,47 +106,55 @@ exports[`EditUserDialog should match the snapshot 1`] = `
             </div>
           </div>
           <div
-            class="MuiFormControl-root-0619 MuiFormControl-marginDense-0621 MuiFormControl-fullWidth-0622"
+            class="MuiFormControl-root-0619 MuiFormControl-fullWidth-0622"
           >
-            <label
-              class="MuiFormLabel-root-0628 MuiInputLabel-root-0623 MuiInputLabel-formControl-0624 MuiInputLabel-animated-0627 MuiInputLabel-marginDense-0625"
-              data-shrink="false"
-              for="emailAddress"
-            >
-              Email
-            </label>
             <div
-              class="MuiInput-root-0635 MuiInput-fullWidth-0642 MuiInput-formControl-0636 MuiInput-underline-0639"
+              class="MuiFormControl-root-0619 MuiFormControl-marginDense-0621 MuiFormControl-fullWidth-0622"
             >
-              <input
-                aria-invalid="false"
-                class="MuiInput-input-0643 MuiInput-inputType-0646 MuiInput-inputMarginDense-0644"
-                id="emailAddress"
-                type="emailAddress"
-                value=""
-              />
+              <label
+                class="MuiFormLabel-root-0628 MuiInputLabel-root-0623 MuiInputLabel-formControl-0624 MuiInputLabel-animated-0627 MuiInputLabel-marginDense-0625"
+                data-shrink="false"
+                for="emailAddress"
+              >
+                Email
+              </label>
+              <div
+                class="MuiInput-root-0635 MuiInput-fullWidth-0642 MuiInput-formControl-0636 MuiInput-underline-0639"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInput-input-0643 MuiInput-inputType-0646 MuiInput-inputMarginDense-0644"
+                  id="emailAddress"
+                  type="emailAddress"
+                  value=""
+                />
+              </div>
             </div>
           </div>
           <div
-            class="MuiFormControl-root-0619 MuiFormControl-marginDense-0621 MuiFormControl-fullWidth-0622"
+            class="MuiFormControl-root-0619 MuiFormControl-fullWidth-0622"
           >
-            <label
-              class="MuiFormLabel-root-0628 MuiInputLabel-root-0623 MuiInputLabel-formControl-0624 MuiInputLabel-animated-0627 MuiInputLabel-marginDense-0625"
-              data-shrink="false"
-              for="avatar"
-            >
-              Avatar URL
-            </label>
             <div
-              class="MuiInput-root-0635 MuiInput-fullWidth-0642 MuiInput-formControl-0636 MuiInput-underline-0639"
+              class="MuiFormControl-root-0619 MuiFormControl-marginDense-0621 MuiFormControl-fullWidth-0622"
             >
-              <input
-                aria-invalid="false"
-                class="MuiInput-input-0643 MuiInput-inputMarginDense-0644"
-                id="avatar"
-                type="text"
-                value=""
-              />
+              <label
+                class="MuiFormLabel-root-0628 MuiInputLabel-root-0623 MuiInputLabel-formControl-0624 MuiInputLabel-animated-0627 MuiInputLabel-marginDense-0625"
+                data-shrink="false"
+                for="avatar"
+              >
+                Avatar URL
+              </label>
+              <div
+                class="MuiInput-root-0635 MuiInput-fullWidth-0642 MuiInput-formControl-0636 MuiInput-underline-0639"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInput-input-0643 MuiInput-inputMarginDense-0644"
+                  id="avatar"
+                  type="text"
+                  value=""
+                />
+              </div>
             </div>
           </div>
         </form>
